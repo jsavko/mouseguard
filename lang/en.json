@@ -1,0 +1,124 @@
+{
+  "SETTINGS.MouseGuardMacroShorthandN": "Shortened Macro Syntax",
+  "SETTINGS.MouseGuardMacroShorthandL": "Enable a shortened macro syntax which allows referencing attributes directly, for example @str instead of @attributes.str.value. Disable this setting if you need the ability to reference the full attribute model, for example @attributes.str.label.",
+  "SETTINGS.MouseGuardInitFormulaN": "Initiative Formula",
+  "SETTINGS.MouseGuardInitFormulaL": "Enter an initiative formula, such as d20+@dex",
+
+  "MOUSEGUARD.ItemCreate": "Create Item",
+  "MOUSEGUARD.ItemEdit": "Edit Item",
+  "MOUSEGUARD.ItemDelete": "Delete Item",
+  "MOUSEGUARD.ItemNew": "New Item",
+
+  "MOUSEGUARD.NotifyInitFormulaUpdated": "Initiative formula was updated to",
+  "MOUSEGUARD.NotifyInitFormulaInvalid": "Initiative formula was invalid",
+  "MOUSEGUARD.NotifyGroupDuplicate": "Attribute group already exists.",
+  "MOUSEGUARD.NotifyGroupAttrDuplicate": "Attribute group already exists as an attribute.",
+  "MOUSEGUARD.NotifyGroupAlphanumeric": "Attribute group names may not contain spaces or periods.",
+  "MOUSEGUARD.NotifyAttrDuplicate": "Attribute key already exists as a group.",
+
+  "MOUSEGUARD.ResourceMin": "Min",
+  "MOUSEGUARD.ResourceValue": "Value",
+  "MOUSEGUARD.ResourceMax": "Max",
+
+  "MOUSEGUARD.DefineTemplate": "Define as Template",
+  "MOUSEGUARD.UnsetTemplate": "Unset Template",
+  "MOUSEGUARD.NoTemplate": "No Template",
+
+  "MOUSEGUARD.AttributeKey": "Attribute Key",
+  "MOUSEGUARD.AttributeValue": "Value",
+  "MOUSEGUARD.AttributeLabel": "Label",
+  "MOUSEGUARD.AttributeDtype": "Data Type",
+
+  "MOUSEGUARD.DeleteGroup": "Delete group?",
+  "MOUSEGUARD.DeleteGroupContent": "Do you wish to delete this group? This will delete the following group and all attributes included in it: ",
+
+  "MOUSEGUARD.Create": "Create",
+  "MOUSEGUARD.New": "New",
+
+  "MOUSEGUARD.Name": "Name",
+  "MOUSEGUARD.Age": "Age",
+  "MOUSEGUARD.Parents": "Parents",
+  "MOUSEGUARD.Senior": "Senior Artisan",
+  "MOUSEGUARD.Home": "Home",
+  "MOUSEGUARD.Mentor": "Mentor",
+  "MOUSEGUARD.Fur": "Fur Color",
+  "MOUSEGUARD.Friend": "Friend",
+  "MOUSEGUARD.Enemy": "Enemy",
+  "MOUSEGUARD.GuardRank": "Guard Rank",
+  "MOUSEGUARD.Cloak": "Cloak Color",
+  "MOUSEGUARD.Rewards": "Rewards",
+  "MOUSEGUARD.Fate": "Fate",
+  "MOUSEGUARD.FateSub": "One point allows you to reroll any axes (AXEICON) as new dice",
+  "MOUSEGUARD.Persona": "Persona",
+  "MOUSEGUARD.PersonaSub": "Add one die per point spent or tap Nature",
+  "MOUSEGUARD.Belief": "Belief",
+  "MOUSEGUARD.BeliefSub": "Playing a Belief earns a fate point",
+  "MOUSEGUARD.Goal": "Goal",
+  "MOUSEGUARD.GoalSub": "Accomplishing a goal earns a persona point",
+  "MOUSEGUARD.Instinct": "Instinct",
+  "MOUSEGUARD.InstinctSub": "Playing an Instinct earns a fate point",
+  "MOUSEGUARD.GearTag": "Gear and Possessions",
+  "MOUSEGUARD.GearTagSub": "Gear is limited to what you can carry. Possessions are kept in Lockhaven aor another location",
+  "MOUSEGUARD.Contacts": "Contacts",
+
+  "MOUSEGUARD.Disposition": "Disposition",
+  "MOUSEGUARD.ConflictGoal": "Conflict Goal",
+  "MOUSEGUARD.ConflictActions": "Conflict Actions",
+  "MOUSEGUARD.Attack": "Attack",
+  "MOUSEGUARD.Defend": "Defend",
+  "MOUSEGUARD.Feint": "Feint",
+  "MOUSEGUARD.Maneuver": "Maneuver",
+  "MOUSEGUARD.Mission": "Mission",
+
+  "MOUSEGUARD.MNature": "Mouse Nature",
+  "MOUSEGUARD.Will": "Will",
+  "MOUSEGUARD.Health": "Health",
+  "MOUSEGUARD.Resources": "Resources",
+  "MOUSEGUARD.Circles": "Circles",
+
+  "MOUSEGUARD.Conditions": "Conditions",
+  "MOUSEGUARD.HungThurst": "Hungry, Thursty",
+  "MOUSEGUARD.HungThurstSub": "-1 to disposition to any conflict.",
+  "MOUSEGUARD.Angry": "Angry (Ob 2 will)",
+  "MOUSEGUARD.AngrySub": "-1 to disposition to any conflict that uses Will as its base.",
+  "MOUSEGUARD.Tired": "Tired (Ob 3 Health)",
+  "MOUSEGUARD.TiredSub": "-1 to disposition to any conflict",
+  "MOUSEGUARD.Injured": "Injured (Ob 4 Health)",
+  "MOUSEGUARD.InjuredSub": "-1D to skills, Nature, WIll and Health (but not recovery)",
+  "MOUSEGUARD.Sick": "Sick (Ob 4 Will)",
+  "MOUSEGUARD.SickSub": "-1D to skills, Nature, WIll and Health (but not recovery)",
+  
+  "MOUSEGUARD.Wises": "Wises",
+  "MOUSEGUARD.Pass": "Pass",
+  "MOUSEGUARD.Fail": "Fail",
+  "MOUSEGUARD.Skills": "Skills",
+  "MOUSEGUARD.Skill": "Skill",
+
+  "MOUSEGUARD.Rating": "Rating",
+  "MOUSEGUARD.Advancement": "Advancement",
+
+  "MOUSEGUARD.Traits": "Traits",
+  "MOUSEGUARD.Trait": "Trait",
+  "MOUSEGUARD.UsedFor": "Used For",
+  "MOUSEGUARD.UsedAgainst": "Used Against",
+  "MOUSEGUARD.TraitBenefits": "Trait Benefits",
+  "MOUSEGUARD.TraitBenefitsSub": "Level 1: +1D per session; Level 2: +1D twice per session; Level 3: Reroll failed dice once per session."
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

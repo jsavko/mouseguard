@@ -1,0 +1,67 @@
+{
+    "Actor": {
+      "types": ["character"],
+      "character": {
+        "biography": "",
+        "health": {
+          "value": 10,
+          "min": 0,
+          "max": 10
+        },
+        "power": {
+          "value": 5,
+          "min": 0,
+          "max": 5
+        },
+        "attributes": {},
+        "groups": {},
+        "skills": {},
+        "circles": {},
+        "wises":{},
+        "traits":{},
+        "conditions":{},
+        "abilities":{}
+      }
+    },
+    "Item": {
+      "types": ["item", "skill", "wise","contact", "condition","ability", "trait"],
+      "item": {
+        "description": "",
+        "quantity": 1,
+        "weight": 0,
+        "attributes": {},
+        "groups": {}
+      },
+      "skill": {
+        "description": "",
+        "rank": 0,
+        "pass":0,
+        "fail":0
+      },
+      "wise":{
+        "description": "",
+        "pass":0,
+        "fail": 0
+      },
+      "contact": {
+        "description": ""
+      },
+      "ability":{
+        "description":"",
+        "rating":0,
+        "pass":0,
+        "fail":0
+      },
+      "trait":{
+        "description": "",
+        "level": 0,
+        "usedfor":0,
+        "usedagainst":0
+      },
+      "condition":{
+        "description": ""
+      }
+    
+    }
+    }
+    
