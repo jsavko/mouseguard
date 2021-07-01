@@ -46,7 +46,7 @@ actorhead.svelte-1e1arv input.svelte-1e1arv {
 }
 
 /* fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseDetails.esbuild-svelte-fake-css */
-largecard.svelte-19tsv6u.svelte-19tsv6u {
+largecard.svelte-zx9hus.svelte-zx9hus {
   margin: 0 auto;
   display: inline-block;
   border: 1px solid black;
@@ -54,7 +54,7 @@ largecard.svelte-19tsv6u.svelte-19tsv6u {
   width: 460px;
   font-family: "Khula", sans-serif;
 }
-lineitem.svelte-19tsv6u.svelte-19tsv6u {
+lineitem.svelte-zx9hus.svelte-zx9hus {
   width: 210px;
   margin: auto;
   display: flex;
@@ -62,24 +62,23 @@ lineitem.svelte-19tsv6u.svelte-19tsv6u {
   padding: 5px;
   height: 100%;
 }
-label.svelte-19tsv6u.svelte-19tsv6u {
+label.svelte-zx9hus.svelte-zx9hus {
   width: 180px;
   text-align: right;
   margin-top: 3px;
   padding-right: 2px;
   font-family: "Khula", sans-serif;
 }
-input.svelte-19tsv6u.svelte-19tsv6u {
+input.svelte-zx9hus.svelte-zx9hus {
   border: none;
 }
-.namebox.svelte-19tsv6u.svelte-19tsv6u {
+.namebox.svelte-zx9hus.svelte-zx9hus {
   position: relative;
-  left: 30px;
   font-family: "Germania One", cursive;
-  height: 70px;
+  height: 60px;
   pointer-events: none;
 }
-.namebox.svelte-19tsv6u input.svelte-19tsv6u {
+.namebox.svelte-zx9hus input.svelte-zx9hus {
   background: rgba(0, 0, 0, 0);
   background-image: url(../assets/actor/NameBanner.svg);
   background-repeat: no-repeat;
@@ -90,10 +89,13 @@ input.svelte-19tsv6u.svelte-19tsv6u {
   padding-bottom: 14px;
   position: relative;
   top: -40px;
-  left: 80px;
+  left: 100px;
   pointer-events: auto;
 }
-lineitem.svelte-19tsv6u input.svelte-19tsv6u {
+.namebox.svelte-zx9hus h1.svelte-zx9hus {
+  padding-left: 30px;
+}
+lineitem.svelte-zx9hus input.svelte-zx9hus {
   padding-top: 5px;
   pointer-events: auto;
 }
@@ -111,92 +113,108 @@ smallcard.svelte-18525n1 {
 }
 
 /* fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseRewards.esbuild-svelte-fake-css */
-largecard.svelte-7ea9mt.svelte-7ea9mt {
+largecard.svelte-11cjxyo.svelte-11cjxyo {
   margin: 0 auto;
   display: flex;
   border: 1px solid black;
-  height: 290px;
+  height: 410px;
   width: 460px;
   font-family: "Khula", sans-serif;
+  flex-wrap: wrap;
 }
-label.svelte-7ea9mt.svelte-7ea9mt {
+label.svelte-11cjxyo.svelte-11cjxyo {
   margin-top: 3px;
 }
-input.svelte-7ea9mt.svelte-7ea9mt {
+input.svelte-11cjxyo.svelte-11cjxyo {
   border: none;
 }
-h1.svelte-7ea9mt.svelte-7ea9mt {
+h1.svelte-11cjxyo.svelte-11cjxyo {
   font-family: "Germania One", cursive;
   padding-left: 30px;
+  width: 100%;
 }
-.header.svelte-7ea9mt.svelte-7ea9mt {
+.header.svelte-11cjxyo.svelte-11cjxyo {
   font-family: "Germania One", cursive;
   font-size: large;
   width: 100%;
   text-align: center;
   display: block;
 }
-fatebox.svelte-7ea9mt.svelte-7ea9mt {
+fatebox.svelte-11cjxyo.svelte-11cjxyo {
   position: relative;
   top: 60;
-  left: 10px;
+  left: 11px;
   width: 85px;
   height: 110px;
-  border: 1px solid red;
   display: block;
   font-family: "Germania One", cursive;
   background-image: url(../assets/actor/Fate.svg);
   background-repeat: no-repeat;
   background-position-y: 25px;
 }
-fatebox.svelte-7ea9mt input.svelte-7ea9mt {
+fatebox.svelte-11cjxyo input.svelte-11cjxyo {
   width: 50px;
   position: relative;
-  top: 27px;
+  top: 30px;
   left: 25px;
   height: 30px;
-  width: 30px;
+  width: 35px;
   text-align: center;
   font-size: large;
+  background: rgba(0, 0, 0, 0);
 }
-personabox.svelte-7ea9mt.svelte-7ea9mt {
+personabox.svelte-11cjxyo.svelte-11cjxyo {
   position: relative;
-  top: 10px;
-  left: 10px;
+  top: 11px;
+  left: 11px;
   width: 85px;
   height: 125px;
-  border: 1px solid red;
   display: block;
   font-family: "Germania One", cursive;
   background-image: url(../assets/actor/Persona.svg);
   background-repeat: no-repeat;
   background-position-y: 24px;
 }
-personabox.svelte-7ea9mt input.svelte-7ea9mt {
+personabox.svelte-11cjxyo input.svelte-11cjxyo {
   width: 50px;
   position: relative;
   top: 22px;
   left: 25px;
   height: 50px;
-  width: 30px;
+  width: 35px;
   text-align: center;
   font-size: large;
+  background: rgba(0, 0, 0, 0);
 }
-beliefbox.svelte-7ea9mt.svelte-7ea9mt {
+rewardbox.svelte-11cjxyo.svelte-11cjxyo {
   position: relative;
-  top: 10px;
   left: 10px;
-  width: 300px;
-  height: 70px;
-  border: 1px solid red;
+  width: 95%;
+  margin-bottom: 10px;
   display: block;
   font-family: "Germania One", cursive;
+  font-size: large;
 }
-.left.svelte-7ea9mt.svelte-7ea9mt {
+label.svelte-11cjxyo.svelte-11cjxyo {
+  width: 100%;
+  display: block;
+}
+.sub.svelte-11cjxyo.svelte-11cjxyo {
+  font-size: small;
+  font-family: "Khula", sans-serif;
+}
+textarea.svelte-11cjxyo.svelte-11cjxyo {
+  font-size: small;
+  font-family: "Khula", sans-serif;
+  border: none;
+  font-weight: bold;
+  background: rgba(0, 0, 0, 0.05);
+}
+.left.svelte-11cjxyo.svelte-11cjxyo {
   width: 100px;
   display: block;
 }
-.right.svelte-7ea9mt.svelte-7ea9mt {
+.right.svelte-11cjxyo.svelte-11cjxyo {
   width: 350px;
   display: block;
 }

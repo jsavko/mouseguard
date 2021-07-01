@@ -101,9 +101,8 @@
 	}
 	.namebox {
 		position: relative;
-		left: 30px;
 		font-family: 'Germania One', cursive;
-		height: 70px;
+		height: 60px;
 		pointer-events: none; 
 	}
 	.namebox input {
@@ -117,8 +116,12 @@
 		padding-bottom: 14px;
 		position: relative;
 		top: -40px;
-		left: 80px;
+		left: 100px;
 		pointer-events: auto; 
+	}
+	
+	.namebox h1 { 
+		padding-left: 30px;
 	}
 	
 	lineitem input {

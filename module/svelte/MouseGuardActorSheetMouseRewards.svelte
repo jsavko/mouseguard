@@ -25,23 +25,22 @@
 		</personabox>
 	</left>
 	<right class="right">
-		<beliefbox>
+		<rewardbox>
 			<label>{game.i18n.localize("MOUSEGUARD.Belief")}</label>
-			<label>{@html game.i18n.localize("MOUSEGUARD.BeliefSub")}</label>
-			<input name="data.rewards.belief" type="text" value="{data.data.rewards.belief}" placeholder="{game.i18n.localize("MOUSEGUARD.Belief")}"/>
-		</beliefbox>
-		<instinctbox>
+			<label class="sub">{@html game.i18n.localize("MOUSEGUARD.BeliefSub")}</label>
+			<textarea name="data.rewards.belief">{data.data.rewards.belief}</textarea>
+		</rewardbox>
+		<rewardbox>
 			<label>{game.i18n.localize("MOUSEGUARD.Instinct")}</label>
-			<label>{@html game.i18n.localize("MOUSEGUARD.InstinctSub")}</label>
-			<input name="data.rewards.instinct" type="text" value="{data.data.rewards.instinct}" placeholder="{game.i18n.localize("MOUSEGUARD.Instinct")}"/>
-
-		</instinctbox>
-		<goalbox>
+			<label class="sub">{@html game.i18n.localize("MOUSEGUARD.InstinctSub")}</label>
+			<textarea name="data.reward.instinct">{data.data.rewards.instinct}</textarea>
+		</rewardbox>
+		<rewardbox>
 			<label>{game.i18n.localize("MOUSEGUARD.Goal")}</label>
-			<label>{@html game.i18n.localize("MOUSEGUARD.GoalSub")}</label>
-			<input name="data.rewards.goal" type="text" value="{data.data.rewards.goal}" placeholder="{game.i18n.localize("MOUSEGUARD.Goal")}"/>
+			<label class="sub">{@html game.i18n.localize("MOUSEGUARD.GoalSub")}</label>
+			<textarea name="data.reward.goal">{data.data.rewards.goal}</textarea>
 
-		</goalbox>
+		</rewardbox>
 	</right>
 </largecard>
 
@@ -51,9 +50,10 @@
 		margin: 0 auto;
 		display: flex;
 		border: 1px solid black;
-		height: 290px;
+		height: 410px;
 		width: 460px;
 		font-family: 'Khula', sans-serif;
+		flex-wrap: wrap;
 	}
 	.container {
 		display: flex;
@@ -83,6 +83,7 @@
 	h1 { 
 		font-family: 'Germania One', cursive;
 		padding-left: 30px;
+		width: 100%;
 		
 	}
 
@@ -97,10 +98,9 @@
 	fatebox { 
 		position: relative;
 		top:60;
-		left: 10px;
+		left: 11px;
 		width: 85px;
 		height: 110px;
-		border: 1px solid red; 
 		display:block;
 		font-family: 'Germania One', cursive;
 		background-image: url("../assets/actor/Fate.svg");
@@ -111,21 +111,22 @@
 	fatebox input {
 		width: 50px;
 		position: relative;
-		top: 27px;
+		top: 30px;
 		left: 25px;
 		height: 30px;
-		width: 30px;
+		width: 35px;
 		text-align: center;
 		font-size: large;
+		background: rgba(0, 0, 0, 0);
+
 	}
 
 	personabox { 
 		position: relative;
-		top:10px;
-		left: 10px;
+		top:11px;
+		left: 11px;
 		width: 85px;
 		height: 125px;
-		border: 1px solid red; 
 		display:block;
 		font-family: 'Germania One', cursive;
 		background-image: url("../assets/actor/Persona.svg");
@@ -139,20 +140,40 @@
 		top: 22px;
 		left: 25px;
 		height: 50px;
-		width: 30px;
+		width: 35px;
 		text-align: center;
+		font-size: large;
+		background: rgba(0, 0, 0, 0);
+	}
+
+	rewardbox { 
+		position: relative;
+		left: 10px;
+		width: 95%;
+		margin-bottom: 10px;
+		display:block;
+		font-family: 'Germania One', cursive;
 		font-size: large;
 	}
 
-	beliefbox { 
-		position: relative;
-		top: 10px;
-		left: 10px;
-		width: 300px;
-		height: 70px;
-		border: 1px solid red; 
+	label {
+		width: 100%;
 		display:block;
-		font-family: 'Germania One', cursive;
+	}
+	.sub {
+		font-size:small;
+		font-family: 'Khula', sans-serif;
+
+
+	}
+
+	textarea {
+		font-size:small;
+		font-family: 'Khula', sans-serif;
+		border: none;
+		font-weight: bold;
+		background: rgba(0, 0, 0, 0.05);
+
 	}
 
 	.left {
