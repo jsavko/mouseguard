@@ -2,12 +2,12 @@
   "name": "mouseguard",
   "title": "Mouse Guard",
   "description": "A minimalist game system which provides configurable Actor and Item templates to support free-form system agnostic game-play.",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "minimumCoreVersion": "0.8.4",
   "compatibleCoreVersion": "0.8.6",
   "author": "Atropos",
-  "esmodules": ["module/mouseguard.js"],
-  "styles": ["styles/mouseguard.css"],
+  "esmodules": ["dist/mouseguard.js"],
+  "styles": ["styles/mouseguard.css", "dist/mouseguard.css"],
   "packs": [],
   "languages": [
     {

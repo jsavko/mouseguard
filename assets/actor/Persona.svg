@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 206 241" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:bevel;stroke-miterlimit:1.5;">
+    <g transform="matrix(1,0,0,1,-136,-1488)">
+        <g transform="matrix(1,0,0,1,3,-41.262)">
+            <g transform="matrix(1.18417,0,0,1.18417,-249.153,233.339)">
+                <g transform="matrix(1.08503,0,0,0.71385,-14.0247,267.748)">
+                    <rect x="314.19" y="1171.07" width="152.863" height="23.076" style="fill:none;stroke:black;stroke-width:7.66px;"/>
+                </g>
+                <g transform="matrix(1.18433,0,0,1.18433,-60.5796,-310.185)">
+                    <path d="M456.189,1189.17L433.32,1189.17L433.32,1212.93L409.492,1212.93L409.492,1189.17L385.663,1189.17L385.663,1212.93L362.041,1212.93L362.041,1189.17L338.168,1189.17L338.168,1327.09L397.178,1354.47L456.189,1327.09L456.189,1189.17Z" style="fill:white;"/>
+                    <clipPath id="_clip1">
+                        <path d="M456.189,1189.17L433.32,1189.17L433.32,1212.93L409.492,1212.93L409.492,1189.17L385.663,1189.17L385.663,1212.93L362.041,1212.93L362.041,1189.17L338.168,1189.17L338.168,1327.09L397.178,1354.47L456.189,1327.09L456.189,1189.17Z"/>
+                    </clipPath>
+                    <g clip-path="url(#_clip1)">
+                        <g transform="matrix(0.840649,0,0,0.800081,63.291,260.054)">
+                            <path d="M456.189,1156.38L338.168,1156.38L338.168,1327.09L397.178,1354.47L456.189,1327.09L456.189,1156.38Z" style="fill:none;stroke:black;stroke-width:3.62px;stroke-linejoin:round;"/>
+                        </g>
+                    </g>
+                    <path d="M456.189,1189.17L433.32,1189.17L433.32,1212.93L409.492,1212.93L409.492,1189.17L385.663,1189.17L385.663,1212.93L362.041,1212.93L362.041,1189.17L338.168,1189.17L338.168,1327.09L397.178,1354.47L456.189,1327.09L456.189,1189.17Z" style="fill:none;stroke:black;stroke-width:5.94px;"/>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

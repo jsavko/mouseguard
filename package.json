@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "CSS compiler for the MouseGuard system",
   "scripts": {
+    "build": "gulp build",
     "css": "gulp css",
     "watch": "gulp",
     "gulp": "gulp"
@@ -15,7 +16,10 @@
   "private": true,
   "dependencies": {
     "gulp": "^4.0.2",
-    "gulp-less": "^4.0.1"
+    "gulp-less": "^4.0.1",
+    "svelte": "^3.38.2",
+    "esbuild": "^0.12.8",
+    "esbuild-svelte": "^0.5.1"
   },
   "devDependencies": {}
 }

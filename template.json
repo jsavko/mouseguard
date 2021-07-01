@@ -13,14 +13,25 @@
           "min": 0,
           "max": 5
         },
-        "attributes": {},
-        "groups": {},
-        "skills": {},
-        "circles": {},
-        "wises":{},
-        "traits":{},
-        "conditions":{},
-        "abilities":{}
+        "details": {
+          "age": 0,
+          "home": "",
+          "fur_color": "",
+          "guard_rank": "",
+          "cloak_color":"",
+          "parents":"",
+          "senior_artisan": "",
+          "mentor": "",
+          "friend": "",
+          "enemy": ""
+        },
+        "rewards": {
+          "fate": 1,
+          "persona": 1,
+          "belief": "",
+          "goal": "",
+          "instinct": ""
+        }
       }
     },
     "Item": {
@@ -63,5 +74,4 @@
       }
     
     }
-    }
-    
+}

@@ -10,6 +10,7 @@
 }
 .mouseguard form {
   height: 100%;
+  overflow: scroll;
 }
 .mouseguard .sheet-header {
   flex: 0 0 100px;

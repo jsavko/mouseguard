@@ -1,22 +1,27 @@
 import { EntitySheetHelper } from "./helper.js";
 import {ATTRIBUTE_TYPES} from "./constants.js";
 
+import MouseGuardActorSheetBase  from "./svelte/MouseGuardActorSheetBase.svelte"; // import Svelte App
+import { writable } from "svelte/store";
+
 /**
  * Extend the basic ActorSheet with some very simple modifications
  * @extends {ActorSheet}
  */
 export class MouseGuardActorSheet extends ActorSheet {
 
+  app = null;
+  dataStore = null;
+
   /** @inheritdoc */
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ["mouseguard", "sheet", "actor"],
-      template: "systems/mouseguard/templates/actor-sheet.html",
-      width: 600,
+      template: "systems/mouseguard/templates/actor-sheetv2.html",
+      width: 850,
       height: 600,
-      tabs: [{navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description"}],
-      scrollY: [".biography", ".items", ".attributes"],
-      dragDrop: [{dragSelector: ".item-list .item", dropSelector: null}]
+      tabs: [],
+      dragDrop: []
     });
   }
 
@@ -29,6 +34,7 @@ export class MouseGuardActorSheet extends ActorSheet {
     context.shorthand = !!game.settings.get("mouseguard", "macroShorthand");
     context.systemData = context.data.data;
     context.dtypes = ATTRIBUTE_TYPES;
+    context.sheet = this;
     return context;
   }
 
@@ -114,4 +120,59 @@ export class MouseGuardActorSheet extends ActorSheet {
     formData = EntitySheetHelper.updateGroups(formData, this.object);
     return formData;
   }
+
+  
+  render(force=false, options={}) { 
+    // Grab the sheetdata for both updates and new apps.
+    let sheetData = this.getData();
+    // Exit if Vue has already rendered.
+    if (this.app !== null) {
+      let states = Application.RENDER_STATES;
+      if (this._state == states.RENDERING || this._state == states.RENDERED) {
+        // Update the Datastore.
+        this.dataStore?.set(sheetData);
+        return;
+      }
+    }
+    // Run the normal Foundry render once.
+    this._render(force, options).catch(err => {
+      err.message = `An error occurred while rendering ${this.constructor.name} ${this.appId}: ${err.message}`;
+      console.error(err);
+      this._state = Application.RENDER_STATES.ERROR;
+    })
+    // Run Svelte's render, assign it to our prop for tracking.
+    .then(rendered => {
+      // Prepare the actor data.
+      this.dataStore = writable(sheetData);
+      //console.log(sheetData);
+      this.app = new MouseGuardActorSheetBase({
+        target: this.element.find("form").get(0),
+        props: {
+          dataStore: this.dataStore,
+          //name: 'world',
+        },
+      });
+    })
+    // Update editable permission
+    options.editable = options.editable ?? this.object.isOwner;
+  
+    // Register the active Application with the referenced Documents
+    this.object.apps[this.appId] = this;
+    // Return per the overridden method.
+    return this;
+  }
+  
+  
+  
+  close (options={}){
+    if (this.app != null) {
+      this.app.$destroy();
+      this.app = null;
+      this.dataStore = null;
+    }
+    return super.close(options);
+  }
+  
+
+
 }

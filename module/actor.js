@@ -27,6 +27,7 @@ export class MouseGuardActor extends Actor {
     // Make modifications to data here. For example:
     const ability = [];
     const gear = [];
+    const skill = [];
 
     for (let i of data.items) {
       let item = i;
@@ -37,10 +38,14 @@ export class MouseGuardActor extends Actor {
         case 'ability':
           ability.push(i);
           break;
+        case 'skill':
+            skill.push(i);
+            break;
       }
     }
-    data.abilities = ability;
-    data.gear = gear;
+    data.data.abilities = ability;
+    data.data.gear = gear;
+    data.data.skill = skill;
 
     const test = this.itemTypes.ability;
 
