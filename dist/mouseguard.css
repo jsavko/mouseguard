@@ -113,7 +113,7 @@ smallcard.svelte-18525n1 {
 }
 
 /* fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseRewards.esbuild-svelte-fake-css */
-largecard.svelte-11cjxyo.svelte-11cjxyo {
+largecard.svelte-116tls8.svelte-116tls8 {
   margin: 0 auto;
   display: flex;
   border: 1px solid black;
@@ -122,25 +122,25 @@ largecard.svelte-11cjxyo.svelte-11cjxyo {
   font-family: "Khula", sans-serif;
   flex-wrap: wrap;
 }
-label.svelte-11cjxyo.svelte-11cjxyo {
+label.svelte-116tls8.svelte-116tls8 {
   margin-top: 3px;
 }
-input.svelte-11cjxyo.svelte-11cjxyo {
+input.svelte-116tls8.svelte-116tls8 {
   border: none;
 }
-h1.svelte-11cjxyo.svelte-11cjxyo {
+h1.svelte-116tls8.svelte-116tls8 {
   font-family: "Germania One", cursive;
   padding-left: 30px;
   width: 100%;
 }
-.header.svelte-11cjxyo.svelte-11cjxyo {
+.header.svelte-116tls8.svelte-116tls8 {
   font-family: "Germania One", cursive;
   font-size: large;
   width: 100%;
   text-align: center;
   display: block;
 }
-fatebox.svelte-11cjxyo.svelte-11cjxyo {
+fatebox.svelte-116tls8.svelte-116tls8 {
   position: relative;
   top: 60;
   left: 11px;
@@ -152,7 +152,7 @@ fatebox.svelte-11cjxyo.svelte-11cjxyo {
   background-repeat: no-repeat;
   background-position-y: 25px;
 }
-fatebox.svelte-11cjxyo input.svelte-11cjxyo {
+fatebox.svelte-116tls8 input.svelte-116tls8 {
   width: 50px;
   position: relative;
   top: 30px;
@@ -163,7 +163,7 @@ fatebox.svelte-11cjxyo input.svelte-11cjxyo {
   font-size: large;
   background: rgba(0, 0, 0, 0);
 }
-personabox.svelte-11cjxyo.svelte-11cjxyo {
+personabox.svelte-116tls8.svelte-116tls8 {
   position: relative;
   top: 11px;
   left: 11px;
@@ -175,7 +175,7 @@ personabox.svelte-11cjxyo.svelte-11cjxyo {
   background-repeat: no-repeat;
   background-position-y: 24px;
 }
-personabox.svelte-11cjxyo input.svelte-11cjxyo {
+personabox.svelte-116tls8 input.svelte-116tls8 {
   width: 50px;
   position: relative;
   top: 22px;
@@ -186,7 +186,7 @@ personabox.svelte-11cjxyo input.svelte-11cjxyo {
   font-size: large;
   background: rgba(0, 0, 0, 0);
 }
-rewardbox.svelte-11cjxyo.svelte-11cjxyo {
+rewardbox.svelte-116tls8.svelte-116tls8 {
   position: relative;
   left: 10px;
   width: 95%;
@@ -195,26 +195,26 @@ rewardbox.svelte-11cjxyo.svelte-11cjxyo {
   font-family: "Germania One", cursive;
   font-size: large;
 }
-label.svelte-11cjxyo.svelte-11cjxyo {
+label.svelte-116tls8.svelte-116tls8 {
   width: 100%;
   display: block;
 }
-.sub.svelte-11cjxyo.svelte-11cjxyo {
+.sub.svelte-116tls8.svelte-116tls8 {
   font-size: small;
   font-family: "Khula", sans-serif;
 }
-textarea.svelte-11cjxyo.svelte-11cjxyo {
+textarea.svelte-116tls8.svelte-116tls8 {
   font-size: small;
   font-family: "Khula", sans-serif;
   border: none;
   font-weight: bold;
   background: rgba(0, 0, 0, 0.05);
 }
-.left.svelte-11cjxyo.svelte-11cjxyo {
+.left.svelte-116tls8.svelte-116tls8 {
   width: 100px;
   display: block;
 }
-.right.svelte-11cjxyo.svelte-11cjxyo {
+.right.svelte-116tls8.svelte-116tls8 {
   width: 350px;
   display: block;
 }

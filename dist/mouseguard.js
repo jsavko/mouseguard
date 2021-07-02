@@ -1,9 +1,47 @@
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __commonJS = (cb, mod) => function __require() {
+  return mod || (0, cb[Object.keys(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
+};
 var __publicField = (obj, key, value) => {
   __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
   return value;
 };
+
+// fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetHeader.esbuild-svelte-fake-css
+var require_ = __commonJS({
+  "fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetHeader.esbuild-svelte-fake-css"(exports, module) {
+    module.exports = {};
+  }
+});
+
+// fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseDetails.esbuild-svelte-fake-css
+var require_2 = __commonJS({
+  "fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseDetails.esbuild-svelte-fake-css"(exports, module) {
+    module.exports = {};
+  }
+});
+
+// fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMousePortrait.esbuild-svelte-fake-css
+var require_3 = __commonJS({
+  "fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMousePortrait.esbuild-svelte-fake-css"(exports, module) {
+    module.exports = {};
+  }
+});
+
+// fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseRewards.esbuild-svelte-fake-css
+var require_4 = __commonJS({
+  "fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseRewards.esbuild-svelte-fake-css"(exports, module) {
+    module.exports = {};
+  }
+});
+
+// fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetBase.esbuild-svelte-fake-css
+var require_5 = __commonJS({
+  "fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetBase.esbuild-svelte-fake-css"(exports, module) {
+    module.exports = {};
+  }
+});
 
 // module/constants.js
 var ATTRIBUTE_TYPES = ["String", "Number", "Boolean", "Formula", "Resource"];
@@ -1087,6 +1125,9 @@ function writable(value, start = noop) {
   return { set, update: update2, subscribe: subscribe2 };
 }
 
+// module/svelte/MouseGuardActorSheetHeader.svelte
+require_();
+
 // module/svelte/MouseGuardActorSheetMouseDetails.svelte
 function create_fragment(ctx) {
   let largecard;
@@ -1435,6 +1476,7 @@ var MouseGuardActorSheetMouseDetails = class extends SvelteComponent {
   }
 };
 var MouseGuardActorSheetMouseDetails_default = MouseGuardActorSheetMouseDetails;
+require_2();
 
 // module/svelte/MouseGuardActorSheetMousePortrait.svelte
 function create_fragment2(ctx) {
@@ -1518,6 +1560,7 @@ var MouseGuardActorSheetMousePortrait = class extends SvelteComponent {
   }
 };
 var MouseGuardActorSheetMousePortrait_default = MouseGuardActorSheetMousePortrait;
+require_3();
 
 // module/svelte/MouseGuardActorSheetMouseRewards.svelte
 function create_fragment3(ctx) {
@@ -1607,42 +1650,42 @@ function create_fragment3(ctx) {
       label7 = element("label");
       t18 = space();
       textarea2 = element("textarea");
-      attr(h1, "class", "svelte-11cjxyo");
-      attr(label0, "class", "header svelte-11cjxyo");
+      attr(h1, "class", "svelte-116tls8");
+      attr(label0, "class", "header svelte-116tls8");
       attr(input0, "name", "data.rewards.fate");
       attr(input0, "type", "number");
       input0.value = input0_value_value = ctx[0].data.rewards.fate;
       attr(input0, "placeholder", "0");
-      attr(input0, "class", "svelte-11cjxyo");
-      attr(fatebox, "class", "svelte-11cjxyo");
-      attr(label1, "class", "header svelte-11cjxyo");
+      attr(input0, "class", "svelte-116tls8");
+      attr(fatebox, "class", "svelte-116tls8");
+      attr(label1, "class", "header svelte-116tls8");
       attr(input1, "name", "data.rewards.persona");
       attr(input1, "type", "number");
       input1.value = input1_value_value = ctx[0].data.rewards.persona;
       attr(input1, "placeholder", "0");
-      attr(input1, "class", "svelte-11cjxyo");
-      attr(personabox, "class", "svelte-11cjxyo");
-      attr(left, "class", "left svelte-11cjxyo");
-      attr(label2, "class", "svelte-11cjxyo");
-      attr(label3, "class", "sub svelte-11cjxyo");
+      attr(input1, "class", "svelte-116tls8");
+      attr(personabox, "class", "svelte-116tls8");
+      attr(left, "class", "left svelte-116tls8");
+      attr(label2, "class", "svelte-116tls8");
+      attr(label3, "class", "sub svelte-116tls8");
       attr(textarea0, "name", "data.rewards.belief");
       textarea0.value = textarea0_value_value = ctx[0].data.rewards.belief;
-      attr(textarea0, "class", "svelte-11cjxyo");
-      attr(rewardbox0, "class", "svelte-11cjxyo");
-      attr(label4, "class", "svelte-11cjxyo");
-      attr(label5, "class", "sub svelte-11cjxyo");
-      attr(textarea1, "name", "data.reward.instinct");
+      attr(textarea0, "class", "svelte-116tls8");
+      attr(rewardbox0, "class", "svelte-116tls8");
+      attr(label4, "class", "svelte-116tls8");
+      attr(label5, "class", "sub svelte-116tls8");
+      attr(textarea1, "name", "data.rewards.instinct");
       textarea1.value = textarea1_value_value = ctx[0].data.rewards.instinct;
-      attr(textarea1, "class", "svelte-11cjxyo");
-      attr(rewardbox1, "class", "svelte-11cjxyo");
-      attr(label6, "class", "svelte-11cjxyo");
-      attr(label7, "class", "sub svelte-11cjxyo");
-      attr(textarea2, "name", "data.reward.goal");
+      attr(textarea1, "class", "svelte-116tls8");
+      attr(rewardbox1, "class", "svelte-116tls8");
+      attr(label6, "class", "svelte-116tls8");
+      attr(label7, "class", "sub svelte-116tls8");
+      attr(textarea2, "name", "data.rewards.goal");
       textarea2.value = textarea2_value_value = ctx[0].data.rewards.goal;
-      attr(textarea2, "class", "svelte-11cjxyo");
-      attr(rewardbox2, "class", "svelte-11cjxyo");
-      attr(right, "class", "right svelte-11cjxyo");
-      attr(largecard, "class", "svelte-11cjxyo");
+      attr(textarea2, "class", "svelte-116tls8");
+      attr(rewardbox2, "class", "svelte-116tls8");
+      attr(right, "class", "right svelte-116tls8");
+      attr(largecard, "class", "svelte-116tls8");
     },
     m(target, anchor) {
       insert(target, largecard, anchor);
@@ -1730,6 +1773,7 @@ var MouseGuardActorSheetMouseRewards = class extends SvelteComponent {
   }
 };
 var MouseGuardActorSheetMouseRewards_default = MouseGuardActorSheetMouseRewards;
+require_4();
 
 // module/svelte/MouseGuardActorSheetBase.svelte
 function create_fragment4(ctx) {
@@ -1818,6 +1862,7 @@ var MouseGuardActorSheetBase = class extends SvelteComponent {
   }
 };
 var MouseGuardActorSheetBase_default = MouseGuardActorSheetBase;
+require_5();
 
 // module/actor-sheet.js
 var MouseGuardActorSheet = class extends ActorSheet {

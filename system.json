@@ -1,10 +1,10 @@
 {
   "name": "mouseguard",
   "title": "Mouse Guard",
-  "description": "A minimalist game system which provides configurable Actor and Item templates to support free-form system agnostic game-play.",
+  "description": "A system for playing the Mouse Guard RPG in Foundry VTT.",
   "version": "0.0.3",
   "minimumCoreVersion": "0.8.4",
-  "compatibleCoreVersion": "0.8.6",
+  "compatibleCoreVersion": "0.8.8",
   "author": "Atropos",
   "esmodules": ["dist/mouseguard.js"],
   "styles": ["styles/mouseguard.css", "dist/mouseguard.css"],

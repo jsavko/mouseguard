@@ -33,12 +33,12 @@
 		<rewardbox>
 			<label>{game.i18n.localize("MOUSEGUARD.Instinct")}</label>
 			<label class="sub">{@html game.i18n.localize("MOUSEGUARD.InstinctSub")}</label>
-			<textarea name="data.reward.instinct">{data.data.rewards.instinct}</textarea>
+			<textarea name="data.rewards.instinct">{data.data.rewards.instinct}</textarea>
 		</rewardbox>
 		<rewardbox>
 			<label>{game.i18n.localize("MOUSEGUARD.Goal")}</label>
 			<label class="sub">{@html game.i18n.localize("MOUSEGUARD.GoalSub")}</label>
-			<textarea name="data.reward.goal">{data.data.rewards.goal}</textarea>
+			<textarea name="data.rewards.goal">{data.data.rewards.goal}</textarea>
 
 		</rewardbox>
 	</right>
@@ -84,7 +84,6 @@
 		font-family: 'Germania One', cursive;
 		padding-left: 30px;
 		width: 100%;
-		
 	}
 
 	.header { 
