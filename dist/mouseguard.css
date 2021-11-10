@@ -45,40 +45,144 @@ actorhead.svelte-1e1arv input.svelte-1e1arv {
 @media (min-width: 640px) {
 }
 
-/* fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseDetails.esbuild-svelte-fake-css */
-largecard.svelte-zx9hus.svelte-zx9hus {
+/* fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseRewards.esbuild-svelte-fake-css */
+largecard.svelte-5if18l.svelte-5if18l {
   margin: 0 auto;
-  display: inline-block;
-  border: 1px solid black;
-  height: 275px;
-  width: 460px;
+  display: flex;
+  width: 100%;
+  font-family: "Khula", sans-serif;
+  flex-wrap: wrap;
+}
+label.svelte-5if18l.svelte-5if18l {
+  margin-top: 3px;
+}
+input.svelte-5if18l.svelte-5if18l {
+  border: none;
+}
+h1.svelte-5if18l.svelte-5if18l {
+  font-family: "Germania One", cursive;
+  padding-left: 30px;
+  width: 100%;
+}
+.header.svelte-5if18l.svelte-5if18l {
+  font-family: "Germania One", cursive;
+  font-size: large;
+  width: 100%;
+  text-align: center;
+  display: block;
+}
+fatebox.svelte-5if18l.svelte-5if18l {
+  position: relative;
+  top: 60;
+  left: 11px;
+  width: 85px;
+  height: 110px;
+  display: block;
+  font-family: "Germania One", cursive;
+  background-image: url(../assets/actor/Fate.svg);
+  background-repeat: no-repeat;
+  background-position-y: 25px;
+}
+fatebox.svelte-5if18l input.svelte-5if18l {
+  width: 50px;
+  position: relative;
+  top: 30px;
+  left: 25px;
+  height: 30px;
+  width: 35px;
+  text-align: center;
+  font-size: large;
+  background: rgba(0, 0, 0, 0);
+}
+personabox.svelte-5if18l.svelte-5if18l {
+  position: relative;
+  top: 11px;
+  left: 11px;
+  width: 85px;
+  height: 125px;
+  display: block;
+  font-family: "Germania One", cursive;
+  background-image: url(../assets/actor/Persona.svg);
+  background-repeat: no-repeat;
+  background-position-y: 24px;
+}
+personabox.svelte-5if18l input.svelte-5if18l {
+  width: 50px;
+  position: relative;
+  top: 22px;
+  left: 25px;
+  height: 50px;
+  width: 35px;
+  text-align: center;
+  font-size: large;
+  background: rgba(0, 0, 0, 0);
+}
+rewardbox.svelte-5if18l.svelte-5if18l {
+  position: relative;
+  left: 10px;
+  width: 95%;
+  margin-bottom: 10px;
+  display: block;
+  font-family: "Germania One", cursive;
+  font-size: large;
+}
+label.svelte-5if18l.svelte-5if18l {
+  width: 100%;
+  display: block;
+}
+.sub.svelte-5if18l.svelte-5if18l {
+  font-size: small;
   font-family: "Khula", sans-serif;
 }
-lineitem.svelte-zx9hus.svelte-zx9hus {
-  width: 210px;
+textarea.svelte-5if18l.svelte-5if18l {
+  font-size: small;
+  font-family: "Khula", sans-serif;
+  border: none;
+  font-weight: bold;
+  background: rgba(0, 0, 0, 0.05);
+}
+.left.svelte-5if18l.svelte-5if18l {
+  width: 100px;
+  display: block;
+}
+.right.svelte-5if18l.svelte-5if18l {
+  width: 85%;
+  display: block;
+}
+
+/* fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseDetails.esbuild-svelte-fake-css */
+largecard.svelte-iahukr.svelte-iahukr {
+  margin: 0 auto;
+  display: inline-block;
+  height: 250px;
+  width: 100%;
+  font-family: "Khula", sans-serif;
+}
+lineitem.svelte-iahukr.svelte-iahukr {
   margin: auto;
   display: flex;
   float: left;
   padding: 5px;
   height: 100%;
 }
-label.svelte-zx9hus.svelte-zx9hus {
+label.svelte-iahukr.svelte-iahukr {
   width: 180px;
   text-align: right;
   margin-top: 3px;
   padding-right: 2px;
+  font-weight: bold;
   font-family: "Khula", sans-serif;
 }
-input.svelte-zx9hus.svelte-zx9hus {
+input.svelte-iahukr.svelte-iahukr {
   border: none;
 }
-.namebox.svelte-zx9hus.svelte-zx9hus {
+.namebox.svelte-iahukr.svelte-iahukr {
   position: relative;
   font-family: "Germania One", cursive;
   height: 60px;
   pointer-events: none;
 }
-.namebox.svelte-zx9hus input.svelte-zx9hus {
+.namebox.svelte-iahukr input.svelte-iahukr {
   background: rgba(0, 0, 0, 0);
   background-image: url(../assets/actor/NameBanner.svg);
   background-repeat: no-repeat;
@@ -92,153 +196,103 @@ input.svelte-zx9hus.svelte-zx9hus {
   left: 100px;
   pointer-events: auto;
 }
-.namebox.svelte-zx9hus h1.svelte-zx9hus {
+.namebox.svelte-iahukr h1.svelte-iahukr {
   padding-left: 30px;
 }
-lineitem.svelte-zx9hus input.svelte-zx9hus {
+lineitem.svelte-iahukr input.svelte-iahukr {
   padding-top: 5px;
   pointer-events: auto;
 }
 
-/* fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMousePortrait.esbuild-svelte-fake-css */
-smallcard.svelte-18525n1 {
+/* fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseAbilities.esbuild-svelte-fake-css */
+largecard.svelte-u1p035 {
   margin: 0 auto;
-  padding: 1em;
-  display: inline-block;
-  border: 1px solid black;
-  text-align: center;
-  vertical-align: bottom;
-  height: 275px;
-  width: 365px;
-}
-
-/* fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseRewards.esbuild-svelte-fake-css */
-largecard.svelte-116tls8.svelte-116tls8 {
-  margin: 0 auto;
-  display: flex;
-  border: 1px solid black;
-  height: 410px;
-  width: 460px;
+  width: 100%;
   font-family: "Khula", sans-serif;
   flex-wrap: wrap;
 }
-label.svelte-116tls8.svelte-116tls8 {
-  margin-top: 3px;
+pass.svelte-u1p035 {
+  display: flex;
 }
-input.svelte-116tls8.svelte-116tls8 {
+fail.svelte-u1p035 {
+  display: flex;
+}
+input.svelte-u1p035 {
   border: none;
 }
-h1.svelte-116tls8.svelte-116tls8 {
+h1.svelte-u1p035 {
   font-family: "Germania One", cursive;
   padding-left: 30px;
   width: 100%;
 }
-.header.svelte-116tls8.svelte-116tls8 {
-  font-family: "Germania One", cursive;
-  font-size: large;
+label.svelte-u1p035 {
+  margin-top: 3px;
   width: 100%;
-  text-align: center;
   display: block;
 }
-fatebox.svelte-116tls8.svelte-116tls8 {
-  position: relative;
-  top: 60;
-  left: 11px;
-  width: 85px;
-  height: 110px;
+.checkmark.svelte-u1p035:after {
+  content: "\2714";
   display: block;
-  font-family: "Germania One", cursive;
-  background-image: url(../assets/actor/Fate.svg);
-  background-repeat: no-repeat;
-  background-position-y: 25px;
-}
-fatebox.svelte-116tls8 input.svelte-116tls8 {
-  width: 50px;
-  position: relative;
-  top: 30px;
-  left: 25px;
-  height: 30px;
-  width: 35px;
+  width: 12px;
+  height: 12px;
   text-align: center;
-  font-size: large;
-  background: rgba(0, 0, 0, 0);
+  font-size: 10px;
+  border: 1px solid #aaa;
+  background: #f8f8f8;
+  border-radius: 50%;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, .3);
 }
-personabox.svelte-116tls8.svelte-116tls8 {
-  position: relative;
-  top: 11px;
-  left: 11px;
-  width: 85px;
-  height: 125px;
+.no-checkmark.svelte-u1p035:after {
+  content: " ";
   display: block;
-  font-family: "Germania One", cursive;
-  background-image: url(../assets/actor/Persona.svg);
-  background-repeat: no-repeat;
-  background-position-y: 24px;
-}
-personabox.svelte-116tls8 input.svelte-116tls8 {
-  width: 50px;
-  position: relative;
-  top: 22px;
-  left: 25px;
-  height: 50px;
-  width: 35px;
+  width: 12px;
+  height: 12px;
   text-align: center;
-  font-size: large;
-  background: rgba(0, 0, 0, 0);
+  font-size: 10px;
+  border: 1px solid #aaa;
+  background: #f8f8f8;
+  border-radius: 50%;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, .3);
 }
-rewardbox.svelte-116tls8.svelte-116tls8 {
-  position: relative;
-  left: 10px;
-  width: 95%;
+
+/* fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/Tabs.esbuild-svelte-fake-css */
+.box.svelte-1vmtzgs.svelte-1vmtzgs {
   margin-bottom: 10px;
+  padding-top: 20px;
+  border-radius: 0 0 .5rem .5rem;
+  border-top: 0;
+}
+ul.svelte-1vmtzgs.svelte-1vmtzgs {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+  border-bottom: 1px solid #000;
+}
+li.svelte-1vmtzgs.svelte-1vmtzgs {
+  margin-bottom: -1px;
+}
+span.svelte-1vmtzgs.svelte-1vmtzgs {
+  border: 1px solid transparent;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
   display: block;
-  font-family: "Germania One", cursive;
-  font-size: large;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
 }
-label.svelte-116tls8.svelte-116tls8 {
-  width: 100%;
-  display: block;
+span.svelte-1vmtzgs.svelte-1vmtzgs:hover {
+  border-color: #e9ecef #e9ecef #dee2e6;
 }
-.sub.svelte-116tls8.svelte-116tls8 {
-  font-size: small;
-  font-family: "Khula", sans-serif;
-}
-textarea.svelte-116tls8.svelte-116tls8 {
-  font-size: small;
-  font-family: "Khula", sans-serif;
-  border: none;
-  font-weight: bold;
-  background: rgba(0, 0, 0, 0.05);
-}
-.left.svelte-116tls8.svelte-116tls8 {
-  width: 100px;
-  display: block;
-}
-.right.svelte-116tls8.svelte-116tls8 {
-  width: 350px;
-  display: block;
+li.active.svelte-1vmtzgs > span.svelte-1vmtzgs {
+  color: #495057;
+  background-color: #fff;
+  border-color: #dee2e6 #dee2e6 #fff;
 }
 
 /* fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetBase.esbuild-svelte-fake-css */
-content.svelte-5yrtdo {
+content.svelte-u0vwks {
   overflow-y: scroll;
 }
-.wrapper.svelte-5yrtdo {
-  display: flex;
-  background: white;
-  border: 4px solid black;
-}
-.left.svelte-5yrtdo {
-  width: 460px;
-}
-.right.svelte-5yrtdo {
-  width: 365px;
-}
 @media all {
-  .left.svelte-5yrtdo {
-    order: 1;
-  }
-  .right.svelte-5yrtdo {
-    order: 2;
-  }
 }

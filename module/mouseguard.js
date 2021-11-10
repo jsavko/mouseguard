@@ -107,6 +107,10 @@ Hooks.once("init", async function () {
   CONFIG.Dice.terms["m"] = MouseDie;
 });
 
+Hooks.once("init", async function () {
+  CONFIG.Dice.terms["6"] = MouseDie;
+});
+
 
 
 Hooks.once("diceSoNiceReady", (dice3d) => {
@@ -125,7 +129,7 @@ Hooks.once("diceSoNiceReady", (dice3d) => {
           'systems/mouseguard/assets/dice/sword.png', 
           'systems/mouseguard/assets/dice/axe.png'
         ],
-        colorset: "white-m",
+        colorset: "white",
         system: "mouseguard",
       },
       "d6"
@@ -141,6 +145,9 @@ Hooks.once("diceSoNiceReady", (dice3d) => {
     category: "Colors",
     foreground: "#000000",
     background: "#ffffff",
+    outline: 'black',
+    texture: 'none',
+    material: 'plastic'
   });
 });
 

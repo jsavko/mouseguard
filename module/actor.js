@@ -21,35 +21,10 @@ export class MouseGuardActor extends Actor {
     if (this.type === 'character') this._prepareCharacterData(this.data);
   }
 
+
   _prepareCharacterData(actorData) {
-    const data = actorData;
-    console.log(data)
-    // Make modifications to data here. For example:
-    const ability = [];
-    const gear = [];
-    const skill = [];
-
-    for (let i of data.items) {
-      let item = i;
-      switch(item.data.type) {
-        case 'item':
-          gear.push(i);
-          break;
-        case 'ability':
-          ability.push(i);
-          break;
-        case 'skill':
-            skill.push(i);
-            break;
-      }
-    }
-    data.data.abilities = ability;
-    data.data.gear = gear;
-    data.data.skill = skill;
-
-    const test = this.itemTypes.ability;
-
-    console.log(test);
+    actorData.data.itemTypes = this.itemTypes;
+    //mergeObject(actorData.data, this.itemTypes)
   }
 
 
@@ -61,7 +36,7 @@ export class MouseGuardActor extends Actor {
     if (data.type === 'character' && this.itemTypes.ability.length <= 0) {
       //Setup Abilities
       //Mouse Nature
-      const create_ability = ["MOUSEGUARD.MNature","MOUSEGUARD.Will","MOUSEGUARD.Health","MOUSEGUARD.Resources","MOUSEGUARD.Circles"]
+      const create_ability = ["MOUSEGUARD.Will","MOUSEGUARD.Health","MOUSEGUARD.Resources","MOUSEGUARD.Circles","MOUSEGUARD.MNature"]
       for (let i of create_ability) {
         abilities.push({
           name: i,
@@ -113,6 +88,7 @@ export class MouseGuardActor extends Actor {
     }
     return data;
   }
+
 
   /* -------------------------------------------- */
 

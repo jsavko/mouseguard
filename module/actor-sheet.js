@@ -121,6 +121,13 @@ export class MouseGuardActorSheet extends ActorSheet {
     return formData;
   }
 
+
+  async _updateActorAbility(id, type, value) {
+    //const UpdatedItem =  this.actor.items.get(id);
+    //const ob = {'data':{[type]:value}};
+    //await UpdatedItem.update(ob)
+    await this.actor.updateEmbeddedDocuments('Item', [{_id: id, data: {[type]:value}}])
+  }
   
   render(force=false, options={}) { 
     // Grab the sheetdata for both updates and new apps.

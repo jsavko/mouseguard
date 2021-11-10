@@ -9,7 +9,8 @@
 	import MouseGuardActorSheetMouseDetails from "./MouseGuardActorSheetMouseDetails.svelte"; 
 	import MouseGuardActorSheetPortrait from "./MouseGuardActorSheetMousePortrait.svelte"; 
 	import MouseGuardActorSheetMouseRewards from "./MouseGuardActorSheetMouseRewards.svelte"; 
-
+	import MouseGuardActorSheetMouseAbilities from "./MouseGuardActorSheetMouseAbilities.svelte";
+	import Tabs from "./Tabs.svelte";
 
 
 	//Exports
@@ -17,19 +18,31 @@
 	setContext("sheetStore", dataStore);
 	//let sheetData = getContext("sheetStore");
 	let { actor, data, sheet } = $dataStore;
+
+	let items = [
+    { label: "About",
+		 value: 1,
+		 component: MouseGuardActorSheetMouseDetails
+		},
+    { label: "Abilities",
+		 value: 2,
+		 component: MouseGuardActorSheetMouseAbilities
+		},
+    { label: "Rewards",
+		 value: 3,
+		 component: MouseGuardActorSheetMouseRewards
+		},
+	{ label: "Other",
+		 value: 4,
+		 component: MouseGuardActorSheetPortrait
+		}
+  ];
+
+	
 </script>
 
 <content>
-<div class="wrapper">
-	<left class="left">
-		<MouseGuardActorSheetMouseDetails />
-		<MouseGuardActorSheetMouseRewards />
-
-	</left>
-	<right class="right">
-		<MouseGuardActorSheetPortrait />
-	</right>
-</div>
+	<Tabs {items} />
 </content>
 <style>
 	content {
@@ -37,7 +50,6 @@
 	}
 	.wrapper {
 		display: flex;
-		background: white;
 		border: 4px solid black;
 	}
 

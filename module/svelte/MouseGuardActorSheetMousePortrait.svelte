@@ -32,23 +32,5 @@
 </script>
 
 
-<smallcard>
-	<img on:click={filePicker} class="profile-img" src="{data.img}" data-edit="img" title="{data.name}" height="125" width="125"/>
-</smallcard>
+	<img on:click={filePicker} class="profile-img" src="{data.img}" data-edit="img" title="{data.name}" height="100" width="100"/>
 
-<style>
-	smallcard {
-		margin: 0 auto;
-		padding: 1em;
-		display: inline-block;
-		border: 1px solid black;
-		text-align: center;
-		vertical-align: bottom;
-		height: 275px;
-		width: 365px;
-	}
-
-
-
-
-</style>

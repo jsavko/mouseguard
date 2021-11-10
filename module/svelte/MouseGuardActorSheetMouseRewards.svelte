@@ -49,9 +49,7 @@
 	largecard {
 		margin: 0 auto;
 		display: flex;
-		border: 1px solid black;
-		height: 410px;
-		width: 460px;
+		width: 100%;
 		font-family: 'Khula', sans-serif;
 		flex-wrap: wrap;
 	}
@@ -181,7 +179,7 @@
 	}
 
 	.right { 
-		width: 350px;
+		width: 85%;
 		display: block;
 	}
 

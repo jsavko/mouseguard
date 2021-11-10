@@ -3,6 +3,9 @@
 	import { slide } from "svelte/transition";
 	import { writable } from "svelte/store";
 
+	import MouseGuardActorSheetMouseRewards from "./MouseGuardActorSheetMouseRewards.svelte"; 
+
+
 
 	//getContext("sheetStore", dataStore);	
 	let sheetData = getContext("sheetStore");
@@ -10,8 +13,24 @@
 	let data;
 	$: data = $sheetData.data;
 
-</script>
 
+	const filePicker = (event) => {
+    const attr = event.currentTarget.dataset.edit;
+    const current = getProperty(data, attr);
+    const fp = new FilePicker({
+		type: "image",
+		current: current,
+		callback: (path) => {
+        	actor.update({ [attr]: path });
+		},
+		top: sheet.position.top + 40,
+		left: sheet.position.left + 10,
+		});
+    return fp.browse();
+	};
+
+
+</script>
 <largecard>
 		<div class="namebox">
 			<h1>Name </h1>
@@ -61,14 +80,14 @@
 		</ul>
 </largecard>
 
+<MouseGuardActorSheetMouseRewards />
 
 <style>
 	largecard {
 		margin: 0 auto;
 		display: inline-block;
-		border: 1px solid black;
-		height: 275px;
-		width: 460px;
+		height: 250px;
+		width: 100%;
 		font-family: 'Khula', sans-serif;
 	}
 	.container {
@@ -82,7 +101,6 @@
 	}
 
 	lineitem {
-		width: 210px;
 		margin: auto;  /* Magic! */
 		display:flex;
 		float:left;
@@ -94,6 +112,7 @@
 		text-align: right;
 		margin-top: 3px;
 		padding-right: 2px;
+		font-weight: bold;
 		font-family: 'Khula', sans-serif;
 	}
 	input {
