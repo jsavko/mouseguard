@@ -45,7 +45,7 @@
       },
       "skill": {
         "description": "",
-        "rank": 0,
+        "rank": 1,
         "pass":0,
         "fail":0
       },
@@ -60,13 +60,13 @@
       },
       "ability":{
         "description":"",
-        "rating":0,
+        "rating":1,
         "pass":0,
         "fail":0
       },
       "trait":{
         "description": "",
-        "level": 0,
+        "level": 1,
         "usedfor":0,
         "usedagainst":0
       },

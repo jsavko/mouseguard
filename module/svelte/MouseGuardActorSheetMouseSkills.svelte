@@ -3,6 +3,7 @@
 	import { slide } from "svelte/transition";
 	import { writable } from "svelte/store";
 	import { identity, validate_each_argument } from "svelte/internal";
+	import { updateRating} from "./MouseGuardCommon.svelte";
 
 
 	//getContext("sheetStore", dataStore);	
@@ -13,20 +14,6 @@
 	$: data = $sheetData.data;
 	$: skills = $sheetData.data.data.itemTypes.skill;
 
-	function updateRating(item, type, value){
-		//sheet?._updateActorAbility(item, type, value);
-		const ob = {[type]:value};
-		if (type == 'rank') {
-			ob.fail = 0;
-			ob.pass = 0;
-		}
-		
-		console.log(ob);
-		sheet?._updateEmbededItem(item, ob);
-
-
-	}
-
 
 </script>
 
@@ -36,22 +23,22 @@
 		<skill>
 		<div name="{skill.id}">
 			<label  class="header">{game.i18n.localize( skill.name )}: </label>
-			<input name="{skill.id}" type="number" value="{skill.data.data.rank}" on:change={e => updateRating(e.target.name, 'rank', parseInt(e.target.value)) }/>
+			<input name="{skill.id}" type="number" value="{skill.data.data.rank}" on:change={e => updateRating(sheet,e.target.name, 'rank', parseInt(e.target.value)) }/>
 			<pass>P:
 			{#each {length: parseInt(skill.data.data.rank) +1} as _, i}
 				{#if skill.data.data.pass > i}
-					<div  on:click={e => updateRating(skill.id, 'pass', parseInt(skill.data.data.pass)-1 ) }  class="checkmark"></div>
+					<div  on:click={e => updateRating(sheet,skill.id, 'pass', parseInt(skill.data.data.pass)-1 ) }  class="checkmark"></div>
 				{:else}
-					<div on:click={e => updateRating(skill.id, 'pass', parseInt(skill.data.data.pass)+1 ) }  class="no-checkmark"></div>
+					<div on:click={e => updateRating(sheet,skill.id, 'pass', parseInt(skill.data.data.pass)+1 ) }  class="no-checkmark"></div>
 				{/if}
 			{/each}
 			</pass>
 			<fail>F:
 				{#each {length: parseInt(skill.data.data.rank) } as _, i}
 					{#if skill.data.data.fail > i}
-						<div  on:click={e => updateRating(skill.id, 'fail', parseInt(skill.data.data.fail)-1 ) } class="checkmark"></div>
+						<div  on:click={e => updateRating(sheet,skill.id, 'fail', parseInt(skill.data.data.fail)-1 ) } class="checkmark"></div>
 					{:else}
-						<div on:click={e => updateRating(skill.id, 'fail', parseInt(skill.data.data.fail)+1 ) } class="no-checkmark"></div>
+						<div on:click={e => updateRating(sheet,skill.id, 'fail', parseInt(skill.data.data.fail)+1 ) } class="no-checkmark"></div>
 					{/if}
 				{/each}
 			</fail>
@@ -88,11 +75,12 @@
 
 	pass {
 		display:flex;
+		font-family: 'Germania One', cursive;
 	}
 
 	fail {
 		display:flex;
-
+		font-family: 'Germania One', cursive;
 	}
 
 	input {
@@ -102,6 +90,10 @@
 		text-align: center;
 		background-color: white;
 		margin-right: 5px;
+		margin-top: 2px;
+		height: 35px;
+		font-family: 'Germania One', cursive;
+		font-size:large;	
 	}
 
 	h1 { 

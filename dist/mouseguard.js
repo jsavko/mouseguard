@@ -1839,22 +1839,35 @@ var MouseGuardActorSheetMousePortrait = class extends SvelteComponent {
 };
 var MouseGuardActorSheetMousePortrait_default = MouseGuardActorSheetMousePortrait;
 
+// module/svelte/MouseGuardCommon.svelte
+function updateRating(sheet, item2, type, value) {
+  console.log("updateRating");
+  const ob = { [type]: value };
+  if (type == "rank" || type == "rating") {
+    if (value < 1)
+      ob[type] = 1;
+    ob.fail = 0;
+    ob.pass = 0;
+  }
+  sheet?._updateEmbededItem(item2, ob);
+}
+
 // module/svelte/MouseGuardActorSheetMouseAbilities.svelte
 function get_each_context(ctx, list, i) {
   const child_ctx = ctx.slice();
-  child_ctx[12] = list[i];
+  child_ctx[11] = list[i];
   return child_ctx;
 }
 function get_each_context_1(ctx, list, i) {
   const child_ctx = ctx.slice();
-  child_ctx[15] = list[i];
-  child_ctx[17] = i;
+  child_ctx[14] = list[i];
+  child_ctx[16] = i;
   return child_ctx;
 }
 function get_each_context_2(ctx, list, i) {
   const child_ctx = ctx.slice();
-  child_ctx[15] = list[i];
-  child_ctx[17] = i;
+  child_ctx[14] = list[i];
+  child_ctx[16] = i;
   return child_ctx;
 }
 function create_else_block_1(ctx) {
@@ -1862,12 +1875,12 @@ function create_else_block_1(ctx) {
   let mounted;
   let dispose;
   function click_handler_1(...args) {
-    return ctx[6](ctx[12], ...args);
+    return ctx[6](ctx[11], ...args);
   }
   return {
     c() {
       div = element("div");
-      attr(div, "class", "no-checkmark svelte-6k670b");
+      attr(div, "class", "no-checkmark svelte-44gfx2");
     },
     m(target, anchor) {
       insert(target, div, anchor);
@@ -1892,12 +1905,12 @@ function create_if_block_1(ctx) {
   let mounted;
   let dispose;
   function click_handler(...args) {
-    return ctx[5](ctx[12], ...args);
+    return ctx[5](ctx[11], ...args);
   }
   return {
     c() {
       div = element("div");
-      attr(div, "class", "checkmark svelte-6k670b");
+      attr(div, "class", "checkmark svelte-44gfx2");
     },
     m(target, anchor) {
       insert(target, div, anchor);
@@ -1920,7 +1933,7 @@ function create_if_block_1(ctx) {
 function create_each_block_2(ctx) {
   let if_block_anchor;
   function select_block_type(ctx2, dirty) {
-    if (ctx2[12].data.data.pass > ctx2[17])
+    if (ctx2[11].data.data.pass > ctx2[16])
       return create_if_block_1;
     return create_else_block_1;
   }
@@ -1959,12 +1972,12 @@ function create_else_block(ctx) {
   let mounted;
   let dispose;
   function click_handler_3(...args) {
-    return ctx[8](ctx[12], ...args);
+    return ctx[8](ctx[11], ...args);
   }
   return {
     c() {
       div = element("div");
-      attr(div, "class", "no-checkmark svelte-6k670b");
+      attr(div, "class", "no-checkmark svelte-44gfx2");
     },
     m(target, anchor) {
       insert(target, div, anchor);
@@ -1989,12 +2002,12 @@ function create_if_block(ctx) {
   let mounted;
   let dispose;
   function click_handler_2(...args) {
-    return ctx[7](ctx[12], ...args);
+    return ctx[7](ctx[11], ...args);
   }
   return {
     c() {
       div = element("div");
-      attr(div, "class", "checkmark svelte-6k670b");
+      attr(div, "class", "checkmark svelte-44gfx2");
     },
     m(target, anchor) {
       insert(target, div, anchor);
@@ -2017,7 +2030,7 @@ function create_if_block(ctx) {
 function create_each_block_1(ctx) {
   let if_block_anchor;
   function select_block_type_1(ctx2, dirty) {
-    if (ctx2[12].data.data.fail > ctx2[17])
+    if (ctx2[11].data.data.fail > ctx2[16])
       return create_if_block;
     return create_else_block;
   }
@@ -2055,7 +2068,7 @@ function create_each_block(ctx) {
   let ability;
   let div;
   let label;
-  let t0_value = game.i18n.localize(ctx[12].name) + "";
+  let t0_value = game.i18n.localize(ctx[11].name) + "";
   let t0;
   let t1;
   let t2;
@@ -2073,14 +2086,14 @@ function create_each_block(ctx) {
   let mounted;
   let dispose;
   let each_value_2 = {
-    length: parseInt(ctx[12].data.data.rating) + 1
+    length: parseInt(ctx[11].data.data.rating) + 1
   };
   let each_blocks_1 = [];
   for (let i = 0; i < each_value_2.length; i += 1) {
     each_blocks_1[i] = create_each_block_2(get_each_context_2(ctx, each_value_2, i));
   }
   let each_value_1 = {
-    length: parseInt(ctx[12].data.data.rating)
+    length: parseInt(ctx[11].data.data.rating)
   };
   let each_blocks = [];
   for (let i = 0; i < each_value_1.length; i += 1) {
@@ -2108,15 +2121,15 @@ function create_each_block(ctx) {
         each_blocks[i].c();
       }
       t7 = space();
-      attr(label, "class", "header svelte-6k670b");
-      attr(input, "name", input_name_value = ctx[12].id);
+      attr(label, "class", "header svelte-44gfx2");
+      attr(input, "name", input_name_value = ctx[11].id);
       attr(input, "type", "number");
-      input.value = input_value_value = ctx[12].data.data.rating;
-      attr(input, "class", "svelte-6k670b");
-      attr(pass, "class", "svelte-6k670b");
-      attr(fail, "class", "svelte-6k670b");
-      attr(div, "name", div_name_value = ctx[12].id);
-      attr(ability, "class", "svelte-6k670b");
+      input.value = input_value_value = ctx[11].data.data.rating;
+      attr(input, "class", "svelte-44gfx2");
+      attr(pass, "class", "svelte-44gfx2");
+      attr(fail, "class", "svelte-44gfx2");
+      attr(div, "name", div_name_value = ctx[11].id);
+      attr(ability, "class", "svelte-44gfx2");
     },
     m(target, anchor) {
       insert(target, ability, anchor);
@@ -2145,17 +2158,17 @@ function create_each_block(ctx) {
       }
     },
     p(ctx2, dirty) {
-      if (dirty & 1 && t0_value !== (t0_value = game.i18n.localize(ctx2[12].name) + ""))
+      if (dirty & 1 && t0_value !== (t0_value = game.i18n.localize(ctx2[11].name) + ""))
         set_data(t0, t0_value);
-      if (dirty & 1 && input_name_value !== (input_name_value = ctx2[12].id)) {
+      if (dirty & 1 && input_name_value !== (input_name_value = ctx2[11].id)) {
         attr(input, "name", input_name_value);
       }
-      if (dirty & 1 && input_value_value !== (input_value_value = ctx2[12].data.data.rating)) {
+      if (dirty & 1 && input_value_value !== (input_value_value = ctx2[11].data.data.rating)) {
         input.value = input_value_value;
       }
       if (dirty & 5) {
         each_value_2 = {
-          length: parseInt(ctx2[12].data.data.rating) + 1
+          length: parseInt(ctx2[11].data.data.rating) + 1
         };
         let i;
         for (i = 0; i < each_value_2.length; i += 1) {
@@ -2175,7 +2188,7 @@ function create_each_block(ctx) {
       }
       if (dirty & 5) {
         each_value_1 = {
-          length: parseInt(ctx2[12].data.data.rating)
+          length: parseInt(ctx2[11].data.data.rating)
         };
         let i;
         for (i = 0; i < each_value_1.length; i += 1) {
@@ -2193,7 +2206,7 @@ function create_each_block(ctx) {
         }
         each_blocks.length = each_value_1.length;
       }
-      if (dirty & 1 && div_name_value !== (div_name_value = ctx2[12].id)) {
+      if (dirty & 1 && div_name_value !== (div_name_value = ctx2[11].id)) {
         attr(div, "name", div_name_value);
       }
     },
@@ -2225,8 +2238,8 @@ function create_fragment4(ctx) {
       for (let i = 0; i < each_blocks.length; i += 1) {
         each_blocks[i].c();
       }
-      attr(h1, "class", "svelte-6k670b");
-      attr(largecard, "class", "svelte-6k670b");
+      attr(h1, "class", "svelte-44gfx2");
+      attr(largecard, "class", "svelte-44gfx2");
     },
     m(target, anchor) {
       insert(target, largecard, anchor);
@@ -2272,19 +2285,11 @@ function instance4($$self, $$props, $$invalidate) {
   let { actor, sheet } = $sheetData;
   let data;
   let abilities;
-  function updateRating(item2, type, value) {
-    const ob = { [type]: value };
-    if (type == "rating") {
-      ob.fail = 0;
-      ob.pass = 0;
-    }
-    sheet?._updateEmbededItem(item2, ob);
-  }
-  const change_handler = (e) => updateRating(e.target.name, "rating", parseInt(e.target.value));
-  const click_handler = (ability, e) => updateRating(ability.id, "pass", parseInt(ability.data.data.pass) - 1);
-  const click_handler_1 = (ability, e) => updateRating(ability.id, "pass", parseInt(ability.data.data.pass) + 1);
-  const click_handler_2 = (ability, e) => updateRating(ability.id, "fail", parseInt(ability.data.data.fail) - 1);
-  const click_handler_3 = (ability, e) => updateRating(ability.id, "fail", parseInt(ability.data.data.fail) + 1);
+  const change_handler = (e) => updateRating(sheet, e.target.name, "rating", parseInt(e.target.value));
+  const click_handler = (ability, e) => updateRating(sheet, ability.id, "pass", parseInt(ability.data.data.pass) - 1);
+  const click_handler_1 = (ability, e) => updateRating(sheet, ability.id, "pass", parseInt(ability.data.data.pass) + 1);
+  const click_handler_2 = (ability, e) => updateRating(sheet, ability.id, "fail", parseInt(ability.data.data.fail) - 1);
+  const click_handler_3 = (ability, e) => updateRating(sheet, ability.id, "fail", parseInt(ability.data.data.fail) + 1);
   $$self.$$.update = () => {
     if ($$self.$$.dirty & 8) {
       $:
@@ -2298,7 +2303,7 @@ function instance4($$self, $$props, $$invalidate) {
   return [
     abilities,
     sheetData,
-    updateRating,
+    sheet,
     $sheetData,
     change_handler,
     click_handler,
@@ -2319,19 +2324,19 @@ require_4();
 // module/svelte/MouseGuardActorSheetMouseSkills.svelte
 function get_each_context2(ctx, list, i) {
   const child_ctx = ctx.slice();
-  child_ctx[13] = list[i];
+  child_ctx[12] = list[i];
   return child_ctx;
 }
 function get_each_context_12(ctx, list, i) {
   const child_ctx = ctx.slice();
-  child_ctx[16] = list[i];
-  child_ctx[18] = i;
+  child_ctx[15] = list[i];
+  child_ctx[17] = i;
   return child_ctx;
 }
 function get_each_context_22(ctx, list, i) {
   const child_ctx = ctx.slice();
-  child_ctx[16] = list[i];
-  child_ctx[18] = i;
+  child_ctx[15] = list[i];
+  child_ctx[17] = i;
   return child_ctx;
 }
 function create_else_block_12(ctx) {
@@ -2339,12 +2344,12 @@ function create_else_block_12(ctx) {
   let mounted;
   let dispose;
   function click_handler_1(...args) {
-    return ctx[7](ctx[13], ...args);
+    return ctx[6](ctx[12], ...args);
   }
   return {
     c() {
       div = element("div");
-      attr(div, "class", "no-checkmark svelte-1cpzr6t");
+      attr(div, "class", "no-checkmark svelte-19h3piw");
     },
     m(target, anchor) {
       insert(target, div, anchor);
@@ -2369,12 +2374,12 @@ function create_if_block_12(ctx) {
   let mounted;
   let dispose;
   function click_handler(...args) {
-    return ctx[6](ctx[13], ...args);
+    return ctx[5](ctx[12], ...args);
   }
   return {
     c() {
       div = element("div");
-      attr(div, "class", "checkmark svelte-1cpzr6t");
+      attr(div, "class", "checkmark svelte-19h3piw");
     },
     m(target, anchor) {
       insert(target, div, anchor);
@@ -2397,7 +2402,7 @@ function create_if_block_12(ctx) {
 function create_each_block_22(ctx) {
   let if_block_anchor;
   function select_block_type(ctx2, dirty) {
-    if (ctx2[13].data.data.pass > ctx2[18])
+    if (ctx2[12].data.data.pass > ctx2[17])
       return create_if_block_12;
     return create_else_block_12;
   }
@@ -2436,12 +2441,12 @@ function create_else_block2(ctx) {
   let mounted;
   let dispose;
   function click_handler_3(...args) {
-    return ctx[9](ctx[13], ...args);
+    return ctx[8](ctx[12], ...args);
   }
   return {
     c() {
       div = element("div");
-      attr(div, "class", "no-checkmark svelte-1cpzr6t");
+      attr(div, "class", "no-checkmark svelte-19h3piw");
     },
     m(target, anchor) {
       insert(target, div, anchor);
@@ -2466,12 +2471,12 @@ function create_if_block2(ctx) {
   let mounted;
   let dispose;
   function click_handler_2(...args) {
-    return ctx[8](ctx[13], ...args);
+    return ctx[7](ctx[12], ...args);
   }
   return {
     c() {
       div = element("div");
-      attr(div, "class", "checkmark svelte-1cpzr6t");
+      attr(div, "class", "checkmark svelte-19h3piw");
     },
     m(target, anchor) {
       insert(target, div, anchor);
@@ -2494,7 +2499,7 @@ function create_if_block2(ctx) {
 function create_each_block_12(ctx) {
   let if_block_anchor;
   function select_block_type_1(ctx2, dirty) {
-    if (ctx2[13].data.data.fail > ctx2[18])
+    if (ctx2[12].data.data.fail > ctx2[17])
       return create_if_block2;
     return create_else_block2;
   }
@@ -2532,7 +2537,7 @@ function create_each_block2(ctx) {
   let skill;
   let div0;
   let label;
-  let t0_value = game.i18n.localize(ctx[13].name) + "";
+  let t0_value = game.i18n.localize(ctx[12].name) + "";
   let t0;
   let t1;
   let t2;
@@ -2553,14 +2558,14 @@ function create_each_block2(ctx) {
   let mounted;
   let dispose;
   let each_value_2 = {
-    length: parseInt(ctx[13].data.data.rank) + 1
+    length: parseInt(ctx[12].data.data.rank) + 1
   };
   let each_blocks_1 = [];
   for (let i = 0; i < each_value_2.length; i += 1) {
     each_blocks_1[i] = create_each_block_22(get_each_context_22(ctx, each_value_2, i));
   }
   let each_value_1 = {
-    length: parseInt(ctx[13].data.data.rank)
+    length: parseInt(ctx[12].data.data.rank)
   };
   let each_blocks = [];
   for (let i = 0; i < each_value_1.length; i += 1) {
@@ -2592,18 +2597,18 @@ function create_each_block2(ctx) {
       a = element("a");
       a.innerHTML = `<i class="fas fa-trash"></i>`;
       t8 = space();
-      attr(label, "class", "header svelte-1cpzr6t");
-      attr(input, "name", input_name_value = ctx[13].id);
+      attr(label, "class", "header svelte-19h3piw");
+      attr(input, "name", input_name_value = ctx[12].id);
       attr(input, "type", "number");
-      input.value = input_value_value = ctx[13].data.data.rank;
-      attr(input, "class", "svelte-1cpzr6t");
-      attr(pass, "class", "svelte-1cpzr6t");
-      attr(fail, "class", "svelte-1cpzr6t");
-      attr(div0, "name", div0_name_value = ctx[13].id);
+      input.value = input_value_value = ctx[12].data.data.rank;
+      attr(input, "class", "svelte-19h3piw");
+      attr(pass, "class", "svelte-19h3piw");
+      attr(fail, "class", "svelte-19h3piw");
+      attr(div0, "name", div0_name_value = ctx[12].id);
       attr(a, "class", "item-control item-delete");
       attr(a, "title", "Delete Item");
       attr(div1, "class", "item-controls");
-      attr(skill, "class", "svelte-1cpzr6t");
+      attr(skill, "class", "svelte-19h3piw");
     },
     m(target, anchor) {
       insert(target, skill, anchor);
@@ -2631,10 +2636,10 @@ function create_each_block2(ctx) {
       append(skill, t8);
       if (!mounted) {
         dispose = [
-          listen(input, "change", ctx[5]),
+          listen(input, "change", ctx[4]),
           listen(a, "click", function() {
-            if (is_function(ctx[2]?._onItemDelete(ctx[13]._id)))
-              ctx[2]?._onItemDelete(ctx[13]._id).apply(this, arguments);
+            if (is_function(ctx[2]?._onItemDelete(ctx[12]._id)))
+              ctx[2]?._onItemDelete(ctx[12]._id).apply(this, arguments);
           })
         ];
         mounted = true;
@@ -2642,17 +2647,17 @@ function create_each_block2(ctx) {
     },
     p(new_ctx, dirty) {
       ctx = new_ctx;
-      if (dirty & 1 && t0_value !== (t0_value = game.i18n.localize(ctx[13].name) + ""))
+      if (dirty & 1 && t0_value !== (t0_value = game.i18n.localize(ctx[12].name) + ""))
         set_data(t0, t0_value);
-      if (dirty & 1 && input_name_value !== (input_name_value = ctx[13].id)) {
+      if (dirty & 1 && input_name_value !== (input_name_value = ctx[12].id)) {
         attr(input, "name", input_name_value);
       }
-      if (dirty & 1 && input_value_value !== (input_value_value = ctx[13].data.data.rank)) {
+      if (dirty & 1 && input_value_value !== (input_value_value = ctx[12].data.data.rank)) {
         input.value = input_value_value;
       }
-      if (dirty & 9) {
+      if (dirty & 5) {
         each_value_2 = {
-          length: parseInt(ctx[13].data.data.rank) + 1
+          length: parseInt(ctx[12].data.data.rank) + 1
         };
         let i;
         for (i = 0; i < each_value_2.length; i += 1) {
@@ -2670,9 +2675,9 @@ function create_each_block2(ctx) {
         }
         each_blocks_1.length = each_value_2.length;
       }
-      if (dirty & 9) {
+      if (dirty & 5) {
         each_value_1 = {
-          length: parseInt(ctx[13].data.data.rank)
+          length: parseInt(ctx[12].data.data.rank)
         };
         let i;
         for (i = 0; i < each_value_1.length; i += 1) {
@@ -2690,7 +2695,7 @@ function create_each_block2(ctx) {
         }
         each_blocks.length = each_value_1.length;
       }
-      if (dirty & 1 && div0_name_value !== (div0_name_value = ctx[13].id)) {
+      if (dirty & 1 && div0_name_value !== (div0_name_value = ctx[12].id)) {
         attr(div0, "name", div0_name_value);
       }
     },
@@ -2722,8 +2727,8 @@ function create_fragment5(ctx) {
       for (let i = 0; i < each_blocks.length; i += 1) {
         each_blocks[i].c();
       }
-      attr(h1, "class", "svelte-1cpzr6t");
-      attr(largecard, "class", "svelte-1cpzr6t");
+      attr(h1, "class", "svelte-19h3piw");
+      attr(largecard, "class", "svelte-19h3piw");
     },
     m(target, anchor) {
       insert(target, largecard, anchor);
@@ -2734,7 +2739,7 @@ function create_fragment5(ctx) {
       }
     },
     p(ctx2, [dirty]) {
-      if (dirty & 13) {
+      if (dirty & 5) {
         each_value = ctx2[0];
         let i;
         for (i = 0; i < each_value.length; i += 1) {
@@ -2766,30 +2771,21 @@ function instance5($$self, $$props, $$invalidate) {
   let skills;
   let $sheetData;
   let sheetData = getContext("sheetStore");
-  component_subscribe($$self, sheetData, (value) => $$invalidate(4, $sheetData = value));
+  component_subscribe($$self, sheetData, (value) => $$invalidate(3, $sheetData = value));
   let { actor, sheet } = $sheetData;
   let data;
   let abilities;
-  function updateRating(item2, type, value) {
-    const ob = { [type]: value };
-    if (type == "rank") {
-      ob.fail = 0;
-      ob.pass = 0;
-    }
-    console.log(ob);
-    sheet?._updateEmbededItem(item2, ob);
-  }
-  const change_handler = (e) => updateRating(e.target.name, "rank", parseInt(e.target.value));
-  const click_handler = (skill, e) => updateRating(skill.id, "pass", parseInt(skill.data.data.pass) - 1);
-  const click_handler_1 = (skill, e) => updateRating(skill.id, "pass", parseInt(skill.data.data.pass) + 1);
-  const click_handler_2 = (skill, e) => updateRating(skill.id, "fail", parseInt(skill.data.data.fail) - 1);
-  const click_handler_3 = (skill, e) => updateRating(skill.id, "fail", parseInt(skill.data.data.fail) + 1);
+  const change_handler = (e) => updateRating(sheet, e.target.name, "rank", parseInt(e.target.value));
+  const click_handler = (skill, e) => updateRating(sheet, skill.id, "pass", parseInt(skill.data.data.pass) - 1);
+  const click_handler_1 = (skill, e) => updateRating(sheet, skill.id, "pass", parseInt(skill.data.data.pass) + 1);
+  const click_handler_2 = (skill, e) => updateRating(sheet, skill.id, "fail", parseInt(skill.data.data.fail) - 1);
+  const click_handler_3 = (skill, e) => updateRating(sheet, skill.id, "fail", parseInt(skill.data.data.fail) + 1);
   $$self.$$.update = () => {
-    if ($$self.$$.dirty & 16) {
+    if ($$self.$$.dirty & 8) {
       $:
         data = $sheetData.data;
     }
-    if ($$self.$$.dirty & 16) {
+    if ($$self.$$.dirty & 8) {
       $:
         $$invalidate(0, skills = $sheetData.data.data.itemTypes.skill);
     }
@@ -2798,7 +2794,6 @@ function instance5($$self, $$props, $$invalidate) {
     skills,
     sheetData,
     sheet,
-    updateRating,
     $sheetData,
     change_handler,
     click_handler,
@@ -2819,19 +2814,19 @@ require_5();
 // module/svelte/MouseGuardActorSheetMouseWises.svelte
 function get_each_context3(ctx, list, i) {
   const child_ctx = ctx.slice();
-  child_ctx[13] = list[i];
+  child_ctx[12] = list[i];
   return child_ctx;
 }
 function get_each_context_13(ctx, list, i) {
   const child_ctx = ctx.slice();
-  child_ctx[16] = list[i];
-  child_ctx[18] = i;
+  child_ctx[15] = list[i];
+  child_ctx[17] = i;
   return child_ctx;
 }
 function get_each_context_23(ctx, list, i) {
   const child_ctx = ctx.slice();
-  child_ctx[16] = list[i];
-  child_ctx[18] = i;
+  child_ctx[15] = list[i];
+  child_ctx[17] = i;
   return child_ctx;
 }
 function create_else_block_13(ctx) {
@@ -2839,12 +2834,12 @@ function create_else_block_13(ctx) {
   let mounted;
   let dispose;
   function click_handler_1(...args) {
-    return ctx[7](ctx[13], ...args);
+    return ctx[6](ctx[12], ...args);
   }
   return {
     c() {
       div = element("div");
-      attr(div, "class", "no-checkmark svelte-vf0dcs");
+      attr(div, "class", "no-checkmark svelte-atqz4z");
     },
     m(target, anchor) {
       insert(target, div, anchor);
@@ -2869,12 +2864,12 @@ function create_if_block_13(ctx) {
   let mounted;
   let dispose;
   function click_handler(...args) {
-    return ctx[6](ctx[13], ...args);
+    return ctx[5](ctx[12], ...args);
   }
   return {
     c() {
       div = element("div");
-      attr(div, "class", "checkmark svelte-vf0dcs");
+      attr(div, "class", "checkmark svelte-atqz4z");
     },
     m(target, anchor) {
       insert(target, div, anchor);
@@ -2897,7 +2892,7 @@ function create_if_block_13(ctx) {
 function create_each_block_23(ctx) {
   let if_block_anchor;
   function select_block_type(ctx2, dirty) {
-    if (ctx2[13].data.data.pass > ctx2[18])
+    if (ctx2[12].data.data.pass > ctx2[17])
       return create_if_block_13;
     return create_else_block_13;
   }
@@ -2936,12 +2931,12 @@ function create_else_block3(ctx) {
   let mounted;
   let dispose;
   function click_handler_3(...args) {
-    return ctx[9](ctx[13], ...args);
+    return ctx[8](ctx[12], ...args);
   }
   return {
     c() {
       div = element("div");
-      attr(div, "class", "no-checkmark svelte-vf0dcs");
+      attr(div, "class", "no-checkmark svelte-atqz4z");
     },
     m(target, anchor) {
       insert(target, div, anchor);
@@ -2966,12 +2961,12 @@ function create_if_block3(ctx) {
   let mounted;
   let dispose;
   function click_handler_2(...args) {
-    return ctx[8](ctx[13], ...args);
+    return ctx[7](ctx[12], ...args);
   }
   return {
     c() {
       div = element("div");
-      attr(div, "class", "checkmark svelte-vf0dcs");
+      attr(div, "class", "checkmark svelte-atqz4z");
     },
     m(target, anchor) {
       insert(target, div, anchor);
@@ -2994,7 +2989,7 @@ function create_if_block3(ctx) {
 function create_each_block_13(ctx) {
   let if_block_anchor;
   function select_block_type_1(ctx2, dirty) {
-    if (ctx2[13].data.data.fail > ctx2[18])
+    if (ctx2[12].data.data.fail > ctx2[17])
       return create_if_block3;
     return create_else_block3;
   }
@@ -3032,7 +3027,7 @@ function create_each_block3(ctx) {
   let wise;
   let div0;
   let label;
-  let t0_value = game.i18n.localize(ctx[13].name) + "";
+  let t0_value = game.i18n.localize(ctx[12].name) + "";
   let t0;
   let t1;
   let t2;
@@ -3052,14 +3047,14 @@ function create_each_block3(ctx) {
   let mounted;
   let dispose;
   let each_value_2 = {
-    length: parseInt(ctx[13].data.data.rank) + 1
+    length: parseInt(ctx[12].data.data.rank) + 1
   };
   let each_blocks_1 = [];
   for (let i = 0; i < each_value_2.length; i += 1) {
     each_blocks_1[i] = create_each_block_23(get_each_context_23(ctx, each_value_2, i));
   }
   let each_value_1 = {
-    length: parseInt(ctx[13].data.data.rank)
+    length: parseInt(ctx[12].data.data.rank)
   };
   let each_blocks = [];
   for (let i = 0; i < each_value_1.length; i += 1) {
@@ -3076,13 +3071,13 @@ function create_each_block3(ctx) {
       input = element("input");
       t3 = space();
       pass = element("pass");
-      t4 = text("P:\r\n			");
+      t4 = text("P: \r\n			");
       for (let i = 0; i < each_blocks_1.length; i += 1) {
         each_blocks_1[i].c();
       }
       t5 = space();
       fail = element("fail");
-      t6 = text("F:\r\n				");
+      t6 = text("F: \r\n				");
       for (let i = 0; i < each_blocks.length; i += 1) {
         each_blocks[i].c();
       }
@@ -3090,18 +3085,18 @@ function create_each_block3(ctx) {
       div1 = element("div");
       a = element("a");
       a.innerHTML = `<i class="fas fa-trash"></i>`;
-      attr(label, "class", "header svelte-vf0dcs");
-      attr(input, "name", input_name_value = ctx[13].id);
+      attr(label, "class", "header svelte-atqz4z");
+      attr(input, "name", input_name_value = ctx[12].id);
       attr(input, "type", "number");
-      input.value = input_value_value = ctx[13].data.data.rank;
-      attr(input, "class", "svelte-vf0dcs");
-      attr(pass, "class", "svelte-vf0dcs");
-      attr(fail, "class", "svelte-vf0dcs");
-      attr(div0, "name", div0_name_value = ctx[13].id);
+      input.value = input_value_value = ctx[12].data.data.rank;
+      attr(input, "class", "svelte-atqz4z");
+      attr(pass, "class", "svelte-atqz4z");
+      attr(fail, "class", "svelte-atqz4z");
+      attr(div0, "name", div0_name_value = ctx[12].id);
       attr(a, "class", "item-control item-delete");
       attr(a, "title", "Delete Item");
       attr(div1, "class", "item-controls");
-      attr(wise, "class", "svelte-vf0dcs");
+      attr(wise, "class", "svelte-atqz4z");
     },
     m(target, anchor) {
       insert(target, wise, anchor);
@@ -3128,10 +3123,10 @@ function create_each_block3(ctx) {
       append(div1, a);
       if (!mounted) {
         dispose = [
-          listen(input, "change", ctx[5]),
+          listen(input, "change", ctx[4]),
           listen(a, "click", function() {
-            if (is_function(ctx[2]?._onItemDelete(ctx[13]._id)))
-              ctx[2]?._onItemDelete(ctx[13]._id).apply(this, arguments);
+            if (is_function(ctx[2]?._onItemDelete(ctx[12]._id)))
+              ctx[2]?._onItemDelete(ctx[12]._id).apply(this, arguments);
           })
         ];
         mounted = true;
@@ -3139,17 +3134,17 @@ function create_each_block3(ctx) {
     },
     p(new_ctx, dirty) {
       ctx = new_ctx;
-      if (dirty & 1 && t0_value !== (t0_value = game.i18n.localize(ctx[13].name) + ""))
+      if (dirty & 1 && t0_value !== (t0_value = game.i18n.localize(ctx[12].name) + ""))
         set_data(t0, t0_value);
-      if (dirty & 1 && input_name_value !== (input_name_value = ctx[13].id)) {
+      if (dirty & 1 && input_name_value !== (input_name_value = ctx[12].id)) {
         attr(input, "name", input_name_value);
       }
-      if (dirty & 1 && input_value_value !== (input_value_value = ctx[13].data.data.rank)) {
+      if (dirty & 1 && input_value_value !== (input_value_value = ctx[12].data.data.rank)) {
         input.value = input_value_value;
       }
-      if (dirty & 9) {
+      if (dirty & 5) {
         each_value_2 = {
-          length: parseInt(ctx[13].data.data.rank) + 1
+          length: parseInt(ctx[12].data.data.rank) + 1
         };
         let i;
         for (i = 0; i < each_value_2.length; i += 1) {
@@ -3167,9 +3162,9 @@ function create_each_block3(ctx) {
         }
         each_blocks_1.length = each_value_2.length;
       }
-      if (dirty & 9) {
+      if (dirty & 5) {
         each_value_1 = {
-          length: parseInt(ctx[13].data.data.rank)
+          length: parseInt(ctx[12].data.data.rank)
         };
         let i;
         for (i = 0; i < each_value_1.length; i += 1) {
@@ -3187,7 +3182,7 @@ function create_each_block3(ctx) {
         }
         each_blocks.length = each_value_1.length;
       }
-      if (dirty & 1 && div0_name_value !== (div0_name_value = ctx[13].id)) {
+      if (dirty & 1 && div0_name_value !== (div0_name_value = ctx[12].id)) {
         attr(div0, "name", div0_name_value);
       }
     },
@@ -3240,7 +3235,7 @@ function create_fragment6(ctx) {
       div2 = element("div");
       a = element("a");
       a.innerHTML = `<i class="fas fa-plus"></i> Add item`;
-      attr(h1, "class", "svelte-vf0dcs");
+      attr(h1, "class", "svelte-atqz4z");
       attr(div0, "class", "item-image");
       attr(div1, "class", "item-name");
       attr(a, "class", "item-control item-create");
@@ -3248,7 +3243,7 @@ function create_fragment6(ctx) {
       attr(a, "data-type", "wise");
       attr(div2, "class", "item-controls");
       attr(li, "class", "item flexrow item-header");
-      attr(largecard, "class", "svelte-vf0dcs");
+      attr(largecard, "class", "svelte-atqz4z");
     },
     m(target, anchor) {
       insert(target, largecard, anchor);
@@ -3272,7 +3267,7 @@ function create_fragment6(ctx) {
       }
     },
     p(ctx2, [dirty]) {
-      if (dirty & 13) {
+      if (dirty & 5) {
         each_value = ctx2[0];
         let i;
         for (i = 0; i < each_value.length; i += 1) {
@@ -3306,30 +3301,21 @@ function instance6($$self, $$props, $$invalidate) {
   let wises;
   let $sheetData;
   let sheetData = getContext("sheetStore");
-  component_subscribe($$self, sheetData, (value) => $$invalidate(4, $sheetData = value));
+  component_subscribe($$self, sheetData, (value) => $$invalidate(3, $sheetData = value));
   let { actor, sheet } = $sheetData;
   let data;
   let abilities;
-  function updateRating(item2, type, value) {
-    const ob = { [type]: value };
-    if (type == "rank") {
-      ob.fail = 0;
-      ob.pass = 0;
-    }
-    console.log(ob);
-    sheet?._updateEmbededItem(item2, ob);
-  }
-  const change_handler = (e) => updateRating(e.target.name, "rank", parseInt(e.target.value));
-  const click_handler = (wise, e) => updateRating(wise.id, "pass", parseInt(wise.data.data.pass) - 1);
-  const click_handler_1 = (wise, e) => updateRating(wise.id, "pass", parseInt(wise.data.data.pass) + 1);
-  const click_handler_2 = (wise, e) => updateRating(wise.id, "fail", parseInt(wise.data.data.fail) - 1);
-  const click_handler_3 = (wise, e) => updateRating(wise.id, "fail", parseInt(wise.data.data.fail) + 1);
+  const change_handler = (e) => updateRating(sheet, e.target.name, "rank", parseInt(e.target.value));
+  const click_handler = (wise, e) => updateRating(sheet, wise.id, "pass", parseInt(wise.data.data.pass) - 1);
+  const click_handler_1 = (wise, e) => updateRating(sheet, wise.id, "pass", parseInt(wise.data.data.pass) + 1);
+  const click_handler_2 = (wise, e) => updateRating(sheet, wise.id, "fail", parseInt(wise.data.data.fail) - 1);
+  const click_handler_3 = (wise, e) => updateRating(sheet, wise.id, "fail", parseInt(wise.data.data.fail) + 1);
   $$self.$$.update = () => {
-    if ($$self.$$.dirty & 16) {
+    if ($$self.$$.dirty & 8) {
       $:
         data = $sheetData.data;
     }
-    if ($$self.$$.dirty & 16) {
+    if ($$self.$$.dirty & 8) {
       $:
         $$invalidate(0, wises = $sheetData.data.data.itemTypes.wise);
     }
@@ -3338,7 +3324,6 @@ function instance6($$self, $$props, $$invalidate) {
     wises,
     sheetData,
     sheet,
-    updateRating,
     $sheetData,
     change_handler,
     click_handler,
@@ -3361,38 +3346,38 @@ function create_fragment7(ctx) {
   let abilities;
   let mouseguardactorsheetmouseabilities;
   let t0;
-  let skill;
-  let mouseguardactorsheetmouseskills;
-  let t1;
   let wise;
   let mouseguardactorsheetmousewises;
+  let t1;
+  let skill;
+  let mouseguardactorsheetmouseskills;
   let current;
   mouseguardactorsheetmouseabilities = new MouseGuardActorSheetMouseAbilities_default({});
-  mouseguardactorsheetmouseskills = new MouseGuardActorSheetMouseSkills_default({});
   mouseguardactorsheetmousewises = new MouseGuardActorSheetMouseWises_default({});
+  mouseguardactorsheetmouseskills = new MouseGuardActorSheetMouseSkills_default({});
   return {
     c() {
       abilities = element("abilities");
       create_component(mouseguardactorsheetmouseabilities.$$.fragment);
       t0 = space();
-      skill = element("skill");
-      create_component(mouseguardactorsheetmouseskills.$$.fragment);
-      t1 = space();
       wise = element("wise");
       create_component(mouseguardactorsheetmousewises.$$.fragment);
+      t1 = space();
+      skill = element("skill");
+      create_component(mouseguardactorsheetmouseskills.$$.fragment);
       attr(abilities, "class", "svelte-19ngt2d");
-      attr(skill, "class", "svelte-19ngt2d");
       attr(wise, "class", "svelte-19ngt2d");
+      attr(skill, "class", "svelte-19ngt2d");
     },
     m(target, anchor) {
       insert(target, abilities, anchor);
       mount_component(mouseguardactorsheetmouseabilities, abilities, null);
       insert(target, t0, anchor);
-      insert(target, skill, anchor);
-      mount_component(mouseguardactorsheetmouseskills, skill, null);
-      insert(target, t1, anchor);
       insert(target, wise, anchor);
       mount_component(mouseguardactorsheetmousewises, wise, null);
+      insert(target, t1, anchor);
+      insert(target, skill, anchor);
+      mount_component(mouseguardactorsheetmouseskills, skill, null);
       current = true;
     },
     p: noop,
@@ -3400,14 +3385,14 @@ function create_fragment7(ctx) {
       if (current)
         return;
       transition_in(mouseguardactorsheetmouseabilities.$$.fragment, local);
-      transition_in(mouseguardactorsheetmouseskills.$$.fragment, local);
       transition_in(mouseguardactorsheetmousewises.$$.fragment, local);
+      transition_in(mouseguardactorsheetmouseskills.$$.fragment, local);
       current = true;
     },
     o(local) {
       transition_out(mouseguardactorsheetmouseabilities.$$.fragment, local);
-      transition_out(mouseguardactorsheetmouseskills.$$.fragment, local);
       transition_out(mouseguardactorsheetmousewises.$$.fragment, local);
+      transition_out(mouseguardactorsheetmouseskills.$$.fragment, local);
       current = false;
     },
     d(detaching) {
@@ -3417,13 +3402,13 @@ function create_fragment7(ctx) {
       if (detaching)
         detach(t0);
       if (detaching)
-        detach(skill);
-      destroy_component(mouseguardactorsheetmouseskills);
+        detach(wise);
+      destroy_component(mouseguardactorsheetmousewises);
       if (detaching)
         detach(t1);
       if (detaching)
-        detach(wise);
-      destroy_component(mouseguardactorsheetmousewises);
+        detach(skill);
+      destroy_component(mouseguardactorsheetmouseskills);
     }
   };
 }
@@ -3462,8 +3447,8 @@ function create_each_block_14(ctx) {
       span = element("span");
       t0 = text(t0_value);
       t1 = space();
-      attr(span, "class", "svelte-1vmtzgs");
-      attr(li, "class", li_class_value = "" + (null_to_empty(ctx[0] === ctx[3].value ? "active" : "") + " svelte-1vmtzgs"));
+      attr(span, "class", "svelte-14or48x");
+      attr(li, "class", li_class_value = "" + (null_to_empty(ctx[0] === ctx[3].value ? "active" : "") + " svelte-14or48x"));
     },
     m(target, anchor) {
       insert(target, li, anchor);
@@ -3482,7 +3467,7 @@ function create_each_block_14(ctx) {
       ctx = new_ctx;
       if (dirty & 2 && t0_value !== (t0_value = ctx[3].label + ""))
         set_data(t0, t0_value);
-      if (dirty & 3 && li_class_value !== (li_class_value = "" + (null_to_empty(ctx[0] === ctx[3].value ? "active" : "") + " svelte-1vmtzgs"))) {
+      if (dirty & 3 && li_class_value !== (li_class_value = "" + (null_to_empty(ctx[0] === ctx[3].value ? "active" : "") + " svelte-14or48x"))) {
         attr(li, "class", li_class_value);
       }
     },
@@ -3512,7 +3497,7 @@ function create_if_block4(ctx) {
       if (switch_instance)
         create_component(switch_instance.$$.fragment);
       t = space();
-      attr(div, "class", "box svelte-1vmtzgs");
+      attr(div, "class", "box svelte-14or48x");
     },
     m(target, anchor) {
       insert(target, div, anchor);
@@ -3647,7 +3632,7 @@ function create_fragment8(ctx) {
         each_blocks[i].c();
       }
       each1_anchor = empty();
-      attr(ul, "class", "svelte-1vmtzgs");
+      attr(ul, "class", "svelte-14or48x");
     },
     m(target, anchor) {
       insert(target, ul, anchor);
@@ -3799,7 +3784,7 @@ function instance8($$self, $$props, $$invalidate) {
       component: MouseGuardActorSheetMouseDetails_default
     },
     {
-      label: "Skills & Abilities",
+      label: "Abilities, Wises, & Skills",
       value: 2,
       component: MouseGuardActorSheetMouseSkillAbilityTab_default
     },

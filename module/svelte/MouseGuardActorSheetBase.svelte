@@ -25,7 +25,7 @@
 		 value: 1,
 		 component: MouseGuardActorSheetMouseDetails
 		},
-    { label: "Skills & Abilities",
+    { label: "Abilities, Wises, & Skills",
 		 value: 2,
 		 component: MouseGuardActorSheetMouseSkillAbilityTab
 		},

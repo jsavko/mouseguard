@@ -8,12 +8,12 @@
 <abilities >
 <MouseGuardActorSheetMouseAbilities />
 </abilities>
+<wise>
+	<MouseGuardActorSheetMouseWises />
+</wise>
 <skill> 
 <MouseGuardActorSheetMouseSkills />
 </skill>
-<wise>
-<MouseGuardActorSheetMouseWises />
-</wise>
 
 <style>
 	abilities { 

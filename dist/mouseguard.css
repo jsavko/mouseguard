@@ -205,7 +205,7 @@ lineitem.svelte-iahukr input.svelte-iahukr {
 }
 
 /* fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseAbilities.esbuild-svelte-fake-css */
-largecard.svelte-6k670b {
+largecard.svelte-44gfx2 {
   margin: 0 auto;
   height: 100%;
   width: 100%;
@@ -213,44 +213,50 @@ largecard.svelte-6k670b {
   flex-wrap: wrap;
   display: block;
 }
-ability.svelte-6k670b {
+ability.svelte-44gfx2 {
   display: flex;
   padding-left: 20px;
   width: 250px;
   float: left;
   height: 80px;
 }
-pass.svelte-6k670b {
+pass.svelte-44gfx2 {
   display: flex;
+  font-family: "Germania One", cursive;
 }
-fail.svelte-6k670b {
+fail.svelte-44gfx2 {
   display: flex;
+  font-family: "Germania One", cursive;
 }
-input.svelte-6k670b {
+input.svelte-44gfx2 {
   border: none;
   width: 40px;
   float: left;
   text-align: center;
   background-color: white;
   margin-right: 5px;
+  margin-top: 2px;
+  height: 35px;
+  font-family: "Germania One", cursive;
+  font-size: large;
 }
-h1.svelte-6k670b {
+h1.svelte-44gfx2 {
   font-family: "Germania One", cursive;
   padding-left: 30px;
   width: 100%;
 }
-label.svelte-6k670b {
+label.svelte-44gfx2 {
   margin-top: 3px;
   width: 100%;
   display: block;
 }
-.header.svelte-6k670b {
+.header.svelte-44gfx2 {
   font-family: "Germania One", cursive;
   font-size: large;
   width: 100%;
   display: block;
 }
-.checkmark.svelte-6k670b:after {
+.checkmark.svelte-44gfx2:after {
   content: "\2714";
   display: block;
   width: 12px;
@@ -262,7 +268,7 @@ label.svelte-6k670b {
   border-radius: 50%;
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, .3);
 }
-.no-checkmark.svelte-6k670b:after {
+.no-checkmark.svelte-44gfx2:after {
   content: " ";
   display: block;
   width: 12px;
@@ -276,7 +282,7 @@ label.svelte-6k670b {
 }
 
 /* fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseSkills.esbuild-svelte-fake-css */
-largecard.svelte-1cpzr6t {
+largecard.svelte-19h3piw {
   margin: 0 auto;
   height: 100%;
   width: 100%;
@@ -284,44 +290,50 @@ largecard.svelte-1cpzr6t {
   flex-wrap: wrap;
   display: block;
 }
-skill.svelte-1cpzr6t {
+skill.svelte-19h3piw {
   display: flex;
   padding-left: 20px;
   width: 250px;
   float: left;
   height: 80px;
 }
-pass.svelte-1cpzr6t {
+pass.svelte-19h3piw {
   display: flex;
+  font-family: "Germania One", cursive;
 }
-fail.svelte-1cpzr6t {
+fail.svelte-19h3piw {
   display: flex;
+  font-family: "Germania One", cursive;
 }
-input.svelte-1cpzr6t {
+input.svelte-19h3piw {
   border: none;
   width: 40px;
   float: left;
   text-align: center;
   background-color: white;
   margin-right: 5px;
+  margin-top: 2px;
+  height: 35px;
+  font-family: "Germania One", cursive;
+  font-size: large;
 }
-h1.svelte-1cpzr6t {
+h1.svelte-19h3piw {
   font-family: "Germania One", cursive;
   padding-left: 30px;
   width: 100%;
 }
-label.svelte-1cpzr6t {
+label.svelte-19h3piw {
   margin-top: 3px;
   width: 100%;
   display: block;
 }
-.header.svelte-1cpzr6t {
+.header.svelte-19h3piw {
   font-family: "Germania One", cursive;
   font-size: large;
   width: 100%;
   display: block;
 }
-.checkmark.svelte-1cpzr6t:after {
+.checkmark.svelte-19h3piw:after {
   content: "\2714";
   display: block;
   width: 12px;
@@ -333,7 +345,7 @@ label.svelte-1cpzr6t {
   border-radius: 50%;
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, .3);
 }
-.no-checkmark.svelte-1cpzr6t:after {
+.no-checkmark.svelte-19h3piw:after {
   content: " ";
   display: block;
   width: 12px;
@@ -347,7 +359,7 @@ label.svelte-1cpzr6t {
 }
 
 /* fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseWises.esbuild-svelte-fake-css */
-largecard.svelte-vf0dcs {
+largecard.svelte-atqz4z {
   margin: 0 auto;
   height: 100%;
   width: 100%;
@@ -355,44 +367,50 @@ largecard.svelte-vf0dcs {
   flex-wrap: wrap;
   display: block;
 }
-wise.svelte-vf0dcs {
+wise.svelte-atqz4z {
   display: flex;
   padding-left: 20px;
   width: 250px;
   float: left;
   height: 80px;
 }
-pass.svelte-vf0dcs {
+pass.svelte-atqz4z {
   display: flex;
+  font-family: "Germania One", cursive;
 }
-fail.svelte-vf0dcs {
+fail.svelte-atqz4z {
   display: flex;
+  font-family: "Germania One", cursive;
 }
-input.svelte-vf0dcs {
+input.svelte-atqz4z {
   border: none;
   width: 40px;
   float: left;
   text-align: center;
   background-color: white;
   margin-right: 5px;
+  margin-top: 2px;
+  height: 35px;
+  font-family: "Germania One", cursive;
+  font-size: large;
 }
-h1.svelte-vf0dcs {
+h1.svelte-atqz4z {
   font-family: "Germania One", cursive;
   padding-left: 30px;
   width: 100%;
 }
-label.svelte-vf0dcs {
+label.svelte-atqz4z {
   margin-top: 3px;
   width: 100%;
   display: block;
 }
-.header.svelte-vf0dcs {
+.header.svelte-atqz4z {
   font-family: "Germania One", cursive;
   font-size: large;
   width: 100%;
   display: block;
 }
-.checkmark.svelte-vf0dcs:after {
+.checkmark.svelte-atqz4z:after {
   content: "\2714";
   display: block;
   width: 12px;
@@ -404,7 +422,7 @@ label.svelte-vf0dcs {
   border-radius: 50%;
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, .3);
 }
-.no-checkmark.svelte-vf0dcs:after {
+.no-checkmark.svelte-atqz4z:after {
   content: " ";
   display: block;
   width: 12px;
@@ -434,13 +452,13 @@ wise.svelte-19ngt2d {
 }
 
 /* fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/Tabs.esbuild-svelte-fake-css */
-.box.svelte-1vmtzgs.svelte-1vmtzgs {
+.box.svelte-14or48x.svelte-14or48x {
   margin-bottom: 10px;
   padding-top: 20px;
   border-radius: 0 0 .5rem .5rem;
   border-top: 0;
 }
-ul.svelte-1vmtzgs.svelte-1vmtzgs {
+ul.svelte-14or48x.svelte-14or48x {
   display: flex;
   flex-wrap: wrap;
   padding-left: 0;
@@ -448,10 +466,10 @@ ul.svelte-1vmtzgs.svelte-1vmtzgs {
   list-style: none;
   border-bottom: 1px solid #000;
 }
-li.svelte-1vmtzgs.svelte-1vmtzgs {
+li.svelte-14or48x.svelte-14or48x {
   margin-bottom: -1px;
 }
-span.svelte-1vmtzgs.svelte-1vmtzgs {
+span.svelte-14or48x.svelte-14or48x {
   border: 1px solid transparent;
   border-top-left-radius: 0.25rem;
   border-top-right-radius: 0.25rem;
@@ -459,10 +477,10 @@ span.svelte-1vmtzgs.svelte-1vmtzgs {
   padding: 0.5rem 1rem;
   cursor: pointer;
 }
-span.svelte-1vmtzgs.svelte-1vmtzgs:hover {
-  border-color: #e9ecef #e9ecef #dee2e6;
+span.svelte-14or48x.svelte-14or48x:hover {
+  border-color: #000 #000 #000;
 }
-li.active.svelte-1vmtzgs > span.svelte-1vmtzgs {
+li.active.svelte-14or48x > span.svelte-14or48x {
   color: #495057;
   background-color: #fff;
   border-color: #dee2e6 #dee2e6 #fff;
