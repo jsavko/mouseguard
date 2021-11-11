@@ -10,6 +10,7 @@
 	import MouseGuardActorSheetPortrait from "./MouseGuardActorSheetMousePortrait.svelte"; 
 	import MouseGuardActorSheetMouseRewards from "./MouseGuardActorSheetMouseRewards.svelte"; 
 	import MouseGuardActorSheetMouseAbilities from "./MouseGuardActorSheetMouseAbilities.svelte";
+	import MouseGuardActorSheetMouseSkillAbilityTab from "./MouseGuardActorSheetMouseSkillAbilityTab.svelte";
 	import Tabs from "./Tabs.svelte";
 
 
@@ -24,9 +25,9 @@
 		 value: 1,
 		 component: MouseGuardActorSheetMouseDetails
 		},
-    { label: "Abilities",
+    { label: "Skills & Abilities",
 		 value: 2,
-		 component: MouseGuardActorSheetMouseAbilities
+		 component: MouseGuardActorSheetMouseSkillAbilityTab
 		},
     { label: "Rewards",
 		 value: 3,

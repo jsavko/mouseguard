@@ -1,5 +1,3 @@
-import { EntitySheetHelper } from "./helper.js";
-import {ATTRIBUTE_TYPES} from "./constants.js";
 
 import MouseGuardActorSheetBase  from "./svelte/MouseGuardActorSheetBase.svelte"; // import Svelte App
 import { writable } from "svelte/store";
@@ -20,8 +18,7 @@ export class MouseGuardActorSheet extends ActorSheet {
       template: "systems/mouseguard/templates/actor-sheetv2.html",
       width: 850,
       height: 600,
-      tabs: [],
-      dragDrop: []
+      tabs: []
     });
   }
 
@@ -30,10 +27,7 @@ export class MouseGuardActorSheet extends ActorSheet {
   /** @inheritdoc */
   getData() {
     const context = super.getData();
-    EntitySheetHelper.getAttributeData(context.data);
-    context.shorthand = !!game.settings.get("mouseguard", "macroShorthand");
     context.systemData = context.data.data;
-    context.dtypes = ATTRIBUTE_TYPES;
     context.sheet = this;
     return context;
   }
@@ -47,23 +41,12 @@ export class MouseGuardActorSheet extends ActorSheet {
     // Everything below here is only needed if the sheet is editable
     if ( !this.isEditable ) return;
 
-    // Attribute Management
-    html.find(".attributes").on("click", ".attribute-control", EntitySheetHelper.onClickAttributeControl.bind(this));
-    html.find(".groups").on("click", ".group-control", EntitySheetHelper.onClickAttributeGroupControl.bind(this));
-    html.find(".attributes").on("click", "a.attribute-roll", EntitySheetHelper.onAttributeRoll.bind(this));
 
     // Item Controls
     html.find(".item-control").click(this._onItemControl.bind(this));
     html.find(".items .rollable").on("click", this._onItemRoll.bind(this));
 
-    // Add draggable for Macro creation
-    html.find(".attributes a.attribute-roll").each((i, a) => {
-      a.setAttribute("draggable", true);
-      a.addEventListener("dragstart", ev => {
-        let dragData = ev.currentTarget.dataset;
-        ev.dataTransfer.setData('text/plain', JSON.stringify(dragData));
-      }, false);
-    });
+ 
   }
 
   /* -------------------------------------------- */
@@ -116,17 +99,17 @@ export class MouseGuardActorSheet extends ActorSheet {
   /** @inheritdoc */
   _getSubmitData(updateData) {
     let formData = super._getSubmitData(updateData);
-    formData = EntitySheetHelper.updateAttributes(formData, this.object);
-    formData = EntitySheetHelper.updateGroups(formData, this.object);
     return formData;
   }
 
 
   async _updateActorAbility(id, type, value) {
-    //const UpdatedItem =  this.actor.items.get(id);
-    //const ob = {'data':{[type]:value}};
-    //await UpdatedItem.update(ob)
     await this.actor.updateEmbeddedDocuments('Item', [{_id: id, data: {[type]:value}}])
+  }
+
+  async _updateEmbededItem(id, _data) {
+    await this.actor.updateEmbeddedDocuments('Item', [{_id: id, data: _data}])
+    console.log(this.actor)
   }
   
   render(force=false, options={}) { 

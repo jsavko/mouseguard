@@ -32,10 +32,10 @@ export class MouseGuardActor extends Actor {
     await super._preCreate(data, options, user);
     //this.data.update({name: "Some other name"});
     //Create Abilities using localization
+    
     const abilities = []
     if (data.type === 'character' && this.itemTypes.ability.length <= 0) {
       //Setup Abilities
-      //Mouse Nature
       const create_ability = ["MOUSEGUARD.Will","MOUSEGUARD.Health","MOUSEGUARD.Resources","MOUSEGUARD.Circles","MOUSEGUARD.MNature"]
       for (let i of create_ability) {
         abilities.push({
@@ -45,6 +45,7 @@ export class MouseGuardActor extends Actor {
       }
       this.data.update({ items: abilities });
     }
+    
   }
 
   /* -------------------------------------------- */

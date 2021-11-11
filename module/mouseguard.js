@@ -47,15 +47,6 @@ Hooks.once("init", async function() {
   Items.unregisterSheet("core", ItemSheet);
   Items.registerSheet("mouseguard", MouseGuardItemSheet, { makeDefault: true });
 
-  // Register system settings
-  game.settings.register("mouseguard", "macroShorthand", {
-    name: "SETTINGS.MouseGuardMacroShorthandN",
-    hint: "SETTINGS.MouseGuardMacroShorthandL",
-    scope: "world",
-    type: Boolean,
-    default: true,
-    config: true
-  });
 
   // Register initiative setting.
   game.settings.register("mouseguard", "initFormula", {
