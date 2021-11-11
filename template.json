@@ -52,7 +52,8 @@
       "wise":{
         "description": "",
         "pass":0,
-        "fail": 0
+        "fail": 0,
+        "rank": 1
       },
       "contact": {
         "description": ""

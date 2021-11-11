@@ -11,17 +11,19 @@
 	let data;
 	let abilities;
 	$: data = $sheetData.data;
-	$: abilities = $sheetData.data.data.itemTypes.ability;
+	$: wises = $sheetData.data.data.itemTypes.wise;
 
 	function updateRating(item, type, value){
 		//sheet?._updateActorAbility(item, type, value);
 		const ob = {[type]:value};
-		if (type == 'rating') {
+		if (type == 'rank') {
 			ob.fail = 0;
 			ob.pass = 0;
 		}
 		
+		console.log(ob);
 		sheet?._updateEmbededItem(item, ob);
+
 
 	}
 
@@ -29,36 +31,45 @@
 </script>
 
 <largecard>
-	<h1>Abilities</h1>
-	{#each abilities as ability}
-		<ability>
-		<div name="{ability.id}">
-			<label  class="header">{game.i18n.localize( ability.name )}: </label>
-			<input name="{ability.id}" type="number" value="{ability.data.data.rating}" on:change={e => updateRating(e.target.name, 'rating', parseInt(e.target.value)) }/>
+	<h1>Wises</h1>
+	{#each wises as wise}
+		<wise>
+		<div name="{wise.id}">
+			<label  class="header">{game.i18n.localize( wise.name )}: </label>
+			<input name="{wise.id}" type="number" value="{wise.data.data.rank}" on:change={e => updateRating(e.target.name, 'rank', parseInt(e.target.value)) }/>
 			<pass>P:
-			{#each {length: parseInt(ability.data.data.rating) +1} as _, i}
-				{#if ability.data.data.pass > i}
-					<div  on:click={e => updateRating(ability.id, 'pass', parseInt(ability.data.data.pass)-1 ) }  class="checkmark"></div>
+			{#each {length: parseInt(wise.data.data.rank) +1} as _, i}
+				{#if wise.data.data.pass > i}
+					<div  on:click={e => updateRating(wise.id, 'pass', parseInt(wise.data.data.pass)-1 ) }  class="checkmark"></div>
 				{:else}
-					<div on:click={e => updateRating(ability.id, 'pass', parseInt(ability.data.data.pass)+1 ) }  class="no-checkmark"></div>
+					<div on:click={e => updateRating(wise.id, 'pass', parseInt(wise.data.data.pass)+1 ) }  class="no-checkmark"></div>
 				{/if}
 			{/each}
 			</pass>
 			<fail>F:
-				{#each {length: parseInt(ability.data.data.rating) } as _, i}
-					{#if ability.data.data.fail > i}
-						<div  on:click={e => updateRating(ability.id, 'fail', parseInt(ability.data.data.fail)-1 ) } class="checkmark"></div>
+				{#each {length: parseInt(wise.data.data.rank) } as _, i}
+					{#if wise.data.data.fail > i}
+						<div  on:click={e => updateRating(wise.id, 'fail', parseInt(wise.data.data.fail)-1 ) } class="checkmark"></div>
 					{:else}
-						<div on:click={e => updateRating(ability.id, 'fail', parseInt(ability.data.data.fail)+1 ) } class="no-checkmark"></div>
+						<div on:click={e => updateRating(wise.id, 'fail', parseInt(wise.data.data.fail)+1 ) } class="no-checkmark"></div>
 					{/if}
 				{/each}
 			</fail>
 		</div>
-		
-
-		</ability>
+		<div class="item-controls">
+			<a on:click={sheet?._onItemDelete(wise._id)} class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+		</div>
+		</wise>
 	{/each}
-
+    <ol>
+        <li class="item flexrow item-header">
+            <div class="item-image"></div>
+            <div class="item-name"></div>
+            <div class="item-controls">
+              <a on:click={sheet?._onItemCreate.bind(sheet)} class="item-control item-create" title="Create item" data-type="wise" ><i class="fas fa-plus"></i> Add item</a>
+            </div>
+          </li>
+    </ol>
 </largecard>
 
 
@@ -70,9 +81,9 @@
 		font-family: 'Khula', sans-serif;
 		flex-wrap: wrap;
 		display:block;
-	}
+		}
 
-	ability {
+	wise {
 		display: flex;
 		padding-left: 20px;
 		width: 250px;

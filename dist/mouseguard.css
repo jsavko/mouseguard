@@ -205,28 +205,28 @@ lineitem.svelte-iahukr input.svelte-iahukr {
 }
 
 /* fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseAbilities.esbuild-svelte-fake-css */
-largecard.svelte-ytnah7 {
+largecard.svelte-6k670b {
   margin: 0 auto;
-  height: 220px;
+  height: 100%;
   width: 100%;
   font-family: "Khula", sans-serif;
   flex-wrap: wrap;
   display: block;
 }
-ability.svelte-ytnah7 {
+ability.svelte-6k670b {
   display: flex;
   padding-left: 20px;
   width: 250px;
   float: left;
   height: 80px;
 }
-pass.svelte-ytnah7 {
+pass.svelte-6k670b {
   display: flex;
 }
-fail.svelte-ytnah7 {
+fail.svelte-6k670b {
   display: flex;
 }
-input.svelte-ytnah7 {
+input.svelte-6k670b {
   border: none;
   width: 40px;
   float: left;
@@ -234,23 +234,23 @@ input.svelte-ytnah7 {
   background-color: white;
   margin-right: 5px;
 }
-h1.svelte-ytnah7 {
+h1.svelte-6k670b {
   font-family: "Germania One", cursive;
   padding-left: 30px;
   width: 100%;
 }
-label.svelte-ytnah7 {
+label.svelte-6k670b {
   margin-top: 3px;
   width: 100%;
   display: block;
 }
-.header.svelte-ytnah7 {
+.header.svelte-6k670b {
   font-family: "Germania One", cursive;
   font-size: large;
   width: 100%;
   display: block;
 }
-.checkmark.svelte-ytnah7:after {
+.checkmark.svelte-6k670b:after {
   content: "\2714";
   display: block;
   width: 12px;
@@ -262,7 +262,7 @@ label.svelte-ytnah7 {
   border-radius: 50%;
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, .3);
 }
-.no-checkmark.svelte-ytnah7:after {
+.no-checkmark.svelte-6k670b:after {
   content: " ";
   display: block;
   width: 12px;
@@ -346,9 +346,91 @@ label.svelte-1cpzr6t {
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, .3);
 }
 
+/* fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseWises.esbuild-svelte-fake-css */
+largecard.svelte-vf0dcs {
+  margin: 0 auto;
+  height: 100%;
+  width: 100%;
+  font-family: "Khula", sans-serif;
+  flex-wrap: wrap;
+  display: block;
+}
+wise.svelte-vf0dcs {
+  display: flex;
+  padding-left: 20px;
+  width: 250px;
+  float: left;
+  height: 80px;
+}
+pass.svelte-vf0dcs {
+  display: flex;
+}
+fail.svelte-vf0dcs {
+  display: flex;
+}
+input.svelte-vf0dcs {
+  border: none;
+  width: 40px;
+  float: left;
+  text-align: center;
+  background-color: white;
+  margin-right: 5px;
+}
+h1.svelte-vf0dcs {
+  font-family: "Germania One", cursive;
+  padding-left: 30px;
+  width: 100%;
+}
+label.svelte-vf0dcs {
+  margin-top: 3px;
+  width: 100%;
+  display: block;
+}
+.header.svelte-vf0dcs {
+  font-family: "Germania One", cursive;
+  font-size: large;
+  width: 100%;
+  display: block;
+}
+.checkmark.svelte-vf0dcs:after {
+  content: "\2714";
+  display: block;
+  width: 12px;
+  height: 12px;
+  text-align: center;
+  font-size: 10px;
+  border: 1px solid #aaa;
+  background: #f8f8f8;
+  border-radius: 50%;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, .3);
+}
+.no-checkmark.svelte-vf0dcs:after {
+  content: " ";
+  display: block;
+  width: 12px;
+  height: 12px;
+  text-align: center;
+  font-size: 10px;
+  border: 1px solid #aaa;
+  background: #f8f8f8;
+  border-radius: 50%;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, .3);
+}
+
 /* fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseSkillAbilityTab.esbuild-svelte-fake-css */
-skill.svelte-t8i91y {
+abilities.svelte-19ngt2d {
   clear: both;
+  height: 100%;
+  display: flex;
+}
+skill.svelte-19ngt2d {
+  clear: both;
+  display: block;
+}
+wise.svelte-19ngt2d {
+  clear: both;
+  height: 100%;
+  display: flex;
 }
 
 /* fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/Tabs.esbuild-svelte-fake-css */

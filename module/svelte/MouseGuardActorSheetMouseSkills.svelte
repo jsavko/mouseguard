@@ -56,6 +56,9 @@
 				{/each}
 			</fail>
 		</div>
+		<div class="item-controls">
+			<a on:click={sheet?._onItemDelete(skill._id)} class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+		</div>
 		
 
 		</skill>

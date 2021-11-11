@@ -111,6 +111,36 @@ export class MouseGuardActorSheet extends ActorSheet {
     await this.actor.updateEmbeddedDocuments('Item', [{_id: id, data: _data}])
     console.log(this.actor)
   }
+
+  async _onItemDelete(itemId) {
+    const item = this.actor.items.get(itemId);
+    item.delete();
+    this.render();
+  }
+
+  async _onItemCreate(event) {
+    event.preventDefault();
+    const header = event.currentTarget;
+    // Get the type of item to create.
+    const type = header.dataset.type;
+    // Grab any data associated with this control.
+    const data = duplicate(header.dataset);
+    // Initialize a default name.
+    const name = `New ${type.capitalize()}`;
+    // Prepare the item object.
+    const itemData = {
+      name: name,
+      type: type,
+      data: data
+    };
+    itemData.data = {rank:1}
+    // Remove the type from the dataset since it's in the itemData.type prop.
+    delete itemData.data["type"];
+    // Finally, create the item!
+    console.log(itemData);
+    return await Item.create(itemData, {parent: this.actor}).then( item => { item.sheet.render(true); });
+    
+  }
   
   render(force=false, options={}) { 
     // Grab the sheetdata for both updates and new apps.
