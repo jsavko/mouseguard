@@ -17,7 +17,7 @@ export class MouseGuardActor extends Actor {
   prepareData() {
     super.prepareData();
     const actorData = this.data;
-    console.log(actorData)
+    //console.log(actorData)
     if (this.type === 'character') this._prepareCharacterData(this.data);
   }
 
@@ -36,7 +36,7 @@ export class MouseGuardActor extends Actor {
     const abilities = []
     if (data.type === 'character' && this.itemTypes.ability.length <= 0) {
       //Setup Abilities
-      const create_ability = ["MOUSEGUARD.Will","MOUSEGUARD.Health","MOUSEGUARD.Resources","MOUSEGUARD.Circles","MOUSEGUARD.MNature"]
+      const create_ability = ["MOUSEGUARD.MNature","MOUSEGUARD.Will","MOUSEGUARD.Health","MOUSEGUARD.Resources","MOUSEGUARD.Circles"]
       for (let i of create_ability) {
         abilities.push({
           name: i,

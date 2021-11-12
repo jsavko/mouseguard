@@ -205,7 +205,7 @@ lineitem.svelte-iahukr input.svelte-iahukr {
 }
 
 /* fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseAbilities.esbuild-svelte-fake-css */
-largecard.svelte-44gfx2 {
+largecard.svelte-1nllne8 {
   margin: 0 auto;
   height: 100%;
   width: 100%;
@@ -213,22 +213,22 @@ largecard.svelte-44gfx2 {
   flex-wrap: wrap;
   display: block;
 }
-ability.svelte-44gfx2 {
+ability.svelte-1nllne8 {
   display: flex;
   padding-left: 20px;
   width: 250px;
   float: left;
   height: 80px;
 }
-pass.svelte-44gfx2 {
+pass.svelte-1nllne8 {
   display: flex;
   font-family: "Germania One", cursive;
 }
-fail.svelte-44gfx2 {
+fail.svelte-1nllne8 {
   display: flex;
   font-family: "Germania One", cursive;
 }
-input.svelte-44gfx2 {
+input.svelte-1nllne8 {
   border: none;
   width: 40px;
   float: left;
@@ -240,23 +240,24 @@ input.svelte-44gfx2 {
   font-family: "Germania One", cursive;
   font-size: large;
 }
-h1.svelte-44gfx2 {
+h1.svelte-1nllne8 {
   font-family: "Germania One", cursive;
   padding-left: 30px;
   width: 100%;
 }
-label.svelte-44gfx2 {
+label.svelte-1nllne8 {
   margin-top: 3px;
   width: 100%;
   display: block;
+  cursor: pointer;
 }
-.header.svelte-44gfx2 {
+.header.svelte-1nllne8 {
   font-family: "Germania One", cursive;
   font-size: large;
   width: 100%;
   display: block;
 }
-.checkmark.svelte-44gfx2:after {
+.checkmark.svelte-1nllne8:after {
   content: "\2714";
   display: block;
   width: 12px;
@@ -268,7 +269,7 @@ label.svelte-44gfx2 {
   border-radius: 50%;
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, .3);
 }
-.no-checkmark.svelte-44gfx2:after {
+.no-checkmark.svelte-1nllne8:after {
   content: " ";
   display: block;
   width: 12px;
@@ -359,7 +360,7 @@ label.svelte-19h3piw {
 }
 
 /* fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseWises.esbuild-svelte-fake-css */
-largecard.svelte-atqz4z {
+largecard.svelte-105ojo3 {
   margin: 0 auto;
   height: 100%;
   width: 100%;
@@ -367,22 +368,25 @@ largecard.svelte-atqz4z {
   flex-wrap: wrap;
   display: block;
 }
-wise.svelte-atqz4z {
+wise.svelte-105ojo3 {
   display: flex;
   padding-left: 20px;
   width: 250px;
   float: left;
   height: 80px;
 }
-pass.svelte-atqz4z {
+pass.svelte-105ojo3 {
   display: flex;
   font-family: "Germania One", cursive;
 }
-fail.svelte-atqz4z {
+fail.svelte-105ojo3 {
   display: flex;
   font-family: "Germania One", cursive;
 }
-input.svelte-atqz4z {
+.item-controls.svelte-105ojo3 {
+  float: right;
+}
+input.svelte-105ojo3 {
   border: none;
   width: 40px;
   float: left;
@@ -394,23 +398,23 @@ input.svelte-atqz4z {
   font-family: "Germania One", cursive;
   font-size: large;
 }
-h1.svelte-atqz4z {
+h1.svelte-105ojo3 {
   font-family: "Germania One", cursive;
   padding-left: 30px;
   width: 100%;
 }
-label.svelte-atqz4z {
+label.svelte-105ojo3 {
   margin-top: 3px;
   width: 100%;
   display: block;
 }
-.header.svelte-atqz4z {
+.header.svelte-105ojo3 {
   font-family: "Germania One", cursive;
   font-size: large;
   width: 100%;
   display: block;
 }
-.checkmark.svelte-atqz4z:after {
+.checkmark.svelte-105ojo3:after {
   content: "\2714";
   display: block;
   width: 12px;
@@ -422,7 +426,7 @@ label.svelte-atqz4z {
   border-radius: 50%;
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, .3);
 }
-.no-checkmark.svelte-atqz4z:after {
+.no-checkmark.svelte-105ojo3:after {
   content: " ";
   display: block;
   width: 12px;

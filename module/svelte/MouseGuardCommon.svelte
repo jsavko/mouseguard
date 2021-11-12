@@ -1,10 +1,9 @@
 
 <script context="module">
 
-
 	export function updateRating(sheet,item, type, value){
 		//sheet?._updateActorAbility(item, type, value);
-        console.log ("updateRating")
+        //console.log ("updateRating")
 
 		const ob = {[type]:value};
 		if (type == 'rank' || type =="rating") {
@@ -14,6 +13,10 @@
 		}
 		sheet?._updateEmbededItem(item, ob);
 
+	}
+
+	export function setMouseDice(sheet, count) {
+		sheet?._setMouseDice(count);
 	}
 
 </script>

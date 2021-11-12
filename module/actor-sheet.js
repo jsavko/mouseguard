@@ -102,6 +102,10 @@ export class MouseGuardActorSheet extends ActorSheet {
     return formData;
   }
 
+  _setMouseDice(count){
+    game.mouseguard.RollCount = count;
+    game.mouseguard.updateDisplay(count);
+  }
 
   async _updateActorAbility(id, type, value) {
     await this.actor.updateEmbeddedDocuments('Item', [{_id: id, data: {[type]:value}}])
@@ -109,7 +113,7 @@ export class MouseGuardActorSheet extends ActorSheet {
 
   async _updateEmbededItem(id, _data) {
     await this.actor.updateEmbeddedDocuments('Item', [{_id: id, data: _data}])
-    console.log(this.actor)
+    //console.log(this.actor)
   }
 
   async _onItemDelete(itemId) {
@@ -137,7 +141,7 @@ export class MouseGuardActorSheet extends ActorSheet {
     // Remove the type from the dataset since it's in the itemData.type prop.
     delete itemData.data["type"];
     // Finally, create the item!
-    console.log(itemData);
+    //console.log(itemData);
     return await Item.create(itemData, {parent: this.actor}).then( item => { item.sheet.render(true); });
     
   }

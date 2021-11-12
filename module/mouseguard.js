@@ -10,7 +10,8 @@ import { MouseGuardItemSheet } from "./item-sheet.js";
 import { MouseGuardActorSheet } from "./actor-sheet.js";
 import { preloadHandlebarsTemplates } from "./templates.js";
 import { createMouseGuardMacro } from "./macro.js";
-import { MouseDie } from "./mousedie.js";
+import { MouseDie, MouseRoll } from "./mousedie.js";
+
 
 
 /* -------------------------------------------- */
@@ -32,15 +33,24 @@ Hooks.once("init", async function() {
     decimals: 2
   };
 
+  let RollCount = 0
+
   game.mouseguard = {
     MouseGuardActor,
-    createMouseGuardMacro
+    createMouseGuardMacro,
+    RollCount,
+    updateDisplay,
+    MouseDie,
+    MouseRoll
   };
+
 
   // Define custom Entity classes
   CONFIG.Actor.documentClass = MouseGuardActor;
   CONFIG.Item.documentClass = MouseGuardItem;
 
+  CONFIG.Dice.rolls.push(MouseRoll);
+  
   // Register sheet application classes
   Actors.unregisterSheet("core", ActorSheet);
   Actors.registerSheet("mouseguard", MouseGuardActorSheet, { makeDefault: true });
@@ -100,14 +110,11 @@ Hooks.once("init", async function() {
 /**
  * Macrobar hook.
  */
-Hooks.on("hotbarDrop", (bar, data, slot) => createMouseGuardMacro(data, slot));
+//Hooks.on("hotbarDrop", (bar, data, slot) => createMouseGuardMacro(data, slot));
 
 
 Hooks.once("init", async function () {
   CONFIG.Dice.terms["m"] = MouseDie;
-});
-
-Hooks.once("init", async function () {
   CONFIG.Dice.terms["6"] = MouseDie;
 });
 
@@ -151,4 +158,76 @@ Hooks.once("diceSoNiceReady", (dice3d) => {
   });
 });
 
- 
+
+Hooks.on('renderSidebarTab', (app, html, data) => {
+  console.log('Render Sidebar Mouse Pool?');
+  const template = './systems/mouseguard/templates/mousetray.html';
+
+  let $chat_form = html.find('#chat-form');
+  renderTemplate(template).then(c => {
+    let $content = $(c);
+    $chat_form.after($content);
+    $content.find('.mouse_dice_button').on('mousedown', event => {
+      event.preventDefault();
+
+      switch (event.which) {
+        case 1:
+            game.mouseguard.RollCount++;
+            break;
+        case 3:
+          game.mouseguard.RollCount--;
+            break;
+      }
+
+      if (game.mouseguard.RollCount < 1) game.mouseguard.RollCount = 0;
+
+      // Render Dice in Dice Pool Area
+      updateDisplay(game.mouseguard.RollCount);
+
+    });
+
+    $content.find('.mouse_roll_button').on('click', event => {
+      event.preventDefault();
+      let $self = $(event.currentTarget);
+      let dataset = event.currentTarget.dataset;
+      
+      if (game.mouseguard.RollCount > 0){
+        /*
+        let $chat = html.find('#chat-form textarea');
+        $chat.val('/r ' + game.mouseguard.RollCount + 'dmcs>3');
+        let spoofed = $.Event('keydown');
+        spoofed.which = 13;
+        spoofed.keycode = 13;
+        spoofed.code = 'Enter';
+        spoofed.key = 'Enter';
+        html.find('#chat-message').trigger(spoofed);
+        */
+
+        var roll = new MouseRoll(game.mouseguard.RollCount+"dmcs>3");
+        roll.evaluate({async: true});
+        roll.toMessage();
+        console.log(roll);
+        game.mouseguard.RollCount = 0;
+        updateDisplay(0);
+      }
+
+    });
+
+   });
+});
+
+
+
+function updateDisplay(count) {
+  //let $mouse_rolls = html.find('.mouse-dice-roll');
+  let mouse_rolls =  document.getElementById("mouse-dice-roll");
+  let diceHTML = '<li class="roll mousedie d6 "><img src="systems/mouseguard/assets/dice/sword.png" height="24" width="24"></li>';
+  let theHTML = '';
+
+  for(let i=0; i< count; i++){
+    theHTML += diceHTML;
+  }
+  mouse_rolls.innerHTML = theHTML;
+};
+
+

@@ -3,7 +3,7 @@
 	import { slide } from "svelte/transition";
 	import { writable } from "svelte/store";
 	import { identity, validate_each_argument } from "svelte/internal";
-	import { updateRating} from "./MouseGuardCommon.svelte";
+	import { updateRating, setMouseDice} from "./MouseGuardCommon.svelte";
 
 	//getContext("sheetStore", dataStore);	
 	let sheetData = getContext("sheetStore");
@@ -20,7 +20,7 @@
 	{#each abilities as ability}
 		<ability>
 		<div name="{ability.id}">
-			<label  class="header">{game.i18n.localize( ability.name )}: </label>
+			<label  on:click={e => setMouseDice(sheet, ability.data.data.rating) }  class="header"><a>{game.i18n.localize( ability.name )}</a>: </label>
 			<input name="{ability.id}" type="number" value="{ability.data.data.rating}" on:change={e => updateRating(sheet,e.target.name, 'rating', parseInt(e.target.value)) }/>
 			<pass>P:
 			{#each {length: parseInt(ability.data.data.rating) +1} as _, i}
@@ -102,6 +102,11 @@
 		margin-top: 3px;
 		width: 100%;
 		display:block;
+		cursor: pointer;
+	}
+
+	label:hover {
+
 	}
 	.sub {
 		font-size:small;

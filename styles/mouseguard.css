@@ -244,3 +244,22 @@
   min-width: 460px;
   min-height: 400px;
 }
+
+.mouse-dice-roll {
+  list-style: none;
+  height: 56px;
+}
+
+.mouse-dice-roll li { 
+    display: inline;
+    margin: 0 2px;
+    height: 24px;
+    width: 24px;
+}
+.mouse-dice-roll li img { 
+  background-color: white;
+}
+
+.mouse-tray {
+  flex:none;
+}
