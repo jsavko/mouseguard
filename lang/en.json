@@ -102,8 +102,10 @@
   "MOUSEGUARD.UsedFor": "Used For",
   "MOUSEGUARD.UsedAgainst": "Used Against",
   "MOUSEGUARD.TraitBenefits": "Trait Benefits",
-  "MOUSEGUARD.TraitBenefitsSub": "Level 1: +1D per session; Level 2: +1D twice per session; Level 3: Reroll failed dice once per session."
+  "MOUSEGUARD.TraitBenefitsSub": "Level 1: +1D per session; Level 2: +1D twice per session; Level 3: Reroll failed dice once per session.",
 
+  "COMBAT.ConflictCaptain":"Toggle Conflict Captain",
+  "COMBAT.askGoal":"Ask Conflict Captain for the Goal"
 
 
 

@@ -11,8 +11,10 @@ import { MouseGuardActorSheet } from "./actor-sheet.js";
 import { preloadHandlebarsTemplates } from "./templates.js";
 import { createMouseGuardMacro } from "./macro.js";
 import { MouseDie, MouseRoll } from "./mousedie.js";
-
-
+import ConflictTracker from "./conflict-tracker.js";
+import MouseCombatant from "./mouse-combantant.js";
+import MouseCombat from "./mouse-combat.js";
+import MouseCombatTracker from "./mouse-combat-tracker.js";
 
 /* -------------------------------------------- */
 /*  Foundry VTT Initialization                  */
@@ -28,10 +30,6 @@ Hooks.once("init", async function() {
    * Set an initiative formula for the system. This will be updated later.
    * @type {String}
    */
-  CONFIG.Combat.initiative = {
-    formula: "1d20",
-    decimals: 2
-  };
 
   let RollCount = 0
 
@@ -48,8 +46,19 @@ Hooks.once("init", async function() {
   // Define custom Entity classes
   CONFIG.Actor.documentClass = MouseGuardActor;
   CONFIG.Item.documentClass = MouseGuardItem;
-
   CONFIG.Dice.rolls.push(MouseRoll);
+
+  
+  CONFIG.Combatant.documentClass = MouseCombatant;
+  CONFIG.Combat.documentClass = MouseCombat;
+  CONFIG.ui.combat = MouseCombatTracker;
+
+  CONFIG.Combat.initiative = {
+    formula: "1d20",
+    decimals: 2
+  };
+
+
   
   // Register sheet application classes
   Actors.unregisterSheet("core", ActorSheet);
@@ -202,11 +211,15 @@ Hooks.on('renderSidebarTab', (app, html, data) => {
         spoofed.key = 'Enter';
         html.find('#chat-message').trigger(spoofed);
         */
-
+        let actor = game.user.character ?? canvas.tokens.controlled[0]?.actor;
+        
         var roll = new MouseRoll(game.mouseguard.RollCount+"dmcs>3");
         roll.evaluate({async: true});
-        roll.toMessage();
-        console.log(roll);
+        roll.toMessage({
+          user: game.user.id,
+          speaker: ChatMessage.getSpeaker({actor: actor})
+        });
+
         game.mouseguard.RollCount = 0;
         updateDisplay(0);
       }
@@ -216,7 +229,10 @@ Hooks.on('renderSidebarTab', (app, html, data) => {
    });
 });
 
-
+Hooks.once("ready", async () => {
+  //const cTracker = new ConflictTracker(undefined, {  });
+  //cTracker.render(true);
+});
 
 function updateDisplay(count) {
   //let $mouse_rolls = html.find('.mouse-dice-roll');
