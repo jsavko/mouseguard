@@ -24,7 +24,7 @@
 
         <nav class="encounters flexrow">
             {{#if user.isGM}}
-            <a class="combat-control" title="{{localize 'COMBAT.RollAll'}}" data-control="rollAll" {{#unless turns}}disabled{{/unless}}>
+            <a class="combat-control" title="{{localize 'COMBAT.askMove'}}" data-control="askMove" {{#unless turns}}disabled{{/unless}}>
                 <i class="fas fa-users"></i>
             </a>
             <a class="combat-control" title="{{localize 'COMBAT.askGoal'}}" data-control="askGoal" {{#unless turns}}disabled{{/unless}}>
@@ -53,7 +53,11 @@
             {{/if}}
         </nav>
         <div class="flexcol">
-            {{combat.Goal}}
+            {{#if combat.data.flags.mouseguard.goal}}
+            <h3>{{combat.data.flags.mouseguard.goal}}</h3>
+            {{else}}
+            <h3>Goal Not Set</h3>
+            {{/if}}
         </div>
     </header>
 
@@ -79,8 +83,18 @@
                         <img class="token-effect" src="{{this}}"/>
                         {{/each}}
                     </div>
+
                 </div>
             </div>
+
+
+                {{#if this.flags.mouseguard.Moves}}
+                    {{#each this.flags.mouseguard.Moves}}
+                    <div class="token-resource">
+                        {{this.move}}
+                    </div>
+                    {{/each}}
+                {{/if}}
 
             {{#if this.hasResource}}
             <div class="token-resource">
@@ -88,12 +102,7 @@
             </div>
             {{/if}}
 
-            <div class="token-initiative">
-                {{#if this.flags.mouseguard.ConflictCaptain}}
-                {{else if this.owner}}
 
-                {{/if}}
-            </div>
         </li>
         {{/each}}
     </ol>

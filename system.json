@@ -4,9 +4,10 @@
   "description": "A system for playing the Mouse Guard RPG in Foundry VTT.",
   "version": "0.0.3",
   "minimumCoreVersion": "0.8.4",
-  "compatibleCoreVersion": "0.8.8",
-  "author": "Atropos",
+  "compatibleCoreVersion": "0.8.9",
+  "author": "LostPhoenix",
   "esmodules": ["dist/mouseguard.js"],
+  "socket": true,
   "styles": ["styles/mouseguard.css", "dist/mouseguard.css"],
   "packs": [],
   "languages": [

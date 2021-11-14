@@ -26,6 +26,15 @@ export class MouseDie extends Die {
 }
 
 
+/* Other Dice Faces Maybe?
+        "1": '<img src="systems/mouseguard/assets/dice/dicesnake.webp" />',
+        "2": '<img src="systems/mouseguard/assets/dice/dicesnake.webp" />',
+        "3": '<img src="systems/mouseguard/assets/dice/dicesnake.webp" />',
+        "4": '<img src="systems/mouseguard/assets/dice/dicesword.webp" />',
+        "5": '<img src="systems/mouseguard/assets/dice/dicesword.webp" />',
+        "6": '<img src="systems/mouseguard/assets/dice/diceaxe.webp" />'
+*/
+
 
 const mouseChatData = async (roll, chatOptions) => {
     const isPrivate = chatOptions.isPrivate;

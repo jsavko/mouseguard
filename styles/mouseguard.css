@@ -271,3 +271,11 @@
 .message-sender {
   font-family: 'Germania One', cursive;
 }
+
+.mouse_conflict h2 {
+  font-family: 'Germania One', cursive;
+}
+.mouse_conflict input{
+  font-size: large;
+  margin-bottom: 20px;
+}

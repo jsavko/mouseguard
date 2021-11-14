@@ -4095,14 +4095,18 @@ var MouseCombatant = class extends Combatant {
     return this.getFlag("mouseguard", "ConflictCaptain");
   }
   async setConflictCaptain(value) {
-    return this.setFlag("swade", "ConflictCaptain", value);
+    return this.setFlag("mouseguard", "ConflictCaptain", value);
+  }
+  async SetMove(move) {
+    this.setFlag("mouseguard", "Moves", move);
   }
   async _preCreate(data, options, user) {
     await super._preCreate(data, options, user);
     this.data.update({
       flags: {
         mouseguard: {
-          ConflictCaptain: false
+          ConflictCaptain: false,
+          Moves: []
         }
       }
     });
@@ -4125,7 +4129,7 @@ var MouseCombat = class extends Combat {
     return this.getFlag("mouseguard", "ConflictCaptain");
   }
   async setConflictCaptain(value) {
-    return this.setFlag("swade", "ConflictCaptain", value);
+    return this.setFlag("mouseguard", "ConflictCaptain", value);
   }
   async _preCreate(data, options, user) {
     await super._preCreate(data, options, user);
@@ -4146,11 +4150,44 @@ var MouseCombat = class extends Combat {
       return false;
     }
     if (goal == null) {
-      console.log("I need a goal");
+      ui.notifications.error("A Goal must be defined to start a combat. Sending Goal Request to Conflict Captain");
+      this.askGoal();
       return false;
     }
-    if (!!goal == false && CC)
+    if (!!goal != false && CC)
       return this.update({ round: 1, turn: 0 });
+    console.log("nope");
+  }
+  getCCPlayer() {
+    let combatant = this.combatants.get(this.getConflictCaptain);
+    let actor = game.actors.get(combatant.data.actorId);
+    let player;
+    Object.keys(actor.data.permission).forEach((key) => {
+      if (actor.data.permission[key] == 3) {
+        let user = game.users.get(key);
+        if (!user.isGM)
+          player = user;
+      }
+    });
+    return player;
+  }
+  async askGoal() {
+    let player = this.getCCPlayer();
+    console.log(player);
+    await game.socket.emit("system.mouseguard", { action: "askGoal", combat: this }, { recipients: [player.data._id] });
+  }
+  async askMove() {
+    let data = { combat: this };
+    let actors = [];
+    let combatants = this.combatants.filter((comb) => comb.actor.type == "character");
+    console.log(combatants);
+    Object.keys(combatants).forEach((key) => {
+      actors.push({ combatant: combatants[key]._id, name: combatants[key].token.data.name });
+    });
+    data.actors = actors;
+    data.action = "askMoves";
+    let player = this.getCCPlayer();
+    await game.socket.emit("system.mouseguard", data, { recipients: [player.data._id] });
   }
 };
 
@@ -4168,19 +4205,15 @@ var MouseCombatTracker = class extends CombatTracker {
     return [
       {
         name: "COMBAT.ConflictCaptain",
-        icon: '<i class="fas fa-dice-d20"></i>',
+        icon: '<i class="fas fa-crown"></i>',
         callback: (li) => {
           const combatant = this.viewed.combatants.get(li.data("combatant-id"));
-          console.log("captain: " + !!this.viewed.data.flags.mouseguard.ConflictCaptain);
-          console.log(combatant.id);
           if (this.viewed.data.flags.mouseguard.ConflictCaptain == combatant.id) {
-            console.log("Toggling Captain to Off");
             this.viewed.setFlag("mouseguard", "ConflictCaptain", NaN);
             return combatant.setFlag("mouseguard", "ConflictCaptain", false);
           }
           if (!!this.viewed.data.flags.mouseguard.ConflictCaptain == false) {
             if (combatant) {
-              console.log("New Captain");
               this.viewed.setFlag("mouseguard", "ConflictCaptain", li.data("combatant-id"));
               return combatant.setFlag("mouseguard", "ConflictCaptain", true);
             }
@@ -4195,6 +4228,15 @@ var MouseCombatTracker = class extends CombatTracker {
         name: "COMBAT.CombatantUpdate",
         icon: '<i class="fas fa-edit"></i>',
         callback: this._onConfigureCombatant.bind(this)
+      },
+      {
+        name: "Console.Log",
+        icon: '<i class="fas fa-edit"></i>',
+        callback: (li) => {
+          const combatant = this.viewed.combatants.get(li.data("combatant-id"));
+          if (combatant)
+            console.log(combatant);
+        }
       },
       {
         name: "COMBAT.CombatantRemove",
@@ -4293,6 +4335,85 @@ var MouseCombatTracker = class extends CombatTracker {
   }
 };
 
+// module/socket.js
+var MouseSocket = class {
+  static async askGoal(data) {
+    data.this = this;
+    renderTemplate("systems/mouseguard/templates/parts/conflict-manager.hbs", data).then((dlg) => {
+      new Dialog({
+        title: `Conflict Manager`,
+        content: dlg,
+        buttons: {
+          ok: {
+            label: "Apply",
+            callback: async (html) => {
+              data.this.goalManager(html, data);
+            }
+          },
+          cancel: {
+            label: "Cancel"
+          }
+        }
+      }).render(true);
+    });
+  }
+  static async goalManager(html, data) {
+    let conflictGoal = html.find("#conflict_goal")[0].value;
+    await game.socket.emit("system.mouseguard", { action: "setGoal", combat: data.combat._id, goal: conflictGoal });
+  }
+  static async setGoal(data) {
+    if (game.user.isGM) {
+      console.log(data);
+      let combat = game.combats.get(data.combat);
+      combat.setFlag("mouseguard", "goal", data.goal);
+      console.log(combat);
+    }
+  }
+  static async askMoves(data) {
+    renderTemplate("systems/mouseguard/templates/parts/conflict-move-manager.hbs", data).then((dlg) => {
+      new Dialog({
+        title: `Conflict Manager`,
+        content: dlg,
+        buttons: {
+          ok: {
+            label: "Apply",
+            callback: async (html) => {
+              let Move1Actor = html.find("#move0-actor")[0].value;
+              let Move1Move = html.find(".move0:checked").val();
+              let Move2Actor = html.find("#move1-actor")[0].value;
+              let Move2Move = html.find(".move1:checked").val();
+              let Move3Actor = html.find("#move2-actor")[0].value;
+              let Move3Move = html.find(".move2:checked").val();
+              let CombatantData = { [Move1Actor]: [], [Move2Actor]: [], [Move3Actor]: [] };
+              CombatantData[Move1Actor].push({ move: Move1Move, combatant: Move1Actor });
+              CombatantData[Move2Actor].push({ move: Move2Move, combatant: Move2Actor });
+              CombatantData[Move3Actor].push({ move: Move3Move, combatant: Move3Actor });
+              let moveData = { action: "setMoves", combat: data.combat, data: CombatantData };
+              await game.socket.emit("system.mouseguard", moveData);
+            }
+          },
+          cancel: {
+            label: "Cancel"
+          }
+        }
+      }).render(true);
+    });
+  }
+  static async moveManger(html, data) {
+  }
+  static async setMoves(data) {
+    if (game.user.isGM) {
+      console.log(data);
+      let combat = game.combats.get(data.combat._id);
+      let x = Object.keys(data.data).length;
+      for (const key of Object.keys(data.data)) {
+        let combantant = combat.combatants.get(key);
+        await combantant.setFlag("mouseguard", "Moves", data.data[key]);
+      }
+    }
+  }
+};
+
 // module/mouseguard.js
 Hooks.once("init", async function() {
   console.log(`Initializing MouseGuard MouseGuard System`);
@@ -4355,6 +4476,16 @@ Hooks.once("init", async function() {
 Hooks.once("init", async function() {
   CONFIG.Dice.terms["m"] = MouseDie;
   CONFIG.Dice.terms["6"] = MouseDie;
+  game.socket.on("system.mouseguard", (data) => {
+    if (data.action === "askGoal")
+      MouseSocket.askGoal(data);
+    if (data.action === "setGoal")
+      MouseSocket.setGoal(data);
+    if (data.action === "askMoves")
+      MouseSocket.askMoves(data);
+    if (data.action === "setMoves")
+      MouseSocket.setMoves(data);
+  });
 });
 Hooks.once("diceSoNiceReady", (dice3d) => {
   let dicetheme = "mouseguard";
@@ -4435,6 +4566,12 @@ function updateDisplay(count) {
   }
   mouse_rolls.innerHTML = theHTML;
 }
+Handlebars.registerHelper("times", function(n, block) {
+  var accum = "";
+  for (var i = 0; i < n; ++i)
+    accum += block.fn(i);
+  return accum;
+});
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation.
 

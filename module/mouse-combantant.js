@@ -33,7 +33,12 @@ export default class MouseCombatant extends Combatant {
     }
 
     async setConflictCaptain(value) {
-        return this.setFlag('swade', 'ConflictCaptain', value);
+        return this.setFlag('mouseguard', 'ConflictCaptain', value);
+    }
+
+
+    async SetMove(move) { 
+        this.setFlag('mouseguard','Moves',move);
     }
 
     async _preCreate(data, options, user) {
@@ -42,6 +47,7 @@ export default class MouseCombatant extends Combatant {
             flags: {
                 mouseguard: {
                     ConflictCaptain: false,
+                    Moves: [],
                 },
             },
         });

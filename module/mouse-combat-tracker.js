@@ -28,15 +28,12 @@ export default class MouseCombatTracker extends CombatTracker {
         return [
             {
                 name: "COMBAT.ConflictCaptain",
-                icon: '<i class="fas fa-dice-d20"></i>',
+                icon: '<i class="fas fa-crown"></i>',
                 callback: li => {
                     const combatant = this.viewed.combatants.get(li.data("combatant-id"));
-                    console.log('captain: ' +!!this.viewed.data.flags.mouseguard.ConflictCaptain)
-                    console.log(combatant.id)
 
                     if (this.viewed.data.flags.mouseguard.ConflictCaptain == combatant.id) {
                         //Unset if self
-                        console.log('Toggling Captain to Off')
                         this.viewed.setFlag('mouseguard','ConflictCaptain', NaN)
                         return combatant.setFlag('mouseguard','ConflictCaptain',false)
                     } 
@@ -44,7 +41,6 @@ export default class MouseCombatTracker extends CombatTracker {
                         // New Captain Never had an old one
                         if ( combatant ) {
                             //Set Flag on New Captain
-                            console.log('New Captain');
                             this.viewed.setFlag('mouseguard','ConflictCaptain', li.data("combatant-id"))
                             return combatant.setFlag('mouseguard','ConflictCaptain',true)
                         }
@@ -65,6 +61,14 @@ export default class MouseCombatTracker extends CombatTracker {
             callback: this._onConfigureCombatant.bind(this)
           },
           {
+            name: "Console.Log",
+            icon: '<i class="fas fa-edit"></i>',
+            callback: li => {
+                const combatant = this.viewed.combatants.get(li.data("combatant-id"));
+                if ( combatant ) console.log(combatant);
+              }
+          },
+          {
             name: "COMBAT.CombatantRemove",
             icon: '<i class="fas fa-trash"></i>',
             callback: li => {
@@ -74,7 +78,6 @@ export default class MouseCombatTracker extends CombatTracker {
           }
         ];
       }
-
 
 
 

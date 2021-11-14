@@ -1,0 +1,36 @@
+<div class="mouse_conflict">
+<h2 >Please Assign Moves</h2>
+    <table class="tg">
+    <thead>
+    <tr>
+        <th class="tg-0lax">Move 1</th>
+        <th class="tg-0lax">Move 2</th>
+        <th class="tg-0lax">Move 3</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        {{#times 3}}
+        <td class="tg-0lax">
+            <select id="move{{this}}-actor">
+            {{#each ../actors}}
+                <option {{#if (eq @index ../this)}} selected {{/if}} value="{{combatant}}">{{name}}</option>
+            {{/each}}
+            </select>
+        </td>
+        {{/times}}
+    </tr>
+    <tr>
+        {{#times 3}}
+        <td class="tg-0lax">
+            <input class="move{{this}}" type="radio" id="move{{this}}-move" name="move{{this}}" value="attack" checked > <label for="move1{{this}}">Attack</label><br> 
+            <input class="move{{this}}" type="radio" id="move{{this}}-move" name="move{{this}}" value="defend"> <label for="move1{{this}}">Defend</label><br> 
+            <input class="move{{this}}" type="radio" id="move{{this}}-move" name="move{{this}}" value="feint"> <label for="move1{{this}}">Feint</label><br> 
+            <input class="move{{this}}" type="radio" id="move{{this}}-move" name="move{{this}}" value="manuever"> <label for="move1{{this}}">Manuever</label><br> 
+
+        </td>
+        {{/times}}
+    </tr>
+    </tbody>
+    </table>
+</div>

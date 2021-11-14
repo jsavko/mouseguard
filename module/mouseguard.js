@@ -15,6 +15,8 @@ import ConflictTracker from "./conflict-tracker.js";
 import MouseCombatant from "./mouse-combantant.js";
 import MouseCombat from "./mouse-combat.js";
 import MouseCombatTracker from "./mouse-combat-tracker.js";
+import MouseSocket from "./socket.js";
+//import MouseCombatModal from "./mouse-combat-modal.js";
 
 /* -------------------------------------------- */
 /*  Foundry VTT Initialization                  */
@@ -125,6 +127,16 @@ Hooks.once("init", async function() {
 Hooks.once("init", async function () {
   CONFIG.Dice.terms["m"] = MouseDie;
   CONFIG.Dice.terms["6"] = MouseDie;
+
+  game.socket.on('system.mouseguard', (data) => {
+    if (data.action === 'askGoal') MouseSocket.askGoal(data);
+    if (data.action === 'setGoal') MouseSocket.setGoal(data);
+    if (data.action === 'askMoves') MouseSocket.askMoves(data);
+    if (data.action === 'setMoves') MouseSocket.setMoves(data);
+  })
+
+
+
 });
 
 
@@ -232,6 +244,7 @@ Hooks.on('renderSidebarTab', (app, html, data) => {
 Hooks.once("ready", async () => {
   //const cTracker = new ConflictTracker(undefined, {  });
   //cTracker.render(true);
+
 });
 
 function updateDisplay(count) {
@@ -245,5 +258,12 @@ function updateDisplay(count) {
   }
   mouse_rolls.innerHTML = theHTML;
 };
+
+Handlebars.registerHelper('times', function(n, block) {
+  var accum = '';
+  for(var i = 0; i < n; ++i)
+      accum += block.fn(i);
+  return accum;
+});
 
 
