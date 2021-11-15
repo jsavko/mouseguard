@@ -80,6 +80,41 @@ export default class MouseCombatTracker extends CombatTracker {
       }
 
 
+      activateListeners(html) {
+        super.activateListeners(html);
+      }
+
+        /**
+   * Handle a Combatant control toggle
+   * @private
+   * @param {Event} event   The originating mousedown event
+   */
+  async _onCombatantControl(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    const btn = event.currentTarget;
+    const li = btn.closest(".combatant");
+    const combat = this.viewed;
+    const c = combat.combatants.get(li.dataset.combatantId);
+
+    // Switch control action
+    switch (btn.dataset.control) {
+      
+      case "doMove":
+          return c.doMove(btn.dataset.move);
+      // Toggle combatant visibility
+      case "toggleHidden":
+        return c.update({hidden: !c.hidden});
+
+      // Toggle combatant defeated flag
+      case "toggleDefeated":
+        return this._onToggleDefeatedStatus(c);
+
+      // Roll combatant initiative
+      case "rollInitiative":
+        return combat.rollInitiative([c.id]);
+    }
+  }
 
       async getData(options) {
 

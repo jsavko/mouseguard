@@ -54,6 +54,18 @@ export default class MouseCombatant extends Combatant {
     }
 
 
+    async doMove(id){
+        console.log('do move on combatant ' + id )
+        let Moves = this.getFlag('mouseguard', 'Moves');
+        console.log(Moves);
+        let theMove = Moves.filter(item => (item.id == id));
+        console.log(theMove[0].move);
+        let otherMoves  = Moves.filter(item => (item.id !== id));
+        console.log(otherMoves);
+        this.SetMove(otherMoves);
+    }
+
+
 
 }
 

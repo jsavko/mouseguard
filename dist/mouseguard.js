@@ -4111,6 +4111,16 @@ var MouseCombatant = class extends Combatant {
       }
     });
   }
+  async doMove(id) {
+    console.log("do move on combatant " + id);
+    let Moves = this.getFlag("mouseguard", "Moves");
+    console.log(Moves);
+    let theMove = Moves.filter((item2) => item2.id == id);
+    console.log(theMove[0].move);
+    let otherMoves = Moves.filter((item2) => item2.id !== id);
+    console.log(otherMoves);
+    this.SetMove(otherMoves);
+  }
 };
 
 // module/mouse-combat.js
@@ -4189,6 +4199,9 @@ var MouseCombat = class extends Combat {
     let player = this.getCCPlayer();
     await game.socket.emit("system.mouseguard", data, { recipients: [player.data._id] });
   }
+  async doMove() {
+    console.log("do move");
+  }
 };
 
 // module/mouse-combat-tracker.js
@@ -4248,6 +4261,27 @@ var MouseCombatTracker = class extends CombatTracker {
         }
       }
     ];
+  }
+  activateListeners(html) {
+    super.activateListeners(html);
+  }
+  async _onCombatantControl(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    const btn = event.currentTarget;
+    const li = btn.closest(".combatant");
+    const combat = this.viewed;
+    const c = combat.combatants.get(li.dataset.combatantId);
+    switch (btn.dataset.control) {
+      case "doMove":
+        return c.doMove(btn.dataset.move);
+      case "toggleHidden":
+        return c.update({ hidden: !c.hidden });
+      case "toggleDefeated":
+        return this._onToggleDefeatedStatus(c);
+      case "rollInitiative":
+        return combat.rollInitiative([c.id]);
+    }
   }
   async getData(options) {
     const combat = this.viewed;
@@ -4385,9 +4419,9 @@ var MouseSocket = class {
               let Move3Actor = html.find("#move2-actor")[0].value;
               let Move3Move = html.find(".move2:checked").val();
               let CombatantData = { [Move1Actor]: [], [Move2Actor]: [], [Move3Actor]: [] };
-              CombatantData[Move1Actor].push({ move: Move1Move, combatant: Move1Actor });
-              CombatantData[Move2Actor].push({ move: Move2Move, combatant: Move2Actor });
-              CombatantData[Move3Actor].push({ move: Move3Move, combatant: Move3Actor });
+              CombatantData[Move1Actor].push({ id: randomID(), move: Move1Move, combatant: Move1Actor });
+              CombatantData[Move2Actor].push({ id: randomID(), move: Move2Move, combatant: Move2Actor });
+              CombatantData[Move3Actor].push({ id: randomID(), move: Move3Move, combatant: Move3Actor });
               let moveData = { action: "setMoves", combat: data.combat, data: CombatantData };
               await game.socket.emit("system.mouseguard", moveData);
             }

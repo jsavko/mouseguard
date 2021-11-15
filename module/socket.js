@@ -62,11 +62,10 @@ export default class MouseSocket {
                             let Move3Actor = html.find("#move2-actor")[0].value;
                             let Move3Move = html.find(".move2:checked").val()  //$('input[name="name_of_your_radiobutton"]:checked').val();
                              //console.log(moveData);
-
                             let CombatantData = {[Move1Actor]:[], [Move2Actor]:[], [Move3Actor]: []};
-                            CombatantData[Move1Actor].push({move: Move1Move, combatant: Move1Actor});
-                            CombatantData[Move2Actor].push({move: Move2Move, combatant: Move2Actor});
-                            CombatantData[Move3Actor].push({move: Move3Move, combatant: Move3Actor});
+                            CombatantData[Move1Actor].push({id:randomID(), move: Move1Move, combatant: Move1Actor});
+                            CombatantData[Move2Actor].push({id:randomID(),move: Move2Move, combatant: Move2Actor});
+                            CombatantData[Move3Actor].push({id:randomID(),move: Move3Move, combatant: Move3Actor});
                             let moveData = {action: 'setMoves', combat:data.combat, data: CombatantData};
 
                             //TODO:

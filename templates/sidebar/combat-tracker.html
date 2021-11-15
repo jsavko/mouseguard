@@ -87,11 +87,14 @@
                 </div>
             </div>
 
-
                 {{#if this.flags.mouseguard.Moves}}
                     {{#each this.flags.mouseguard.Moves}}
-                    <div class="token-resource">
-                        {{this.move}}
+                    <div class="flexrow">
+                        {{#if ../this.owner}}
+                        <a class="combatant-control" title="{{localize 'COMBAT.Test'}}" data-move="{{this.id}}" data-control="doMove">{{this.move}}</a>
+                        {{else}}
+                        Add Move Icon
+                        {{/if}}
                     </div>
                     {{/each}}
                 {{/if}}

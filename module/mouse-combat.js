@@ -124,6 +124,10 @@ export default class MouseCombat extends Combat {
         await game.socket.emit('system.mouseguard', data, {recipients: [player.data._id]});
     }
 
+    async doMove(){
+        console.log('do move')
+    }
+
 }
 
 
