@@ -181,7 +181,7 @@ Hooks.once("diceSoNiceReady", (dice3d) => {
 
 
 Hooks.on('renderSidebarTab', (app, html, data) => {
-  console.log('Render Sidebar Mouse Pool?');
+
   const template = './systems/mouseguard/templates/mousetray.html';
 
   let $chat_form = html.find('#chat-form');

@@ -279,3 +279,25 @@
   font-size: large;
   margin-bottom: 20px;
 }
+
+.combat-action { 
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  justify-content: space-around;
+}
+
+.combat-action .action-move {
+  text-align: right;
+  flex: 0 0 100%;
+  position: relative;
+  margin: 0;
+  line-height: 24px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.1);
+  border: 1px solid #999;
+  border-radius: 3px;
+  box-shadow: 0 0 2px #FFF inset;
+  word-break: break-all;
+}

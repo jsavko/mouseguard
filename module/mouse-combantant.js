@@ -55,14 +55,30 @@ export default class MouseCombatant extends Combatant {
 
 
     async doMove(id){
-        console.log('do move on combatant ' + id )
         let Moves = this.getFlag('mouseguard', 'Moves');
-        console.log(Moves);
+        //Get the Move being used.
         let theMove = Moves.filter(item => (item.id == id));
-        console.log(theMove[0].move);
+
+        //Send it to chat
+        let template = 'systems/mouseguard/templates/chat/combat-action.hbs';
+        let data = {actor: [this.actor][0], move: theMove[0].move};
+
+        var RollTemplate = renderTemplate(template, data).then(content => {
+            let chatData = {
+                user: game.user._id,
+                speaker: ChatMessage.getSpeaker({ actor: data.actor })
+              };
+            chatData.content = content;
+            ChatMessage.create(chatData);
+            
+        });
+
+        //Remove move from array and save other moves
         let otherMoves  = Moves.filter(item => (item.id !== id));
-        console.log(otherMoves);
         this.SetMove(otherMoves);
+
+
+
     }
 
 

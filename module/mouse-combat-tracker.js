@@ -51,8 +51,6 @@ export default class MouseCombatTracker extends CombatTracker {
 
                     //Should never get here
                      console.log(this)
-                    //console.log('combat id:' + this.viewed.data._id)
-                    //if ( combatant ) return combatant.setFlag('mouseguard','ConflictCaptain',true);
                 }
               },
           {

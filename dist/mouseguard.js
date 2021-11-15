@@ -4112,13 +4112,19 @@ var MouseCombatant = class extends Combatant {
     });
   }
   async doMove(id) {
-    console.log("do move on combatant " + id);
     let Moves = this.getFlag("mouseguard", "Moves");
-    console.log(Moves);
     let theMove = Moves.filter((item2) => item2.id == id);
-    console.log(theMove[0].move);
+    let template = "systems/mouseguard/templates/chat/combat-action.hbs";
+    let data = { actor: [this.actor][0], move: theMove[0].move };
+    var RollTemplate = renderTemplate(template, data).then((content) => {
+      let chatData = {
+        user: game.user._id,
+        speaker: ChatMessage.getSpeaker({ actor: data.actor })
+      };
+      chatData.content = content;
+      ChatMessage.create(chatData);
+    });
     let otherMoves = Moves.filter((item2) => item2.id !== id);
-    console.log(otherMoves);
     this.SetMove(otherMoves);
   }
 };
@@ -4164,9 +4170,11 @@ var MouseCombat = class extends Combat {
       this.askGoal();
       return false;
     }
-    if (!!goal != false && CC)
+    if (!!goal != false && CC) {
+      this.askMove();
       return this.update({ round: 1, turn: 0 });
-    console.log("nope");
+    }
+    return false;
   }
   getCCPlayer() {
     let combatant = this.combatants.get(this.getConflictCaptain);
@@ -4183,14 +4191,12 @@ var MouseCombat = class extends Combat {
   }
   async askGoal() {
     let player = this.getCCPlayer();
-    console.log(player);
     await game.socket.emit("system.mouseguard", { action: "askGoal", combat: this }, { recipients: [player.data._id] });
   }
   async askMove() {
     let data = { combat: this };
     let actors = [];
     let combatants = this.combatants.filter((comb) => comb.actor.type == "character");
-    console.log(combatants);
     Object.keys(combatants).forEach((key) => {
       actors.push({ combatant: combatants[key]._id, name: combatants[key].token.data.name });
     });
@@ -4198,9 +4204,6 @@ var MouseCombat = class extends Combat {
     data.action = "askMoves";
     let player = this.getCCPlayer();
     await game.socket.emit("system.mouseguard", data, { recipients: [player.data._id] });
-  }
-  async doMove() {
-    console.log("do move");
   }
 };
 
@@ -4397,10 +4400,8 @@ var MouseSocket = class {
   }
   static async setGoal(data) {
     if (game.user.isGM) {
-      console.log(data);
       let combat = game.combats.get(data.combat);
       combat.setFlag("mouseguard", "goal", data.goal);
-      console.log(combat);
     }
   }
   static async askMoves(data) {
@@ -4437,7 +4438,6 @@ var MouseSocket = class {
   }
   static async setMoves(data) {
     if (game.user.isGM) {
-      console.log(data);
       let combat = game.combats.get(data.combat._id);
       let x = Object.keys(data.data).length;
       for (const key of Object.keys(data.data)) {
@@ -4551,7 +4551,6 @@ Hooks.once("diceSoNiceReady", (dice3d) => {
   });
 });
 Hooks.on("renderSidebarTab", (app, html, data) => {
-  console.log("Render Sidebar Mouse Pool?");
   const template = "./systems/mouseguard/templates/mousetray.html";
   let $chat_form = html.find("#chat-form");
   renderTemplate(template).then((c) => {

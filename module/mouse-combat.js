@@ -60,8 +60,11 @@ export default class MouseCombat extends Combat {
             return false;
         }
 
-        if (!!goal != false && CC ) return this.update({round: 1, turn: 0});
-        console.log('nope');
+        if (!!goal != false && CC ){
+            this.askMove();
+            return this.update({round: 1, turn: 0});  
+        } 
+        return false;
       }    
 
     getCCPlayer() {
@@ -82,27 +85,8 @@ export default class MouseCombat extends Combat {
     }
 
     async askGoal() {
-        /*
-        let combatant = this.combatants.get(this.getConflictCaptain);
-        let actor = game.actors.get(combatant.data.actorId);
-        let player;
-
-        // Loop through permisisons looking for not GM
-        Object.keys(actor.data.permission).forEach(key => {
-            if(actor.data.permission[key] == 3){
-                //Check if GM if not it's owner
-                let user = game.users.get(key);
-                if (!user.isGM) player = user;
-            }
-        });
-
-        //console.log(player)
-        //console.log("Emitting to " + player.data._id)
-        */
         let player = this.getCCPlayer();
-        console.log(player);
         await game.socket.emit('system.mouseguard', {action: "askGoal", combat:this}, {recipients: [player.data._id]});
-        //console.log('Ask Player of ' + player.data.name + " for goal")
     }
 
     async askMove() { 
@@ -111,9 +95,7 @@ export default class MouseCombat extends Combat {
         let actors = [];
         //combat.combatants.filter( comb => comb.actor.type == "type" )
         let combatants = this.combatants.filter( comb => comb.actor.type == "character" );
-        console.log(combatants);
         Object.keys(combatants).forEach(key => {
-            //let adata = {actor: data.turns[key].data.tokenId, name:token.data.name}
             actors.push({combatant: combatants[key]._id, name:combatants[key].token.data.name})
         });
 
@@ -124,9 +106,7 @@ export default class MouseCombat extends Combat {
         await game.socket.emit('system.mouseguard', data, {recipients: [player.data._id]});
     }
 
-    async doMove(){
-        console.log('do move')
-    }
+
 
 }
 
