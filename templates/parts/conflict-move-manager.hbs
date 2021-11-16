@@ -1,5 +1,5 @@
 <div class="mouse_conflict">
-<h2 >Please Assign Moves</h2>
+<h2 >{{localize "COMBAT.SelectMove"}}</h2>
     <table class="tg">
     <thead>
     <tr>
@@ -23,10 +23,10 @@
     <tr>
         {{#times 3}}
         <td class="tg-0lax">
-            <input class="move{{this}}" type="radio" id="move{{this}}-move" name="move{{this}}" value="attack" checked > <label for="move1{{this}}">Attack</label><br> 
-            <input class="move{{this}}" type="radio" id="move{{this}}-move" name="move{{this}}" value="defend"> <label for="move1{{this}}">Defend</label><br> 
-            <input class="move{{this}}" type="radio" id="move{{this}}-move" name="move{{this}}" value="feint"> <label for="move1{{this}}">Feint</label><br> 
-            <input class="move{{this}}" type="radio" id="move{{this}}-move" name="move{{this}}" value="maneuver"> <label for="move1{{this}}">Maneuver</label><br> 
+            <input class="move{{this}}" type="radio" id="move{{this}}-move1" name="move{{this}}-move" value="attack" checked > <label for="move{{this}}-move1">{{localize "COMBAT.attack"}}</label><br> 
+            <input class="move{{this}}" type="radio" id="move{{this}}-move2" name="move{{this}}-move" value="defend"> <label for="move{{this}}-move2">{{localize "COMBAT.defend"}}</label><br> 
+            <input class="move{{this}}" type="radio" id="move{{this}}-move3" name="move{{this}}-move" value="feint"> <label for="move{{this}}-move3">{{localize "COMBAT.feint"}}</label><br> 
+            <input class="move{{this}}" type="radio" id="move{{this}}-move4" name="move{{this}}-move" value="maneuver"> <label for="move{{this}}-move4">{{localize "COMBAT.maneuver"}}</label><br> 
 
         </td>
         {{/times}}

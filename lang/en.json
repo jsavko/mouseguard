@@ -103,12 +103,22 @@
   "MOUSEGUARD.UsedAgainst": "Used Against",
   "MOUSEGUARD.TraitBenefits": "Trait Benefits",
   "MOUSEGUARD.TraitBenefitsSub": "Level 1: +1D per session; Level 2: +1D twice per session; Level 3: Reroll failed dice once per session.",
+  "MOUSEGUARD.Send": "Send",
+  "MOUSEGUARD.RollDice": "Roll Dice",
+  "MOUSEGUARD.DicePool": "Modify Dice Pool",
+  "MOUSEGUARD.DicePoolTT": "Right Click +1, Left Click -1",
 
   "COMBAT.ConflictCaptain":"Toggle Conflict Captain",
-  "COMBAT.askGoal":"Ask Conflict Captain for the Goal"
-
-
-
+  "COMBAT.askGoal":"Ask Conflict Captain for the Goal",
+  "COMBAT.attack":"Attack",
+  "COMBAT.feint":"Feint",
+  "COMBAT.defend":"Defend",
+  "COMBAT.feint":"Feint",
+  "COMBAT.maneuver":"Maneuver",
+  "COMBAT.SelectMove":"Please Assign Moves",
+  "COMBAT.PlaysCard": "Plays an Action Card",
+  "COMBAT.askMove":"Ask Conflict Captain for Moves",
+  "COMBAT.Goal":"What is the Goal of this Conflict?"
 
 
 

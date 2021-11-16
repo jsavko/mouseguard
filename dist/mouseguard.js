@@ -4411,7 +4411,7 @@ var MouseSocket = class {
         content: dlg,
         buttons: {
           ok: {
-            label: "Apply",
+            label: game.i18n.localize("MOUSEGUARD.Send"),
             callback: async (html) => {
               let Move1Actor = html.find("#move0-actor")[0].value;
               let Move1Move = html.find(".move0:checked").val();
@@ -4586,24 +4586,33 @@ Hooks.on("renderSidebarTab", (app, html, data) => {
         updateDisplay(0);
       }
     });
+    updateDisplay(game.mouseguard.RollCount);
   });
 });
 Hooks.once("ready", async () => {
 });
 function updateDisplay(count) {
-  let mouse_rolls = document.getElementById("mouse-dice-roll");
   let diceHTML = '<li class="roll mousedie d6 "><img src="systems/mouseguard/assets/dice/sword.png" height="24" width="24"></li>';
   let theHTML = "";
   for (let i = 0; i < count; i++) {
     theHTML += diceHTML;
   }
-  mouse_rolls.innerHTML = theHTML;
+  $(".mouse-dice-roll").html(theHTML);
 }
 Handlebars.registerHelper("times", function(n, block) {
   var accum = "";
   for (var i = 0; i < n; ++i)
     accum += block.fn(i);
   return accum;
+});
+Handlebars.registerHelper("concat", function() {
+  var outStr = "";
+  for (var arg in arguments) {
+    if (typeof arguments[arg] != "object") {
+      outStr += arguments[arg];
+    }
+  }
+  return outStr;
 });
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation.

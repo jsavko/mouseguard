@@ -91,7 +91,7 @@
                     {{#each this.flags.mouseguard.Moves}}
                     <div class="flexrow">
                         {{#if ../this.owner}}
-                        <a class="combatant-control" title="{{localize 'COMBAT.Test'}}" data-move="{{this.id}}" data-control="doMove">{{this.move}}</a>
+                        <a class="combatant-control" title="{{localize (concat 'COMBAT.' this.move)}}" data-move="{{this.id}}" data-control="doMove">{{localize (concat 'COMBAT.' this.move)}}</a>
                         {{else}}
                         [Move]
                         {{/if}}

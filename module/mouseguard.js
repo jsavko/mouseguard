@@ -213,18 +213,7 @@ Hooks.on('renderSidebarTab', (app, html, data) => {
       let dataset = event.currentTarget.dataset;
       
       if (game.mouseguard.RollCount > 0){
-        /*
-        let $chat = html.find('#chat-form textarea');
-        $chat.val('/r ' + game.mouseguard.RollCount + 'dmcs>3');
-        let spoofed = $.Event('keydown');
-        spoofed.which = 13;
-        spoofed.keycode = 13;
-        spoofed.code = 'Enter';
-        spoofed.key = 'Enter';
-        html.find('#chat-message').trigger(spoofed);
-        */
         let actor = game.user.character ?? canvas.tokens.controlled[0]?.actor;
-        
         var roll = new MouseRoll(game.mouseguard.RollCount+"dmcs>3");
         roll.evaluate({async: true});
         roll.toMessage({
@@ -238,7 +227,10 @@ Hooks.on('renderSidebarTab', (app, html, data) => {
 
     });
 
+    updateDisplay(game.mouseguard.RollCount);
+
    });
+   
 });
 
 Hooks.once("ready", async () => {
@@ -249,14 +241,14 @@ Hooks.once("ready", async () => {
 
 function updateDisplay(count) {
   //let $mouse_rolls = html.find('.mouse-dice-roll');
-  let mouse_rolls =  document.getElementById("mouse-dice-roll");
   let diceHTML = '<li class="roll mousedie d6 "><img src="systems/mouseguard/assets/dice/sword.png" height="24" width="24"></li>';
   let theHTML = '';
 
   for(let i=0; i< count; i++){
     theHTML += diceHTML;
   }
-  mouse_rolls.innerHTML = theHTML;
+  //mouse_rolls.innerHTML = theHTML;
+  $(".mouse-dice-roll").html(theHTML);
 };
 
 Handlebars.registerHelper('times', function(n, block) {
@@ -264,6 +256,16 @@ Handlebars.registerHelper('times', function(n, block) {
   for(var i = 0; i < n; ++i)
       accum += block.fn(i);
   return accum;
+});
+
+Handlebars.registerHelper('concat', function() {
+  var outStr = '';
+  for(var arg in arguments){
+      if(typeof arguments[arg]!='object'){
+          outStr += arguments[arg];
+      }
+  }
+  return outStr;
 });
 
 

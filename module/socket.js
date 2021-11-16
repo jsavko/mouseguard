@@ -45,7 +45,7 @@ export default class MouseSocket {
                         content: dlg,
                         buttons: {
                         ok: {
-                            label: "Apply",
+                            label: game.i18n.localize("MOUSEGUARD.Send"),
                             callback: async (html) => {
                             //TODO: Loop this? 
                             let Move1Actor = html.find("#move0-actor")[0].value;
