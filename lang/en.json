@@ -108,7 +108,7 @@
   "MOUSEGUARD.Send": "Send",
   "MOUSEGUARD.RollDice": "Roll Dice",
   "MOUSEGUARD.DicePool": "Modify Dice Pool",
-  "MOUSEGUARD.DicePoolTT": "Right Click -1, Left Click +1",
+  "MOUSEGUARD.DicePoolTT": "Left Click +1 Die, Right Click -1 Die",
 
   "COMBAT.ConflictCaptain":"Toggle Conflict Captain",
   "COMBAT.askGoal":"Ask Conflict Captain for the Goal",

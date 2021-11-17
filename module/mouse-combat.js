@@ -87,11 +87,26 @@ export default class MouseCombat extends Combat {
     }
 
     async askGoal() {
+
+        let CC = this.data.flags.mouseguard.ConflictCaptain;
+
+        if (!CC ) {
+            ui.notifications.error("A Conflict Captain Must be set");
+            return false;
+        }
+
         let player = this.getCCPlayer();
         await game.socket.emit('system.mouseguard', {action: "askGoal", combat:this}, {recipients: [player.data._id]});
     }
 
     async askMove() { 
+
+        let CC = this.data.flags.mouseguard.ConflictCaptain;
+
+        if (!CC ) {
+            ui.notifications.error("A Conflict Captain Must be set");
+            return false;
+        }
 
         let data = {combat: this};
         let actors = [];
