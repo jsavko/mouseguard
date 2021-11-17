@@ -60,7 +60,12 @@ export default class MouseSocket {
                             CombatantData[Move3Actor].push({id:randomID(),move: Move3Move, combatant: Move3Actor});
                             let moveData = {action: 'setMoves', combat:data.combat, data: CombatantData};
 
-                            await game.socket.emit('system.mouseguard',moveData);
+                            
+                            if (data.npc == true){
+                                this.setMoves(moveData)
+                            } else { 
+                                await game.socket.emit('system.mouseguard',moveData); 
+                            }
 
                         },
                         },

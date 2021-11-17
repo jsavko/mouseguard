@@ -75,6 +75,8 @@
   "MOUSEGUARD.Health": "Health",
   "MOUSEGUARD.Resources": "Resources",
   "MOUSEGUARD.Circles": "Circles",
+  "MOUSEGUARD.WNature": "Nature (Weasel)",
+  "MOUSEGUARD.Nature": "Nature",
 
   "MOUSEGUARD.Conditions": "Conditions",
   "MOUSEGUARD.HungThurst": "Hungry, Thursty",

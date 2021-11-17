@@ -8,6 +8,7 @@ import { MouseGuardActor } from "./actor.js";
 import { MouseGuardItem } from "./item.js";
 import { MouseGuardItemSheet } from "./item-sheet.js";
 import { MouseGuardActorSheet } from "./actor-sheet.js";
+import { MouseGuardNPCActorSheet } from "./npcactor-sheet.js";
 import { preloadHandlebarsTemplates } from "./templates.js";
 import { createMouseGuardMacro } from "./macro.js";
 import { MouseDie, MouseRoll } from "./mousedie.js";
@@ -64,6 +65,8 @@ Hooks.once("init", async function() {
   
   // Register sheet application classes
   Actors.unregisterSheet("core", ActorSheet);
+  Actors.registerSheet("mouseguard", MouseGuardNPCActorSheet, { types: ["mouse","weasel","animal"], makeDefault: true });
+
   Actors.registerSheet("mouseguard", MouseGuardActorSheet, { makeDefault: true });
   Items.unregisterSheet("core", ItemSheet);
   Items.registerSheet("mouseguard", MouseGuardItemSheet, { makeDefault: true });
@@ -267,5 +270,7 @@ Handlebars.registerHelper('concat', function() {
   }
   return outStr;
 });
+
+
 
 

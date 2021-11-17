@@ -18,7 +18,7 @@ export class MouseGuardActor extends Actor {
     super.prepareData();
     const actorData = this.data;
     //console.log(actorData)
-    if (this.type === 'character') this._prepareCharacterData(this.data);
+     this._prepareCharacterData(this.data);
   }
 
 
@@ -34,17 +34,28 @@ export class MouseGuardActor extends Actor {
     //Create Abilities using localization
     
     const abilities = []
-    if (data.type === 'character' && this.itemTypes.ability.length <= 0) {
+    console.log(data.type);
+
+    let create_ability;
+
+    if ((data.type === 'character' || data.type === 'mouse') && this.itemTypes.ability.length <= 0) {
       //Setup Abilities
-      const create_ability = ["MOUSEGUARD.MNature","MOUSEGUARD.Will","MOUSEGUARD.Health","MOUSEGUARD.Resources","MOUSEGUARD.Circles"]
-      for (let i of create_ability) {
-        abilities.push({
-          name: i,
-          type: 'ability',
-        });
-      }
-      this.data.update({ items: abilities });
+      create_ability = ["MOUSEGUARD.MNature","MOUSEGUARD.Will","MOUSEGUARD.Health","MOUSEGUARD.Resources","MOUSEGUARD.Circles"]
+    } else if ((data.type === 'weasel') && this.itemTypes.ability.length <= 0) {
+      //Setup Abilities
+      create_ability = ["MOUSEGUARD.WNature","MOUSEGUARD.Will","MOUSEGUARD.Health","MOUSEGUARD.Resources","MOUSEGUARD.Circles"]
+    } else if ((data.type === 'animal') && this.itemTypes.ability.length <= 0) {
+      //Setup Abilities
+      create_ability = [game.i18n.localize("MOUSEGUARD.Nature") + " (" + data.name + ")"]
     }
+
+    for (let i of create_ability) {
+      abilities.push({
+        name: i,
+        type: 'ability',
+      });
+    }
+    this.data.update({ items: abilities });
     
   }
 

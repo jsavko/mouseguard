@@ -36,12 +36,6 @@
 	<div class="namebox">
 		<input name="name" type="text" value="{data.name}" placeholder="Name"/>
 	</div>
-	<div class="item2">
-		<input type="text" name="data.health.value" value="{data.data.health.value}" data-dtype="Number"/>
-		<span> / </span>
-		<input type="text" name="data.health.max" value="{data.data.health.max}" data-dtype="Number"/>
-		<label>HP</label>
-	</div>
 </actorhead>
 
 

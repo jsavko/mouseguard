@@ -9,6 +9,8 @@
  *
  */
 
+import MouseSocket from "./socket";
+
 export default class MouseCombat extends Combat {
 
     constructor(object={}, options={}) {
@@ -93,6 +95,7 @@ export default class MouseCombat extends Combat {
 
         let data = {combat: this};
         let actors = [];
+        let npc = [];
         //combat.combatants.filter( comb => comb.actor.type == "type" )
         let combatants = this.combatants.filter( comb => comb.actor.type == "character" );
         Object.keys(combatants).forEach(key => {
@@ -104,6 +107,20 @@ export default class MouseCombat extends Combat {
 
         let player = this.getCCPlayer();
         await game.socket.emit('system.mouseguard', data, {recipients: [player.data._id]});
+        
+        let npccombatants = this.combatants.filter( comb => comb.actor.type == "animal" );
+        Object.keys(npccombatants).forEach(key => {
+            npc.push({combatant: npccombatants[key]._id, name:npccombatants[key].token.data.name})
+        });
+        data.actors = npc
+        data.npc = true;
+        await this.askNPCMove(data);
+    }
+
+    async askNPCMove(data) { 
+        console.log(data);
+        MouseSocket.askMoves(data);
+
     }
 
 

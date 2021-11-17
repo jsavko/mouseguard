@@ -82,7 +82,6 @@ export default class MouseCombatant extends Combatant {
     }
 
 
-
 }
 
 

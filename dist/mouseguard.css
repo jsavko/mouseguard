@@ -32,16 +32,6 @@ actorhead.svelte-1e1arv input.svelte-1e1arv {
   vertical-align: bottom;
   margin-left: 2px;
 }
-.item2.svelte-1e1arv.svelte-1e1arv {
-  grid-column-start: 3;
-  grid-row-start: 2;
-  width: 100%;
-  min-width: 93px;
-  margin-top: auto;
-}
-.item2.svelte-1e1arv input.svelte-1e1arv {
-  width: 35px;
-}
 @media (min-width: 640px) {
 }
 
@@ -493,6 +483,84 @@ li.active.svelte-14or48x > span.svelte-14or48x {
 /* fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetBase.esbuild-svelte-fake-css */
 content.svelte-u0vwks {
   overflow-y: scroll;
+}
+@media all {
+}
+
+/* fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardNPCActorSheetBody.esbuild-svelte-fake-css */
+.box.svelte-1dxvsu {
+  border-radius: 0 0 .5rem .5rem;
+  border-top: 0;
+  clear: both;
+  height: 100%;
+  display: flex;
+}
+largecard.svelte-1dxvsu {
+  margin: 0 auto;
+  height: 100%;
+  width: 100%;
+  font-family: "Khula", sans-serif;
+  flex-wrap: wrap;
+  display: block;
+}
+ability.svelte-1dxvsu {
+  display: flex;
+  padding-left: 20px;
+  float: left;
+  height: 80px;
+}
+skill.svelte-1dxvsu {
+  display: flex;
+  padding-left: 20px;
+  float: left;
+  height: 80px;
+}
+wise.svelte-1dxvsu {
+  display: flex;
+  padding-left: 20px;
+  float: left;
+  height: 80px;
+}
+trait.svelte-1dxvsu {
+  display: flex;
+  padding-left: 20px;
+  float: left;
+  height: 80px;
+}
+input.svelte-1dxvsu {
+  border: none;
+  width: 40px;
+  float: left;
+  text-align: center;
+  background-color: white;
+  margin-right: 5px;
+  margin-top: 2px;
+  height: 35px;
+  font-family: "Germania One", cursive;
+  font-size: large;
+}
+h1.svelte-1dxvsu {
+  font-family: "Germania One", cursive;
+  padding-left: 30px;
+  width: 100%;
+}
+label.svelte-1dxvsu {
+  margin-top: 3px;
+  width: 100%;
+  display: block;
+  cursor: pointer;
+}
+.header.svelte-1dxvsu {
+  font-family: "Germania One", cursive;
+  font-size: large;
+  width: 100%;
+  display: block;
+}
+
+/* fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardNPCActorSheetBase.esbuild-svelte-fake-css */
+.box.svelte-1074c5j {
+  border-radius: 0 0 .5rem .5rem;
+  border-top: 0;
 }
 @media all {
 }

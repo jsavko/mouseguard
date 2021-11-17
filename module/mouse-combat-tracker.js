@@ -159,6 +159,8 @@ export default class MouseCombatTracker extends CombatTracker {
             defeated: combatant.data.defeated,
             flags: combatant.data.flags,
             hidden: combatant.hidden,
+            isFirstOwner: this.isFirstOwner(combatant.actor),
+            hasPlayerOwner: this.hasPlayerOwner(combatant.actor),
             initiative: combatant.initiative,
             hasRolled: combatant.initiative !== null,
             hasResource: resource !== null,
@@ -203,6 +205,43 @@ export default class MouseCombatTracker extends CombatTracker {
           turns: turns,
           control: combat.combatant?.players?.includes(game.user)
         });
+      }
+
+
+
+      firstOwner(doc){
+        /* null docs could mean an empty lookup, null docs are not owned by anyone */
+        if (!doc) return false;
+      
+        const gmOwners = Object.entries(doc.data.permission)
+          .filter(([id,level]) => (game.users.get(id)?.isGM && game.users.get(id)?.active) && level === 3)
+          .map(([id, level]) => id);
+        const otherOwners = Object.entries(doc.data.permission)
+          .filter(([id, level]) => (!game.users.get(id)?.isGM && game.users.get(id)?.active) && level === 3)
+          .map(([id, level])=> id);
+      
+        if(otherOwners.length > 0) return game.users.get(otherOwners[0]);
+        else return game.users.get(gmOwners[0]);
+      }
+      
+      isFirstOwner(doc){
+        console.log(this.firstOwner(doc).id)
+        return game.user.id === this.firstOwner(doc).id;
+      }
+      
+
+      hasPlayerOwner(doc) {
+        if (!doc) return false;
+      
+        const gmOwners = Object.entries(doc.data.permission)
+          .filter(([id,level]) => (game.users.get(id)?.isGM && game.users.get(id)?.active) && level === 3)
+          .map(([id, level]) => id);
+        const otherOwners = Object.entries(doc.data.permission)
+          .filter(([id, level]) => (!game.users.get(id)?.isGM && game.users.get(id)?.active) && level === 3)
+          .map(([id, level])=> id);
+      
+        if(otherOwners.length > 0) return true;
+        else return false;
       }
 
 
