@@ -2,6 +2,7 @@
 		import MouseGuardActorSheetMouseAbilities from "./MouseGuardActorSheetMouseAbilities.svelte";
 		import MouseGuardActorSheetMouseSkills from "./MouseGuardActorSheetMouseSkills.svelte";
 		import MouseGuardActorSheetMouseWises from "./MouseGuardActorSheetMouseWises.svelte";
+		import MouseGuardActorSheetMouseTraits from "./MouseGuardActorSheetMouseTraits.svelte";
 
 </script>
 
@@ -14,6 +15,9 @@
 <skill> 
 <MouseGuardActorSheetMouseSkills />
 </skill>
+<trait>
+	<MouseGuardActorSheetMouseTraits />
+</trait>
 
 <style>
 	abilities { 
@@ -30,4 +34,9 @@
 		height: 100%;
     display: flex
 	}
+	trait { 
+		clear: both;
+		display:block;
+	}
+
 </style>

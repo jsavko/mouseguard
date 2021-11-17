@@ -6,7 +6,7 @@
         //console.log ("updateRating")
 
 		const ob = {[type]:value};
-		if (type == 'rank' || type =="rating") {
+		if (type == 'rank' || type =="rating" || type=="level") {
             if (value < 1 ) ob[type] = 1;
             ob.fail = 0;
 			ob.pass = 0;

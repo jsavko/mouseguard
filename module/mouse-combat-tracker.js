@@ -225,7 +225,7 @@ export default class MouseCombatTracker extends CombatTracker {
       }
       
       isFirstOwner(doc){
-        console.log(this.firstOwner(doc).id)
+        //console.log(this.firstOwner(doc).id)
         return game.user.id === this.firstOwner(doc).id;
       }
       
