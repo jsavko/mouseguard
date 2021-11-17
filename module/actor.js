@@ -34,10 +34,9 @@ export class MouseGuardActor extends Actor {
     //Create Abilities using localization
     
     const abilities = []
-    console.log(data.type);
 
     let create_ability;
-
+    
     if ((data.type === 'character' || data.type === 'mouse') && this.itemTypes.ability.length <= 0) {
       //Setup Abilities
       create_ability = ["MOUSEGUARD.MNature","MOUSEGUARD.Will","MOUSEGUARD.Health","MOUSEGUARD.Resources","MOUSEGUARD.Circles"]
@@ -49,6 +48,7 @@ export class MouseGuardActor extends Actor {
       create_ability = [game.i18n.localize("MOUSEGUARD.Nature") + " (" + data.name + ")"]
     }
 
+  if (Object(create_ability).length > 0){
     for (let i of create_ability) {
       abilities.push({
         name: i,
@@ -56,6 +56,8 @@ export class MouseGuardActor extends Actor {
       });
     }
     this.data.update({ items: abilities });
+  }
+
     
   }
 

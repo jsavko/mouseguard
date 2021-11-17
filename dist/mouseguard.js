@@ -487,7 +487,6 @@ var MouseGuardActor = class extends Actor {
   async _preCreate(data, options, user) {
     await super._preCreate(data, options, user);
     const abilities = [];
-    console.log(data.type);
     let create_ability;
     if ((data.type === "character" || data.type === "mouse") && this.itemTypes.ability.length <= 0) {
       create_ability = ["MOUSEGUARD.MNature", "MOUSEGUARD.Will", "MOUSEGUARD.Health", "MOUSEGUARD.Resources", "MOUSEGUARD.Circles"];
@@ -496,13 +495,15 @@ var MouseGuardActor = class extends Actor {
     } else if (data.type === "animal" && this.itemTypes.ability.length <= 0) {
       create_ability = [game.i18n.localize("MOUSEGUARD.Nature") + " (" + data.name + ")"];
     }
-    for (let i of create_ability) {
-      abilities.push({
-        name: i,
-        type: "ability"
-      });
+    if (Object(create_ability).length > 0) {
+      for (let i of create_ability) {
+        abilities.push({
+          name: i,
+          type: "ability"
+        });
+      }
+      this.data.update({ items: abilities });
     }
-    this.data.update({ items: abilities });
   }
   getRollData() {
     const data = this.toObject(false).data;
@@ -6136,6 +6137,7 @@ Hooks.once("init", async function() {
   };
   Actors.unregisterSheet("core", ActorSheet);
   Actors.registerSheet("mouseguard", MouseGuardNPCActorSheet, { types: ["mouse", "weasel", "animal"], makeDefault: true });
+  console.log("Setting actor Sheet");
   Actors.registerSheet("mouseguard", MouseGuardActorSheet, { makeDefault: true });
   Items.unregisterSheet("core", ItemSheet);
   Items.registerSheet("mouseguard", MouseGuardItemSheet, { makeDefault: true });

@@ -66,7 +66,7 @@ Hooks.once("init", async function() {
   // Register sheet application classes
   Actors.unregisterSheet("core", ActorSheet);
   Actors.registerSheet("mouseguard", MouseGuardNPCActorSheet, { types: ["mouse","weasel","animal"], makeDefault: true });
-
+  console.log('Setting actor Sheet')
   Actors.registerSheet("mouseguard", MouseGuardActorSheet, { makeDefault: true });
   Items.unregisterSheet("core", ItemSheet);
   Items.registerSheet("mouseguard", MouseGuardItemSheet, { makeDefault: true });
