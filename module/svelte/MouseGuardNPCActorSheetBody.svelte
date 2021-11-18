@@ -20,7 +20,7 @@
 
 <div class="box">
 	<largecard>
-		<h1>Abilities</h1>
+		<h1>{game.i18n.localize("MOUSEGUARD.Abilities")}</h1>
 		{#each abilities as ability}
 			<ability>
 			<div name="{ability.id}">
@@ -35,7 +35,7 @@
 {#if Object(skills).length > 0}
 <div class="box">
 	<largecard>
-		<h1>Skills</h1>
+		<h1>{game.i18n.localize("MOUSEGUARD.Skills")}</h1>
 		{#each skills as skill}
 			<skill>
 			<div name="{skill.id}">
@@ -57,7 +57,7 @@
 {#if Object(traits).length > 0}
 <div class="box">
 	<largecard>
-		<h1>Traits</h1>
+		<h1>{game.i18n.localize("MOUSEGUARD.Traits")}</h1>
 		{#each traits as trait}
 			<trait>
 			<div name="{trait.id}">
@@ -77,7 +77,7 @@
 {/if}
 
 {#if Object(wises).length > 0}
-<h1>Wises</h1>
+<h1>{game.i18n.localize("MOUSEGUARD.Wises")}</h1>
 {#each wises as wise}
 	<wise>
 	<div name="{wise.id}">

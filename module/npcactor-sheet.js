@@ -150,7 +150,7 @@ export class MouseGuardNPCActorSheet extends ActorSheet {
   render(force=false, options={}) { 
     // Grab the sheetdata for both updates and new apps.
     let sheetData = this.getData();
-    console.log(sheetData)
+    //console.log(sheetData)
     // Exit if Vue has already rendered.
     if (this.app !== null) {
       let states = Application.RENDER_STATES;

@@ -13,7 +13,7 @@
 </script>
 
 <largecard>
-	<h1>Rewards</h1>
+	<h1>{game.i18n.localize("MOUSEGUARD.Rewards")}</h1>
 	<left class="left">
 		<fatebox>
 			<label class="header">{game.i18n.localize("MOUSEGUARD.Fate")}</label>
@@ -23,6 +23,10 @@
 			<label class="header">{game.i18n.localize("MOUSEGUARD.Persona")}</label>
 			<input name="data.rewards.persona" type="number" value="{data.data.rewards.persona}" placeholder="0"/>
 		</personabox>
+		<checksbox>
+			<label class="header">{game.i18n.localize("MOUSEGUARD.Checks")}</label>
+			<input name="data.rewards.check" type="number" value="{data.data.rewards.check}" placeholder="0"/>
+		</checksbox>
 	</left>
 	<right class="right">
 		<rewardbox>
@@ -151,6 +155,31 @@
 		display:block;
 		font-family: 'Germania One', cursive;
 		font-size: large;
+	}
+
+	checksbox { 
+		position: relative;
+		top:11px;
+		left: 11px;
+		width: 85px;
+		height: 125px;
+		display:block;
+		font-family: 'Germania One', cursive;
+		background-image: url("../assets/actor/Checks.svg");
+		background-repeat: no-repeat;
+		background-position-y: 24px;
+	}
+	
+	checksbox input {
+		width: 50px;
+		position: relative;
+		top: 18px;
+		left: 25px;
+		height: 50px;
+		width: 35px;
+		text-align: center;
+		font-size: large;
+		background: rgba(0, 0, 0, 0);
 	}
 
 	label {

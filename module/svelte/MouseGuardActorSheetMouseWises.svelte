@@ -17,7 +17,7 @@
 </script>
 
 <largecard>
-	<h1>Wises</h1>
+	<h1>{game.i18n.localize("MOUSEGUARD.Wises")}</h1>
 	{#each wises as wise}
 		<wise>
 		<div name="{wise.id}">

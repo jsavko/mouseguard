@@ -20,7 +20,8 @@
           "persona": 1,
           "belief": "",
           "goal": "",
-          "instinct": ""
+          "instinct": "",
+          "check":1
         }
       },
       "mouse":{

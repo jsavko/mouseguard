@@ -11,7 +11,7 @@
 	import MouseGuardActorSheetHeader from "./MouseGuardActorSheetHeader.svelte";
 	import MouseGuardNpcActorSheetBody from "./MouseGuardNPCActorSheetBody.svelte";
 	import MouseGuardActorSheetMouseSkillAbilityTab from "./MouseGuardActorSheetMouseSkillAbilityTab.svelte";
-
+	import MouseGuardEditor from "./MouseGuardEditor.svelte";
 
 	//Exports
 	export let dataStore ;

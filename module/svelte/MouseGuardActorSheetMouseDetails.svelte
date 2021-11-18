@@ -4,7 +4,7 @@
 	import { writable } from "svelte/store";
 
 	import MouseGuardActorSheetMouseRewards from "./MouseGuardActorSheetMouseRewards.svelte"; 
-
+	import MouseGuardEditor from "./MouseGuardEditor.svelte";
 
 
 	//getContext("sheetStore", dataStore);	
@@ -28,12 +28,12 @@
 		});
     return fp.browse();
 	};
-
+	
 
 </script>
 <largecard>
 		<div class="namebox">
-			<h1>Name </h1>
+			<h1>{game.i18n.localize("MOUSEGUARD.Name")} </h1>
 			<input name="name" type="text" value="{data.name}" placeholder="Name"/>
 		</div>
 		<ul>
@@ -79,10 +79,10 @@
 		</lineitem>
 		</ul>
 </largecard>
+<h1>{game.i18n.localize("MOUSEGUARD.Bio")}</h1>
+	<MouseGuardEditor target="data.biography" />
 
-<MouseGuardActorSheetMouseRewards />
-
-<style>
+<style>	
 	largecard {
 		margin: 0 auto;
 		display: inline-block;
@@ -146,5 +146,11 @@
 	lineitem input {
 		padding-top:5px;
 		pointer-events: auto; 
+	}
+
+	h1 { 
+		font-family: 'Germania One', cursive;
+		padding-left: 30px;
+		width: 100%;
 	}
 </style>

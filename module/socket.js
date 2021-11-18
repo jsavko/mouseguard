@@ -33,6 +33,7 @@ export default class MouseSocket {
     static async setGoal(data) {
         if (game.user.isGM) {
             let combat = game.combats.get(data.combat);
+            combat.setGoal(data.goal);
             combat.setFlag('mouseguard','goal',data.goal)
         }
     }

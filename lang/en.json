@@ -57,6 +57,7 @@
   "MOUSEGUARD.GoalSub": "Accomplishing a goal earns a <b>Persona Point</b>",
   "MOUSEGUARD.Instinct": "Instinct",
   "MOUSEGUARD.InstinctSub": "Playing an Instinct earns a <b>Fate Point</b>",
+  "MOUSEGUARD.Checks": "Checks",
   "MOUSEGUARD.GearTag": "Gear and Possessions",
   "MOUSEGUARD.GearTagSub": "Gear is limited to what you can carry. Possessions are kept in Lockhaven aor another location",
   "MOUSEGUARD.Contacts": "Contacts",
@@ -90,11 +91,13 @@
   "MOUSEGUARD.Sick": "Sick (Ob 4 Will)",
   "MOUSEGUARD.SickSub": "-1D to skills, Nature, WIll and Health (but not recovery)",
   
+  "MOUSEGUARD.Bio": "Biography",
   "MOUSEGUARD.Wises": "Wises",
   "MOUSEGUARD.Pass": "Pass",
   "MOUSEGUARD.Fail": "Fail",
   "MOUSEGUARD.Skills": "Skills",
   "MOUSEGUARD.Skill": "Skill",
+  "HOUSEGUARD.Abilities": "Abilities",
 
   "MOUSEGUARD.Rating": "Rating",
   "MOUSEGUARD.Advancement": "Advancement",
