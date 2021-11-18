@@ -21,15 +21,15 @@
 	let { actor, data, sheet } = $dataStore;
 
 	let items = [
-    { label: "About",
+    { label: game.i18n.localize("MOUSEGUARD.About"),
 		 value: 1,
 		 component: MouseGuardActorSheetMouseDetails
 		},
-    { label: "Abilities, Wises, Skills & Traits",
+    { label: game.i18n.localize("MOUSEGUARD.Tab2"),
 		 value: 2,
 		 component: MouseGuardActorSheetMouseSkillAbilityTab
 		},
-    { label: "Rewards",
+    { label: game.i18n.localize("MOUSEGUARD.Rewards"),
 		 value: 3,
 		 component: MouseGuardActorSheetMouseRewards
 		},

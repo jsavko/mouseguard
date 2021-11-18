@@ -35,6 +35,7 @@
   "MOUSEGUARD.Create": "Create",
   "MOUSEGUARD.New": "New",
 
+  "MOUSEGUARD.About": "About",
   "MOUSEGUARD.Name": "Name",
   "MOUSEGUARD.Age": "Age",
   "MOUSEGUARD.Parents": "Parents",
@@ -97,7 +98,8 @@
   "MOUSEGUARD.Fail": "Fail",
   "MOUSEGUARD.Skills": "Skills",
   "MOUSEGUARD.Skill": "Skill",
-  "HOUSEGUARD.Abilities": "Abilities",
+  "MOUSEGUARD.Abilities": "Abilities",
+  "MOUSEGUARD.Tab2":"Abilities, Wises, Skills & Traits",
 
   "MOUSEGUARD.Rating": "Rating",
   "MOUSEGUARD.Advancement": "Advancement",
@@ -112,6 +114,7 @@
   "MOUSEGUARD.RollDice": "Roll Dice",
   "MOUSEGUARD.DicePool": "Modify Dice Pool",
   "MOUSEGUARD.DicePoolTT": "Left Click +1 Die, Right Click -1 Die",
+  "MOUSEGUARD.Success": "Success",
 
   "COMBAT.ConflictCaptain":"Toggle Conflict Captain",
   "COMBAT.askGoal":"Ask Conflict Captain for the Goal",
@@ -123,8 +126,11 @@
   "COMBAT.SelectMove":"Please Assign Moves",
   "COMBAT.PlaysCard": "Plays an Action Card",
   "COMBAT.askMove":"Ask Conflict Captain for Moves",
-  "COMBAT.Goal":"What is the Goal of this Conflict?"
-
+  "COMBAT.Goal":"What is the Goal of this Conflict?",
+  "COMBAT.CCSet":"A Conflict Captain Has Already Been Set.",
+  "COMBAT.NeedCC":"A Conflict Captain Must Be Set.",
+  "COMBAT.NeedGoal": "A Goal must be defined to start a combat. Sending Goal Request to Conflict Captain.",
+  "COMBAT.NoGoal":"Goal: Not Set"
 
 
 

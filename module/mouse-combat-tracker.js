@@ -45,7 +45,7 @@ export default class MouseCombatTracker extends CombatTracker {
                             return combatant.setFlag('mouseguard','ConflictCaptain',true)
                         }
                     } else {
-                        ui.notifications.error("A Conflict Captain Has Already Been Set");
+                        ui.notifications.error(game.i18n.localize("COMBAT.CCSet"));
                         return false;
                     }
 

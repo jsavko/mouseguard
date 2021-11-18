@@ -53,11 +53,11 @@ export default class MouseCombat extends Combat {
         let CC = this.data.flags.mouseguard.ConflictCaptain;
 
         if (!CC ) {
-            ui.notifications.error("A Conflict Captain Must be set to start a combat");
+            ui.notifications.error(game.i18n.localize("COMBAT.NeedCC"));
             return false;
         }
         if (goal == null ) {
-            ui.notifications.error("A Goal must be defined to start a combat. Sending Goal Request to Conflict Captain");
+            ui.notifications.error(game.i18n.localize("COMBAT.NeedGoal"));
             this.askGoal();
             return false;
         }
@@ -113,7 +113,7 @@ export default class MouseCombat extends Combat {
         let CC = this.data.flags.mouseguard.ConflictCaptain;
 
         if (!CC ) {
-            ui.notifications.error("A Conflict Captain Must be set");
+            ui.notifications.error(game.i18n.localize("COMBAT.NeedCC"));
             return false;
         }
 

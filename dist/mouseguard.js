@@ -4729,17 +4729,17 @@ function instance11($$self, $$props, $$invalidate) {
   let { actor, data, sheet } = $dataStore;
   let items = [
     {
-      label: "About",
+      label: game.i18n.localize("MOUSEGUARD.About"),
       value: 1,
       component: MouseGuardActorSheetMouseDetails_default
     },
     {
-      label: "Abilities, Wises, Skills & Traits",
+      label: game.i18n.localize("MOUSEGUARD.Tab2"),
       value: 2,
       component: MouseGuardActorSheetMouseSkillAbilityTab_default
     },
     {
-      label: "Rewards",
+      label: game.i18n.localize("MOUSEGUARD.Rewards"),
       value: 3,
       component: MouseGuardActorSheetMouseRewards_default
     },
@@ -6139,11 +6139,11 @@ var MouseCombat = class extends Combat {
     let goal = this.data.flags.mouseguard.goal;
     let CC = this.data.flags.mouseguard.ConflictCaptain;
     if (!CC) {
-      ui.notifications.error("A Conflict Captain Must be set to start a combat");
+      ui.notifications.error(game.i18n.localize("COMBAT.NeedCC"));
       return false;
     }
     if (goal == null) {
-      ui.notifications.error("A Goal must be defined to start a combat. Sending Goal Request to Conflict Captain");
+      ui.notifications.error(game.i18n.localize("COMBAT.NeedGoal"));
       this.askGoal();
       return false;
     }
@@ -6184,7 +6184,7 @@ var MouseCombat = class extends Combat {
   async askMove() {
     let CC = this.data.flags.mouseguard.ConflictCaptain;
     if (!CC) {
-      ui.notifications.error("A Conflict Captain Must be set");
+      ui.notifications.error(game.i18n.localize("COMBAT.NeedCC"));
       return false;
     }
     let data = { combat: this };
@@ -6254,7 +6254,7 @@ var MouseCombatTracker = class extends CombatTracker {
               return combatant.setFlag("mouseguard", "ConflictCaptain", true);
             }
           } else {
-            ui.notifications.error("A Conflict Captain Has Already Been Set");
+            ui.notifications.error(game.i18n.localize("COMBAT.CCSet"));
             return false;
           }
           console.log(this);

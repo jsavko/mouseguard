@@ -56,7 +56,7 @@
             {{#if combat.data.flags.mouseguard.goal}}
             <h3>{{combat.data.flags.mouseguard.goal}}</h3>
             {{else}}
-            <h3>Goal: Not Set</h3>
+            <h3>{{localize 'COMBAT.NoGoal'}}</h3>
             {{/if}}
         </div>
     </header>
@@ -125,17 +125,13 @@
         {{#if user.isGM}}
             {{#if round}}
             <a class="combat-control" title="{{localize 'COMBAT.RoundPrev'}}" data-control="previousRound"><i class="fas fa-step-backward"></i></a>
-            <a class="combat-control" title="{{localize 'COMBAT.TurnPrev'}}" data-control="previousTurn"><i class="fas fa-arrow-left"></i></a>
             <a class="combat-control center" title="{{localize 'COMBAT.End'}}" data-control="endCombat">{{localize 'COMBAT.End'}}</a>
-            <a class="combat-control" title="{{localize 'COMBAT.TurnNext'}}" data-control="nextTurn"><i class="fas fa-arrow-right"></i></a>
             <a class="combat-control" title="{{localize 'COMBAT.RoundNext'}}" data-control="nextRound"><i class="fas fa-step-forward"></i></a>
             {{else}}
             <a class="combat-control center" title="{{localize 'COMBAT.Begin'}}" data-control="startCombat">{{localize 'COMBAT.Begin'}}</a>
             {{/if}}
         {{else if control}}
-        <a class="combat-control" title="{{localize 'COMBAT.TurnPrev'}}" data-control="previousTurn"><i class="fas fa-arrow-left"></i></a>
         <a class="combat-control center" title="{{localize 'COMBAT.TurnEnd'}}" data-control="nextTurn">{{localize 'COMBAT.TurnEnd'}}</a>
-        <a class="combat-control" title="{{localize 'COMBAT.TurnNext'}}" data-control="nextTurn"><i class="fas fa-arrow-right"></i></a>
         {{/if}}
     {{/if}}
     </nav>
