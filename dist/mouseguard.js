@@ -6049,7 +6049,7 @@ var MouseSocket = class {
   }
   static async goalManager(html, data) {
     let conflictGoal = html.find("#conflict_goal")[0].value;
-    await game.socket.emit("system.mouseguard", { action: "setGoal", combat: data.combat._id, goal: conflictGoal });
+    await game.socket.emit("system.mouseguard", { action: "setGoal", combat: data.combat.id, goal: conflictGoal });
   }
   static async setGoal(data) {
     if (game.user.isGM) {
@@ -6079,6 +6079,7 @@ var MouseSocket = class {
               CombatantData[Move3Actor].push({ id: randomID(), move: Move3Move, combatant: Move3Actor });
               let moveData = { action: "setMoves", combat: data.combat, data: CombatantData };
               if (data.npc == true) {
+                moveData.combat = data.combat.data;
                 this.setMoves(moveData);
               } else {
                 await game.socket.emit("system.mouseguard", moveData);
@@ -6096,11 +6097,11 @@ var MouseSocket = class {
   }
   static async setMoves(data) {
     if (game.user.isGM) {
-      let combat = game.combats.get(data.combat._id);
+      let combat = await game.combats.get(data.combat._id);
       let x = Object.keys(data.data).length;
       for (const key of Object.keys(data.data)) {
-        let combantant = combat.combatants.get(key);
-        await combantant.setFlag("mouseguard", "Moves", data.data[key]);
+        let combatant = await combat.data.combatants.get(key);
+        await combatant.setFlag("mouseguard", "Moves", data.data[key]);
       }
     }
   }
@@ -6192,19 +6193,19 @@ var MouseCombat = class extends Combat {
     let npc = [];
     let combatants = this.combatants.filter((comb) => comb.actor.type == "character");
     Object.keys(combatants).forEach((key) => {
-      actors.push({ combatant: combatants[key]._id, name: combatants[key].token.data.name });
+      actors.push({ combatant: combatants[key].id, name: combatants[key].token.data.name });
     });
     data.actors = actors;
     data.action = "askMoves";
     let player = this.getCCPlayer();
     await game.socket.emit("system.mouseguard", data, { recipients: [player.data._id] });
-    let npccombatants = this.combatants.filter((comb) => comb.actor.type == "animal");
+    let npccombatants = this.combatants.filter((comb) => comb.actor.type != "character");
     Object.keys(npccombatants).forEach((key) => {
-      npc.push({ combatant: npccombatants[key]._id, name: npccombatants[key].token.data.name });
+      npc.push({ combatant: npccombatants[key].id, name: npccombatants[key].token.data.name });
     });
     data.actors = npc;
     data.npc = true;
-    await this.askNPCMove(data);
+    await MouseSocket.askMoves(data);
   }
   async askNPCMove(data) {
     MouseSocket.askMoves(data);

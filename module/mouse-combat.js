@@ -20,6 +20,8 @@ export default class MouseCombat extends Combat {
     /** @override */
     getData() {
     const context = super.getData();
+
+    
     return context;
     }
 
@@ -123,22 +125,26 @@ export default class MouseCombat extends Combat {
         //combat.combatants.filter( comb => comb.actor.type == "type" )
         let combatants = this.combatants.filter( comb => comb.actor.type == "character" );
         Object.keys(combatants).forEach(key => {
-            actors.push({combatant: combatants[key]._id, name:combatants[key].token.data.name})
+            actors.push({combatant: combatants[key].id, name:combatants[key].token.data.name})
         });
 
         data.actors = actors;
         data.action = "askMoves";
+        
 
         let player = this.getCCPlayer();
+        
         await game.socket.emit('system.mouseguard', data, {recipients: [player.data._id]});
         
-        let npccombatants = this.combatants.filter( comb => comb.actor.type == "animal" );
+        let npccombatants = this.combatants.filter( comb => comb.actor.type != "character" );
         Object.keys(npccombatants).forEach(key => {
-            npc.push({combatant: npccombatants[key]._id, name:npccombatants[key].token.data.name})
+            npc.push({combatant: npccombatants[key].id, name:npccombatants[key].token.data.name})
         });
+
         data.actors = npc
         data.npc = true;
-        await this.askNPCMove(data);
+
+        await MouseSocket.askMoves(data);
     }
 
     async askNPCMove(data) { 

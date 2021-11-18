@@ -1,7 +1,6 @@
 export default class MouseSocket {
 
     static async askGoal(data) { 
-        
         data.this = this;
         renderTemplate('systems/mouseguard/templates/parts/conflict-manager.hbs', data).then(dlg => {
             new Dialog({
@@ -26,19 +25,21 @@ export default class MouseSocket {
 
     static async goalManager(html,data) {
         let conflictGoal = html.find("#conflict_goal")[0].value;
-        await game.socket.emit('system.mouseguard', {action: "setGoal", combat: data.combat._id, goal:conflictGoal });
+        await game.socket.emit('system.mouseguard', {action: "setGoal", combat: data.combat.id, goal:conflictGoal });
     }
 
 
     static async setGoal(data) {
         if (game.user.isGM) {
             let combat = game.combats.get(data.combat);
+            
             combat.setGoal(data.goal);
             combat.setFlag('mouseguard','goal',data.goal)
         }
     }
 
-    static async askMoves(data) { 
+    static async askMoves(data) {
+        //console.log(data);
  
         renderTemplate('systems/mouseguard/templates/parts/conflict-move-manager.hbs', data).then(dlg => {
                     new Dialog({
@@ -63,6 +64,7 @@ export default class MouseSocket {
 
                             
                             if (data.npc == true){
+                                moveData.combat = data.combat.data;
                                 this.setMoves(moveData)
                             } else { 
                                 await game.socket.emit('system.mouseguard',moveData); 
@@ -84,11 +86,12 @@ export default class MouseSocket {
 
     static async setMoves(data) {
         if (game.user.isGM) {
-            let combat = game.combats.get(data.combat._id);
+            let combat = await(game.combats.get(data.combat._id));
             let x = Object.keys(data.data).length;
+
             for (const key of Object.keys(data.data)) {
-                let combantant = combat.combatants.get(key);
-                await  combantant.setFlag('mouseguard','Moves',data.data[key]);
+                let combatant = await(combat.data.combatants.get(key));
+                await combatant.setFlag('mouseguard','Moves',data.data[key]);
             }
         }
     }
