@@ -1,12 +1,14 @@
-<div class="combat-action">
-    {{#if mission}}
-        <div class="action-move">
-            <span>Draws a Random Mission</span>
-        </div>
-        <div style="text-align: center;">
-                    <br />
-             {{mission}}
-        </div>           
+<div class="table-draw" data-table-id="{{ table.id }}">
+    {{#if description}}
+    <div class="table-description">{{{description}}}</div>
     {{/if}}
+    {{{ rollHTML }}}
+    <ol class="table-results">
+        {{#if mission}}
+        <li class="table-result flexrow" data-result-id="{{ this.id }}">
+            <img class="result-image" src="icons/svg/d20-black.svg"/>
+            <div class="result-text">{{{mission}}}</div>
+        </li>
+        {{/if}}
+    </ol>
 </div>
-

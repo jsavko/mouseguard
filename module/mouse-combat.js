@@ -50,6 +50,13 @@ export default class MouseCombat extends Combat {
     }
 
 
+    static _canUpdate(user, doc, data) {
+        if ( user.isGM ) return true;                     // GM users can do anything
+        const updateKeys = new Set(Object.keys(data));
+        const allowedKeys = new Set(["_id", "initiative", "flags"]);
+        return updateKeys.isSubset(allowedKeys)           // Players may only update initiative scores and flags
+      }
+
     async startCombat() {
         let goal = this.data.flags.mouseguard.goal;
         let CC = this.data.flags.mouseguard.ConflictCaptain;
