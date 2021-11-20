@@ -114,6 +114,7 @@ export default class MouseCombatTracker extends CombatTracker {
     }
   }
 
+  /*
       async getData(options) {
 
         // Get the combat encounters possible for the viewed Scene
@@ -207,6 +208,20 @@ export default class MouseCombatTracker extends CombatTracker {
         });
       }
 
+      */
+
+      async getData(options) {
+        
+        let context = await super.getData(options);
+
+        for ( let [i, combatant] of context.combat.turns.entries() ) {
+          context.turns[i].flags = combatant.data.flags;
+          context.turns[i].isFirstOwner = this.isFirstOwner(combatant.actor);
+          context.turns[i].hasPlayerOwner =  this.hasPlayerOwner(combatant.actor);
+      }
+        console.log(context);
+        return context;
+      }
 
 
       firstOwner(doc){

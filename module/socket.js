@@ -52,6 +52,7 @@ export default class MouseSocket {
                             label: game.i18n.localize("MOUSEGUARD.Send"),
                             callback: async (html) => {
                             //TODO: Loop this? 
+                            let error = false;
                             let Move1Actor = html.find("#move0-actor")[0].value;
                             let Move1Move = html.find(".move0:checked").val()  //$('input[name="name_of_your_radiobutton"]:checked').val();
                             let Move2Actor = html.find("#move1-actor")[0].value;
@@ -59,6 +60,16 @@ export default class MouseSocket {
                             let Move3Actor = html.find("#move2-actor")[0].value;
                             let Move3Move = html.find(".move2:checked").val()  //$('input[name="name_of_your_radiobutton"]:checked').val();
                             let CombatantData = {[Move1Actor]:[], [Move2Actor]:[], [Move3Actor]: []};
+                            if ((!!Move1Move) == false) error = true;
+                            if ((!!Move2Move) == false) error = true;
+                            if ((!!Move3Move) == false) error = true;
+
+                                if (error) { 
+                                    ui.notifications.error("An error occured while setting your moves. Please select new moves.");
+                                    this.askMoves(data)
+                                    return
+                                }
+
                             CombatantData[Move1Actor].push({id:randomID(), move: Move1Move, combatant: Move1Actor});
                             CombatantData[Move2Actor].push({id:randomID(),move: Move2Move, combatant: Move2Actor});
                             CombatantData[Move3Actor].push({id:randomID(),move: Move3Move, combatant: Move3Actor});

@@ -6223,6 +6223,7 @@ var MouseSocket = class {
           ok: {
             label: game.i18n.localize("MOUSEGUARD.Send"),
             callback: async (html) => {
+              let error = false;
               let Move1Actor = html.find("#move0-actor")[0].value;
               let Move1Move = html.find(".move0:checked").val();
               let Move2Actor = html.find("#move1-actor")[0].value;
@@ -6230,6 +6231,17 @@ var MouseSocket = class {
               let Move3Actor = html.find("#move2-actor")[0].value;
               let Move3Move = html.find(".move2:checked").val();
               let CombatantData = { [Move1Actor]: [], [Move2Actor]: [], [Move3Actor]: [] };
+              if (!!Move1Move == false)
+                error = true;
+              if (!!Move2Move == false)
+                error = true;
+              if (!!Move3Move == false)
+                error = true;
+              if (error) {
+                ui.notifications.error("An error occured while setting your moves. Please select new moves.");
+                this.askMoves(data);
+                return;
+              }
               CombatantData[Move1Actor].push({ id: randomID(), move: Move1Move, combatant: Move1Actor });
               CombatantData[Move2Actor].push({ id: randomID(), move: Move2Move, combatant: Move2Actor });
               CombatantData[Move3Actor].push({ id: randomID(), move: Move3Move, combatant: Move3Actor });
@@ -6471,90 +6483,14 @@ var MouseCombatTracker = class extends CombatTracker {
     }
   }
   async getData(options) {
-    const combat = this.viewed;
-    const hasCombat = combat !== null;
-    const combats = this.combats;
-    const currentIdx = combats.findIndex((c) => c === combat);
-    const previousId = currentIdx > 0 ? combats[currentIdx - 1].id : null;
-    const nextId = currentIdx < combats.length - 1 ? combats[currentIdx + 1].id : null;
-    const settings = game.settings.get("core", Combat.CONFIG_SETTING);
-    const data = {
-      user: game.user,
-      combats,
-      currentIndex: currentIdx + 1,
-      combatCount: combats.length,
-      hasCombat,
-      combat,
-      turns: [],
-      previousId,
-      nextId,
-      started: this.started,
-      control: false,
-      settings
-    };
-    if (!hasCombat)
-      return data;
-    let hasDecimals = false;
-    const turns = [];
-    for (let [i, combatant] of combat.turns.entries()) {
-      if (!combatant.visible)
-        continue;
-      const resource = combatant.permission >= CONST.ENTITY_PERMISSIONS.OBSERVER ? combatant.resource : null;
-      const turn = {
-        id: combatant.id,
-        name: combatant.name,
-        img: combatant.img,
-        active: i === combat.turn,
-        owner: combatant.isOwner,
-        defeated: combatant.data.defeated,
-        flags: combatant.data.flags,
-        hidden: combatant.hidden,
-        isFirstOwner: this.isFirstOwner(combatant.actor),
-        hasPlayerOwner: this.hasPlayerOwner(combatant.actor),
-        initiative: combatant.initiative,
-        hasRolled: combatant.initiative !== null,
-        hasResource: resource !== null,
-        resource
-      };
-      if (Number.isFinite(turn.initiative) && !Number.isInteger(turn.initiative))
-        hasDecimals = true;
-      turn.css = [
-        turn.active ? "active" : "",
-        turn.hidden ? "hidden" : "",
-        turn.defeated ? "defeated" : ""
-      ].join(" ").trim();
-      if (VideoHelper.hasVideoExtension(turn.img)) {
-        if (combatant._thumb)
-          turn.img = combatant._thumb;
-        else
-          turn.img = combatant._thumb = await game.video.createThumbnail(combatant.img, { width: 100, height: 100 });
-      }
-      turn.effects = new Set();
-      if (combatant.token) {
-        combatant.token.data.effects.forEach((e) => turn.effects.add(e));
-        if (combatant.token.data.overlayEffect)
-          turn.effects.add(combatant.token.data.overlayEffect);
-      }
-      if (combatant.actor)
-        combatant.actor.temporaryEffects.forEach((e) => {
-          if (e.getFlag("core", "statusId") === CONFIG.Combat.defeatedStatusId)
-            turn.defeated = true;
-          else if (e.data.icon)
-            turn.effects.add(e.data.icon);
-        });
-      turns.push(turn);
+    let context = await super.getData(options);
+    for (let [i, combatant] of context.combat.turns.entries()) {
+      context.turns[i].flags = combatant.data.flags;
+      context.turns[i].isFirstOwner = this.isFirstOwner(combatant.actor);
+      context.turns[i].hasPlayerOwner = this.hasPlayerOwner(combatant.actor);
     }
-    const precision = CONFIG.Combat.initiative.decimals;
-    turns.forEach((t) => {
-      if (t.initiative !== null)
-        t.initiative = t.initiative.toFixed(hasDecimals ? precision : 0);
-    });
-    return foundry.utils.mergeObject(data, {
-      round: combat.data.round,
-      turn: combat.data.turn,
-      turns,
-      control: combat.combatant?.players?.includes(game.user)
-    });
+    console.log(context);
+    return context;
   }
   firstOwner(doc) {
     if (!doc)
