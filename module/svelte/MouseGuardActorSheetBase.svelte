@@ -11,6 +11,7 @@
 	import MouseGuardActorSheetMouseRewards from "./MouseGuardActorSheetMouseRewards.svelte"; 
 	import MouseGuardActorSheetMouseAbilities from "./MouseGuardActorSheetMouseAbilities.svelte";
 	import MouseGuardActorSheetMouseSkillAbilityTab from "./MouseGuardActorSheetMouseSkillAbilityTab.svelte";
+	import MouseGuardActorSheetMouseDispo from "./MouseGuardActorSheetMouseDispo.svelte";
 	import Tabs from "./Tabs.svelte";
 
 
@@ -33,9 +34,9 @@
 		 value: 3,
 		 component: MouseGuardActorSheetMouseRewards
 		},
-	{ label: "Other",
+	{ label: game.i18n.localize("MOUSEGUARD.Disposition"),
 		 value: 4,
-		 component: MouseGuardActorSheetPortrait
+		 component: MouseGuardActorSheetMouseDispo
 		}
   ];
 

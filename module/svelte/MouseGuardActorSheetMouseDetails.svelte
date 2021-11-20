@@ -3,7 +3,8 @@
 	import { slide } from "svelte/transition";
 	import { writable } from "svelte/store";
 
-	import MouseGuardActorSheetMouseRewards from "./MouseGuardActorSheetMouseRewards.svelte"; 
+	import MouseGuardActorSheetPortrait from "./MouseGuardActorSheetMousePortrait.svelte"; 
+
 	import MouseGuardEditor from "./MouseGuardEditor.svelte";
 
 
@@ -31,6 +32,7 @@
 	
 
 </script>
+<MouseGuardActorSheetPortrait /> 
 <largecard>
 		<div class="namebox">
 			<h1>{game.i18n.localize("MOUSEGUARD.Name")} </h1>

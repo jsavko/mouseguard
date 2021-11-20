@@ -28,14 +28,16 @@
         TextEditor.create(
             {
                 target: editorContent,
+                invalid_elements : 'iframe',
                 save_onsavecallback: (m) => {
                     //const submit = $sheetData.sheet._onSubmit(new Event("mcesave"));
                     //mce.remove();
                     mce = m;
                     const isDirty = mce.getContent() !== editor.initial;
+                    mce.remove()
+                    // Regex remove the iframe
                     if ( isDirty )  $sheetData.sheet._onSubmit(new Event("mcesave"));
                     mce.destroy();
-                    console.log('saving')
                 }
 
             }

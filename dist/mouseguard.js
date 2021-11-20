@@ -15,9 +15,9 @@ var require_ = __commonJS({
   }
 });
 
-// fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseRewards.esbuild-svelte-fake-css
+// fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMousePortrait.esbuild-svelte-fake-css
 var require_2 = __commonJS({
-  "fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseRewards.esbuild-svelte-fake-css"(exports, module) {
+  "fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMousePortrait.esbuild-svelte-fake-css"(exports, module) {
     module.exports = {};
   }
 });
@@ -36,64 +36,78 @@ var require_4 = __commonJS({
   }
 });
 
-// fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseAbilities.esbuild-svelte-fake-css
+// fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseRewards.esbuild-svelte-fake-css
 var require_5 = __commonJS({
+  "fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseRewards.esbuild-svelte-fake-css"(exports, module) {
+    module.exports = {};
+  }
+});
+
+// fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseAbilities.esbuild-svelte-fake-css
+var require_6 = __commonJS({
   "fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseAbilities.esbuild-svelte-fake-css"(exports, module) {
     module.exports = {};
   }
 });
 
 // fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseSkills.esbuild-svelte-fake-css
-var require_6 = __commonJS({
+var require_7 = __commonJS({
   "fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseSkills.esbuild-svelte-fake-css"(exports, module) {
     module.exports = {};
   }
 });
 
 // fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseWises.esbuild-svelte-fake-css
-var require_7 = __commonJS({
+var require_8 = __commonJS({
   "fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseWises.esbuild-svelte-fake-css"(exports, module) {
     module.exports = {};
   }
 });
 
 // fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseTraits.esbuild-svelte-fake-css
-var require_8 = __commonJS({
+var require_9 = __commonJS({
   "fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseTraits.esbuild-svelte-fake-css"(exports, module) {
     module.exports = {};
   }
 });
 
 // fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseSkillAbilityTab.esbuild-svelte-fake-css
-var require_9 = __commonJS({
+var require_10 = __commonJS({
   "fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseSkillAbilityTab.esbuild-svelte-fake-css"(exports, module) {
     module.exports = {};
   }
 });
 
+// fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseDispo.esbuild-svelte-fake-css
+var require_11 = __commonJS({
+  "fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseDispo.esbuild-svelte-fake-css"(exports, module) {
+    module.exports = {};
+  }
+});
+
 // fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/Tabs.esbuild-svelte-fake-css
-var require_10 = __commonJS({
+var require_12 = __commonJS({
   "fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/Tabs.esbuild-svelte-fake-css"(exports, module) {
     module.exports = {};
   }
 });
 
 // fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetBase.esbuild-svelte-fake-css
-var require_11 = __commonJS({
+var require_13 = __commonJS({
   "fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetBase.esbuild-svelte-fake-css"(exports, module) {
     module.exports = {};
   }
 });
 
 // fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardNPCActorSheetBody.esbuild-svelte-fake-css
-var require_12 = __commonJS({
+var require_14 = __commonJS({
   "fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardNPCActorSheetBody.esbuild-svelte-fake-css"(exports, module) {
     module.exports = {};
   }
 });
 
 // fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardNPCActorSheetBase.esbuild-svelte-fake-css
-var require_13 = __commonJS({
+var require_15 = __commonJS({
   "fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardNPCActorSheetBase.esbuild-svelte-fake-css"(exports, module) {
     module.exports = {};
   }
@@ -1086,7 +1100,7 @@ function make_dirty(component, i) {
   }
   component.$$.dirty[i / 31 | 0] |= 1 << i % 31;
 }
-function init(component, options, instance14, create_fragment15, not_equal, props, dirty = [-1]) {
+function init(component, options, instance15, create_fragment16, not_equal, props, dirty = [-1]) {
   const parent_component = current_component;
   set_current_component(component);
   const $$ = component.$$ = {
@@ -1107,7 +1121,7 @@ function init(component, options, instance14, create_fragment15, not_equal, prop
     skip_bound: false
   };
   let ready = false;
-  $$.ctx = instance14 ? instance14(component, options.props || {}, (i, ret, ...rest) => {
+  $$.ctx = instance15 ? instance15(component, options.props || {}, (i, ret, ...rest) => {
     const value = rest.length ? rest[0] : ret;
     if ($$.ctx && not_equal($$.ctx[i], $$.ctx[i] = value)) {
       if (!$$.skip_bound && $$.bound[i])
@@ -1120,7 +1134,7 @@ function init(component, options, instance14, create_fragment15, not_equal, prop
   $$.update();
   ready = true;
   run_all($$.before_update);
-  $$.fragment = create_fragment15 ? create_fragment15($$.ctx) : false;
+  $$.fragment = create_fragment16 ? create_fragment16($$.ctx) : false;
   if (options.target) {
     if (options.hydrate) {
       start_hydrating();
@@ -1354,8 +1368,680 @@ var MouseGuardActorSheetHeader = class extends SvelteComponent {
 var MouseGuardActorSheetHeader_default = MouseGuardActorSheetHeader;
 require_();
 
-// module/svelte/MouseGuardActorSheetMouseRewards.svelte
+// module/svelte/MouseGuardActorSheetMousePortrait.svelte
 function create_fragment2(ctx) {
+  let portrait;
+  let img;
+  let img_src_value;
+  let img_title_value;
+  let mounted;
+  let dispose;
+  return {
+    c() {
+      portrait = element("portrait");
+      img = element("img");
+      attr(img, "class", "profile-img");
+      if (img.src !== (img_src_value = ctx[0].img))
+        attr(img, "src", img_src_value);
+      attr(img, "data-edit", "img");
+      attr(img, "title", img_title_value = ctx[0].name);
+      attr(img, "height", "100");
+      attr(img, "width", "100");
+      attr(portrait, "class", "svelte-m1dtfi");
+    },
+    m(target, anchor) {
+      insert(target, portrait, anchor);
+      append(portrait, img);
+      if (!mounted) {
+        dispose = listen(img, "click", ctx[2]);
+        mounted = true;
+      }
+    },
+    p(ctx2, [dirty]) {
+      if (dirty & 1 && img.src !== (img_src_value = ctx2[0].img)) {
+        attr(img, "src", img_src_value);
+      }
+      if (dirty & 1 && img_title_value !== (img_title_value = ctx2[0].name)) {
+        attr(img, "title", img_title_value);
+      }
+    },
+    i: noop,
+    o: noop,
+    d(detaching) {
+      if (detaching)
+        detach(portrait);
+      mounted = false;
+      dispose();
+    }
+  };
+}
+function instance2($$self, $$props, $$invalidate) {
+  let $sheetData;
+  let sheetData = getContext("sheetStore");
+  component_subscribe($$self, sheetData, (value) => $$invalidate(3, $sheetData = value));
+  let { actor, sheet } = $sheetData;
+  let data;
+  const filePicker = (event) => {
+    const attr2 = event.currentTarget.dataset.edit;
+    const current = getProperty(data, attr2);
+    const fp = new FilePicker({
+      type: "image",
+      current,
+      callback: (path) => {
+        actor.update({ [attr2]: path });
+      },
+      top: sheet.position.top + 40,
+      left: sheet.position.left + 10
+    });
+    return fp.browse();
+  };
+  $$self.$$.update = () => {
+    if ($$self.$$.dirty & 8) {
+      $:
+        $$invalidate(0, data = $sheetData.data);
+    }
+  };
+  return [data, sheetData, filePicker, $sheetData];
+}
+var MouseGuardActorSheetMousePortrait = class extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance2, create_fragment2, safe_not_equal, {});
+  }
+};
+var MouseGuardActorSheetMousePortrait_default = MouseGuardActorSheetMousePortrait;
+require_2();
+
+// module/svelte/MouseGuardEditor.svelte
+function create_if_block(ctx) {
+  let a;
+  let mounted;
+  let dispose;
+  return {
+    c() {
+      a = element("a");
+      a.innerHTML = `<i class="fas fa-edit"></i>`;
+      attr(a, "class", "editor-edit");
+    },
+    m(target, anchor) {
+      insert(target, a, anchor);
+      if (!mounted) {
+        dispose = listen(a, "click", prevent_default(ctx[6]));
+        mounted = true;
+      }
+    },
+    p: noop,
+    d(detaching) {
+      if (detaching)
+        detach(a);
+      mounted = false;
+      dispose();
+    }
+  };
+}
+function create_fragment3(ctx) {
+  let div1;
+  let span;
+  let t0;
+  let div0;
+  let div0_resize_listener;
+  let t1;
+  let if_block = ctx[1].editable && create_if_block(ctx);
+  return {
+    c() {
+      div1 = element("div");
+      span = element("span");
+      t0 = space();
+      div0 = element("div");
+      t1 = space();
+      if (if_block)
+        if_block.c();
+      attr(div0, "class", "editor-content svelte-1xgaaf4");
+      attr(div0, "data-edit", ctx[0]);
+      add_render_callback(() => ctx[9].call(div0));
+      attr(div1, "class", "editor svelte-1xgaaf4");
+    },
+    m(target, anchor) {
+      insert(target, div1, anchor);
+      append(div1, span);
+      append(div1, t0);
+      append(div1, div0);
+      div0.innerHTML = ctx[4];
+      ctx[8](div0);
+      div0_resize_listener = add_resize_listener(div0, ctx[9].bind(div0));
+      append(div1, t1);
+      if (if_block)
+        if_block.m(div1, null);
+    },
+    p(ctx2, [dirty]) {
+      if (dirty & 16)
+        div0.innerHTML = ctx2[4];
+      ;
+      if (dirty & 1) {
+        attr(div0, "data-edit", ctx2[0]);
+      }
+      if (ctx2[1].editable) {
+        if (if_block) {
+          if_block.p(ctx2, dirty);
+        } else {
+          if_block = create_if_block(ctx2);
+          if_block.c();
+          if_block.m(div1, null);
+        }
+      } else if (if_block) {
+        if_block.d(1);
+        if_block = null;
+      }
+    },
+    i: noop,
+    o: noop,
+    d(detaching) {
+      if (detaching)
+        detach(div1);
+      ctx[8](null);
+      div0_resize_listener();
+      if (if_block)
+        if_block.d();
+    }
+  };
+}
+function instance3($$self, $$props, $$invalidate) {
+  let $sheetData;
+  let { target } = $$props;
+  let sheetData = getContext("sheetStore");
+  component_subscribe($$self, sheetData, (value) => $$invalidate(1, $sheetData = value));
+  let { actor, sheet } = $sheetData;
+  let data;
+  const TextEditor = globalThis.TextEditor;
+  let editorContent;
+  let width, height;
+  let mce;
+  let rawContent = getProperty($sheetData?.data, target) ?? "";
+  let content = TextEditor.enrichHTML(rawContent);
+  let editor = {};
+  onDestroy(async () => {
+    if (mce)
+      mce.destroy();
+  });
+  const createEditor = () => {
+    TextEditor.create({
+      target: editorContent,
+      invalid_elements: "iframe",
+      save_onsavecallback: (m) => {
+        mce = m;
+        const isDirty = mce.getContent() !== editor.initial;
+        mce.remove();
+        if (isDirty)
+          $sheetData.sheet._onSubmit(new Event("mcesave"));
+        mce.destroy();
+      }
+    }).then((m) => {
+      editor.m = m;
+      mce = m;
+      editor.changed = false;
+      editor.active = true;
+      mce.focus();
+      mce.on("change", (ev) => editor.changed = true);
+    });
+  };
+  function div0_binding($$value) {
+    binding_callbacks[$$value ? "unshift" : "push"](() => {
+      editorContent = $$value;
+      $$invalidate(2, editorContent);
+    });
+  }
+  function div0_elementresize_handler() {
+    height = this.clientHeight;
+    $$invalidate(3, height);
+  }
+  $$self.$$set = ($$props2) => {
+    if ("target" in $$props2)
+      $$invalidate(0, target = $$props2.target);
+  };
+  $$self.$$.update = () => {
+    if ($$self.$$.dirty & 2) {
+      $:
+        data = $sheetData.data;
+    }
+    if ($$self.$$.dirty & 131) {
+      $: {
+        $$invalidate(7, rawContent = getProperty($sheetData?.data, target));
+        $$invalidate(4, content = TextEditor.enrichHTML(rawContent));
+      }
+    }
+  };
+  return [
+    target,
+    $sheetData,
+    editorContent,
+    height,
+    content,
+    sheetData,
+    createEditor,
+    rawContent,
+    div0_binding,
+    div0_elementresize_handler
+  ];
+}
+var MouseGuardEditor = class extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance3, create_fragment3, safe_not_equal, { target: 0 });
+  }
+};
+var MouseGuardEditor_default = MouseGuardEditor;
+require_3();
+
+// module/svelte/MouseGuardActorSheetMouseDetails.svelte
+function create_fragment4(ctx) {
+  let mouseguardactorsheetportrait;
+  let t0;
+  let largecard;
+  let div;
+  let h10;
+  let t2;
+  let input0;
+  let input0_value_value;
+  let t3;
+  let ul;
+  let lineitem0;
+  let label0;
+  let t6;
+  let input1;
+  let input1_value_value;
+  let t7;
+  let lineitem1;
+  let label1;
+  let t10;
+  let input2;
+  let input2_value_value;
+  let input2_placeholder_value;
+  let t11;
+  let lineitem2;
+  let label2;
+  let t14;
+  let input3;
+  let input3_value_value;
+  let input3_placeholder_value;
+  let t15;
+  let lineitem3;
+  let label3;
+  let t18;
+  let input4;
+  let input4_value_value;
+  let input4_placeholder_value;
+  let t19;
+  let lineitem4;
+  let label4;
+  let t22;
+  let input5;
+  let input5_value_value;
+  let input5_placeholder_value;
+  let t23;
+  let lineitem5;
+  let label5;
+  let t26;
+  let input6;
+  let input6_value_value;
+  let input6_placeholder_value;
+  let t27;
+  let lineitem6;
+  let label6;
+  let t30;
+  let input7;
+  let input7_value_value;
+  let input7_placeholder_value;
+  let t31;
+  let lineitem7;
+  let label7;
+  let t34;
+  let input8;
+  let input8_value_value;
+  let input8_placeholder_value;
+  let t35;
+  let lineitem8;
+  let label8;
+  let t38;
+  let input9;
+  let input9_value_value;
+  let input9_placeholder_value;
+  let t39;
+  let lineitem9;
+  let label9;
+  let t42;
+  let input10;
+  let input10_value_value;
+  let input10_placeholder_value;
+  let t43;
+  let h11;
+  let t45;
+  let mouseguardeditor;
+  let current;
+  mouseguardactorsheetportrait = new MouseGuardActorSheetMousePortrait_default({});
+  mouseguardeditor = new MouseGuardEditor_default({ props: { target: "data.biography" } });
+  return {
+    c() {
+      create_component(mouseguardactorsheetportrait.$$.fragment);
+      t0 = space();
+      largecard = element("largecard");
+      div = element("div");
+      h10 = element("h1");
+      h10.textContent = `${game.i18n.localize("MOUSEGUARD.Name")}`;
+      t2 = space();
+      input0 = element("input");
+      t3 = space();
+      ul = element("ul");
+      lineitem0 = element("lineitem");
+      label0 = element("label");
+      label0.textContent = `${game.i18n.localize("MOUSEGUARD.Age")}:`;
+      t6 = space();
+      input1 = element("input");
+      t7 = space();
+      lineitem1 = element("lineitem");
+      label1 = element("label");
+      label1.textContent = `${game.i18n.localize("MOUSEGUARD.Parents")}:`;
+      t10 = space();
+      input2 = element("input");
+      t11 = space();
+      lineitem2 = element("lineitem");
+      label2 = element("label");
+      label2.textContent = `${game.i18n.localize("MOUSEGUARD.Home")}:`;
+      t14 = space();
+      input3 = element("input");
+      t15 = space();
+      lineitem3 = element("lineitem");
+      label3 = element("label");
+      label3.textContent = `${game.i18n.localize("MOUSEGUARD.Senior")}:`;
+      t18 = space();
+      input4 = element("input");
+      t19 = space();
+      lineitem4 = element("lineitem");
+      label4 = element("label");
+      label4.textContent = `${game.i18n.localize("MOUSEGUARD.Fur")}:`;
+      t22 = space();
+      input5 = element("input");
+      t23 = space();
+      lineitem5 = element("lineitem");
+      label5 = element("label");
+      label5.textContent = `${game.i18n.localize("MOUSEGUARD.Mentor")}:`;
+      t26 = space();
+      input6 = element("input");
+      t27 = space();
+      lineitem6 = element("lineitem");
+      label6 = element("label");
+      label6.textContent = `${game.i18n.localize("MOUSEGUARD.Cloak")}:`;
+      t30 = space();
+      input7 = element("input");
+      t31 = space();
+      lineitem7 = element("lineitem");
+      label7 = element("label");
+      label7.textContent = `${game.i18n.localize("MOUSEGUARD.Friend")}:`;
+      t34 = space();
+      input8 = element("input");
+      t35 = space();
+      lineitem8 = element("lineitem");
+      label8 = element("label");
+      label8.textContent = `${game.i18n.localize("MOUSEGUARD.GuardRank")}:`;
+      t38 = space();
+      input9 = element("input");
+      t39 = space();
+      lineitem9 = element("lineitem");
+      label9 = element("label");
+      label9.textContent = `${game.i18n.localize("MOUSEGUARD.Enemy")}:`;
+      t42 = space();
+      input10 = element("input");
+      t43 = space();
+      h11 = element("h1");
+      h11.textContent = `${game.i18n.localize("MOUSEGUARD.Bio")}`;
+      t45 = space();
+      create_component(mouseguardeditor.$$.fragment);
+      attr(h10, "class", "svelte-xlkhh3");
+      attr(input0, "name", "name");
+      attr(input0, "type", "text");
+      input0.value = input0_value_value = ctx[0].name;
+      attr(input0, "placeholder", "Name");
+      attr(input0, "class", "svelte-xlkhh3");
+      attr(div, "class", "namebox svelte-xlkhh3");
+      attr(label0, "class", "svelte-xlkhh3");
+      attr(input1, "name", "data.details.age");
+      attr(input1, "type", "number");
+      input1.value = input1_value_value = ctx[0].data.details.age;
+      attr(input1, "placeholder", "0");
+      attr(input1, "class", "svelte-xlkhh3");
+      attr(lineitem0, "class", "svelte-xlkhh3");
+      attr(label1, "class", "svelte-xlkhh3");
+      attr(input2, "name", "data.details.parents");
+      attr(input2, "type", "text");
+      input2.value = input2_value_value = ctx[0].data.details.parents;
+      attr(input2, "placeholder", input2_placeholder_value = game.i18n.localize("MOUSEGUARD.Parents"));
+      attr(input2, "class", "svelte-xlkhh3");
+      attr(lineitem1, "class", "svelte-xlkhh3");
+      attr(label2, "class", "svelte-xlkhh3");
+      attr(input3, "name", "data.details.home");
+      attr(input3, "type", "text");
+      input3.value = input3_value_value = ctx[0].data.details.home;
+      attr(input3, "placeholder", input3_placeholder_value = game.i18n.localize("MOUSEGUARD.Home"));
+      attr(input3, "class", "svelte-xlkhh3");
+      attr(lineitem2, "class", "svelte-xlkhh3");
+      attr(label3, "class", "svelte-xlkhh3");
+      attr(input4, "name", "data.details.senior_artisan");
+      attr(input4, "type", "text");
+      input4.value = input4_value_value = ctx[0].data.details.senior_artisan;
+      attr(input4, "placeholder", input4_placeholder_value = game.i18n.localize("MOUSEGUARD.Senior"));
+      attr(input4, "class", "svelte-xlkhh3");
+      attr(lineitem3, "class", "svelte-xlkhh3");
+      attr(label4, "class", "svelte-xlkhh3");
+      attr(input5, "name", "data.details.fur_color");
+      attr(input5, "type", "text");
+      input5.value = input5_value_value = ctx[0].data.details.fur_color;
+      attr(input5, "placeholder", input5_placeholder_value = game.i18n.localize("MOUSEGUARD.Fur"));
+      attr(input5, "class", "svelte-xlkhh3");
+      attr(lineitem4, "class", "svelte-xlkhh3");
+      attr(label5, "class", "svelte-xlkhh3");
+      attr(input6, "name", "data.details.mentor");
+      attr(input6, "type", "text");
+      input6.value = input6_value_value = ctx[0].data.details.mentor;
+      attr(input6, "placeholder", input6_placeholder_value = game.i18n.localize("MOUSEGUARD.Mentor"));
+      attr(input6, "class", "svelte-xlkhh3");
+      attr(lineitem5, "class", "svelte-xlkhh3");
+      attr(label6, "class", "svelte-xlkhh3");
+      attr(input7, "name", "data.details.cloak_color");
+      attr(input7, "type", "text");
+      input7.value = input7_value_value = ctx[0].data.details.cloak_color;
+      attr(input7, "placeholder", input7_placeholder_value = game.i18n.localize("MOUSEGUARD.Cloak"));
+      attr(input7, "class", "svelte-xlkhh3");
+      attr(lineitem6, "class", "svelte-xlkhh3");
+      attr(label7, "class", "svelte-xlkhh3");
+      attr(input8, "name", "data.details.friend");
+      attr(input8, "type", "text");
+      input8.value = input8_value_value = ctx[0].data.details.friend;
+      attr(input8, "placeholder", input8_placeholder_value = game.i18n.localize("MOUSEGUARD.Friend"));
+      attr(input8, "class", "svelte-xlkhh3");
+      attr(lineitem7, "class", "svelte-xlkhh3");
+      attr(label8, "class", "svelte-xlkhh3");
+      attr(input9, "name", "data.details.guard_rank");
+      attr(input9, "type", "text");
+      input9.value = input9_value_value = ctx[0].data.details.guard_rank;
+      attr(input9, "placeholder", input9_placeholder_value = game.i18n.localize("MOUSEGUARD.GuardRank"));
+      attr(input9, "class", "svelte-xlkhh3");
+      attr(lineitem8, "class", "svelte-xlkhh3");
+      attr(label9, "class", "svelte-xlkhh3");
+      attr(input10, "name", "data.details.enemy");
+      attr(input10, "type", "text");
+      input10.value = input10_value_value = ctx[0].data.details.enemy;
+      attr(input10, "placeholder", input10_placeholder_value = game.i18n.localize("MOUSEGUARD.Enemy"));
+      attr(input10, "class", "svelte-xlkhh3");
+      attr(lineitem9, "class", "svelte-xlkhh3");
+      attr(largecard, "class", "svelte-xlkhh3");
+      attr(h11, "class", "svelte-xlkhh3");
+    },
+    m(target, anchor) {
+      mount_component(mouseguardactorsheetportrait, target, anchor);
+      insert(target, t0, anchor);
+      insert(target, largecard, anchor);
+      append(largecard, div);
+      append(div, h10);
+      append(div, t2);
+      append(div, input0);
+      append(largecard, t3);
+      append(largecard, ul);
+      append(ul, lineitem0);
+      append(lineitem0, label0);
+      append(lineitem0, t6);
+      append(lineitem0, input1);
+      append(ul, t7);
+      append(ul, lineitem1);
+      append(lineitem1, label1);
+      append(lineitem1, t10);
+      append(lineitem1, input2);
+      append(ul, t11);
+      append(ul, lineitem2);
+      append(lineitem2, label2);
+      append(lineitem2, t14);
+      append(lineitem2, input3);
+      append(ul, t15);
+      append(ul, lineitem3);
+      append(lineitem3, label3);
+      append(lineitem3, t18);
+      append(lineitem3, input4);
+      append(ul, t19);
+      append(ul, lineitem4);
+      append(lineitem4, label4);
+      append(lineitem4, t22);
+      append(lineitem4, input5);
+      append(ul, t23);
+      append(ul, lineitem5);
+      append(lineitem5, label5);
+      append(lineitem5, t26);
+      append(lineitem5, input6);
+      append(ul, t27);
+      append(ul, lineitem6);
+      append(lineitem6, label6);
+      append(lineitem6, t30);
+      append(lineitem6, input7);
+      append(ul, t31);
+      append(ul, lineitem7);
+      append(lineitem7, label7);
+      append(lineitem7, t34);
+      append(lineitem7, input8);
+      append(ul, t35);
+      append(ul, lineitem8);
+      append(lineitem8, label8);
+      append(lineitem8, t38);
+      append(lineitem8, input9);
+      append(ul, t39);
+      append(ul, lineitem9);
+      append(lineitem9, label9);
+      append(lineitem9, t42);
+      append(lineitem9, input10);
+      insert(target, t43, anchor);
+      insert(target, h11, anchor);
+      insert(target, t45, anchor);
+      mount_component(mouseguardeditor, target, anchor);
+      current = true;
+    },
+    p(ctx2, [dirty]) {
+      if (!current || dirty & 1 && input0_value_value !== (input0_value_value = ctx2[0].name) && input0.value !== input0_value_value) {
+        input0.value = input0_value_value;
+      }
+      if (!current || dirty & 1 && input1_value_value !== (input1_value_value = ctx2[0].data.details.age)) {
+        input1.value = input1_value_value;
+      }
+      if (!current || dirty & 1 && input2_value_value !== (input2_value_value = ctx2[0].data.details.parents) && input2.value !== input2_value_value) {
+        input2.value = input2_value_value;
+      }
+      if (!current || dirty & 1 && input3_value_value !== (input3_value_value = ctx2[0].data.details.home) && input3.value !== input3_value_value) {
+        input3.value = input3_value_value;
+      }
+      if (!current || dirty & 1 && input4_value_value !== (input4_value_value = ctx2[0].data.details.senior_artisan) && input4.value !== input4_value_value) {
+        input4.value = input4_value_value;
+      }
+      if (!current || dirty & 1 && input5_value_value !== (input5_value_value = ctx2[0].data.details.fur_color) && input5.value !== input5_value_value) {
+        input5.value = input5_value_value;
+      }
+      if (!current || dirty & 1 && input6_value_value !== (input6_value_value = ctx2[0].data.details.mentor) && input6.value !== input6_value_value) {
+        input6.value = input6_value_value;
+      }
+      if (!current || dirty & 1 && input7_value_value !== (input7_value_value = ctx2[0].data.details.cloak_color) && input7.value !== input7_value_value) {
+        input7.value = input7_value_value;
+      }
+      if (!current || dirty & 1 && input8_value_value !== (input8_value_value = ctx2[0].data.details.friend) && input8.value !== input8_value_value) {
+        input8.value = input8_value_value;
+      }
+      if (!current || dirty & 1 && input9_value_value !== (input9_value_value = ctx2[0].data.details.guard_rank) && input9.value !== input9_value_value) {
+        input9.value = input9_value_value;
+      }
+      if (!current || dirty & 1 && input10_value_value !== (input10_value_value = ctx2[0].data.details.enemy) && input10.value !== input10_value_value) {
+        input10.value = input10_value_value;
+      }
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(mouseguardactorsheetportrait.$$.fragment, local);
+      transition_in(mouseguardeditor.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(mouseguardactorsheetportrait.$$.fragment, local);
+      transition_out(mouseguardeditor.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      destroy_component(mouseguardactorsheetportrait, detaching);
+      if (detaching)
+        detach(t0);
+      if (detaching)
+        detach(largecard);
+      if (detaching)
+        detach(t43);
+      if (detaching)
+        detach(h11);
+      if (detaching)
+        detach(t45);
+      destroy_component(mouseguardeditor, detaching);
+    }
+  };
+}
+function instance4($$self, $$props, $$invalidate) {
+  let $sheetData;
+  let sheetData = getContext("sheetStore");
+  component_subscribe($$self, sheetData, (value) => $$invalidate(2, $sheetData = value));
+  let { actor, sheet } = $sheetData;
+  let data;
+  const filePicker = (event) => {
+    const attr2 = event.currentTarget.dataset.edit;
+    const current = getProperty(data, attr2);
+    const fp = new FilePicker({
+      type: "image",
+      current,
+      callback: (path) => {
+        actor.update({ [attr2]: path });
+      },
+      top: sheet.position.top + 40,
+      left: sheet.position.left + 10
+    });
+    return fp.browse();
+  };
+  $$self.$$.update = () => {
+    if ($$self.$$.dirty & 4) {
+      $:
+        $$invalidate(0, data = $sheetData.data);
+    }
+  };
+  return [data, sheetData, $sheetData];
+}
+var MouseGuardActorSheetMouseDetails = class extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance4, create_fragment4, safe_not_equal, {});
+  }
+};
+var MouseGuardActorSheetMouseDetails_default = MouseGuardActorSheetMouseDetails;
+require_4();
+
+// module/svelte/MouseGuardActorSheetMouseRewards.svelte
+function create_fragment5(ctx) {
   let largecard;
   let h1;
   let t1;
@@ -1571,7 +2257,7 @@ function create_fragment2(ctx) {
     }
   };
 }
-function instance2($$self, $$props, $$invalidate) {
+function instance5($$self, $$props, $$invalidate) {
   let $sheetData;
   let sheetData = getContext("sheetStore");
   component_subscribe($$self, sheetData, (value) => $$invalidate(2, $sheetData = value));
@@ -1588,665 +2274,11 @@ function instance2($$self, $$props, $$invalidate) {
 var MouseGuardActorSheetMouseRewards = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance2, create_fragment2, safe_not_equal, {});
-  }
-};
-var MouseGuardActorSheetMouseRewards_default = MouseGuardActorSheetMouseRewards;
-require_2();
-
-// module/svelte/MouseGuardEditor.svelte
-function create_if_block(ctx) {
-  let a;
-  let mounted;
-  let dispose;
-  return {
-    c() {
-      a = element("a");
-      a.innerHTML = `<i class="fas fa-edit"></i>`;
-      attr(a, "class", "editor-edit");
-    },
-    m(target, anchor) {
-      insert(target, a, anchor);
-      if (!mounted) {
-        dispose = listen(a, "click", prevent_default(ctx[6]));
-        mounted = true;
-      }
-    },
-    p: noop,
-    d(detaching) {
-      if (detaching)
-        detach(a);
-      mounted = false;
-      dispose();
-    }
-  };
-}
-function create_fragment3(ctx) {
-  let div1;
-  let span;
-  let t0;
-  let div0;
-  let div0_resize_listener;
-  let t1;
-  let if_block = ctx[1].editable && create_if_block(ctx);
-  return {
-    c() {
-      div1 = element("div");
-      span = element("span");
-      t0 = space();
-      div0 = element("div");
-      t1 = space();
-      if (if_block)
-        if_block.c();
-      attr(div0, "class", "editor-content svelte-1xgaaf4");
-      attr(div0, "data-edit", ctx[0]);
-      add_render_callback(() => ctx[9].call(div0));
-      attr(div1, "class", "editor svelte-1xgaaf4");
-    },
-    m(target, anchor) {
-      insert(target, div1, anchor);
-      append(div1, span);
-      append(div1, t0);
-      append(div1, div0);
-      div0.innerHTML = ctx[4];
-      ctx[8](div0);
-      div0_resize_listener = add_resize_listener(div0, ctx[9].bind(div0));
-      append(div1, t1);
-      if (if_block)
-        if_block.m(div1, null);
-    },
-    p(ctx2, [dirty]) {
-      if (dirty & 16)
-        div0.innerHTML = ctx2[4];
-      ;
-      if (dirty & 1) {
-        attr(div0, "data-edit", ctx2[0]);
-      }
-      if (ctx2[1].editable) {
-        if (if_block) {
-          if_block.p(ctx2, dirty);
-        } else {
-          if_block = create_if_block(ctx2);
-          if_block.c();
-          if_block.m(div1, null);
-        }
-      } else if (if_block) {
-        if_block.d(1);
-        if_block = null;
-      }
-    },
-    i: noop,
-    o: noop,
-    d(detaching) {
-      if (detaching)
-        detach(div1);
-      ctx[8](null);
-      div0_resize_listener();
-      if (if_block)
-        if_block.d();
-    }
-  };
-}
-function instance3($$self, $$props, $$invalidate) {
-  let $sheetData;
-  let { target } = $$props;
-  let sheetData = getContext("sheetStore");
-  component_subscribe($$self, sheetData, (value) => $$invalidate(1, $sheetData = value));
-  let { actor, sheet } = $sheetData;
-  let data;
-  const TextEditor = globalThis.TextEditor;
-  let editorContent;
-  let width, height;
-  let mce;
-  let rawContent = getProperty($sheetData?.data, target) ?? "";
-  let content = TextEditor.enrichHTML(rawContent);
-  let editor = {};
-  onDestroy(async () => {
-    if (mce)
-      mce.destroy();
-  });
-  const createEditor = () => {
-    TextEditor.create({
-      target: editorContent,
-      save_onsavecallback: (m) => {
-        mce = m;
-        const isDirty = mce.getContent() !== editor.initial;
-        if (isDirty)
-          $sheetData.sheet._onSubmit(new Event("mcesave"));
-        mce.destroy();
-        console.log("saving");
-      }
-    }).then((m) => {
-      editor.m = m;
-      mce = m;
-      editor.changed = false;
-      editor.active = true;
-      mce.focus();
-      mce.on("change", (ev) => editor.changed = true);
-    });
-  };
-  function div0_binding($$value) {
-    binding_callbacks[$$value ? "unshift" : "push"](() => {
-      editorContent = $$value;
-      $$invalidate(2, editorContent);
-    });
-  }
-  function div0_elementresize_handler() {
-    height = this.clientHeight;
-    $$invalidate(3, height);
-  }
-  $$self.$$set = ($$props2) => {
-    if ("target" in $$props2)
-      $$invalidate(0, target = $$props2.target);
-  };
-  $$self.$$.update = () => {
-    if ($$self.$$.dirty & 2) {
-      $:
-        data = $sheetData.data;
-    }
-    if ($$self.$$.dirty & 131) {
-      $: {
-        $$invalidate(7, rawContent = getProperty($sheetData?.data, target));
-        $$invalidate(4, content = TextEditor.enrichHTML(rawContent));
-      }
-    }
-  };
-  return [
-    target,
-    $sheetData,
-    editorContent,
-    height,
-    content,
-    sheetData,
-    createEditor,
-    rawContent,
-    div0_binding,
-    div0_elementresize_handler
-  ];
-}
-var MouseGuardEditor = class extends SvelteComponent {
-  constructor(options) {
-    super();
-    init(this, options, instance3, create_fragment3, safe_not_equal, { target: 0 });
-  }
-};
-var MouseGuardEditor_default = MouseGuardEditor;
-require_3();
-
-// module/svelte/MouseGuardActorSheetMouseDetails.svelte
-function create_fragment4(ctx) {
-  let largecard;
-  let div;
-  let h10;
-  let t1;
-  let input0;
-  let input0_value_value;
-  let t2;
-  let ul;
-  let lineitem0;
-  let label0;
-  let t5;
-  let input1;
-  let input1_value_value;
-  let t6;
-  let lineitem1;
-  let label1;
-  let t9;
-  let input2;
-  let input2_value_value;
-  let input2_placeholder_value;
-  let t10;
-  let lineitem2;
-  let label2;
-  let t13;
-  let input3;
-  let input3_value_value;
-  let input3_placeholder_value;
-  let t14;
-  let lineitem3;
-  let label3;
-  let t17;
-  let input4;
-  let input4_value_value;
-  let input4_placeholder_value;
-  let t18;
-  let lineitem4;
-  let label4;
-  let t21;
-  let input5;
-  let input5_value_value;
-  let input5_placeholder_value;
-  let t22;
-  let lineitem5;
-  let label5;
-  let t25;
-  let input6;
-  let input6_value_value;
-  let input6_placeholder_value;
-  let t26;
-  let lineitem6;
-  let label6;
-  let t29;
-  let input7;
-  let input7_value_value;
-  let input7_placeholder_value;
-  let t30;
-  let lineitem7;
-  let label7;
-  let t33;
-  let input8;
-  let input8_value_value;
-  let input8_placeholder_value;
-  let t34;
-  let lineitem8;
-  let label8;
-  let t37;
-  let input9;
-  let input9_value_value;
-  let input9_placeholder_value;
-  let t38;
-  let lineitem9;
-  let label9;
-  let t41;
-  let input10;
-  let input10_value_value;
-  let input10_placeholder_value;
-  let t42;
-  let h11;
-  let t44;
-  let mouseguardeditor;
-  let current;
-  mouseguardeditor = new MouseGuardEditor_default({ props: { target: "data.biography" } });
-  return {
-    c() {
-      largecard = element("largecard");
-      div = element("div");
-      h10 = element("h1");
-      h10.textContent = `${game.i18n.localize("MOUSEGUARD.Name")}`;
-      t1 = space();
-      input0 = element("input");
-      t2 = space();
-      ul = element("ul");
-      lineitem0 = element("lineitem");
-      label0 = element("label");
-      label0.textContent = `${game.i18n.localize("MOUSEGUARD.Age")}:`;
-      t5 = space();
-      input1 = element("input");
-      t6 = space();
-      lineitem1 = element("lineitem");
-      label1 = element("label");
-      label1.textContent = `${game.i18n.localize("MOUSEGUARD.Parents")}:`;
-      t9 = space();
-      input2 = element("input");
-      t10 = space();
-      lineitem2 = element("lineitem");
-      label2 = element("label");
-      label2.textContent = `${game.i18n.localize("MOUSEGUARD.Home")}:`;
-      t13 = space();
-      input3 = element("input");
-      t14 = space();
-      lineitem3 = element("lineitem");
-      label3 = element("label");
-      label3.textContent = `${game.i18n.localize("MOUSEGUARD.Senior")}:`;
-      t17 = space();
-      input4 = element("input");
-      t18 = space();
-      lineitem4 = element("lineitem");
-      label4 = element("label");
-      label4.textContent = `${game.i18n.localize("MOUSEGUARD.Fur")}:`;
-      t21 = space();
-      input5 = element("input");
-      t22 = space();
-      lineitem5 = element("lineitem");
-      label5 = element("label");
-      label5.textContent = `${game.i18n.localize("MOUSEGUARD.Mentor")}:`;
-      t25 = space();
-      input6 = element("input");
-      t26 = space();
-      lineitem6 = element("lineitem");
-      label6 = element("label");
-      label6.textContent = `${game.i18n.localize("MOUSEGUARD.Cloak")}:`;
-      t29 = space();
-      input7 = element("input");
-      t30 = space();
-      lineitem7 = element("lineitem");
-      label7 = element("label");
-      label7.textContent = `${game.i18n.localize("MOUSEGUARD.Friend")}:`;
-      t33 = space();
-      input8 = element("input");
-      t34 = space();
-      lineitem8 = element("lineitem");
-      label8 = element("label");
-      label8.textContent = `${game.i18n.localize("MOUSEGUARD.GuardRank")}:`;
-      t37 = space();
-      input9 = element("input");
-      t38 = space();
-      lineitem9 = element("lineitem");
-      label9 = element("label");
-      label9.textContent = `${game.i18n.localize("MOUSEGUARD.Enemy")}:`;
-      t41 = space();
-      input10 = element("input");
-      t42 = space();
-      h11 = element("h1");
-      h11.textContent = `${game.i18n.localize("MOUSEGUARD.Bio")}`;
-      t44 = space();
-      create_component(mouseguardeditor.$$.fragment);
-      attr(h10, "class", "svelte-xlkhh3");
-      attr(input0, "name", "name");
-      attr(input0, "type", "text");
-      input0.value = input0_value_value = ctx[0].name;
-      attr(input0, "placeholder", "Name");
-      attr(input0, "class", "svelte-xlkhh3");
-      attr(div, "class", "namebox svelte-xlkhh3");
-      attr(label0, "class", "svelte-xlkhh3");
-      attr(input1, "name", "data.details.age");
-      attr(input1, "type", "number");
-      input1.value = input1_value_value = ctx[0].data.details.age;
-      attr(input1, "placeholder", "0");
-      attr(input1, "class", "svelte-xlkhh3");
-      attr(lineitem0, "class", "svelte-xlkhh3");
-      attr(label1, "class", "svelte-xlkhh3");
-      attr(input2, "name", "data.details.parents");
-      attr(input2, "type", "text");
-      input2.value = input2_value_value = ctx[0].data.details.parents;
-      attr(input2, "placeholder", input2_placeholder_value = game.i18n.localize("MOUSEGUARD.Parents"));
-      attr(input2, "class", "svelte-xlkhh3");
-      attr(lineitem1, "class", "svelte-xlkhh3");
-      attr(label2, "class", "svelte-xlkhh3");
-      attr(input3, "name", "data.details.home");
-      attr(input3, "type", "text");
-      input3.value = input3_value_value = ctx[0].data.details.home;
-      attr(input3, "placeholder", input3_placeholder_value = game.i18n.localize("MOUSEGUARD.Home"));
-      attr(input3, "class", "svelte-xlkhh3");
-      attr(lineitem2, "class", "svelte-xlkhh3");
-      attr(label3, "class", "svelte-xlkhh3");
-      attr(input4, "name", "data.details.senior_artisan");
-      attr(input4, "type", "text");
-      input4.value = input4_value_value = ctx[0].data.details.senior_artisan;
-      attr(input4, "placeholder", input4_placeholder_value = game.i18n.localize("MOUSEGUARD.Senior"));
-      attr(input4, "class", "svelte-xlkhh3");
-      attr(lineitem3, "class", "svelte-xlkhh3");
-      attr(label4, "class", "svelte-xlkhh3");
-      attr(input5, "name", "data.details.fur_color");
-      attr(input5, "type", "text");
-      input5.value = input5_value_value = ctx[0].data.details.fur_color;
-      attr(input5, "placeholder", input5_placeholder_value = game.i18n.localize("MOUSEGUARD.Fur"));
-      attr(input5, "class", "svelte-xlkhh3");
-      attr(lineitem4, "class", "svelte-xlkhh3");
-      attr(label5, "class", "svelte-xlkhh3");
-      attr(input6, "name", "data.details.mentor");
-      attr(input6, "type", "text");
-      input6.value = input6_value_value = ctx[0].data.details.mentor;
-      attr(input6, "placeholder", input6_placeholder_value = game.i18n.localize("MOUSEGUARD.Mentor"));
-      attr(input6, "class", "svelte-xlkhh3");
-      attr(lineitem5, "class", "svelte-xlkhh3");
-      attr(label6, "class", "svelte-xlkhh3");
-      attr(input7, "name", "data.details.cloak_color");
-      attr(input7, "type", "text");
-      input7.value = input7_value_value = ctx[0].data.details.cloak_color;
-      attr(input7, "placeholder", input7_placeholder_value = game.i18n.localize("MOUSEGUARD.Cloak"));
-      attr(input7, "class", "svelte-xlkhh3");
-      attr(lineitem6, "class", "svelte-xlkhh3");
-      attr(label7, "class", "svelte-xlkhh3");
-      attr(input8, "name", "data.details.friend");
-      attr(input8, "type", "text");
-      input8.value = input8_value_value = ctx[0].data.details.friend;
-      attr(input8, "placeholder", input8_placeholder_value = game.i18n.localize("MOUSEGUARD.Friend"));
-      attr(input8, "class", "svelte-xlkhh3");
-      attr(lineitem7, "class", "svelte-xlkhh3");
-      attr(label8, "class", "svelte-xlkhh3");
-      attr(input9, "name", "data.details.guard_rank");
-      attr(input9, "type", "text");
-      input9.value = input9_value_value = ctx[0].data.details.guard_rank;
-      attr(input9, "placeholder", input9_placeholder_value = game.i18n.localize("MOUSEGUARD.GuardRank"));
-      attr(input9, "class", "svelte-xlkhh3");
-      attr(lineitem8, "class", "svelte-xlkhh3");
-      attr(label9, "class", "svelte-xlkhh3");
-      attr(input10, "name", "data.details.enemy");
-      attr(input10, "type", "text");
-      input10.value = input10_value_value = ctx[0].data.details.enemy;
-      attr(input10, "placeholder", input10_placeholder_value = game.i18n.localize("MOUSEGUARD.Enemy"));
-      attr(input10, "class", "svelte-xlkhh3");
-      attr(lineitem9, "class", "svelte-xlkhh3");
-      attr(largecard, "class", "svelte-xlkhh3");
-      attr(h11, "class", "svelte-xlkhh3");
-    },
-    m(target, anchor) {
-      insert(target, largecard, anchor);
-      append(largecard, div);
-      append(div, h10);
-      append(div, t1);
-      append(div, input0);
-      append(largecard, t2);
-      append(largecard, ul);
-      append(ul, lineitem0);
-      append(lineitem0, label0);
-      append(lineitem0, t5);
-      append(lineitem0, input1);
-      append(ul, t6);
-      append(ul, lineitem1);
-      append(lineitem1, label1);
-      append(lineitem1, t9);
-      append(lineitem1, input2);
-      append(ul, t10);
-      append(ul, lineitem2);
-      append(lineitem2, label2);
-      append(lineitem2, t13);
-      append(lineitem2, input3);
-      append(ul, t14);
-      append(ul, lineitem3);
-      append(lineitem3, label3);
-      append(lineitem3, t17);
-      append(lineitem3, input4);
-      append(ul, t18);
-      append(ul, lineitem4);
-      append(lineitem4, label4);
-      append(lineitem4, t21);
-      append(lineitem4, input5);
-      append(ul, t22);
-      append(ul, lineitem5);
-      append(lineitem5, label5);
-      append(lineitem5, t25);
-      append(lineitem5, input6);
-      append(ul, t26);
-      append(ul, lineitem6);
-      append(lineitem6, label6);
-      append(lineitem6, t29);
-      append(lineitem6, input7);
-      append(ul, t30);
-      append(ul, lineitem7);
-      append(lineitem7, label7);
-      append(lineitem7, t33);
-      append(lineitem7, input8);
-      append(ul, t34);
-      append(ul, lineitem8);
-      append(lineitem8, label8);
-      append(lineitem8, t37);
-      append(lineitem8, input9);
-      append(ul, t38);
-      append(ul, lineitem9);
-      append(lineitem9, label9);
-      append(lineitem9, t41);
-      append(lineitem9, input10);
-      insert(target, t42, anchor);
-      insert(target, h11, anchor);
-      insert(target, t44, anchor);
-      mount_component(mouseguardeditor, target, anchor);
-      current = true;
-    },
-    p(ctx2, [dirty]) {
-      if (!current || dirty & 1 && input0_value_value !== (input0_value_value = ctx2[0].name) && input0.value !== input0_value_value) {
-        input0.value = input0_value_value;
-      }
-      if (!current || dirty & 1 && input1_value_value !== (input1_value_value = ctx2[0].data.details.age)) {
-        input1.value = input1_value_value;
-      }
-      if (!current || dirty & 1 && input2_value_value !== (input2_value_value = ctx2[0].data.details.parents) && input2.value !== input2_value_value) {
-        input2.value = input2_value_value;
-      }
-      if (!current || dirty & 1 && input3_value_value !== (input3_value_value = ctx2[0].data.details.home) && input3.value !== input3_value_value) {
-        input3.value = input3_value_value;
-      }
-      if (!current || dirty & 1 && input4_value_value !== (input4_value_value = ctx2[0].data.details.senior_artisan) && input4.value !== input4_value_value) {
-        input4.value = input4_value_value;
-      }
-      if (!current || dirty & 1 && input5_value_value !== (input5_value_value = ctx2[0].data.details.fur_color) && input5.value !== input5_value_value) {
-        input5.value = input5_value_value;
-      }
-      if (!current || dirty & 1 && input6_value_value !== (input6_value_value = ctx2[0].data.details.mentor) && input6.value !== input6_value_value) {
-        input6.value = input6_value_value;
-      }
-      if (!current || dirty & 1 && input7_value_value !== (input7_value_value = ctx2[0].data.details.cloak_color) && input7.value !== input7_value_value) {
-        input7.value = input7_value_value;
-      }
-      if (!current || dirty & 1 && input8_value_value !== (input8_value_value = ctx2[0].data.details.friend) && input8.value !== input8_value_value) {
-        input8.value = input8_value_value;
-      }
-      if (!current || dirty & 1 && input9_value_value !== (input9_value_value = ctx2[0].data.details.guard_rank) && input9.value !== input9_value_value) {
-        input9.value = input9_value_value;
-      }
-      if (!current || dirty & 1 && input10_value_value !== (input10_value_value = ctx2[0].data.details.enemy) && input10.value !== input10_value_value) {
-        input10.value = input10_value_value;
-      }
-    },
-    i(local) {
-      if (current)
-        return;
-      transition_in(mouseguardeditor.$$.fragment, local);
-      current = true;
-    },
-    o(local) {
-      transition_out(mouseguardeditor.$$.fragment, local);
-      current = false;
-    },
-    d(detaching) {
-      if (detaching)
-        detach(largecard);
-      if (detaching)
-        detach(t42);
-      if (detaching)
-        detach(h11);
-      if (detaching)
-        detach(t44);
-      destroy_component(mouseguardeditor, detaching);
-    }
-  };
-}
-function instance4($$self, $$props, $$invalidate) {
-  let $sheetData;
-  let sheetData = getContext("sheetStore");
-  component_subscribe($$self, sheetData, (value) => $$invalidate(2, $sheetData = value));
-  let { actor, sheet } = $sheetData;
-  let data;
-  const filePicker = (event) => {
-    const attr2 = event.currentTarget.dataset.edit;
-    const current = getProperty(data, attr2);
-    const fp = new FilePicker({
-      type: "image",
-      current,
-      callback: (path) => {
-        actor.update({ [attr2]: path });
-      },
-      top: sheet.position.top + 40,
-      left: sheet.position.left + 10
-    });
-    return fp.browse();
-  };
-  $$self.$$.update = () => {
-    if ($$self.$$.dirty & 4) {
-      $:
-        $$invalidate(0, data = $sheetData.data);
-    }
-  };
-  return [data, sheetData, $sheetData];
-}
-var MouseGuardActorSheetMouseDetails = class extends SvelteComponent {
-  constructor(options) {
-    super();
-    init(this, options, instance4, create_fragment4, safe_not_equal, {});
-  }
-};
-var MouseGuardActorSheetMouseDetails_default = MouseGuardActorSheetMouseDetails;
-require_4();
-
-// module/svelte/MouseGuardActorSheetMousePortrait.svelte
-function create_fragment5(ctx) {
-  let img;
-  let img_src_value;
-  let img_title_value;
-  let mounted;
-  let dispose;
-  return {
-    c() {
-      img = element("img");
-      attr(img, "class", "profile-img");
-      if (img.src !== (img_src_value = ctx[0].img))
-        attr(img, "src", img_src_value);
-      attr(img, "data-edit", "img");
-      attr(img, "title", img_title_value = ctx[0].name);
-      attr(img, "height", "100");
-      attr(img, "width", "100");
-    },
-    m(target, anchor) {
-      insert(target, img, anchor);
-      if (!mounted) {
-        dispose = listen(img, "click", ctx[2]);
-        mounted = true;
-      }
-    },
-    p(ctx2, [dirty]) {
-      if (dirty & 1 && img.src !== (img_src_value = ctx2[0].img)) {
-        attr(img, "src", img_src_value);
-      }
-      if (dirty & 1 && img_title_value !== (img_title_value = ctx2[0].name)) {
-        attr(img, "title", img_title_value);
-      }
-    },
-    i: noop,
-    o: noop,
-    d(detaching) {
-      if (detaching)
-        detach(img);
-      mounted = false;
-      dispose();
-    }
-  };
-}
-function instance5($$self, $$props, $$invalidate) {
-  let $sheetData;
-  let sheetData = getContext("sheetStore");
-  component_subscribe($$self, sheetData, (value) => $$invalidate(3, $sheetData = value));
-  let { actor, sheet } = $sheetData;
-  let data;
-  const filePicker = (event) => {
-    const attr2 = event.currentTarget.dataset.edit;
-    const current = getProperty(data, attr2);
-    const fp = new FilePicker({
-      type: "image",
-      current,
-      callback: (path) => {
-        actor.update({ [attr2]: path });
-      },
-      top: sheet.position.top + 40,
-      left: sheet.position.left + 10
-    });
-    return fp.browse();
-  };
-  $$self.$$.update = () => {
-    if ($$self.$$.dirty & 8) {
-      $:
-        $$invalidate(0, data = $sheetData.data);
-    }
-  };
-  return [data, sheetData, filePicker, $sheetData];
-}
-var MouseGuardActorSheetMousePortrait = class extends SvelteComponent {
-  constructor(options) {
-    super();
     init(this, options, instance5, create_fragment5, safe_not_equal, {});
   }
 };
-var MouseGuardActorSheetMousePortrait_default = MouseGuardActorSheetMousePortrait;
+var MouseGuardActorSheetMouseRewards_default = MouseGuardActorSheetMouseRewards;
+require_5();
 
 // module/svelte/MouseGuardCommon.svelte
 function updateRating(sheet, item2, type, value) {
@@ -2742,7 +2774,7 @@ var MouseGuardActorSheetMouseAbilities = class extends SvelteComponent {
   }
 };
 var MouseGuardActorSheetMouseAbilities_default = MouseGuardActorSheetMouseAbilities;
-require_5();
+require_6();
 
 // module/svelte/MouseGuardActorSheetMouseSkills.svelte
 function get_each_context2(ctx, list, i) {
@@ -3241,7 +3273,7 @@ var MouseGuardActorSheetMouseSkills = class extends SvelteComponent {
   }
 };
 var MouseGuardActorSheetMouseSkills_default = MouseGuardActorSheetMouseSkills;
-require_6();
+require_7();
 
 // module/svelte/MouseGuardActorSheetMouseWises.svelte
 function get_each_context3(ctx, list, i) {
@@ -3780,7 +3812,7 @@ var MouseGuardActorSheetMouseWises = class extends SvelteComponent {
   }
 };
 var MouseGuardActorSheetMouseWises_default = MouseGuardActorSheetMouseWises;
-require_7();
+require_8();
 
 // module/svelte/MouseGuardActorSheetMouseTraits.svelte
 function get_each_context4(ctx, list, i) {
@@ -4271,7 +4303,7 @@ var MouseGuardActorSheetMouseTraits = class extends SvelteComponent {
   }
 };
 var MouseGuardActorSheetMouseTraits_default = MouseGuardActorSheetMouseTraits;
-require_8();
+require_9();
 
 // module/svelte/MouseGuardActorSheetMouseSkillAbilityTab.svelte
 function create_fragment10(ctx) {
@@ -4369,7 +4401,122 @@ var MouseGuardActorSheetMouseSkillAbilityTab = class extends SvelteComponent {
   }
 };
 var MouseGuardActorSheetMouseSkillAbilityTab_default = MouseGuardActorSheetMouseSkillAbilityTab;
-require_9();
+require_10();
+
+// module/svelte/MouseGuardActorSheetMouseDispo.svelte
+function create_fragment11(ctx) {
+  let largecard;
+  let h1;
+  let t1;
+  let startingBox;
+  let label0;
+  let t4;
+  let currentBox;
+  let label1;
+  let t7;
+  let dispoBox;
+  let startingDispo;
+  let input0;
+  let input0_value_value;
+  let t8;
+  let currentDispo;
+  let input1;
+  let input1_value_value;
+  return {
+    c() {
+      largecard = element("largecard");
+      h1 = element("h1");
+      h1.textContent = `${game.i18n.localize("MOUSEGUARD.Disposition")}`;
+      t1 = space();
+      startingBox = element("startingBox");
+      label0 = element("label");
+      label0.textContent = `Starting ${game.i18n.localize("MOUSEGUARD.Disposition")}`;
+      t4 = space();
+      currentBox = element("currentBox");
+      label1 = element("label");
+      label1.textContent = `Current ${game.i18n.localize("MOUSEGUARD.Disposition")}`;
+      t7 = space();
+      dispoBox = element("dispoBox");
+      startingDispo = element("startingDispo");
+      input0 = element("input");
+      t8 = space();
+      currentDispo = element("currentDispo");
+      input1 = element("input");
+      attr(h1, "class", "svelte-1pon5yn");
+      attr(label0, "class", "header svelte-1pon5yn");
+      attr(startingBox, "class", "svelte-1pon5yn");
+      attr(label1, "class", "header svelte-1pon5yn");
+      attr(currentBox, "class", "svelte-1pon5yn");
+      attr(input0, "name", "data.disposition.starting");
+      attr(input0, "type", "number");
+      input0.value = input0_value_value = ctx[0].data.disposition.starting;
+      attr(input0, "placeholder", "0");
+      attr(input0, "class", "svelte-1pon5yn");
+      attr(startingDispo, "class", "svelte-1pon5yn");
+      attr(input1, "name", "data.disposition.current");
+      attr(input1, "type", "number");
+      input1.value = input1_value_value = ctx[0].data.disposition.current;
+      attr(input1, "placeholder", "0");
+      attr(input1, "class", "svelte-1pon5yn");
+      attr(currentDispo, "class", "svelte-1pon5yn");
+      attr(dispoBox, "class", "svelte-1pon5yn");
+      attr(largecard, "class", "svelte-1pon5yn");
+    },
+    m(target, anchor) {
+      insert(target, largecard, anchor);
+      append(largecard, h1);
+      append(largecard, t1);
+      append(largecard, startingBox);
+      append(startingBox, label0);
+      append(largecard, t4);
+      append(largecard, currentBox);
+      append(currentBox, label1);
+      append(largecard, t7);
+      append(largecard, dispoBox);
+      append(dispoBox, startingDispo);
+      append(startingDispo, input0);
+      append(dispoBox, t8);
+      append(dispoBox, currentDispo);
+      append(currentDispo, input1);
+    },
+    p(ctx2, [dirty]) {
+      if (dirty & 1 && input0_value_value !== (input0_value_value = ctx2[0].data.disposition.starting)) {
+        input0.value = input0_value_value;
+      }
+      if (dirty & 1 && input1_value_value !== (input1_value_value = ctx2[0].data.disposition.current)) {
+        input1.value = input1_value_value;
+      }
+    },
+    i: noop,
+    o: noop,
+    d(detaching) {
+      if (detaching)
+        detach(largecard);
+    }
+  };
+}
+function instance10($$self, $$props, $$invalidate) {
+  let $sheetData;
+  let sheetData = getContext("sheetStore");
+  component_subscribe($$self, sheetData, (value) => $$invalidate(2, $sheetData = value));
+  let { actor, sheet } = $sheetData;
+  let data;
+  $$self.$$.update = () => {
+    if ($$self.$$.dirty & 4) {
+      $:
+        $$invalidate(0, data = $sheetData.data);
+    }
+  };
+  return [data, sheetData, $sheetData];
+}
+var MouseGuardActorSheetMouseDispo = class extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance10, create_fragment11, safe_not_equal, {});
+  }
+};
+var MouseGuardActorSheetMouseDispo_default = MouseGuardActorSheetMouseDispo;
+require_11();
 
 // module/svelte/Tabs.svelte
 function get_each_context5(ctx, list, i) {
@@ -4553,7 +4700,7 @@ function create_each_block5(ctx) {
     }
   };
 }
-function create_fragment11(ctx) {
+function create_fragment12(ctx) {
   let ul;
   let t;
   let each1_anchor;
@@ -4664,7 +4811,7 @@ function create_fragment11(ctx) {
     }
   };
 }
-function instance10($$self, $$props, $$invalidate) {
+function instance11($$self, $$props, $$invalidate) {
   let { items = [] } = $$props;
   let { activeTabValue = 1 } = $$props;
   const handleClick = (tabValue) => () => $$invalidate(0, activeTabValue = tabValue);
@@ -4679,14 +4826,14 @@ function instance10($$self, $$props, $$invalidate) {
 var Tabs = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance10, create_fragment11, safe_not_equal, { items: 1, activeTabValue: 0 });
+    init(this, options, instance11, create_fragment12, safe_not_equal, { items: 1, activeTabValue: 0 });
   }
 };
 var Tabs_default = Tabs;
-require_10();
+require_12();
 
 // module/svelte/MouseGuardActorSheetBase.svelte
-function create_fragment12(ctx) {
+function create_fragment13(ctx) {
   let content;
   let tabs;
   let current;
@@ -4720,7 +4867,7 @@ function create_fragment12(ctx) {
     }
   };
 }
-function instance11($$self, $$props, $$invalidate) {
+function instance12($$self, $$props, $$invalidate) {
   let $dataStore, $$unsubscribe_dataStore = noop, $$subscribe_dataStore = () => ($$unsubscribe_dataStore(), $$unsubscribe_dataStore = subscribe(dataStore, ($$value) => $$invalidate(2, $dataStore = $$value)), dataStore);
   $$self.$$.on_destroy.push(() => $$unsubscribe_dataStore());
   let { dataStore } = $$props;
@@ -4744,9 +4891,9 @@ function instance11($$self, $$props, $$invalidate) {
       component: MouseGuardActorSheetMouseRewards_default
     },
     {
-      label: "Other",
+      label: game.i18n.localize("MOUSEGUARD.Disposition"),
       value: 4,
-      component: MouseGuardActorSheetMousePortrait_default
+      component: MouseGuardActorSheetMouseDispo_default
     }
   ];
   $$self.$$set = ($$props2) => {
@@ -4758,11 +4905,11 @@ function instance11($$self, $$props, $$invalidate) {
 var MouseGuardActorSheetBase = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance11, create_fragment12, safe_not_equal, { dataStore: 0 });
+    init(this, options, instance12, create_fragment13, safe_not_equal, { dataStore: 0 });
   }
 };
 var MouseGuardActorSheetBase_default = MouseGuardActorSheetBase;
-require_11();
+require_13();
 
 // module/actor-sheet.js
 var MouseGuardActorSheet = class extends ActorSheet {
@@ -5451,7 +5598,7 @@ function create_each_block6(ctx) {
     }
   };
 }
-function create_fragment13(ctx) {
+function create_fragment14(ctx) {
   let div;
   let largecard;
   let h1;
@@ -5599,7 +5746,7 @@ function create_fragment13(ctx) {
     }
   };
 }
-function instance12($$self, $$props, $$invalidate) {
+function instance13($$self, $$props, $$invalidate) {
   let skills;
   let wises;
   let traits;
@@ -5660,14 +5807,14 @@ function instance12($$self, $$props, $$invalidate) {
 var MouseGuardNPCActorSheetBody = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance12, create_fragment13, safe_not_equal, {});
+    init(this, options, instance13, create_fragment14, safe_not_equal, {});
   }
 };
 var MouseGuardNPCActorSheetBody_default = MouseGuardNPCActorSheetBody;
-require_12();
+require_14();
 
 // module/svelte/MouseGuardNPCActorSheetBase.svelte
-function create_fragment14(ctx) {
+function create_fragment15(ctx) {
   let div0;
   let mouseguardactorsheetheader;
   let t;
@@ -5719,7 +5866,7 @@ function create_fragment14(ctx) {
     }
   };
 }
-function instance13($$self, $$props, $$invalidate) {
+function instance14($$self, $$props, $$invalidate) {
   let $dataStore, $$unsubscribe_dataStore = noop, $$subscribe_dataStore = () => ($$unsubscribe_dataStore(), $$unsubscribe_dataStore = subscribe(dataStore, ($$value) => $$invalidate(1, $dataStore = $$value)), dataStore);
   $$self.$$.on_destroy.push(() => $$unsubscribe_dataStore());
   let { dataStore } = $$props;
@@ -5735,11 +5882,11 @@ function instance13($$self, $$props, $$invalidate) {
 var MouseGuardNPCActorSheetBase = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance13, create_fragment14, safe_not_equal, { dataStore: 0 });
+    init(this, options, instance14, create_fragment15, safe_not_equal, { dataStore: 0 });
   }
 };
 var MouseGuardNPCActorSheetBase_default = MouseGuardNPCActorSheetBase;
-require_13();
+require_15();
 
 // module/npcactor-sheet.js
 var MouseGuardNPCActorSheet = class extends ActorSheet {

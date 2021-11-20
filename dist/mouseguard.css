@@ -35,6 +35,82 @@ actorhead.svelte-1e1arv input.svelte-1e1arv {
 @media (min-width: 640px) {
 }
 
+/* fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMousePortrait.esbuild-svelte-fake-css */
+portrait.svelte-m1dtfi {
+  position: absolute;
+  left: 740px;
+  top: 30px;
+  background: white;
+}
+
+/* fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardEditor.esbuild-svelte-fake-css */
+.editor.svelte-1xgaaf4 {
+  display: grid;
+  grid-template-rows: 1px 1fr;
+}
+.editor-content.svelte-1xgaaf4 {
+  min-height: 100px;
+}
+
+/* fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseDetails.esbuild-svelte-fake-css */
+largecard.svelte-xlkhh3.svelte-xlkhh3 {
+  margin: 0 auto;
+  display: inline-block;
+  height: 250px;
+  width: 100%;
+  font-family: "Khula", sans-serif;
+}
+lineitem.svelte-xlkhh3.svelte-xlkhh3 {
+  margin: auto;
+  display: flex;
+  float: left;
+  padding: 5px;
+  height: 100%;
+}
+label.svelte-xlkhh3.svelte-xlkhh3 {
+  width: 180px;
+  text-align: right;
+  margin-top: 3px;
+  padding-right: 2px;
+  font-weight: bold;
+  font-family: "Khula", sans-serif;
+}
+input.svelte-xlkhh3.svelte-xlkhh3 {
+  border: none;
+}
+.namebox.svelte-xlkhh3.svelte-xlkhh3 {
+  position: relative;
+  font-family: "Germania One", cursive;
+  height: 60px;
+  pointer-events: none;
+}
+.namebox.svelte-xlkhh3 input.svelte-xlkhh3 {
+  background: rgba(0, 0, 0, 0);
+  background-image: url(../assets/actor/NameBanner.svg);
+  background-repeat: no-repeat;
+  height: 60px;
+  width: 300px;
+  font-size: 24px;
+  padding-left: 20px;
+  padding-bottom: 14px;
+  position: relative;
+  top: -40px;
+  left: 100px;
+  pointer-events: auto;
+}
+.namebox.svelte-xlkhh3 h1.svelte-xlkhh3 {
+  padding-left: 30px;
+}
+lineitem.svelte-xlkhh3 input.svelte-xlkhh3 {
+  padding-top: 5px;
+  pointer-events: auto;
+}
+h1.svelte-xlkhh3.svelte-xlkhh3 {
+  font-family: "Germania One", cursive;
+  padding-left: 30px;
+  width: 100%;
+}
+
 /* fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseRewards.esbuild-svelte-fake-css */
 largecard.svelte-1md4pyu.svelte-1md4pyu {
   margin: 0 auto;
@@ -161,74 +237,6 @@ textarea.svelte-1md4pyu.svelte-1md4pyu {
 .right.svelte-1md4pyu.svelte-1md4pyu {
   width: 85%;
   display: block;
-}
-
-/* fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardEditor.esbuild-svelte-fake-css */
-.editor.svelte-1xgaaf4 {
-  display: grid;
-  grid-template-rows: 1px 1fr;
-}
-.editor-content.svelte-1xgaaf4 {
-  min-height: 100px;
-}
-
-/* fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseDetails.esbuild-svelte-fake-css */
-largecard.svelte-xlkhh3.svelte-xlkhh3 {
-  margin: 0 auto;
-  display: inline-block;
-  height: 250px;
-  width: 100%;
-  font-family: "Khula", sans-serif;
-}
-lineitem.svelte-xlkhh3.svelte-xlkhh3 {
-  margin: auto;
-  display: flex;
-  float: left;
-  padding: 5px;
-  height: 100%;
-}
-label.svelte-xlkhh3.svelte-xlkhh3 {
-  width: 180px;
-  text-align: right;
-  margin-top: 3px;
-  padding-right: 2px;
-  font-weight: bold;
-  font-family: "Khula", sans-serif;
-}
-input.svelte-xlkhh3.svelte-xlkhh3 {
-  border: none;
-}
-.namebox.svelte-xlkhh3.svelte-xlkhh3 {
-  position: relative;
-  font-family: "Germania One", cursive;
-  height: 60px;
-  pointer-events: none;
-}
-.namebox.svelte-xlkhh3 input.svelte-xlkhh3 {
-  background: rgba(0, 0, 0, 0);
-  background-image: url(../assets/actor/NameBanner.svg);
-  background-repeat: no-repeat;
-  height: 60px;
-  width: 300px;
-  font-size: 24px;
-  padding-left: 20px;
-  padding-bottom: 14px;
-  position: relative;
-  top: -40px;
-  left: 100px;
-  pointer-events: auto;
-}
-.namebox.svelte-xlkhh3 h1.svelte-xlkhh3 {
-  padding-left: 30px;
-}
-lineitem.svelte-xlkhh3 input.svelte-xlkhh3 {
-  padding-top: 5px;
-  pointer-events: auto;
-}
-h1.svelte-xlkhh3.svelte-xlkhh3 {
-  font-family: "Germania One", cursive;
-  padding-left: 30px;
-  width: 100%;
 }
 
 /* fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseAbilities.esbuild-svelte-fake-css */
@@ -563,6 +571,94 @@ wise.svelte-4dvw4 {
 }
 trait.svelte-4dvw4 {
   clear: both;
+  display: block;
+}
+
+/* fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseDispo.esbuild-svelte-fake-css */
+largecard.svelte-1pon5yn.svelte-1pon5yn {
+  margin: 0 auto;
+  display: flex;
+  width: 100%;
+  font-family: "Khula", sans-serif;
+  flex-wrap: wrap;
+}
+startingBox.svelte-1pon5yn.svelte-1pon5yn {
+  position: absolute;
+  left: 40px;
+  top: 220px;
+  width: 70px;
+  font-family: "Germania One", cursive;
+}
+startingDispo.svelte-1pon5yn.svelte-1pon5yn {
+  position: absolute;
+  left: 140px;
+  top: 60px;
+  width: 70px;
+  font-family: "Germania One", cursive;
+}
+startingDispo.svelte-1pon5yn input.svelte-1pon5yn {
+  position: relative;
+  top: 10px;
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  font-size: 40px;
+  background: rgba(0, 0, 0, 0);
+}
+currentBox.svelte-1pon5yn.svelte-1pon5yn {
+  position: absolute;
+  left: 40px;
+  top: 310px;
+  font-family: "Germania One", cursive;
+  width: 70px;
+}
+currentDispo.svelte-1pon5yn.svelte-1pon5yn {
+  position: absolute;
+  left: 140px;
+  top: 170px;
+  font-family: "Germania One", cursive;
+  width: 70px;
+}
+currentDispo.svelte-1pon5yn input.svelte-1pon5yn {
+  position: relative;
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  font-size: 40px;
+  background: rgba(0, 0, 0, 0);
+}
+label.svelte-1pon5yn.svelte-1pon5yn {
+  margin-top: 3px;
+}
+input.svelte-1pon5yn.svelte-1pon5yn {
+  border: none;
+}
+h1.svelte-1pon5yn.svelte-1pon5yn {
+  font-family: "Germania One", cursive;
+  padding-left: 30px;
+  width: 100%;
+}
+.header.svelte-1pon5yn.svelte-1pon5yn {
+  font-family: "Germania One", cursive;
+  font-size: large;
+  width: 100%;
+  text-align: center;
+  display: block;
+}
+dispoBox.svelte-1pon5yn.svelte-1pon5yn {
+  position: relative;
+  top: 11px;
+  left: 11px;
+  width: 250px;
+  height: 300px;
+  display: block;
+  font-family: "Germania One", cursive;
+  background-image: url(../assets/actor/DispositionBanner.svg);
+  background-repeat: no-repeat;
+  background-position-y: 24px;
+}
+label.svelte-1pon5yn.svelte-1pon5yn {
+  width: 100%;
   display: block;
 }
 

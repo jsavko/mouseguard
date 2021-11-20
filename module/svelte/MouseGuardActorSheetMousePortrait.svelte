@@ -31,6 +31,18 @@
 
 </script>
 
+<portrait>
+<img on:click={filePicker} class="profile-img" src="{data.img}" data-edit="img" title="{data.name}" height="100" width="100"/>
+</portrait>
 
-	<img on:click={filePicker} class="profile-img" src="{data.img}" data-edit="img" title="{data.name}" height="100" width="100"/>
 
+<style>
+
+portrait{
+    position: absolute;
+    left: 740px;
+    top: 30px;
+	background: white;
+}
+
+</style>

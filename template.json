@@ -22,6 +22,10 @@
           "goal": "",
           "instinct": "",
           "check":1
+        },
+        "disposition":{
+          "starting":1,
+          "current":0
         }
       },
       "mouse":{
