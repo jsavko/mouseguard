@@ -73,6 +73,7 @@ export default class MouseCombat extends Combat {
 
         if (!!goal != false && CC ){
             this.askMove();
+            //ui.combat.renderPopout(true)
             return this.update({round: 1, turn: 0});  
         } 
         return false;
@@ -110,7 +111,6 @@ export default class MouseCombat extends Combat {
 
     async setGoal(goal) { 
         this.setFlag('mouseguard','goal',goal).then( content => { 
-
             this.startCombat();
         });
 

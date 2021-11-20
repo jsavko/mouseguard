@@ -43,7 +43,12 @@ export default class MouseCombatant extends Combatant {
 
     async _preCreate(data, options, user) {
         await super._preCreate(data, options, user);
+        //console.log(data);
+        let init = 0;
+        let actor = game.actors.get(data.actorId);
+        if (actor.type == "character") init = 1;
         this.data.update({
+            initiative: init,
             flags: {
                 mouseguard: {
                     ConflictCaptain: false,

@@ -5998,7 +5998,12 @@ var MouseCombatant = class extends Combatant {
   }
   async _preCreate(data, options, user) {
     await super._preCreate(data, options, user);
+    let init2 = 0;
+    let actor = game.actors.get(data.actorId);
+    if (actor.type == "character")
+      init2 = 1;
     this.data.update({
+      initiative: init2,
       flags: {
         mouseguard: {
           ConflictCaptain: false,
@@ -6049,16 +6054,20 @@ var MouseSocket = class {
   }
   static async goalManager(html, data) {
     let conflictGoal = html.find("#conflict_goal")[0].value;
-    await game.socket.emit("system.mouseguard", { action: "setGoal", combat: data.combat.id, goal: conflictGoal });
+    console.log(data);
+    await game.socket.emit("system.mouseguard", { action: "setGoal", combat: data.combat._id, goal: conflictGoal });
   }
   static async setGoal(data) {
+    console.log(data);
     if (game.user.isGM) {
-      let combat = game.combats.get(data.combat);
+      let combat = await game.combats.get(data.combat);
+      console.log(combat);
       combat.setGoal(data.goal);
       combat.setFlag("mouseguard", "goal", data.goal);
     }
   }
   static async askMoves(data) {
+    ui.combat.renderPopout(true);
     renderTemplate("systems/mouseguard/templates/parts/conflict-move-manager.hbs", data).then((dlg) => {
       new Dialog({
         title: `Conflict Manager`,
@@ -6135,6 +6144,13 @@ var MouseCombat = class extends Combat {
         }
       }
     });
+  }
+  static _canUpdate(user, doc, data) {
+    if (user.isGM)
+      return true;
+    const updateKeys = new Set(Object.keys(data));
+    const allowedKeys = new Set(["_id", "initiative", "flags"]);
+    return updateKeys.isSubset(allowedKeys);
   }
   async startCombat() {
     let goal = this.data.flags.mouseguard.goal;
@@ -6334,7 +6350,7 @@ var MouseCombatTracker = class extends CombatTracker {
     let hasDecimals = false;
     const turns = [];
     for (let [i, combatant] of combat.turns.entries()) {
-      if (!combatant.isVisible)
+      if (!combatant.visible)
         continue;
       const resource = combatant.permission >= CONST.ENTITY_PERMISSIONS.OBSERVER ? combatant.resource : null;
       const turn = {

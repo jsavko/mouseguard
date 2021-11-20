@@ -25,14 +25,16 @@ export default class MouseSocket {
 
     static async goalManager(html,data) {
         let conflictGoal = html.find("#conflict_goal")[0].value;
-        await game.socket.emit('system.mouseguard', {action: "setGoal", combat: data.combat.id, goal:conflictGoal });
+        console.log(data);
+        await game.socket.emit('system.mouseguard', {action: "setGoal", combat: data.combat._id, goal:conflictGoal });
     }
 
 
     static async setGoal(data) {
+        console.log(data);
         if (game.user.isGM) {
-            let combat = game.combats.get(data.combat);
-            
+            let combat = await (game.combats.get(data.combat));
+            console.log(combat);
             combat.setGoal(data.goal);
             combat.setFlag('mouseguard','goal',data.goal)
         }
@@ -40,7 +42,7 @@ export default class MouseSocket {
 
     static async askMoves(data) {
         //console.log(data);
- 
+        ui.combat.renderPopout(true);
         renderTemplate('systems/mouseguard/templates/parts/conflict-move-manager.hbs', data).then(dlg => {
                     new Dialog({
                         title: `Conflict Manager`,
