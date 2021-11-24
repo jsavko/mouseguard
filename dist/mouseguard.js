@@ -510,11 +510,25 @@ var MouseGuardActor = class extends Actor {
     const abilities = [];
     let create_ability;
     if ((data.type === "character" || data.type === "mouse") && this.itemTypes.ability.length <= 0) {
-      create_ability = ["MOUSEGUARD.MNature", "MOUSEGUARD.Will", "MOUSEGUARD.Health", "MOUSEGUARD.Resources", "MOUSEGUARD.Circles"];
+      create_ability = [
+        "MOUSEGUARD.MNature",
+        "MOUSEGUARD.Will",
+        "MOUSEGUARD.Health",
+        "MOUSEGUARD.Resources",
+        "MOUSEGUARD.Circles"
+      ];
     } else if (data.type === "weasel" && this.itemTypes.ability.length <= 0) {
-      create_ability = ["MOUSEGUARD.WNature", "MOUSEGUARD.Will", "MOUSEGUARD.Health", "MOUSEGUARD.Resources", "MOUSEGUARD.Circles"];
+      create_ability = [
+        "MOUSEGUARD.WNature",
+        "MOUSEGUARD.Will",
+        "MOUSEGUARD.Health",
+        "MOUSEGUARD.Resources",
+        "MOUSEGUARD.Circles"
+      ];
     } else if (data.type === "animal" && this.itemTypes.ability.length <= 0) {
-      create_ability = [game.i18n.localize("MOUSEGUARD.Nature") + " (" + data.name + ")"];
+      create_ability = [
+        game.i18n.localize("MOUSEGUARD.Nature") + " (" + data.name + ")"
+      ];
     }
     if (Object(create_ability).length > 0) {
       for (let i of create_ability) {
@@ -4842,7 +4856,7 @@ function create_fragment13(ctx) {
     c() {
       content = element("content");
       create_component(tabs.$$.fragment);
-      attr(content, "class", "svelte-u0vwks");
+      attr(content, "class", "svelte-qt9ivb");
     },
     m(target, anchor) {
       insert(target, content, anchor);
@@ -4945,7 +4959,10 @@ var MouseGuardActorSheet = class extends ActorSheet {
     switch (button.dataset.action) {
       case "create":
         const cls = getDocumentClass("Item");
-        return cls.create({ name: game.i18n.localize("MOUSEGUARD.ItemNew"), type: "item" }, { parent: this.actor });
+        return cls.create({
+          name: game.i18n.localize("MOUSEGUARD.ItemNew"),
+          type: "item"
+        }, { parent: this.actor });
       case "edit":
         return item2.sheet.render(true);
       case "delete":
@@ -4972,10 +4989,14 @@ var MouseGuardActorSheet = class extends ActorSheet {
     game.mouseguard.updateDisplay(count);
   }
   async _updateActorAbility(id, type, value) {
-    await this.actor.updateEmbeddedDocuments("Item", [{ _id: id, data: { [type]: value } }]);
+    await this.actor.updateEmbeddedDocuments("Item", [
+      { _id: id, data: { [type]: value } }
+    ]);
   }
   async _updateEmbededItem(id, _data) {
-    await this.actor.updateEmbeddedDocuments("Item", [{ _id: id, data: _data }]);
+    await this.actor.updateEmbeddedDocuments("Item", [
+      { _id: id, data: _data }
+    ]);
   }
   async _onItemDelete(itemId) {
     const item2 = this.actor.items.get(itemId);
@@ -5922,7 +5943,10 @@ var MouseGuardNPCActorSheet = class extends ActorSheet {
     switch (button.dataset.action) {
       case "create":
         const cls = getDocumentClass("Item");
-        return cls.create({ name: game.i18n.localize("MOUSEGUARD.ItemNew"), type: "item" }, { parent: this.actor });
+        return cls.create({
+          name: game.i18n.localize("MOUSEGUARD.ItemNew"),
+          type: "item"
+        }, { parent: this.actor });
       case "edit":
         return item2.sheet.render(true);
       case "delete":
@@ -5949,10 +5973,14 @@ var MouseGuardNPCActorSheet = class extends ActorSheet {
     game.mouseguard.updateDisplay(count);
   }
   async _updateActorAbility(id, type, value) {
-    await this.actor.updateEmbeddedDocuments("Item", [{ _id: id, data: { [type]: value } }]);
+    await this.actor.updateEmbeddedDocuments("Item", [
+      { _id: id, data: { [type]: value } }
+    ]);
   }
   async _updateEmbededItem(id, _data) {
-    await this.actor.updateEmbeddedDocuments("Item", [{ _id: id, data: _data }]);
+    await this.actor.updateEmbeddedDocuments("Item", [
+      { _id: id, data: _data }
+    ]);
   }
   async _onItemDelete(itemId) {
     const item2 = this.actor.items.get(itemId);
@@ -6046,12 +6074,12 @@ var MouseDie = class extends Die {
   }
   getResultLabel(result) {
     return {
-      "1": '<img src="systems/mouseguard/assets/dice/snake.png" />',
-      "2": '<img src="systems/mouseguard/assets/dice/snake.png" />',
-      "3": '<img src="systems/mouseguard/assets/dice/snake.png" />',
-      "4": '<img src="systems/mouseguard/assets/dice/sword.png" />',
-      "5": '<img src="systems/mouseguard/assets/dice/sword.png" />',
-      "6": '<img src="systems/mouseguard/assets/dice/axe.png" />'
+      1: '<img src="systems/mouseguard/assets/dice/snake.png" />',
+      2: '<img src="systems/mouseguard/assets/dice/snake.png" />',
+      3: '<img src="systems/mouseguard/assets/dice/snake.png" />',
+      4: '<img src="systems/mouseguard/assets/dice/sword.png" />',
+      5: '<img src="systems/mouseguard/assets/dice/sword.png" />',
+      6: '<img src="systems/mouseguard/assets/dice/axe.png" />'
     }[result.result];
   }
 };
@@ -6164,14 +6192,13 @@ var MouseCombatant = class extends Combatant {
     let theMove = Moves.filter((item2) => item2.id == id);
     let template = "systems/mouseguard/templates/chat/combat-action.hbs";
     let data = { actor: [this.actor][0], move: theMove[0].move };
-    var RollTemplate = renderTemplate(template, data).then((content) => {
-      let chatData = {
-        user: game.user._id,
-        speaker: ChatMessage.getSpeaker({ actor: data.actor })
-      };
-      chatData.content = content;
-      ChatMessage.create(chatData);
-    });
+    var content = await renderTemplate(template, data);
+    let chatData = {
+      user: game.user._id,
+      speaker: ChatMessage.getSpeaker({ actor: data.actor })
+    };
+    chatData.content = content;
+    ChatMessage.create(chatData);
     let otherMoves = Moves.filter((item2) => item2.id !== id);
     this.SetMove(otherMoves);
   }
@@ -6181,85 +6208,104 @@ var MouseCombatant = class extends Combatant {
 var MouseSocket = class {
   static async askGoal(data) {
     data.this = this;
-    renderTemplate("systems/mouseguard/templates/parts/conflict-manager.hbs", data).then((dlg) => {
-      new Dialog({
-        title: `Conflict Manager`,
-        content: dlg,
-        buttons: {
-          ok: {
-            label: "Apply",
-            callback: async (html) => {
-              data.this.goalManager(html, data);
-            }
-          },
-          cancel: {
-            label: "Cancel"
+    let dlg = await renderTemplate("systems/mouseguard/templates/parts/conflict-manager.hbs", data);
+    new Dialog({
+      title: `Conflict Manager`,
+      content: dlg,
+      buttons: {
+        ok: {
+          label: "Apply",
+          callback: async (html) => {
+            data.this.goalManager(html, data);
           }
+        },
+        cancel: {
+          label: "Cancel"
         }
-      }).render(true);
-    });
+      }
+    }).render(true);
   }
   static async goalManager(html, data) {
     let conflictGoal = html.find("#conflict_goal")[0].value;
-    console.log(data);
-    await game.socket.emit("system.mouseguard", { action: "setGoal", combat: data.combat._id, goal: conflictGoal });
+    await game.socket.emit("system.mouseguard", {
+      action: "setGoal",
+      combat: data.combat._id,
+      goal: conflictGoal
+    });
   }
   static async setGoal(data) {
-    console.log(data);
     if (game.user.isGM) {
       let combat = await game.combats.get(data.combat);
-      console.log(combat);
       combat.setGoal(data.goal);
       combat.setFlag("mouseguard", "goal", data.goal);
     }
   }
   static async askMoves(data) {
     ui.combat.renderPopout(true);
-    renderTemplate("systems/mouseguard/templates/parts/conflict-move-manager.hbs", data).then((dlg) => {
-      new Dialog({
-        title: `Conflict Manager`,
-        content: dlg,
-        buttons: {
-          ok: {
-            label: game.i18n.localize("MOUSEGUARD.Send"),
-            callback: async (html) => {
-              let error = false;
-              let Move1Actor = html.find("#move0-actor")[0].value;
-              let Move1Move = html.find(".move0:checked").val();
-              let Move2Actor = html.find("#move1-actor")[0].value;
-              let Move2Move = html.find(".move1:checked").val();
-              let Move3Actor = html.find("#move2-actor")[0].value;
-              let Move3Move = html.find(".move2:checked").val();
-              let CombatantData = { [Move1Actor]: [], [Move2Actor]: [], [Move3Actor]: [] };
-              if (!!Move1Move == false)
-                error = true;
-              if (!!Move2Move == false)
-                error = true;
-              if (!!Move3Move == false)
-                error = true;
-              if (error) {
-                ui.notifications.error("An error occured while setting your moves. Please select new moves.");
-                this.askMoves(data);
-                return;
-              }
-              CombatantData[Move1Actor].push({ id: randomID(), move: Move1Move, combatant: Move1Actor });
-              CombatantData[Move2Actor].push({ id: randomID(), move: Move2Move, combatant: Move2Actor });
-              CombatantData[Move3Actor].push({ id: randomID(), move: Move3Move, combatant: Move3Actor });
-              let moveData = { action: "setMoves", combat: data.combat, data: CombatantData };
-              if (data.npc == true) {
-                moveData.combat = data.combat.data;
-                this.setMoves(moveData);
-              } else {
-                await game.socket.emit("system.mouseguard", moveData);
-              }
+    let dlg = await renderTemplate("systems/mouseguard/templates/parts/conflict-move-manager.hbs", data);
+    new Dialog({
+      title: `Conflict Manager`,
+      content: dlg,
+      buttons: {
+        ok: {
+          label: game.i18n.localize("MOUSEGUARD.Send"),
+          callback: async (html) => {
+            let error = false;
+            let Move1Actor = html.find("#move0-actor")[0].value;
+            let Move1Move = html.find(".move0:checked").val();
+            let Move2Actor = html.find("#move1-actor")[0].value;
+            let Move2Move = html.find(".move1:checked").val();
+            let Move3Actor = html.find("#move2-actor")[0].value;
+            let Move3Move = html.find(".move2:checked").val();
+            let CombatantData = {
+              [Move1Actor]: [],
+              [Move2Actor]: [],
+              [Move3Actor]: []
+            };
+            if (!!Move1Move == false)
+              error = true;
+            if (!!Move2Move == false)
+              error = true;
+            if (!!Move3Move == false)
+              error = true;
+            if (error) {
+              ui.notifications.error("An error occured while setting your moves. Please select new moves.");
+              this.askMoves(data);
+              return;
             }
-          },
-          cancel: {
-            label: "Cancel"
+            CombatantData[Move1Actor].push({
+              id: randomID(),
+              move: Move1Move,
+              combatant: Move1Actor
+            });
+            CombatantData[Move2Actor].push({
+              id: randomID(),
+              move: Move2Move,
+              combatant: Move2Actor
+            });
+            CombatantData[Move3Actor].push({
+              id: randomID(),
+              move: Move3Move,
+              combatant: Move3Actor
+            });
+            let moveData = {
+              action: "setMoves",
+              combat: data.combat,
+              data: CombatantData
+            };
+            if (data.npc == true) {
+              moveData.combat = data.combat.data;
+              this.setMoves(moveData);
+            } else {
+              await game.socket.emit("system.mouseguard", moveData);
+            }
           }
+        },
+        cancel: {
+          label: "Cancel"
         }
-      }).render(true);
-    });
+      }
+    }).render(true);
   }
   static async moveManger(html, data) {
   }
@@ -6368,15 +6414,23 @@ var MouseCombat = class extends Combat {
     let npc = [];
     let combatants = this.combatants.filter((comb) => comb.actor.type == "character");
     Object.keys(combatants).forEach((key) => {
-      actors.push({ combatant: combatants[key].id, name: combatants[key].token.data.name });
+      actors.push({
+        combatant: combatants[key].id,
+        name: combatants[key].token.data.name
+      });
     });
     data.actors = actors;
     data.action = "askMoves";
     let player = this.getCCPlayer();
-    await game.socket.emit("system.mouseguard", data, { recipients: [player.data._id] });
+    await game.socket.emit("system.mouseguard", data, {
+      recipients: [player.data._id]
+    });
     let npccombatants = this.combatants.filter((comb) => comb.actor.type != "character");
     Object.keys(npccombatants).forEach((key) => {
-      npc.push({ combatant: npccombatants[key].id, name: npccombatants[key].token.data.name });
+      npc.push({
+        combatant: npccombatants[key].id,
+        name: npccombatants[key].token.data.name
+      });
     });
     data.actors = npc;
     data.npc = true;
@@ -6392,7 +6446,9 @@ var MouseCombat = class extends Combat {
         return !(t.data.defeated || t.actor?.effects.find((e) => e.getFlag("core", "statusId") === CONFIG.Combat.defeatedStatusId));
       });
       if (turn === -1) {
-        ui.notifications.warn("COMBAT.NoneRemaining", { localize: true });
+        ui.notifications.warn("COMBAT.NoneRemaining", {
+          localize: true
+        });
         turn = 0;
       }
     }
@@ -6540,11 +6596,18 @@ Hooks.once("init", async function() {
     decimals: 2
   };
   Actors.unregisterSheet("core", ActorSheet);
-  Actors.registerSheet("mouseguard", MouseGuardNPCActorSheet, { types: ["mouse", "weasel", "animal"], makeDefault: true });
+  Actors.registerSheet("mouseguard", MouseGuardNPCActorSheet, {
+    types: ["mouse", "weasel", "animal"],
+    makeDefault: true
+  });
   console.log("Setting actor Sheet");
-  Actors.registerSheet("mouseguard", MouseGuardActorSheet, { makeDefault: true });
+  Actors.registerSheet("mouseguard", MouseGuardActorSheet, {
+    makeDefault: true
+  });
   Items.unregisterSheet("core", ItemSheet);
-  Items.registerSheet("mouseguard", MouseGuardItemSheet, { makeDefault: true });
+  Items.registerSheet("mouseguard", MouseGuardItemSheet, {
+    makeDefault: true
+  });
   game.settings.register("mouseguard", "macroShorthand", {
     name: "SETTINGS.MouseGuardMacroShorthandN",
     hint: "SETTINGS.MouseGuardMacroShorthandL",
