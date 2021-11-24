@@ -1,81 +1,102 @@
 {
     "Actor": {
-      "types": ["character","mouse","weasel","animal"],
-      "character": {
-        "biography": "",
-        "details": {
-          "age": 0,
-          "home": "",
-          "fur_color": "",
-          "guard_rank": "",
-          "cloak_color":"",
-          "parents":"",
-          "senior_artisan": "",
-          "mentor": "",
-          "friend": "",
-          "enemy": ""
+        "types": ["character", "mouse", "weasel", "animal"],
+        "character": {
+            "biography": "",
+            "details": {
+                "age": 0,
+                "home": "",
+                "fur_color": "",
+                "guard_rank": "",
+                "cloak_color": "",
+                "parents": "",
+                "senior_artisan": "",
+                "mentor": "",
+                "friend": "",
+                "enemy": ""
+            },
+            "rewards": {
+                "fate": 1,
+                "persona": 1,
+                "belief": "",
+                "goal": "",
+                "instinct": "",
+                "check": 1
+            },
+            "disposition": {
+                "starting": 1,
+                "current": 0
+            }
         },
-        "rewards": {
-          "fate": 1,
-          "persona": 1,
-          "belief": "",
-          "goal": "",
-          "instinct": "",
-          "check":1
+        "mouse": {
+            "biography": "",
+            "disposition": {
+                "starting": 1,
+                "current": 0
+            }
         },
-        "disposition":{
-          "starting":1,
-          "current":0
+        "weasel": {
+            "biography": "",
+            "disposition": {
+                "starting": 1,
+                "current": 0
+            }
+        },
+        "animal": {
+            "biography": "",
+            "disposition": {
+                "starting": 1,
+                "current": 0
+            }
         }
-      },
-      "mouse":{
-        "biography": ""
-      },
-      "weasel":{
-        "biography": ""
-      },
-      "animal":{
-        "biography": ""
-      }
     },
     "Item": {
-      "types": ["item", "skill", "wise","contact", "condition","ability", "trait"],
-      "item": {
-        "description": "",
-        "quantity": 1,
-        "weight": 0,
-        "attributes": {},
-        "groups": {}
-      },
-      "skill": {
-        "description": "",
-        "rank": 1,
-        "pass":0,
-        "fail":0
-      },
-      "wise":{
-        "description": "",
-        "pass":0,
-        "fail": 0,
-        "rank": 1
-      },
-      "contact": {
-        "description": ""
-      },
-      "ability":{
-        "description":"",
-        "rating":1,
-        "pass":0,
-        "fail":0
-      },
-      "trait":{
-        "description": "",
-        "level": 1,
-        "usedfor":0,
-        "usedagainst":0
-      },
-      "condition":{
-        "description": ""
-      }
+        "types": [
+            "item",
+            "skill",
+            "wise",
+            "contact",
+            "condition",
+            "ability",
+            "trait"
+        ],
+        "item": {
+            "description": "",
+            "quantity": 1,
+            "weight": 0,
+            "attributes": {},
+            "groups": {}
+        },
+        "skill": {
+            "description": "",
+            "rank": 1,
+            "pass": 0,
+            "fail": 0
+        },
+        "wise": {
+            "description": "",
+            "pass": 0,
+            "fail": 0,
+            "rank": 1
+        },
+        "contact": {
+            "description": ""
+        },
+        "ability": {
+            "description": "",
+            "rating": 1,
+            "tax": 1,
+            "pass": 0,
+            "fail": 0
+        },
+        "trait": {
+            "description": "",
+            "level": 1,
+            "usedfor": 0,
+            "usedagainst": 0
+        },
+        "condition": {
+            "description": ""
+        }
     }
 }
