@@ -67,6 +67,7 @@ Hooks.once("init", async function () {
     });
     console.log("Setting actor Sheet");
     Actors.registerSheet("mouseguard", MouseGuardActorSheet, {
+        types: ["character"],
         makeDefault: true
     });
     Items.unregisterSheet("core", ItemSheet);

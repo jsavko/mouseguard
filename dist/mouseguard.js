@@ -500,6 +500,7 @@ var MouseGuardActor = class extends Actor {
   prepareData() {
     super.prepareData();
     const actorData = this.data;
+    console.log(actorData);
     this._prepareCharacterData(this.data);
   }
   _prepareCharacterData(actorData) {
@@ -6681,6 +6682,7 @@ Hooks.once("init", async function() {
   });
   console.log("Setting actor Sheet");
   Actors.registerSheet("mouseguard", MouseGuardActorSheet, {
+    types: ["character"],
     makeDefault: true
   });
   Items.unregisterSheet("core", ItemSheet);

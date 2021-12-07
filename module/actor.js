@@ -15,7 +15,7 @@ export class MouseGuardActor extends Actor {
     prepareData() {
         super.prepareData();
         const actorData = this.data;
-        //console.log(actorData)
+        console.log(actorData);
         this._prepareCharacterData(this.data);
     }
 
