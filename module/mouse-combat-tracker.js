@@ -244,7 +244,7 @@ export default class MouseCombatTracker extends CombatTracker {
                 combatant.actor
             );
         }
-        console.log(context);
+        //console.log(context);
         return context;
     }
 
