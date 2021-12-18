@@ -9,7 +9,20 @@
     "esmodules": ["dist/mouseguard.js"],
     "socket": true,
     "styles": ["styles/mouseguard.css", "dist/mouseguard.css"],
-    "packs": [],
+    "packs": [
+        {
+            "name": "skills",
+            "label": "Skills",
+            "path": "packs/skills.db",
+            "entity": "Item"
+        },
+        {
+            "name": "traits",
+            "label": "Traits",
+            "path": "packs/traits.db",
+            "entity": "Item"
+        }
+    ],
     "languages": [
         {
             "lang": "en",
