@@ -122,6 +122,7 @@ export class MouseGuardActorSheet extends ActorSheet {
     }
 
     async _onItemDelete(itemId) {
+        console.log(itemId);
         const item = this.actor.items.get(itemId);
         item.delete();
         this.render();

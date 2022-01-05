@@ -8,107 +8,107 @@ var __publicField = (obj, key, value) => {
   return value;
 };
 
-// fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetHeader.esbuild-svelte-fake-css
+// fakecss:E:/DDrive/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetHeader.esbuild-svelte-fake-css
 var require_ = __commonJS({
-  "fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetHeader.esbuild-svelte-fake-css"(exports, module) {
+  "fakecss:E:/DDrive/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetHeader.esbuild-svelte-fake-css"(exports, module) {
     module.exports = {};
   }
 });
 
-// fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMousePortrait.esbuild-svelte-fake-css
+// fakecss:E:/DDrive/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMousePortrait.esbuild-svelte-fake-css
 var require_2 = __commonJS({
-  "fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMousePortrait.esbuild-svelte-fake-css"(exports, module) {
+  "fakecss:E:/DDrive/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMousePortrait.esbuild-svelte-fake-css"(exports, module) {
     module.exports = {};
   }
 });
 
-// fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardEditor.esbuild-svelte-fake-css
+// fakecss:E:/DDrive/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardEditor.esbuild-svelte-fake-css
 var require_3 = __commonJS({
-  "fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardEditor.esbuild-svelte-fake-css"(exports, module) {
+  "fakecss:E:/DDrive/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardEditor.esbuild-svelte-fake-css"(exports, module) {
     module.exports = {};
   }
 });
 
-// fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseDetails.esbuild-svelte-fake-css
+// fakecss:E:/DDrive/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseDetails.esbuild-svelte-fake-css
 var require_4 = __commonJS({
-  "fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseDetails.esbuild-svelte-fake-css"(exports, module) {
+  "fakecss:E:/DDrive/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseDetails.esbuild-svelte-fake-css"(exports, module) {
     module.exports = {};
   }
 });
 
-// fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseRewards.esbuild-svelte-fake-css
+// fakecss:E:/DDrive/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseRewards.esbuild-svelte-fake-css
 var require_5 = __commonJS({
-  "fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseRewards.esbuild-svelte-fake-css"(exports, module) {
+  "fakecss:E:/DDrive/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseRewards.esbuild-svelte-fake-css"(exports, module) {
     module.exports = {};
   }
 });
 
-// fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseAbilities.esbuild-svelte-fake-css
+// fakecss:E:/DDrive/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseAbilities.esbuild-svelte-fake-css
 var require_6 = __commonJS({
-  "fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseAbilities.esbuild-svelte-fake-css"(exports, module) {
+  "fakecss:E:/DDrive/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseAbilities.esbuild-svelte-fake-css"(exports, module) {
     module.exports = {};
   }
 });
 
-// fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseSkills.esbuild-svelte-fake-css
+// fakecss:E:/DDrive/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseSkills.esbuild-svelte-fake-css
 var require_7 = __commonJS({
-  "fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseSkills.esbuild-svelte-fake-css"(exports, module) {
+  "fakecss:E:/DDrive/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseSkills.esbuild-svelte-fake-css"(exports, module) {
     module.exports = {};
   }
 });
 
-// fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseWises.esbuild-svelte-fake-css
+// fakecss:E:/DDrive/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseWises.esbuild-svelte-fake-css
 var require_8 = __commonJS({
-  "fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseWises.esbuild-svelte-fake-css"(exports, module) {
+  "fakecss:E:/DDrive/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseWises.esbuild-svelte-fake-css"(exports, module) {
     module.exports = {};
   }
 });
 
-// fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseTraits.esbuild-svelte-fake-css
+// fakecss:E:/DDrive/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseTraits.esbuild-svelte-fake-css
 var require_9 = __commonJS({
-  "fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseTraits.esbuild-svelte-fake-css"(exports, module) {
+  "fakecss:E:/DDrive/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseTraits.esbuild-svelte-fake-css"(exports, module) {
     module.exports = {};
   }
 });
 
-// fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseSkillAbilityTab.esbuild-svelte-fake-css
+// fakecss:E:/DDrive/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseSkillAbilityTab.esbuild-svelte-fake-css
 var require_10 = __commonJS({
-  "fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseSkillAbilityTab.esbuild-svelte-fake-css"(exports, module) {
+  "fakecss:E:/DDrive/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseSkillAbilityTab.esbuild-svelte-fake-css"(exports, module) {
     module.exports = {};
   }
 });
 
-// fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseDispo.esbuild-svelte-fake-css
+// fakecss:E:/DDrive/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseDispo.esbuild-svelte-fake-css
 var require_11 = __commonJS({
-  "fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseDispo.esbuild-svelte-fake-css"(exports, module) {
+  "fakecss:E:/DDrive/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseDispo.esbuild-svelte-fake-css"(exports, module) {
     module.exports = {};
   }
 });
 
-// fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/Tabs.esbuild-svelte-fake-css
+// fakecss:E:/DDrive/FoundryData/Data/systems/mouseguard/module/svelte/Tabs.esbuild-svelte-fake-css
 var require_12 = __commonJS({
-  "fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/Tabs.esbuild-svelte-fake-css"(exports, module) {
+  "fakecss:E:/DDrive/FoundryData/Data/systems/mouseguard/module/svelte/Tabs.esbuild-svelte-fake-css"(exports, module) {
     module.exports = {};
   }
 });
 
-// fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetBase.esbuild-svelte-fake-css
+// fakecss:E:/DDrive/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetBase.esbuild-svelte-fake-css
 var require_13 = __commonJS({
-  "fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetBase.esbuild-svelte-fake-css"(exports, module) {
+  "fakecss:E:/DDrive/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetBase.esbuild-svelte-fake-css"(exports, module) {
     module.exports = {};
   }
 });
 
-// fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardNPCActorSheetBody.esbuild-svelte-fake-css
+// fakecss:E:/DDrive/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardNPCActorSheetBody.esbuild-svelte-fake-css
 var require_14 = __commonJS({
-  "fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardNPCActorSheetBody.esbuild-svelte-fake-css"(exports, module) {
+  "fakecss:E:/DDrive/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardNPCActorSheetBody.esbuild-svelte-fake-css"(exports, module) {
     module.exports = {};
   }
 });
 
-// fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardNPCActorSheetBase.esbuild-svelte-fake-css
+// fakecss:E:/DDrive/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardNPCActorSheetBase.esbuild-svelte-fake-css
 var require_15 = __commonJS({
-  "fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardNPCActorSheetBase.esbuild-svelte-fake-css"(exports, module) {
+  "fakecss:E:/DDrive/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardNPCActorSheetBase.esbuild-svelte-fake-css"(exports, module) {
     module.exports = {};
   }
 });
@@ -2879,7 +2879,7 @@ function create_else_block_12(ctx) {
   return {
     c() {
       div = element("div");
-      attr(div, "class", "no-checkmark svelte-19h3piw");
+      attr(div, "class", "no-checkmark svelte-190d8lw");
     },
     m(target, anchor) {
       insert(target, div, anchor);
@@ -2909,7 +2909,7 @@ function create_if_block_12(ctx) {
   return {
     c() {
       div = element("div");
-      attr(div, "class", "checkmark svelte-19h3piw");
+      attr(div, "class", "checkmark svelte-190d8lw");
     },
     m(target, anchor) {
       insert(target, div, anchor);
@@ -2976,7 +2976,7 @@ function create_else_block2(ctx) {
   return {
     c() {
       div = element("div");
-      attr(div, "class", "no-checkmark svelte-19h3piw");
+      attr(div, "class", "no-checkmark svelte-190d8lw");
     },
     m(target, anchor) {
       insert(target, div, anchor);
@@ -3006,7 +3006,7 @@ function create_if_block3(ctx) {
   return {
     c() {
       div = element("div");
-      attr(div, "class", "checkmark svelte-19h3piw");
+      attr(div, "class", "checkmark svelte-190d8lw");
     },
     m(target, anchor) {
       insert(target, div, anchor);
@@ -3117,13 +3117,13 @@ function create_each_block2(ctx) {
       input = element("input");
       t3 = space();
       pass = element("pass");
-      t4 = text("P:\r\n			");
+      t4 = text("P:\r\n                    ");
       for (let i = 0; i < each_blocks_1.length; i += 1) {
         each_blocks_1[i].c();
       }
       t5 = space();
       fail = element("fail");
-      t6 = text("F:\r\n				");
+      t6 = text("F:\r\n                    ");
       for (let i = 0; i < each_blocks.length; i += 1) {
         each_blocks[i].c();
       }
@@ -3132,18 +3132,18 @@ function create_each_block2(ctx) {
       a1 = element("a");
       a1.innerHTML = `<i class="fas fa-trash"></i>`;
       t8 = space();
-      attr(label, "class", "header svelte-19h3piw");
+      attr(label, "class", "header svelte-190d8lw");
       attr(input, "name", input_name_value = ctx[13].id);
       attr(input, "type", "number");
       input.value = input_value_value = ctx[13].data.data.rank;
-      attr(input, "class", "svelte-19h3piw");
-      attr(pass, "class", "svelte-19h3piw");
-      attr(fail, "class", "svelte-19h3piw");
+      attr(input, "class", "svelte-190d8lw");
+      attr(pass, "class", "svelte-190d8lw");
+      attr(fail, "class", "svelte-190d8lw");
       attr(div0, "name", div0_name_value = ctx[13].id);
       attr(a1, "class", "item-control item-delete");
       attr(a1, "title", "Delete Item");
       attr(div1, "class", "item-controls");
-      attr(skill, "class", "svelte-19h3piw");
+      attr(skill, "class", "svelte-190d8lw");
     },
     m(target, anchor) {
       insert(target, skill, anchor);
@@ -3175,8 +3175,8 @@ function create_each_block2(ctx) {
           listen(label, "click", click_handler),
           listen(input, "change", ctx[5]),
           listen(a1, "click", function() {
-            if (is_function(ctx[2]?._onItemDelete(ctx[13]._id)))
-              ctx[2]?._onItemDelete(ctx[13]._id).apply(this, arguments);
+            if (is_function(ctx[2]?._onItemDelete(ctx[13].id)))
+              ctx[2]?._onItemDelete(ctx[13].id).apply(this, arguments);
           })
         ];
         mounted = true;
@@ -3264,8 +3264,8 @@ function create_fragment7(ctx) {
       for (let i = 0; i < each_blocks.length; i += 1) {
         each_blocks[i].c();
       }
-      attr(h1, "class", "svelte-19h3piw");
-      attr(largecard, "class", "svelte-19h3piw");
+      attr(h1, "class", "svelte-190d8lw");
+      attr(largecard, "class", "svelte-190d8lw");
     },
     m(target, anchor) {
       insert(target, largecard, anchor);
@@ -3378,7 +3378,7 @@ function create_else_block_13(ctx) {
   return {
     c() {
       div = element("div");
-      attr(div, "class", "no-checkmark svelte-105ojo3");
+      attr(div, "class", "no-checkmark svelte-17j122m");
     },
     m(target, anchor) {
       insert(target, div, anchor);
@@ -3408,7 +3408,7 @@ function create_if_block_13(ctx) {
   return {
     c() {
       div = element("div");
-      attr(div, "class", "checkmark svelte-105ojo3");
+      attr(div, "class", "checkmark svelte-17j122m");
     },
     m(target, anchor) {
       insert(target, div, anchor);
@@ -3475,7 +3475,7 @@ function create_else_block3(ctx) {
   return {
     c() {
       div = element("div");
-      attr(div, "class", "no-checkmark svelte-105ojo3");
+      attr(div, "class", "no-checkmark svelte-17j122m");
     },
     m(target, anchor) {
       insert(target, div, anchor);
@@ -3505,7 +3505,7 @@ function create_if_block4(ctx) {
   return {
     c() {
       div = element("div");
-      attr(div, "class", "checkmark svelte-105ojo3");
+      attr(div, "class", "checkmark svelte-17j122m");
     },
     m(target, anchor) {
       insert(target, div, anchor);
@@ -3615,13 +3615,13 @@ function create_each_block3(ctx) {
       input = element("input");
       t3 = space();
       pass = element("pass");
-      t4 = text("P: \r\n			");
+      t4 = text("P:\r\n                    ");
       for (let i = 0; i < each_blocks_1.length; i += 1) {
         each_blocks_1[i].c();
       }
       t5 = space();
       fail = element("fail");
-      t6 = text("F: \r\n				");
+      t6 = text("F:\r\n                    ");
       for (let i = 0; i < each_blocks.length; i += 1) {
         each_blocks[i].c();
       }
@@ -3629,18 +3629,18 @@ function create_each_block3(ctx) {
       div1 = element("div");
       a1 = element("a");
       a1.innerHTML = `<i class="fas fa-trash"></i>`;
-      attr(label, "class", "header svelte-105ojo3");
+      attr(label, "class", "header svelte-17j122m");
       attr(input, "name", input_name_value = ctx[13].id);
       attr(input, "type", "number");
       input.value = input_value_value = ctx[13].data.data.rank;
-      attr(input, "class", "svelte-105ojo3");
-      attr(pass, "class", "svelte-105ojo3");
-      attr(fail, "class", "svelte-105ojo3");
+      attr(input, "class", "svelte-17j122m");
+      attr(pass, "class", "svelte-17j122m");
+      attr(fail, "class", "svelte-17j122m");
       attr(div0, "name", div0_name_value = ctx[13].id);
       attr(a1, "class", "item-control item-delete");
       attr(a1, "title", "Delete Item");
-      attr(div1, "class", "item-controls svelte-105ojo3");
-      attr(wise, "class", "svelte-105ojo3");
+      attr(div1, "class", "item-controls svelte-17j122m");
+      attr(wise, "class", "svelte-17j122m");
     },
     m(target, anchor) {
       insert(target, wise, anchor);
@@ -3671,8 +3671,8 @@ function create_each_block3(ctx) {
           listen(label, "click", click_handler),
           listen(input, "change", ctx[5]),
           listen(a1, "click", function() {
-            if (is_function(ctx[2]?._onItemDelete(ctx[13]._id)))
-              ctx[2]?._onItemDelete(ctx[13]._id).apply(this, arguments);
+            if (is_function(ctx[2]?._onItemDelete(ctx[13].id)))
+              ctx[2]?._onItemDelete(ctx[13].id).apply(this, arguments);
           })
         ];
         mounted = true;
@@ -3781,15 +3781,15 @@ function create_fragment8(ctx) {
       div2 = element("div");
       a = element("a");
       a.innerHTML = `<i class="fas fa-plus"></i> Add item`;
-      attr(h1, "class", "svelte-105ojo3");
+      attr(h1, "class", "svelte-17j122m");
       attr(div0, "class", "item-image");
       attr(div1, "class", "item-name");
       attr(a, "class", "item-control item-create");
       attr(a, "title", "Create item");
       attr(a, "data-type", "wise");
-      attr(div2, "class", "item-controls svelte-105ojo3");
+      attr(div2, "class", "item-controls svelte-17j122m");
       attr(li, "class", "item flexrow item-header");
-      attr(largecard, "class", "svelte-105ojo3");
+      attr(largecard, "class", "svelte-17j122m");
     },
     m(target, anchor) {
       insert(target, largecard, anchor);
@@ -4209,8 +4209,8 @@ function create_each_block4(ctx) {
           listen(label, "click", click_handler),
           listen(input, "change", ctx[5]),
           listen(a1, "click", function() {
-            if (is_function(ctx[2]?._onItemDelete(ctx[13]._id)))
-              ctx[2]?._onItemDelete(ctx[13]._id).apply(this, arguments);
+            if (is_function(ctx[2]?._onItemDelete(ctx[13].id)))
+              ctx[2]?._onItemDelete(ctx[13].id).apply(this, arguments);
           })
         ];
         mounted = true;
@@ -5060,6 +5060,7 @@ var MouseGuardActorSheet = class extends ActorSheet {
     ]);
   }
   async _onItemDelete(itemId) {
+    console.log(itemId);
     const item2 = this.actor.items.get(itemId);
     item2.delete();
     this.render();
