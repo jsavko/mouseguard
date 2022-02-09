@@ -14,13 +14,15 @@
             "name": "skills",
             "label": "Skills",
             "path": "packs/skills.db",
-            "entity": "Item"
+            "entity": "Item",
+            "type": "Item"
         },
         {
             "name": "traits",
             "label": "Traits",
             "path": "packs/traits.db",
-            "entity": "Item"
+            "entity": "Item",
+            "type": "Item"
         }
     ],
     "languages": [

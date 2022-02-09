@@ -34,7 +34,7 @@ export default class ConflictTracker extends FormApplication {
         context.isGM = game.user.isGM;
 
         const x = $(window).width();
-        const y = $(window).height();
+        //const y = $(window).height();
 
         //this.position.left = x - 505;
         //this.position.top = y - 75;

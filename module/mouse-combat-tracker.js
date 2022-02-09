@@ -7,7 +7,7 @@
  *
  */
 
-import { compute_rest_props } from "svelte/internal";
+//import { compute_rest_props } from "svelte/internal";
 
 export default class MouseCombatTracker extends CombatTracker {
     static get defaultOptions() {

@@ -1,7 +1,5 @@
 <script>
     import { getContext } from "svelte";
-    import { slide } from "svelte/transition";
-    import { writable } from "svelte/store";
 
     import MouseGuardActorSheetPortrait from "./MouseGuardActorSheetMousePortrait.svelte";
 
@@ -9,24 +7,8 @@
 
     //getContext("sheetStore", dataStore);
     let sheetData = getContext("sheetStore");
-    let { actor, sheet } = $sheetData;
     let data;
     $: data = $sheetData.data;
-
-    const filePicker = (event) => {
-        const attr = event.currentTarget.dataset.edit;
-        const current = getProperty(data, attr);
-        const fp = new FilePicker({
-            type: "image",
-            current: current,
-            callback: (path) => {
-                actor.update({ [attr]: path });
-            },
-            top: sheet.position.top + 40,
-            left: sheet.position.left + 10
-        });
-        return fp.browse();
-    };
 </script>
 
 <MouseGuardActorSheetPortrait />
@@ -138,15 +120,6 @@
         height: 250px;
         width: 100%;
         font-family: "Khula", sans-serif;
-    }
-    .container {
-        display: flex;
-        flex-direction: row;
-    }
-    .child {
-        width: 50%;
-        height: 100%; /* Or whatever */
-        margin: auto; /* Magic! */
     }
 
     lineitem {

@@ -1,11 +1,8 @@
 <script>
     import { getContext } from "svelte";
-    import { slide } from "svelte/transition";
-    import { writable } from "svelte/store";
 
     //getContext("sheetStore", dataStore);
     let sheetData = getContext("sheetStore");
-    let { actor, sheet } = $sheetData;
     let data;
     $: data = $sheetData.data;
 </script>
@@ -104,24 +101,6 @@
         background: rgba(0, 0, 0, 0);
     }
 
-    .container {
-        display: flex;
-        flex-direction: row;
-    }
-    .child {
-        width: 50%;
-        height: 100%; /* Or whatever */
-        margin: auto; /* Magic! */
-    }
-
-    lineitem {
-        width: 210px;
-        margin: auto; /* Magic! */
-        display: flex;
-        float: left;
-        padding: 5px;
-        height: 100%;
-    }
     label {
         margin-top: 3px;
     }
@@ -143,18 +122,6 @@
         display: block;
     }
 
-    fatebox input {
-        width: 50px;
-        position: relative;
-        top: 30px;
-        left: 25px;
-        height: 30px;
-        width: 35px;
-        text-align: center;
-        font-size: large;
-        background: rgba(0, 0, 0, 0);
-    }
-
     dispoBox {
         position: relative;
         top: 11px;
@@ -168,77 +135,8 @@
         background-position-y: 24px;
     }
 
-    personabox input {
-        width: 50px;
-        position: relative;
-        top: 22px;
-        left: 25px;
-        height: 50px;
-        width: 35px;
-        text-align: center;
-        font-size: large;
-        background: rgba(0, 0, 0, 0);
-    }
-
-    rewardbox {
-        position: relative;
-        left: 10px;
-        width: 95%;
-        margin-bottom: 10px;
-        display: block;
-        font-family: "Germania One", cursive;
-        font-size: large;
-    }
-
-    checksbox {
-        position: relative;
-        top: 11px;
-        left: 11px;
-        width: 85px;
-        height: 125px;
-        display: block;
-        font-family: "Germania One", cursive;
-        background-image: url("../assets/actor/Checks.svg");
-        background-repeat: no-repeat;
-        background-position-y: 24px;
-    }
-
-    checksbox input {
-        width: 50px;
-        position: relative;
-        top: 18px;
-        left: 25px;
-        height: 50px;
-        width: 35px;
-        text-align: center;
-        font-size: large;
-        background: rgba(0, 0, 0, 0);
-    }
-
     label {
         width: 100%;
-        display: block;
-    }
-    .sub {
-        font-size: small;
-        font-family: "Khula", sans-serif;
-    }
-
-    textarea {
-        font-size: small;
-        font-family: "Khula", sans-serif;
-        border: none;
-        font-weight: bold;
-        background: rgba(0, 0, 0, 0.05);
-    }
-
-    .left {
-        width: 175px;
-        display: block;
-    }
-
-    .right {
-        width: 85%;
         display: block;
     }
 </style>

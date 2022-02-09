@@ -1,15 +1,11 @@
 <script>
     import { getContext } from "svelte";
-    import { slide } from "svelte/transition";
-    import { writable } from "svelte/store";
-    import { identity, validate_each_argument } from "svelte/internal";
     import { updateRating, setMouseDice } from "./MouseGuardCommon.svelte";
 
     //getContext("sheetStore", dataStore);
     let sheetData = getContext("sheetStore");
-    let { actor, sheet } = $sheetData;
+    let { sheet } = $sheetData;
     let data;
-    let abilities;
     $: data = $sheetData.data;
     $: skills = $sheetData.data.data.itemTypes.skill;
 </script>
@@ -155,18 +151,6 @@
         margin-top: 3px;
         width: 100%;
         display: block;
-    }
-    .sub {
-        font-size: small;
-        font-family: "Khula", sans-serif;
-    }
-
-    textarea {
-        font-size: small;
-        font-family: "Khula", sans-serif;
-        border: none;
-        font-weight: bold;
-        background: rgba(0, 0, 0, 0.05);
     }
 
     .header {

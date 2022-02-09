@@ -1,11 +1,10 @@
 <script>
     import { getContext } from "svelte";
-    import { identity, validate_each_argument } from "svelte/internal";
     import { updateRating, setMouseDice } from "./MouseGuardCommon.svelte";
 
     //getContext("sheetStore", dataStore);
     let sheetData = getContext("sheetStore");
-    let { actor, sheet } = $sheetData;
+    let { sheet } = $sheetData;
     let data;
     let abilities;
     $: data = $sheetData.data;
@@ -203,16 +202,6 @@
         height: 80px;
     }
 
-    pass {
-        display: flex;
-        font-family: "Germania One", cursive;
-    }
-
-    fail {
-        display: flex;
-        font-family: "Germania One", cursive;
-    }
-
     input {
         border: none;
         width: 40px;
@@ -241,48 +230,11 @@
 
     label:hover {
     }
-    .sub {
-        font-size: small;
-        font-family: "Khula", sans-serif;
-    }
-
-    textarea {
-        font-size: small;
-        font-family: "Khula", sans-serif;
-        border: none;
-        font-weight: bold;
-        background: rgba(0, 0, 0, 0.05);
-    }
 
     .header {
         font-family: "Germania One", cursive;
         font-size: large;
         width: 100%;
         display: block;
-    }
-    .checkmark:after {
-        content: "✔";
-        display: block;
-        width: 12px;
-        height: 12px;
-        text-align: center;
-        font-size: 10px;
-        border: 1px solid #aaa;
-        background: #f8f8f8;
-        border-radius: 50%;
-        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
-    }
-
-    .no-checkmark:after {
-        content: " ";
-        display: block;
-        width: 12px;
-        height: 12px;
-        text-align: center;
-        font-size: 10px;
-        border: 1px solid #aaa;
-        background: #f8f8f8;
-        border-radius: 50%;
-        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
     }
 </style>
