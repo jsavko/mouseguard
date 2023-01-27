@@ -5997,6 +5997,9 @@ var MouseCombat = class extends Combat {
 
 // module/mouse-combat-tracker.js
 var MouseCombatTracker = class extends CombatTracker {
+  constructor(options) {
+    super(options);
+  }
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
       id: "combat",
@@ -6078,8 +6081,6 @@ var MouseCombatTracker = class extends CombatTracker {
     let context = await super.getData(options);
     for (let [i, combatant] of context.combat.turns.entries()) {
       context.turns[i].flags = combatant.flags;
-      context.turns[i].isFirstOwner = this.isFirstOwner(combatant.actor);
-      context.turns[i].hasPlayerOwner = this.hasPlayerOwner(combatant.actor);
     }
     return context;
   }
