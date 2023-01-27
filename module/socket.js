@@ -102,7 +102,7 @@ export default class MouseSocket {
                         };
 
                         if (data.npc == true) {
-                            moveData.combat = data.combat.data;
+                            moveData.combat = data.combat;
                             this.setMoves(moveData);
                         } else {
                             await game.socket.emit(
@@ -127,7 +127,7 @@ export default class MouseSocket {
             let x = Object.keys(data.data).length;
 
             for (const key of Object.keys(data.data)) {
-                let combatant = await combat.data.combatants.get(key);
+                let combatant = await combat.combatants.get(key);
                 await combatant.setFlag("mouseguard", "Moves", data.data[key]);
             }
         }

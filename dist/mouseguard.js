@@ -4633,7 +4633,7 @@ function create_each_block_3(ctx) {
       attr(label, "class", "header svelte-191iqry");
       attr(input, "name", input_name_value = ctx[25].id);
       attr(input, "type", "number");
-      input.value = input_value_value = ctx[25].data.data.rating;
+      input.value = input_value_value = ctx[25].system.rating;
       attr(input, "class", "svelte-191iqry");
       attr(div, "name", div_name_value = ctx[25].id);
       attr(ability, "class", "svelte-191iqry");
@@ -4663,7 +4663,7 @@ function create_each_block_3(ctx) {
       if (dirty & 1 && input_name_value !== (input_name_value = ctx[25].id)) {
         attr(input, "name", input_name_value);
       }
-      if (dirty & 1 && input_value_value !== (input_value_value = ctx[25].data.data.rating)) {
+      if (dirty & 1 && input_value_value !== (input_value_value = ctx[25].system.rating)) {
         input.value = input_value_value;
       }
       if (dirty & 1 && div_name_value !== (div_name_value = ctx[25].id)) {
@@ -4778,7 +4778,7 @@ function create_each_block_25(ctx) {
       attr(label, "class", "header svelte-191iqry");
       attr(input, "name", input_name_value = ctx[22].id);
       attr(input, "type", "number");
-      input.value = input_value_value = ctx[22].data.data.rank;
+      input.value = input_value_value = ctx[22].system.rank;
       attr(input, "class", "svelte-191iqry");
       attr(div0, "name", div0_name_value = ctx[22].id);
       attr(a1, "class", "item-control item-delete");
@@ -4818,7 +4818,7 @@ function create_each_block_25(ctx) {
       if (dirty & 2 && input_name_value !== (input_name_value = ctx[22].id)) {
         attr(input, "name", input_name_value);
       }
-      if (dirty & 2 && input_value_value !== (input_value_value = ctx[22].data.data.rank)) {
+      if (dirty & 2 && input_value_value !== (input_value_value = ctx[22].system.rank)) {
         input.value = input_value_value;
       }
       if (dirty & 2 && div0_name_value !== (div0_name_value = ctx[22].id)) {
@@ -4933,7 +4933,7 @@ function create_each_block_16(ctx) {
       attr(label, "class", "header svelte-191iqry");
       attr(input, "name", input_name_value = ctx[19].id);
       attr(input, "type", "number");
-      input.value = input_value_value = ctx[19].data.data.level;
+      input.value = input_value_value = ctx[19].system.level;
       attr(input, "class", "svelte-191iqry");
       attr(div0, "name", div0_name_value = ctx[19].id);
       attr(a1, "class", "item-control item-delete");
@@ -4973,7 +4973,7 @@ function create_each_block_16(ctx) {
       if (dirty & 8 && input_name_value !== (input_name_value = ctx[19].id)) {
         attr(input, "name", input_name_value);
       }
-      if (dirty & 8 && input_value_value !== (input_value_value = ctx[19].data.data.level)) {
+      if (dirty & 8 && input_value_value !== (input_value_value = ctx[19].system.level)) {
         input.value = input_value_value;
       }
       if (dirty & 8 && div0_name_value !== (div0_name_value = ctx[19].id)) {
@@ -5087,7 +5087,7 @@ function create_each_block6(ctx) {
       attr(label, "class", "header svelte-191iqry");
       attr(input, "name", input_name_value = ctx[16].id);
       attr(input, "type", "number");
-      input.value = input_value_value = ctx[16].data.data.rank;
+      input.value = input_value_value = ctx[16].system.rank;
       attr(input, "class", "svelte-191iqry");
       attr(div0, "name", div0_name_value = ctx[16].id);
       attr(a1, "class", "item-control item-delete");
@@ -5127,7 +5127,7 @@ function create_each_block6(ctx) {
       if (dirty & 4 && input_name_value !== (input_name_value = ctx[16].id)) {
         attr(input, "name", input_name_value);
       }
-      if (dirty & 4 && input_value_value !== (input_value_value = ctx[16].data.data.rank)) {
+      if (dirty & 4 && input_value_value !== (input_value_value = ctx[16].system.rank)) {
         input.value = input_value_value;
       }
       if (dirty & 4 && div0_name_value !== (div0_name_value = ctx[16].id)) {
@@ -5300,13 +5300,13 @@ function instance13($$self, $$props, $$invalidate) {
   let { sheet } = $sheetData;
   let data;
   let abilities;
-  const click_handler = (ability, e) => setMouseDice(sheet, ability.data.data.rating);
+  const click_handler = (ability, e) => setMouseDice(sheet, ability.system.rating);
   const change_handler = (e) => updateRating(sheet, e.target.name, "rating", parseInt(e.target.value));
-  const click_handler_1 = (skill, e) => setMouseDice(sheet, skill.data.data.rank);
+  const click_handler_1 = (skill, e) => setMouseDice(sheet, skill.system.rank);
   const change_handler_1 = (e) => updateRating(sheet, e.target.name, "rank", parseInt(e.target.value));
-  const click_handler_2 = (trait, e) => setMouseDice(sheet, trait.data.data.level);
+  const click_handler_2 = (trait, e) => setMouseDice(sheet, trait.system.level);
   const change_handler_2 = (e) => updateRating(sheet, e.target.name, "level", parseInt(e.target.value));
-  const click_handler_3 = (wise, e) => setMouseDice(sheet, wise.data.data.rank);
+  const click_handler_3 = (wise, e) => setMouseDice(sheet, wise.system.rank);
   const change_handler_3 = (e) => updateRating(sheet, e.target.name, "rank", parseInt(e.target.value));
   $$self.$$.update = () => {
     if ($$self.$$.dirty & 64) {
@@ -5315,19 +5315,19 @@ function instance13($$self, $$props, $$invalidate) {
     }
     if ($$self.$$.dirty & 64) {
       $:
-        $$invalidate(0, abilities = $sheetData.data.data.itemTypes.ability);
+        $$invalidate(0, abilities = $sheetData.data.system.itemTypes.ability);
     }
     if ($$self.$$.dirty & 64) {
       $:
-        $$invalidate(1, skills = $sheetData.data.data.itemTypes.skill);
+        $$invalidate(1, skills = $sheetData.data.system.itemTypes.skill);
     }
     if ($$self.$$.dirty & 64) {
       $:
-        $$invalidate(2, wises = $sheetData.data.data.itemTypes.wise);
+        $$invalidate(2, wises = $sheetData.data.system.itemTypes.wise);
     }
     if ($$self.$$.dirty & 64) {
       $:
-        $$invalidate(3, traits = $sheetData.data.data.itemTypes.trait);
+        $$invalidate(3, traits = $sheetData.data.system.itemTypes.trait);
     }
   };
   return [
@@ -5461,7 +5461,7 @@ var MouseGuardNPCActorSheet = class extends ActorSheet {
   }
   getData() {
     const context = super.getData();
-    context.systemData = context.data.data;
+    context.systemData = context.system;
     context.sheet = this;
     return context;
   }
@@ -5830,7 +5830,7 @@ var MouseSocket = class {
               data: CombatantData
             };
             if (data.npc == true) {
-              moveData.combat = data.combat.data;
+              moveData.combat = data.combat;
               this.setMoves(moveData);
             } else {
               await game.socket.emit("system.mouseguard", moveData);
@@ -5850,7 +5850,7 @@ var MouseSocket = class {
       let combat = await game.combats.get(data.combat._id);
       let x = Object.keys(data.data).length;
       for (const key of Object.keys(data.data)) {
-        let combatant = await combat.data.combatants.get(key);
+        let combatant = await combat.combatants.get(key);
         await combatant.setFlag("mouseguard", "Moves", data.data[key]);
       }
     }
@@ -6075,6 +6075,8 @@ var MouseCombatTracker = class extends CombatTracker {
         return this._onToggleDefeatedStatus(c);
       case "rollInitiative":
         return combat.rollInitiative([c.id]);
+      case "pingCombatant":
+        return this._onPingCombatant(c);
     }
   }
   async getData(options) {

@@ -25,7 +25,7 @@ export class MouseGuardNPCActorSheet extends ActorSheet {
     /** @inheritdoc */
     getData() {
         const context = super.getData();
-        context.systemData = context.data.data;
+        context.systemData = context.system;
         context.sheet = this;
 
         return context;

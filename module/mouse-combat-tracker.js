@@ -138,6 +138,10 @@ export default class MouseCombatTracker extends CombatTracker {
             // Roll combatant initiative
             case "rollInitiative":
                 return combat.rollInitiative([c.id]);
+
+            // Actively ping the Combatant
+            case "pingCombatant":
+                return this._onPingCombatant(c);
         }
     }
 
