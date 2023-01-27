@@ -33,8 +33,8 @@
             {{/if}}
 
             {{#if combatCount}}
-            {{#if combat.data.round}}
-            <h3>{{localize 'COMBAT.Round'}} {{combat.data.round}}</h3>
+            {{#if combat.round}}
+            <h3>{{localize 'COMBAT.Round'}} {{combat.round}}</h3>
             {{else}}
             <h3>{{localize 'COMBAT.NotStarted'}}</h3>
             {{/if}}
@@ -53,8 +53,8 @@
             {{/if}}
         </nav>
         <div class="flexcol">
-            {{#if combat.data.flags.mouseguard.goal}}
-            <h3>{{combat.data.flags.mouseguard.goal}}</h3>
+            {{#if combat.flags.mouseguard.goal}}
+            <h3>{{combat.flags.mouseguard.goal}}</h3>
             {{else}}
             <h3>{{localize 'COMBAT.NoGoal'}}</h3>
             {{/if}}

@@ -8,8 +8,8 @@ export class MouseGuardItem extends Item {
     /** @inheritdoc */
     prepareDerivedData() {
         super.prepareDerivedData();
-        this.data.data.groups = this.data.data.groups || {};
-        this.data.data.attributes = this.data.data.attributes || {};
+        this.system.groups = this.system.groups || {};
+        this.system.attributes = this.system.attributes || {};
     }
 
     /* -------------------------------------------- */

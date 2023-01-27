@@ -22,18 +22,18 @@
     <dispoBox>
         <startingDispo>
             <input
-                name="data.disposition.starting"
+                name="system.disposition.starting"
                 type="number"
-                value={data.data.disposition.starting}
+                value={data.system.disposition.starting}
                 placeholder="0"
             />
         </startingDispo>
 
         <currentDispo>
             <input
-                name="data.disposition.current"
+                name="system.disposition.current"
                 type="number"
-                value={data.data.disposition.current}
+                value={data.system.disposition.current}
                 placeholder="0"
             />
         </currentDispo>

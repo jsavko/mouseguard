@@ -53,8 +53,8 @@ export default class MouseCombat extends Combat {
     }
 
     async startCombat() {
-        let goal = this.data.flags.mouseguard.goal;
-        let CC = this.data.flags.mouseguard.ConflictCaptain;
+        let goal = this.flags.mouseguard.goal;
+        let CC = this.flags.mouseguard.ConflictCaptain;
 
         if (!CC) {
             ui.notifications.error(game.i18n.localize("COMBAT.NeedCC"));
@@ -76,12 +76,12 @@ export default class MouseCombat extends Combat {
 
     getCCPlayer() {
         let combatant = this.combatants.get(this.getConflictCaptain);
-        let actor = game.actors.get(combatant.data.actorId);
+        let actor = game.actors.get(combatant.actorId);
         let player;
 
         // Loop through permisisons looking for not GM
-        Object.keys(actor.data.permission).forEach((key) => {
-            if (actor.data.permission[key] == 3) {
+        Object.keys(actor.ownership).forEach((key) => {
+            if (actor.ownership[key] == 3) {
                 //Check if GM if not it's owner
                 let user = game.users.get(key);
                 if (!user.isGM) player = user;
@@ -91,7 +91,7 @@ export default class MouseCombat extends Combat {
     }
 
     async askGoal() {
-        let CC = this.data.flags.mouseguard.ConflictCaptain;
+        let CC = this.flags.mouseguard.ConflictCaptain;
 
         if (!CC) {
             ui.notifications.error("A Conflict Captain Must be set");
@@ -102,7 +102,7 @@ export default class MouseCombat extends Combat {
         await game.socket.emit(
             "system.mouseguard",
             { action: "askGoal", combat: this },
-            { recipients: [player.data._id] }
+            { recipients: [player._id] }
         );
     }
 
@@ -115,7 +115,7 @@ export default class MouseCombat extends Combat {
     }
 
     async askMove() {
-        let CC = this.data.flags.mouseguard.ConflictCaptain;
+        let CC = this.flags.mouseguard.ConflictCaptain;
 
         if (!CC) {
             ui.notifications.error(game.i18n.localize("COMBAT.NeedCC"));
@@ -132,7 +132,7 @@ export default class MouseCombat extends Combat {
         Object.keys(combatants).forEach((key) => {
             actors.push({
                 combatant: combatants[key].id,
-                name: combatants[key].token.data.name
+                name: combatants[key].token.name
             });
         });
 
@@ -142,7 +142,7 @@ export default class MouseCombat extends Combat {
         let player = this.getCCPlayer();
 
         await game.socket.emit("system.mouseguard", data, {
-            recipients: [player.data._id]
+            recipients: [player._id]
         });
 
         let npccombatants = this.combatants.filter(
@@ -152,7 +152,7 @@ export default class MouseCombat extends Combat {
         Object.keys(npccombatants).forEach((key) => {
             npc.push({
                 combatant: npccombatants[key].id,
-                name: npccombatants[key].token.data.name
+                name: npccombatants[key].token.name
             });
         });
 
@@ -172,7 +172,7 @@ export default class MouseCombat extends Combat {
         if (this.settings.skipDefeated) {
             turn = this.turns.findIndex((t) => {
                 return !(
-                    t.data.defeated ||
+                    t.defeated ||
                     t.actor?.effects.find(
                         (e) =>
                             e.getFlag("core", "statusId") ===

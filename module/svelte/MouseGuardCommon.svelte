@@ -1,22 +1,18 @@
-
 <script context="module">
-
-	export function updateRating(sheet,item, type, value){
-		//sheet?._updateActorAbility(item, type, value);
+    export function updateRating(sheet, item, type, value) {
+        //sheet?._updateActorAbility(item, type, value);
         //console.log ("updateRating")
 
-		const ob = {[type]:value};
-		if (type == 'rank' || type =="rating" || type=="level") {
-            if (value < 1 ) ob[type] = 1;
+        const ob = { [type]: value };
+        if (type == "rank" || type == "rating" || type == "level") {
+            if (value < 1) ob[type] = 1;
             ob.fail = 0;
-			ob.pass = 0;
-		}
-		sheet?._updateEmbededItem(item, ob);
+            ob.pass = 0;
+        }
+        sheet?._updateEmbededItem(item, ob);
+    }
 
-	}
-
-	export function setMouseDice(sheet, count) {
-		sheet?._setMouseDice(count);
-	}
-
+    export function setMouseDice(sheet, count) {
+        sheet?._setMouseDice(count);
+    }
 </script>

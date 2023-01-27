@@ -14,9 +14,9 @@
             <label class="header">{game.i18n.localize("MOUSEGUARD.Fate")}</label
             >
             <input
-                name="data.rewards.fate"
+                name="system.rewards.fate"
                 type="number"
-                value={data.data.rewards.fate}
+                value={data.system.rewards.fate}
                 placeholder="0"
             />
         </fatebox>
@@ -25,9 +25,9 @@
                 >{game.i18n.localize("MOUSEGUARD.Persona")}</label
             >
             <input
-                name="data.rewards.persona"
+                name="system.rewards.persona"
                 type="number"
-                value={data.data.rewards.persona}
+                value={data.system.rewards.persona}
                 placeholder="0"
             />
         </personabox>
@@ -36,9 +36,9 @@
                 >{game.i18n.localize("MOUSEGUARD.Checks")}</label
             >
             <input
-                name="data.rewards.check"
+                name="system.rewards.check"
                 type="number"
-                value={data.data.rewards.check}
+                value={data.system.rewards.check}
                 placeholder="0"
             />
         </checksbox>
@@ -49,8 +49,8 @@
             <label class="sub"
                 >{@html game.i18n.localize("MOUSEGUARD.BeliefSub")}</label
             >
-            <textarea name="data.rewards.belief"
-                >{data.data.rewards.belief}</textarea
+            <textarea name="system.rewards.belief"
+                >{data.system.rewards.belief}</textarea
             >
         </rewardbox>
         <rewardbox>
@@ -58,8 +58,8 @@
             <label class="sub"
                 >{@html game.i18n.localize("MOUSEGUARD.InstinctSub")}</label
             >
-            <textarea name="data.rewards.instinct"
-                >{data.data.rewards.instinct}</textarea
+            <textarea name="system.rewards.instinct"
+                >{data.system.rewards.instinct}</textarea
             >
         </rewardbox>
         <rewardbox>
@@ -67,8 +67,8 @@
             <label class="sub"
                 >{@html game.i18n.localize("MOUSEGUARD.GoalSub")}</label
             >
-            <textarea name="data.rewards.goal"
-                >{data.data.rewards.goal}</textarea
+            <textarea name="system.rewards.goal"
+                >{data.system.rewards.goal}</textarea
             >
         </rewardbox>
     </right>

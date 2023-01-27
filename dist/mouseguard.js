@@ -117,15 +117,13 @@ var require_15 = __commonJS({
 var MouseGuardActor = class extends Actor {
   prepareDerivedData() {
     super.prepareDerivedData();
-    this.data.data.groups = this.data.data.groups || {};
-    this.data.data.attributes = this.data.data.attributes || {};
   }
   prepareData() {
     super.prepareData();
-    this._prepareCharacterData(this.data);
+    this._prepareCharacterData(this);
   }
   _prepareCharacterData(actorData) {
-    actorData.data.itemTypes = this.itemTypes;
+    this.system.itemTypes = this.itemTypes;
   }
   async _preCreate(data, options, user) {
     await super._preCreate(data, options, user);
@@ -162,527 +160,14 @@ var MouseGuardActor = class extends Actor {
       this.data.update({ items: abilities });
     }
   }
-  getRollData() {
-    const data = this.toObject(false).data;
-    const shorthand = game.settings.get("mouseguard", "macroShorthand");
-    const formulaAttributes = [];
-    const itemAttributes = [];
-    this._applyShorthand(data, formulaAttributes, shorthand);
-    this._applyItems(data, itemAttributes, shorthand);
-    this._applyItemsFormulaReplacements(data, itemAttributes, shorthand);
-    this._applyFormulaReplacements(data, formulaAttributes, shorthand);
-    if (!!shorthand) {
-      delete data.attributes;
-      delete data.attr;
-      delete data.abil;
-      delete data.groups;
-    }
-    return data;
-  }
-  _applyShorthand(data, formulaAttributes, shorthand) {
-    for (let [k, v] of Object.entries(data.attributes || {})) {
-      if (v.dtype === "Formula")
-        formulaAttributes.push(k);
-      if (!!shorthand) {
-        if (!(k in data)) {
-          if (v.dtype) {
-            data[k] = v.value;
-          } else {
-            data[k] = {};
-            for (let [gk, gv] of Object.entries(v)) {
-              data[k][gk] = gv.value;
-              if (gv.dtype === "Formula")
-                formulaAttributes.push(`${k}.${gk}`);
-            }
-          }
-        }
-      }
-    }
-  }
-  _applyItems(data, itemAttributes, shorthand) {
-    data.items = this.items.reduce((obj, item2) => {
-      const key = item2.name.slugify({ strict: true });
-      const itemData = item2.toObject(false).data;
-      for (let [k, v] of Object.entries(itemData.attributes)) {
-        if (v.dtype === "Formula")
-          itemAttributes.push(`${key}..${k}`);
-        if (!!shorthand) {
-          if (!(k in itemData)) {
-            if (v.dtype) {
-              itemData[k] = v.value;
-            } else {
-              if (!itemData[k])
-                itemData[k] = {};
-              for (let [gk, gv] of Object.entries(v)) {
-                itemData[k][gk] = gv.value;
-                if (gv.dtype === "Formula")
-                  itemAttributes.push(`${key}..${k}.${gk}`);
-              }
-            }
-          }
-        } else {
-          if (!v.dtype) {
-            if (!itemData[k])
-              itemData[k] = {};
-            for (let [gk, gv] of Object.entries(v)) {
-              itemData[k][gk] = gv.value;
-              if (gv.dtype === "Formula")
-                itemAttributes.push(`${key}..${k}.${gk}`);
-            }
-          }
-        }
-      }
-      if (!!shorthand) {
-        delete itemData.attributes;
-      }
-      obj[key] = itemData;
-      return obj;
-    }, {});
-  }
-  _applyItemsFormulaReplacements(data, itemAttributes, shorthand) {
-    for (let k of itemAttributes) {
-      let item2 = null;
-      let itemKey = k.split("..");
-      item2 = itemKey[0];
-      k = itemKey[1];
-      let gk = null;
-      if (k.includes(".")) {
-        let attrKey = k.split(".");
-        k = attrKey[0];
-        gk = attrKey[1];
-      }
-      let formula = "";
-      if (!!shorthand) {
-        if (data.items[item2][k][gk]) {
-          formula = data.items[item2][k][gk].replace("@item.", `@items.${item2}.`);
-          data.items[item2][k][gk] = Roll.replaceFormulaData(formula, data);
-        } else if (data.items[item2][k]) {
-          formula = data.items[item2][k].replace("@item.", `@items.${item2}.`);
-          data.items[item2][k] = Roll.replaceFormulaData(formula, data);
-        }
-      } else {
-        if (data.items[item2]["attributes"][k][gk]) {
-          formula = data.items[item2]["attributes"][k][gk]["value"].replace("@item.", `@items.${item2}.attributes.`);
-          data.items[item2]["attributes"][k][gk]["value"] = Roll.replaceFormulaData(formula, data);
-        } else if (data.items[item2]["attributes"][k]["value"]) {
-          formula = data.items[item2]["attributes"][k]["value"].replace("@item.", `@items.${item2}.attributes.`);
-          data.items[item2]["attributes"][k]["value"] = Roll.replaceFormulaData(formula, data);
-        }
-      }
-    }
-  }
-  _applyFormulaReplacements(data, formulaAttributes, shorthand) {
-    for (let k of formulaAttributes) {
-      let attr2 = null;
-      if (k.includes(".")) {
-        let attrKey = k.split(".");
-        k = attrKey[0];
-        attr2 = attrKey[1];
-      }
-      if (data.attributes[k]?.value) {
-        data.attributes[k].value = Roll.replaceFormulaData(data.attributes[k].value, data);
-      } else if (attr2) {
-        data.attributes[k][attr2].value = Roll.replaceFormulaData(data.attributes[k][attr2].value, data);
-      }
-      if (!!shorthand) {
-        if (data.attributes[k]?.value) {
-          data[k] = data.attributes[k].value;
-        } else {
-          if (attr2) {
-            if (!data[k]) {
-              data[k] = {};
-            }
-            data[k][attr2] = data.attributes[k][attr2].value;
-          }
-        }
-      }
-    }
-  }
-};
-
-// module/constants.js
-var ATTRIBUTE_TYPES = ["String", "Number", "Boolean", "Formula", "Resource"];
-
-// module/helper.js
-var EntitySheetHelper = class {
-  static getAttributeData(data) {
-    for (let attr2 of Object.values(data.data.attributes)) {
-      if (attr2.dtype) {
-        attr2.isCheckbox = attr2.dtype === "Boolean";
-        attr2.isResource = attr2.dtype === "Resource";
-        attr2.isFormula = attr2.dtype === "Formula";
-      }
-    }
-    data.data.ungroupedAttributes = {};
-    const groups = data.data.groups || {};
-    let groupKeys = Object.keys(groups).sort((a, b) => {
-      let aSort = groups[a].label ?? a;
-      let bSort = groups[b].label ?? b;
-      return aSort.localeCompare(bSort);
-    });
-    for (let key of groupKeys) {
-      let group = data.data.attributes[key] || {};
-      if (!data.data.groups[key]["attributes"])
-        data.data.groups[key]["attributes"] = {};
-      Object.keys(group).sort((a, b) => a.localeCompare(b)).forEach((attr2) => {
-        if (typeof group[attr2] != "object" || !group[attr2])
-          return;
-        group[attr2]["isCheckbox"] = group[attr2]["dtype"] === "Boolean";
-        group[attr2]["isResource"] = group[attr2]["dtype"] === "Resource";
-        group[attr2]["isFormula"] = group[attr2]["dtype"] === "Formula";
-        data.data.groups[key]["attributes"][attr2] = group[attr2];
-      });
-    }
-    Object.keys(data.data.attributes).filter((a) => !groupKeys.includes(a)).sort((a, b) => a.localeCompare(b)).forEach((key) => {
-      data.data.ungroupedAttributes[key] = data.data.attributes[key];
-    });
-    if (data.items) {
-      data.items.forEach((item2) => {
-        for (let [k, v] of Object.entries(item2.data.attributes)) {
-          if (!v.dtype) {
-            for (let [gk, gv] of Object.entries(v)) {
-              if (gv.dtype) {
-                if (!gv.label)
-                  gv.label = gk;
-                if (gv.dtype === "Formula") {
-                  gv.isFormula = true;
-                } else {
-                  gv.isFormula = false;
-                }
-              }
-            }
-          } else {
-            if (!v.label)
-              v.label = k;
-            if (v.dtype === "Formula") {
-              v.isFormula = true;
-            } else {
-              v.isFormula = false;
-            }
-          }
-        }
-      });
-    }
-  }
-  static onSubmit(event) {
-    if (event.currentTarget) {
-      if (event.currentTarget.tagName.toLowerCase() === "input" && !event.currentTarget.hasAttribute("name")) {
-        return false;
-      }
-      let attr2 = false;
-      const el = event.currentTarget;
-      if (el.classList.contains("attribute-key")) {
-        let val = el.value;
-        let oldVal = el.closest(".attribute").dataset.attribute;
-        let attrError = false;
-        let groups = document.querySelectorAll(".group-key");
-        for (let i = 0; i < groups.length; i++) {
-          if (groups[i].value === val) {
-            ui.notifications.error(game.i18n.localize("MOUSEGUARD.NotifyAttrDuplicate") + ` (${val})`);
-            el.value = oldVal;
-            attrError = true;
-            break;
-          }
-        }
-        if (!attrError) {
-          oldVal = oldVal.includes(".") ? oldVal.split(".")[1] : oldVal;
-          attr2 = $(el).attr("name").replace(oldVal, val);
-        }
-      }
-      return attr2 ? attr2 : true;
-    }
-  }
-  static async onClickAttributeControl(event) {
-    event.preventDefault();
-    const a = event.currentTarget;
-    const action = a.dataset.action;
-    switch (action) {
-      case "create":
-        return EntitySheetHelper.createAttribute(event, this);
-      case "delete":
-        return EntitySheetHelper.deleteAttribute(event, this);
-    }
-  }
-  static async onClickAttributeGroupControl(event) {
-    event.preventDefault();
-    const a = event.currentTarget;
-    const action = a.dataset.action;
-    switch (action) {
-      case "create-group":
-        return EntitySheetHelper.createAttributeGroup(event, this);
-      case "delete-group":
-        return EntitySheetHelper.deleteAttributeGroup(event, this);
-    }
-  }
-  static onAttributeRoll(event) {
-    event.preventDefault();
-    const button = event.currentTarget;
-    const label = button.closest(".attribute").querySelector(".attribute-label")?.value;
-    const chatLabel = label ?? button.parentElement.querySelector(".attribute-key").value;
-    const shorthand = game.settings.get("mouseguard", "macroShorthand");
-    const rollData = this.actor.getRollData();
-    let formula = button.closest(".attribute").querySelector(".attribute-value")?.value;
-    if (formula) {
-      let replacement = null;
-      if (formula.includes("@item.") && this.item) {
-        let itemName = this.item.name.slugify({ strict: true });
-        replacement = !!shorthand ? `@items.${itemName}.` : `@items.${itemName}.attributes.`;
-        formula = formula.replace("@item.", replacement);
-      }
-      let r = new Roll(formula, rollData);
-      return r.toMessage({
-        user: game.user.id,
-        speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-        flavor: `${chatLabel}`
-      });
-    }
-  }
-  static getAttributeHtml(items, index, group = false) {
-    let result = '<div style="display: none;">';
-    for (let [key, item2] of Object.entries(items)) {
-      result = result + `<input type="${item2.type}" name="data.attributes${group ? "." + group : ""}.attr${index}.${key}" value="${item2.value}"/>`;
-    }
-    return result + "</div>";
-  }
-  static validateGroup(groupName, document2) {
-    let groups = Object.keys(document2.data.data.groups || {});
-    let attributes = Object.keys(document2.data.data.attributes).filter((a) => !groups.includes(a));
-    if (groups.includes(groupName)) {
-      ui.notifications.error(game.i18n.localize("MOUSEGUARD.NotifyGroupDuplicate") + ` (${groupName})`);
-      return false;
-    }
-    if (attributes.includes(groupName)) {
-      ui.notifications.error(game.i18n.localize("MOUSEGUARD.NotifyGroupAttrDuplicate") + ` (${groupName})`);
-      return false;
-    }
-    if (groupName.match(/[\s|\.]/i)) {
-      ui.notifications.error(game.i18n.localize("MOUSEGUARD.NotifyGroupAlphanumeric"));
-      return false;
-    }
-    return true;
-  }
-  static async createAttribute(event, app) {
-    const a = event.currentTarget;
-    const group = a.dataset.group;
-    let dtype = a.dataset.dtype;
-    const attrs = app.object.data.data.attributes;
-    const groups = app.object.data.data.groups;
-    const form = app.form;
-    let objKeys = Object.keys(attrs).filter((k) => !Object.keys(groups).includes(k));
-    let nk = Object.keys(attrs).length + 1;
-    let newValue = `attr${nk}`;
-    let newKey = document.createElement("div");
-    while (objKeys.includes(newValue)) {
-      ++nk;
-      newValue = `attr${nk}`;
-    }
-    let htmlItems = {
-      key: {
-        type: "text",
-        value: newValue
-      }
-    };
-    if (group) {
-      objKeys = attrs[group] ? Object.keys(attrs[group]) : [];
-      nk = objKeys.length + 1;
-      newValue = `attr${nk}`;
-      while (objKeys.includes(newValue)) {
-        ++nk;
-        newValue = `attr${nk}`;
-      }
-      htmlItems.key.value = newValue;
-      htmlItems.group = {
-        type: "hidden",
-        value: group
-      };
-      htmlItems.dtype = {
-        type: "hidden",
-        value: dtype
-      };
-    } else {
-      if (!dtype) {
-        let lastAttr = document.querySelector(".attributes > .attributes-group .attribute:last-child .attribute-dtype")?.value;
-        dtype = lastAttr ? lastAttr : "String";
-        htmlItems.dtype = {
-          type: "hidden",
-          value: dtype
-        };
-      }
-    }
-    newKey.innerHTML = EntitySheetHelper.getAttributeHtml(htmlItems, nk, group);
-    newKey = newKey.children[0];
-    form.appendChild(newKey);
-    await app._onSubmit(event);
-  }
-  static async deleteAttribute(event, app) {
-    const a = event.currentTarget;
-    const li = a.closest(".attribute");
-    if (li) {
-      li.parentElement.removeChild(li);
-      await app._onSubmit(event);
-    }
-  }
-  static async createAttributeGroup(event, app) {
-    const a = event.currentTarget;
-    const form = app.form;
-    let newValue = $(a).siblings(".group-prefix").val();
-    if (newValue.length > 0 && EntitySheetHelper.validateGroup(newValue, app.object)) {
-      let newKey = document.createElement("div");
-      newKey.innerHTML = `<input type="text" name="data.groups.${newValue}.key" value="${newValue}"/>`;
-      newKey = newKey.children[0];
-      form.appendChild(newKey);
-      await app._onSubmit(event);
-    }
-  }
-  static async deleteAttributeGroup(event, app) {
-    const a = event.currentTarget;
-    let groupHeader = a.closest(".group-header");
-    let groupContainer = groupHeader.closest(".group");
-    let group = $(groupHeader).find(".group-key");
-    new Dialog({
-      title: game.i18n.localize("MOUSEGUARD.DeleteGroup"),
-      content: `${game.i18n.localize("MOUSEGUARD.DeleteGroupContent")} <strong>${group.val()}</strong>`,
-      buttons: {
-        confirm: {
-          icon: '<i class="fas fa-trash"></i>',
-          label: game.i18n.localize("Yes"),
-          callback: async () => {
-            groupContainer.parentElement.removeChild(groupContainer);
-            await app._onSubmit(event);
-          }
-        },
-        cancel: {
-          icon: '<i class="fas fa-times"></i>',
-          label: game.i18n.localize("No")
-        }
-      }
-    }).render(true);
-  }
-  static updateAttributes(formData, document2) {
-    let groupKeys = [];
-    const formAttrs = foundry.utils.expandObject(formData)?.data?.attributes || {};
-    const attributes = Object.values(formAttrs).reduce((obj, v) => {
-      let attrs = [];
-      let group = null;
-      if (!v["key"]) {
-        attrs = Object.keys(v);
-        attrs.forEach((attrKey) => {
-          group = v[attrKey]["group"];
-          groupKeys.push(group);
-          let attr2 = v[attrKey];
-          let k = v[attrKey]["key"] ? v[attrKey]["key"].trim() : attrKey.trim();
-          if (/[\s\.]/.test(k))
-            return ui.notifications.error("Attribute keys may not contain spaces or periods");
-          delete attr2["key"];
-          if (!obj[group]) {
-            obj[group] = {};
-          }
-          obj[group][k] = attr2;
-        });
-      } else {
-        let k = v["key"].trim();
-        if (/[\s\.]/.test(k))
-          return ui.notifications.error("Attribute keys may not contain spaces or periods");
-        delete v["key"];
-        if (!group) {
-          obj[k] = v;
-        }
-      }
-      return obj;
-    }, {});
-    for (let k of Object.keys(document2.data.data.attributes)) {
-      if (!attributes.hasOwnProperty(k))
-        attributes[`-=${k}`] = null;
-    }
-    for (let group of groupKeys) {
-      if (document2.data.data.attributes[group]) {
-        for (let k of Object.keys(document2.data.data.attributes[group])) {
-          if (!attributes[group].hasOwnProperty(k))
-            attributes[group][`-=${k}`] = null;
-        }
-      }
-    }
-    formData = Object.entries(formData).filter((e) => !e[0].startsWith("data.attributes")).reduce((obj, e) => {
-      obj[e[0]] = e[1];
-      return obj;
-    }, { _id: document2.id, "data.attributes": attributes });
-    return formData;
-  }
-  static updateGroups(formData, document2) {
-    const formGroups = expandObject(formData).data.groups || {};
-    const groups = Object.values(formGroups).reduce((obj, v) => {
-      if (Array.isArray(v["key"])) {
-        v["key"] = v["key"][0];
-      }
-      let k = v["key"].trim();
-      if (/[\s\.]/.test(k))
-        return ui.notifications.error("Group keys may not contain spaces or periods");
-      delete v["key"];
-      obj[k] = v;
-      return obj;
-    }, {});
-    for (let k of Object.keys(document2.data.data.groups)) {
-      if (!groups.hasOwnProperty(k))
-        groups[`-=${k}`] = null;
-    }
-    formData = Object.entries(formData).filter((e) => !e[0].startsWith("data.groups")).reduce((obj, e) => {
-      obj[e[0]] = e[1];
-      return obj;
-    }, { _id: document2.id, "data.groups": groups });
-    return formData;
-  }
-  static async createDialog(data = {}, options = {}) {
-    const documentName = this.metadata.name;
-    const folders = game.folders.filter((f) => f.data.type === documentName && f.displayed);
-    const label = game.i18n.localize(this.metadata.label);
-    const title = game.i18n.format("ENTITY.Create", { entity: label });
-    const collection = game.collections.get(this.documentName);
-    const templates = collection.filter((a) => a.getFlag("mouseguard", "isTemplate"));
-    const defaultType = this.metadata.types[0];
-    const types = {
-      [defaultType]: game.i18n.localize("MOUSEGUARD.NoTemplate")
-    };
-    for (let a of templates) {
-      types[a.id] = a.name;
-    }
-    const html = await renderTemplate(`templates/sidebar/entity-create.html`, {
-      name: data.name || game.i18n.format("ENTITY.New", { entity: label }),
-      folder: data.folder,
-      folders,
-      hasFolders: folders.length > 1,
-      type: data.type || templates[0]?.id || "",
-      types,
-      hasTypes: true
-    });
-    return Dialog.prompt({
-      title,
-      content: html,
-      label: title,
-      callback: (html2) => {
-        const form = html2[0].querySelector("form");
-        const fd = new FormDataExtended(form);
-        let createData = fd.toObject();
-        const template = collection.get(form.type.value);
-        if (template) {
-          createData = foundry.utils.mergeObject(template.toObject(), createData);
-          createData.type = template.data.type;
-          delete createData.flags.mouseguard.isTemplate;
-        }
-        createData = foundry.utils.mergeObject(createData, data);
-        return this.create(createData, { renderSheet: true });
-      },
-      rejectClose: false,
-      options
-    });
-  }
 };
 
 // module/item.js
 var MouseGuardItem = class extends Item {
   prepareDerivedData() {
     super.prepareDerivedData();
-    this.data.data.groups = this.data.data.groups || {};
-    this.data.data.attributes = this.data.data.attributes || {};
+    this.system.groups = this.system.groups || {};
+    this.system.attributes = this.system.attributes || {};
   }
 };
 
@@ -694,36 +179,26 @@ var MouseGuardItemSheet = class extends ItemSheet {
       template: "systems/mouseguard/templates/item-sheet.html",
       width: 520,
       height: 480,
-      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description" }],
+      tabs: [
+        {
+          navSelector: ".sheet-tabs",
+          contentSelector: ".sheet-body",
+          initial: "description"
+        }
+      ],
       scrollY: [".attributes"]
     });
   }
   getData() {
     const context = super.getData();
-    EntitySheetHelper.getAttributeData(context.data);
-    context.systemData = context.data.data;
-    context.dtypes = ATTRIBUTE_TYPES;
+    context.systemData = context.item.system;
     return context;
   }
-  activateListeners(html) {
+  async activateListeners(html) {
     super.activateListeners(html);
-    if (!this.isEditable)
-      return;
-    html.find(".attributes").on("click", ".attribute-control", EntitySheetHelper.onClickAttributeControl.bind(this));
-    html.find(".groups").on("click", ".group-control", EntitySheetHelper.onClickAttributeGroupControl.bind(this));
-    html.find(".attributes").on("click", "a.attribute-roll", EntitySheetHelper.onAttributeRoll.bind(this));
-    html.find(".attributes a.attribute-roll").each((i, a) => {
-      a.setAttribute("draggable", true);
-      a.addEventListener("dragstart", (ev) => {
-        let dragData = ev.currentTarget.dataset;
-        ev.dataTransfer.setData("text/plain", JSON.stringify(dragData));
-      }, false);
-    });
   }
-  _getSubmitData(updateData) {
+  async _getSubmitData(updateData) {
     let formData = super._getSubmitData(updateData);
-    formData = EntitySheetHelper.updateAttributes(formData, this.object);
-    formData = EntitySheetHelper.updateGroups(formData, this.object);
     return formData;
   }
 };
@@ -1415,25 +890,29 @@ function instance2($$self, $$props, $$invalidate) {
   let data;
   const TextEditor = globalThis.TextEditor;
   let editorContent;
-  let width, height;
+  let height;
   let mce;
   let rawContent = getProperty($sheetData?.data, target) ?? "";
-  let content = TextEditor.enrichHTML(rawContent);
+  let content = TextEditor.enrichHTML(rawContent, {
+    secrets: $sheetData.isOwner,
+    async: false
+  });
   let editor = {};
   onDestroy(async () => {
     if (mce)
       mce.destroy();
   });
-  const createEditor = () => {
+  const createEditor = async () => {
     TextEditor.create({
       target: editorContent,
       invalid_elements: "iframe",
-      save_onsavecallback: (m) => {
+      save_onsavecallback: async (m) => {
         mce = m;
         const isDirty = mce.getContent() !== editor.initial;
         mce.remove();
-        if (isDirty)
-          $sheetData.sheet._onSubmit(new Event("mcesave"));
+        if (isDirty) {
+          await $sheetData.sheet._onSubmit(new Event("submit"));
+        }
         mce.destroy();
       }
     }).then((m) => {
@@ -1467,7 +946,10 @@ function instance2($$self, $$props, $$invalidate) {
     if ($$self.$$.dirty & 131) {
       $: {
         $$invalidate(7, rawContent = getProperty($sheetData?.data, target));
-        $$invalidate(4, content = TextEditor.enrichHTML(rawContent));
+        $$invalidate(4, content = TextEditor.enrichHTML(rawContent, {
+          secrets: $sheetData.isOwner,
+          async: false
+        }));
       }
     }
   };
@@ -1579,7 +1061,7 @@ function create_fragment3(ctx) {
   let mouseguardeditor;
   let current;
   mouseguardactorsheetportrait = new MouseGuardActorSheetMousePortrait_default({});
-  mouseguardeditor = new MouseGuardEditor_default({ props: { target: "data.biography" } });
+  mouseguardeditor = new MouseGuardEditor_default({ props: { target: "system.biography" } });
   return {
     c() {
       create_component(mouseguardactorsheetportrait.$$.fragment);
@@ -1664,72 +1146,72 @@ function create_fragment3(ctx) {
       attr(input0, "class", "svelte-1afq4bd");
       attr(div, "class", "namebox svelte-1afq4bd");
       attr(label0, "class", "svelte-1afq4bd");
-      attr(input1, "name", "data.details.age");
+      attr(input1, "name", "system.details.age");
       attr(input1, "type", "number");
-      input1.value = input1_value_value = ctx[0].data.details.age;
+      input1.value = input1_value_value = ctx[0].system.details.age;
       attr(input1, "placeholder", "0");
       attr(input1, "class", "svelte-1afq4bd");
       attr(lineitem0, "class", "svelte-1afq4bd");
       attr(label1, "class", "svelte-1afq4bd");
-      attr(input2, "name", "data.details.parents");
+      attr(input2, "name", "system.details.parents");
       attr(input2, "type", "text");
-      input2.value = input2_value_value = ctx[0].data.details.parents;
+      input2.value = input2_value_value = ctx[0].system.details.parents;
       attr(input2, "placeholder", input2_placeholder_value = game.i18n.localize("MOUSEGUARD.Parents"));
       attr(input2, "class", "svelte-1afq4bd");
       attr(lineitem1, "class", "svelte-1afq4bd");
       attr(label2, "class", "svelte-1afq4bd");
-      attr(input3, "name", "data.details.home");
+      attr(input3, "name", "system.details.home");
       attr(input3, "type", "text");
-      input3.value = input3_value_value = ctx[0].data.details.home;
+      input3.value = input3_value_value = ctx[0].system.details.home;
       attr(input3, "placeholder", input3_placeholder_value = game.i18n.localize("MOUSEGUARD.Home"));
       attr(input3, "class", "svelte-1afq4bd");
       attr(lineitem2, "class", "svelte-1afq4bd");
       attr(label3, "class", "svelte-1afq4bd");
-      attr(input4, "name", "data.details.senior_artisan");
+      attr(input4, "name", "system.details.senior_artisan");
       attr(input4, "type", "text");
-      input4.value = input4_value_value = ctx[0].data.details.senior_artisan;
+      input4.value = input4_value_value = ctx[0].system.details.senior_artisan;
       attr(input4, "placeholder", input4_placeholder_value = game.i18n.localize("MOUSEGUARD.Senior"));
       attr(input4, "class", "svelte-1afq4bd");
       attr(lineitem3, "class", "svelte-1afq4bd");
       attr(label4, "class", "svelte-1afq4bd");
-      attr(input5, "name", "data.details.fur_color");
+      attr(input5, "name", "system.details.fur_color");
       attr(input5, "type", "text");
-      input5.value = input5_value_value = ctx[0].data.details.fur_color;
+      input5.value = input5_value_value = ctx[0].system.details.fur_color;
       attr(input5, "placeholder", input5_placeholder_value = game.i18n.localize("MOUSEGUARD.Fur"));
       attr(input5, "class", "svelte-1afq4bd");
       attr(lineitem4, "class", "svelte-1afq4bd");
       attr(label5, "class", "svelte-1afq4bd");
-      attr(input6, "name", "data.details.mentor");
+      attr(input6, "name", "system.details.mentor");
       attr(input6, "type", "text");
-      input6.value = input6_value_value = ctx[0].data.details.mentor;
+      input6.value = input6_value_value = ctx[0].system.details.mentor;
       attr(input6, "placeholder", input6_placeholder_value = game.i18n.localize("MOUSEGUARD.Mentor"));
       attr(input6, "class", "svelte-1afq4bd");
       attr(lineitem5, "class", "svelte-1afq4bd");
       attr(label6, "class", "svelte-1afq4bd");
-      attr(input7, "name", "data.details.cloak_color");
+      attr(input7, "name", "system.details.cloak_color");
       attr(input7, "type", "text");
-      input7.value = input7_value_value = ctx[0].data.details.cloak_color;
+      input7.value = input7_value_value = ctx[0].system.details.cloak_color;
       attr(input7, "placeholder", input7_placeholder_value = game.i18n.localize("MOUSEGUARD.Cloak"));
       attr(input7, "class", "svelte-1afq4bd");
       attr(lineitem6, "class", "svelte-1afq4bd");
       attr(label7, "class", "svelte-1afq4bd");
-      attr(input8, "name", "data.details.friend");
+      attr(input8, "name", "system.details.friend");
       attr(input8, "type", "text");
-      input8.value = input8_value_value = ctx[0].data.details.friend;
+      input8.value = input8_value_value = ctx[0].system.details.friend;
       attr(input8, "placeholder", input8_placeholder_value = game.i18n.localize("MOUSEGUARD.Friend"));
       attr(input8, "class", "svelte-1afq4bd");
       attr(lineitem7, "class", "svelte-1afq4bd");
       attr(label8, "class", "svelte-1afq4bd");
-      attr(input9, "name", "data.details.guard_rank");
+      attr(input9, "name", "system.details.guard_rank");
       attr(input9, "type", "text");
-      input9.value = input9_value_value = ctx[0].data.details.guard_rank;
+      input9.value = input9_value_value = ctx[0].system.details.guard_rank;
       attr(input9, "placeholder", input9_placeholder_value = game.i18n.localize("MOUSEGUARD.GuardRank"));
       attr(input9, "class", "svelte-1afq4bd");
       attr(lineitem8, "class", "svelte-1afq4bd");
       attr(label9, "class", "svelte-1afq4bd");
-      attr(input10, "name", "data.details.enemy");
+      attr(input10, "name", "system.details.enemy");
       attr(input10, "type", "text");
-      input10.value = input10_value_value = ctx[0].data.details.enemy;
+      input10.value = input10_value_value = ctx[0].system.details.enemy;
       attr(input10, "placeholder", input10_placeholder_value = game.i18n.localize("MOUSEGUARD.Enemy"));
       attr(input10, "class", "svelte-1afq4bd");
       attr(lineitem9, "class", "svelte-1afq4bd");
@@ -1805,34 +1287,34 @@ function create_fragment3(ctx) {
       if (!current || dirty & 1 && input0_value_value !== (input0_value_value = ctx2[0].name) && input0.value !== input0_value_value) {
         input0.value = input0_value_value;
       }
-      if (!current || dirty & 1 && input1_value_value !== (input1_value_value = ctx2[0].data.details.age)) {
+      if (!current || dirty & 1 && input1_value_value !== (input1_value_value = ctx2[0].system.details.age)) {
         input1.value = input1_value_value;
       }
-      if (!current || dirty & 1 && input2_value_value !== (input2_value_value = ctx2[0].data.details.parents) && input2.value !== input2_value_value) {
+      if (!current || dirty & 1 && input2_value_value !== (input2_value_value = ctx2[0].system.details.parents) && input2.value !== input2_value_value) {
         input2.value = input2_value_value;
       }
-      if (!current || dirty & 1 && input3_value_value !== (input3_value_value = ctx2[0].data.details.home) && input3.value !== input3_value_value) {
+      if (!current || dirty & 1 && input3_value_value !== (input3_value_value = ctx2[0].system.details.home) && input3.value !== input3_value_value) {
         input3.value = input3_value_value;
       }
-      if (!current || dirty & 1 && input4_value_value !== (input4_value_value = ctx2[0].data.details.senior_artisan) && input4.value !== input4_value_value) {
+      if (!current || dirty & 1 && input4_value_value !== (input4_value_value = ctx2[0].system.details.senior_artisan) && input4.value !== input4_value_value) {
         input4.value = input4_value_value;
       }
-      if (!current || dirty & 1 && input5_value_value !== (input5_value_value = ctx2[0].data.details.fur_color) && input5.value !== input5_value_value) {
+      if (!current || dirty & 1 && input5_value_value !== (input5_value_value = ctx2[0].system.details.fur_color) && input5.value !== input5_value_value) {
         input5.value = input5_value_value;
       }
-      if (!current || dirty & 1 && input6_value_value !== (input6_value_value = ctx2[0].data.details.mentor) && input6.value !== input6_value_value) {
+      if (!current || dirty & 1 && input6_value_value !== (input6_value_value = ctx2[0].system.details.mentor) && input6.value !== input6_value_value) {
         input6.value = input6_value_value;
       }
-      if (!current || dirty & 1 && input7_value_value !== (input7_value_value = ctx2[0].data.details.cloak_color) && input7.value !== input7_value_value) {
+      if (!current || dirty & 1 && input7_value_value !== (input7_value_value = ctx2[0].system.details.cloak_color) && input7.value !== input7_value_value) {
         input7.value = input7_value_value;
       }
-      if (!current || dirty & 1 && input8_value_value !== (input8_value_value = ctx2[0].data.details.friend) && input8.value !== input8_value_value) {
+      if (!current || dirty & 1 && input8_value_value !== (input8_value_value = ctx2[0].system.details.friend) && input8.value !== input8_value_value) {
         input8.value = input8_value_value;
       }
-      if (!current || dirty & 1 && input9_value_value !== (input9_value_value = ctx2[0].data.details.guard_rank) && input9.value !== input9_value_value) {
+      if (!current || dirty & 1 && input9_value_value !== (input9_value_value = ctx2[0].system.details.guard_rank) && input9.value !== input9_value_value) {
         input9.value = input9_value_value;
       }
-      if (!current || dirty & 1 && input10_value_value !== (input10_value_value = ctx2[0].data.details.enemy) && input10.value !== input10_value_value) {
+      if (!current || dirty & 1 && input10_value_value !== (input10_value_value = ctx2[0].system.details.enemy) && input10.value !== input10_value_value) {
         input10.value = input10_value_value;
       }
     },
@@ -1988,43 +1470,43 @@ function create_fragment4(ctx) {
       textarea2 = element("textarea");
       attr(h1, "class", "svelte-105l4wa");
       attr(label0, "class", "header svelte-105l4wa");
-      attr(input0, "name", "data.rewards.fate");
+      attr(input0, "name", "system.rewards.fate");
       attr(input0, "type", "number");
-      input0.value = input0_value_value = ctx[0].data.rewards.fate;
+      input0.value = input0_value_value = ctx[0].system.rewards.fate;
       attr(input0, "placeholder", "0");
       attr(input0, "class", "svelte-105l4wa");
       attr(fatebox, "class", "svelte-105l4wa");
       attr(label1, "class", "header svelte-105l4wa");
-      attr(input1, "name", "data.rewards.persona");
+      attr(input1, "name", "system.rewards.persona");
       attr(input1, "type", "number");
-      input1.value = input1_value_value = ctx[0].data.rewards.persona;
+      input1.value = input1_value_value = ctx[0].system.rewards.persona;
       attr(input1, "placeholder", "0");
       attr(input1, "class", "svelte-105l4wa");
       attr(personabox, "class", "svelte-105l4wa");
       attr(label2, "class", "header svelte-105l4wa");
-      attr(input2, "name", "data.rewards.check");
+      attr(input2, "name", "system.rewards.check");
       attr(input2, "type", "number");
-      input2.value = input2_value_value = ctx[0].data.rewards.check;
+      input2.value = input2_value_value = ctx[0].system.rewards.check;
       attr(input2, "placeholder", "0");
       attr(input2, "class", "svelte-105l4wa");
       attr(checksbox, "class", "svelte-105l4wa");
       attr(left, "class", "left svelte-105l4wa");
       attr(label3, "class", "svelte-105l4wa");
       attr(label4, "class", "sub svelte-105l4wa");
-      attr(textarea0, "name", "data.rewards.belief");
-      textarea0.value = textarea0_value_value = ctx[0].data.rewards.belief;
+      attr(textarea0, "name", "system.rewards.belief");
+      textarea0.value = textarea0_value_value = ctx[0].system.rewards.belief;
       attr(textarea0, "class", "svelte-105l4wa");
       attr(rewardbox0, "class", "svelte-105l4wa");
       attr(label5, "class", "svelte-105l4wa");
       attr(label6, "class", "sub svelte-105l4wa");
-      attr(textarea1, "name", "data.rewards.instinct");
-      textarea1.value = textarea1_value_value = ctx[0].data.rewards.instinct;
+      attr(textarea1, "name", "system.rewards.instinct");
+      textarea1.value = textarea1_value_value = ctx[0].system.rewards.instinct;
       attr(textarea1, "class", "svelte-105l4wa");
       attr(rewardbox1, "class", "svelte-105l4wa");
       attr(label7, "class", "svelte-105l4wa");
       attr(label8, "class", "sub svelte-105l4wa");
-      attr(textarea2, "name", "data.rewards.goal");
-      textarea2.value = textarea2_value_value = ctx[0].data.rewards.goal;
+      attr(textarea2, "name", "system.rewards.goal");
+      textarea2.value = textarea2_value_value = ctx[0].system.rewards.goal;
       attr(textarea2, "class", "svelte-105l4wa");
       attr(rewardbox2, "class", "svelte-105l4wa");
       attr(right, "class", "right svelte-105l4wa");
@@ -2076,22 +1558,22 @@ function create_fragment4(ctx) {
       append(rewardbox2, textarea2);
     },
     p(ctx2, [dirty]) {
-      if (dirty & 1 && input0_value_value !== (input0_value_value = ctx2[0].data.rewards.fate)) {
+      if (dirty & 1 && input0_value_value !== (input0_value_value = ctx2[0].system.rewards.fate)) {
         input0.value = input0_value_value;
       }
-      if (dirty & 1 && input1_value_value !== (input1_value_value = ctx2[0].data.rewards.persona)) {
+      if (dirty & 1 && input1_value_value !== (input1_value_value = ctx2[0].system.rewards.persona)) {
         input1.value = input1_value_value;
       }
-      if (dirty & 1 && input2_value_value !== (input2_value_value = ctx2[0].data.rewards.check)) {
+      if (dirty & 1 && input2_value_value !== (input2_value_value = ctx2[0].system.rewards.check)) {
         input2.value = input2_value_value;
       }
-      if (dirty & 1 && textarea0_value_value !== (textarea0_value_value = ctx2[0].data.rewards.belief)) {
+      if (dirty & 1 && textarea0_value_value !== (textarea0_value_value = ctx2[0].system.rewards.belief)) {
         textarea0.value = textarea0_value_value;
       }
-      if (dirty & 1 && textarea1_value_value !== (textarea1_value_value = ctx2[0].data.rewards.instinct)) {
+      if (dirty & 1 && textarea1_value_value !== (textarea1_value_value = ctx2[0].system.rewards.instinct)) {
         textarea1.value = textarea1_value_value;
       }
-      if (dirty & 1 && textarea2_value_value !== (textarea2_value_value = ctx2[0].data.rewards.goal)) {
+      if (dirty & 1 && textarea2_value_value !== (textarea2_value_value = ctx2[0].system.rewards.goal)) {
         textarea2.value = textarea2_value_value;
       }
     },
@@ -2169,7 +1651,7 @@ function create_if_block_2(ctx) {
       input = element("input");
       attr(input, "name", input_name_value = ctx[12].id);
       attr(input, "type", "number");
-      input.value = input_value_value = ctx[12].data.data.tax;
+      input.value = input_value_value = ctx[12].system.tax;
       attr(input, "class", "svelte-3lzvcr");
     },
     m(target, anchor) {
@@ -2183,7 +1665,7 @@ function create_if_block_2(ctx) {
       if (dirty & 1 && input_name_value !== (input_name_value = ctx2[12].id)) {
         attr(input, "name", input_name_value);
       }
-      if (dirty & 1 && input_value_value !== (input_value_value = ctx2[12].data.data.tax)) {
+      if (dirty & 1 && input_value_value !== (input_value_value = ctx2[12].system.tax)) {
         input.value = input_value_value;
       }
     },
@@ -2258,7 +1740,7 @@ function create_if_block_1(ctx) {
 function create_each_block_2(ctx) {
   let if_block_anchor;
   function select_block_type(ctx2, dirty) {
-    if (ctx2[12].data.data.pass > ctx2[17])
+    if (ctx2[12].system.pass > ctx2[17])
       return create_if_block_1;
     return create_else_block_1;
   }
@@ -2355,7 +1837,7 @@ function create_if_block2(ctx) {
 function create_each_block_1(ctx) {
   let if_block_anchor;
   function select_block_type_1(ctx2, dirty) {
-    if (ctx2[12].data.data.fail > ctx2[17])
+    if (ctx2[12].system.fail > ctx2[17])
       return create_if_block2;
     return create_else_block;
   }
@@ -2417,14 +1899,14 @@ function create_each_block(ctx) {
   }
   let if_block = ctx[12].name === "MOUSEGUARD.MNature" && create_if_block_2(ctx);
   let each_value_2 = {
-    length: parseInt(ctx[12].data.data.rating) + 1
+    length: parseInt(ctx[12].system.rating) + 1
   };
   let each_blocks_1 = [];
   for (let i = 0; i < each_value_2.length; i += 1) {
     each_blocks_1[i] = create_each_block_2(get_each_context_2(ctx, each_value_2, i));
   }
   let each_value_1 = {
-    length: parseInt(ctx[12].data.data.rating)
+    length: parseInt(ctx[12].system.rating)
   };
   let each_blocks = [];
   for (let i = 0; i < each_value_1.length; i += 1) {
@@ -2459,7 +1941,7 @@ function create_each_block(ctx) {
       attr(label, "class", "header svelte-3lzvcr");
       attr(input, "name", input_name_value = ctx[12].id);
       attr(input, "type", "number");
-      input.value = input_value_value = ctx[12].data.data.rating;
+      input.value = input_value_value = ctx[12].system.rating;
       attr(input, "class", "svelte-3lzvcr");
       attr(pass, "class", "svelte-3lzvcr");
       attr(fail, "class", "svelte-3lzvcr");
@@ -2506,7 +1988,7 @@ function create_each_block(ctx) {
       if (dirty & 1 && input_name_value !== (input_name_value = ctx[12].id)) {
         attr(input, "name", input_name_value);
       }
-      if (dirty & 1 && input_value_value !== (input_value_value = ctx[12].data.data.rating)) {
+      if (dirty & 1 && input_value_value !== (input_value_value = ctx[12].system.rating)) {
         input.value = input_value_value;
       }
       if (ctx[12].name === "MOUSEGUARD.MNature") {
@@ -2523,7 +2005,7 @@ function create_each_block(ctx) {
       }
       if (dirty & 5) {
         each_value_2 = {
-          length: parseInt(ctx[12].data.data.rating) + 1
+          length: parseInt(ctx[12].system.rating) + 1
         };
         let i;
         for (i = 0; i < each_value_2.length; i += 1) {
@@ -2543,7 +2025,7 @@ function create_each_block(ctx) {
       }
       if (dirty & 5) {
         each_value_1 = {
-          length: parseInt(ctx[12].data.data.rating)
+          length: parseInt(ctx[12].system.rating)
         };
         let i;
         for (i = 0; i < each_value_1.length; i += 1) {
@@ -2642,13 +2124,13 @@ function instance5($$self, $$props, $$invalidate) {
   let { sheet } = $sheetData;
   let data;
   let abilities;
-  const click_handler = (ability, e) => setMouseDice(sheet, ability.data.data.rating);
+  const click_handler = (ability, e) => setMouseDice(sheet, ability.system.rating);
   const change_handler = (e) => updateRating(sheet, e.target.name, "rating", parseInt(e.target.value));
   const change_handler_1 = (e) => updateRating(sheet, e.target.name, "tax", parseInt(e.target.value));
-  const click_handler_1 = (ability, e) => updateRating(sheet, ability.id, "pass", parseInt(ability.data.data.pass) - 1);
-  const click_handler_2 = (ability, e) => updateRating(sheet, ability.id, "pass", parseInt(ability.data.data.pass) + 1);
-  const click_handler_3 = (ability, e) => updateRating(sheet, ability.id, "fail", parseInt(ability.data.data.fail) - 1);
-  const click_handler_4 = (ability, e) => updateRating(sheet, ability.id, "fail", parseInt(ability.data.data.fail) + 1);
+  const click_handler_1 = (ability, e) => updateRating(sheet, ability.id, "pass", parseInt(ability.system.pass) - 1);
+  const click_handler_2 = (ability, e) => updateRating(sheet, ability.id, "pass", parseInt(ability.system.pass) + 1);
+  const click_handler_3 = (ability, e) => updateRating(sheet, ability.id, "fail", parseInt(ability.system.fail) - 1);
+  const click_handler_4 = (ability, e) => updateRating(sheet, ability.id, "fail", parseInt(ability.system.fail) + 1);
   $$self.$$.update = () => {
     if ($$self.$$.dirty & 8) {
       $:
@@ -2656,7 +2138,7 @@ function instance5($$self, $$props, $$invalidate) {
     }
     if ($$self.$$.dirty & 8) {
       $:
-        $$invalidate(0, abilities = $sheetData.data.data.itemTypes.ability);
+        $$invalidate(0, abilities = $sheetData.data.system.itemTypes.ability);
     }
   };
   return [
@@ -2763,7 +2245,7 @@ function create_if_block_12(ctx) {
 function create_each_block_22(ctx) {
   let if_block_anchor;
   function select_block_type(ctx2, dirty) {
-    if (ctx2[11].data.data.pass > ctx2[16])
+    if (ctx2[11].system.pass > ctx2[16])
       return create_if_block_12;
     return create_else_block_12;
   }
@@ -2860,7 +2342,7 @@ function create_if_block3(ctx) {
 function create_each_block_12(ctx) {
   let if_block_anchor;
   function select_block_type_1(ctx2, dirty) {
-    if (ctx2[11].data.data.fail > ctx2[16])
+    if (ctx2[11].system.fail > ctx2[16])
       return create_if_block3;
     return create_else_block2;
   }
@@ -2923,14 +2405,14 @@ function create_each_block2(ctx) {
     return ctx[4](ctx[11], ...args);
   }
   let each_value_2 = {
-    length: parseInt(ctx[11].data.data.rank) + 1
+    length: parseInt(ctx[11].system.rank) + 1
   };
   let each_blocks_1 = [];
   for (let i = 0; i < each_value_2.length; i += 1) {
     each_blocks_1[i] = create_each_block_22(get_each_context_22(ctx, each_value_2, i));
   }
   let each_value_1 = {
-    length: parseInt(ctx[11].data.data.rank)
+    length: parseInt(ctx[11].system.rank)
   };
   let each_blocks = [];
   for (let i = 0; i < each_value_1.length; i += 1) {
@@ -2966,7 +2448,7 @@ function create_each_block2(ctx) {
       attr(label, "class", "header svelte-13qswj2");
       attr(input, "name", input_name_value = ctx[11].id);
       attr(input, "type", "number");
-      input.value = input_value_value = ctx[11].data.data.rank;
+      input.value = input_value_value = ctx[11].system.rank;
       attr(input, "class", "svelte-13qswj2");
       attr(pass, "class", "svelte-13qswj2");
       attr(fail, "class", "svelte-13qswj2");
@@ -3020,12 +2502,12 @@ function create_each_block2(ctx) {
       if (dirty & 1 && input_name_value !== (input_name_value = ctx[11].id)) {
         attr(input, "name", input_name_value);
       }
-      if (dirty & 1 && input_value_value !== (input_value_value = ctx[11].data.data.rank)) {
+      if (dirty & 1 && input_value_value !== (input_value_value = ctx[11].system.rank)) {
         input.value = input_value_value;
       }
       if (dirty & 5) {
         each_value_2 = {
-          length: parseInt(ctx[11].data.data.rank) + 1
+          length: parseInt(ctx[11].system.rank) + 1
         };
         let i;
         for (i = 0; i < each_value_2.length; i += 1) {
@@ -3045,7 +2527,7 @@ function create_each_block2(ctx) {
       }
       if (dirty & 5) {
         each_value_1 = {
-          length: parseInt(ctx[11].data.data.rank)
+          length: parseInt(ctx[11].system.rank)
         };
         let i;
         for (i = 0; i < each_value_1.length; i += 1) {
@@ -3142,12 +2624,12 @@ function instance6($$self, $$props, $$invalidate) {
   component_subscribe($$self, sheetData, (value) => $$invalidate(3, $sheetData = value));
   let { sheet } = $sheetData;
   let data;
-  const click_handler = (skill, e) => setMouseDice(sheet, skill.data.data.rank);
+  const click_handler = (skill, e) => setMouseDice(sheet, skill.system.rank);
   const change_handler = (e) => updateRating(sheet, e.target.name, "rank", parseInt(e.target.value));
-  const click_handler_1 = (skill, e) => updateRating(sheet, skill.id, "pass", parseInt(skill.data.data.pass) - 1);
-  const click_handler_2 = (skill, e) => updateRating(sheet, skill.id, "pass", parseInt(skill.data.data.pass) + 1);
-  const click_handler_3 = (skill, e) => updateRating(sheet, skill.id, "fail", parseInt(skill.data.data.fail) - 1);
-  const click_handler_4 = (skill, e) => updateRating(sheet, skill.id, "fail", parseInt(skill.data.data.fail) + 1);
+  const click_handler_1 = (skill, e) => updateRating(sheet, skill.id, "pass", parseInt(skill.system.pass) - 1);
+  const click_handler_2 = (skill, e) => updateRating(sheet, skill.id, "pass", parseInt(skill.system.pass) + 1);
+  const click_handler_3 = (skill, e) => updateRating(sheet, skill.id, "fail", parseInt(skill.system.fail) - 1);
+  const click_handler_4 = (skill, e) => updateRating(sheet, skill.id, "fail", parseInt(skill.system.fail) + 1);
   $$self.$$.update = () => {
     if ($$self.$$.dirty & 8) {
       $:
@@ -3155,7 +2637,7 @@ function instance6($$self, $$props, $$invalidate) {
     }
     if ($$self.$$.dirty & 8) {
       $:
-        $$invalidate(0, skills = $sheetData.data.data.itemTypes.skill);
+        $$invalidate(0, skills = $sheetData.data.system.itemTypes.skill);
     }
   };
   return [
@@ -3261,7 +2743,7 @@ function create_if_block_13(ctx) {
 function create_each_block_23(ctx) {
   let if_block_anchor;
   function select_block_type(ctx2, dirty) {
-    if (ctx2[11].data.data.pass > ctx2[16])
+    if (ctx2[11].system.pass > ctx2[16])
       return create_if_block_13;
     return create_else_block_13;
   }
@@ -3358,7 +2840,7 @@ function create_if_block4(ctx) {
 function create_each_block_13(ctx) {
   let if_block_anchor;
   function select_block_type_1(ctx2, dirty) {
-    if (ctx2[11].data.data.fail > ctx2[16])
+    if (ctx2[11].system.fail > ctx2[16])
       return create_if_block4;
     return create_else_block3;
   }
@@ -3420,14 +2902,14 @@ function create_each_block3(ctx) {
     return ctx[4](ctx[11], ...args);
   }
   let each_value_2 = {
-    length: parseInt(ctx[11].data.data.rank) + 1
+    length: parseInt(ctx[11].system.rank) + 1
   };
   let each_blocks_1 = [];
   for (let i = 0; i < each_value_2.length; i += 1) {
     each_blocks_1[i] = create_each_block_23(get_each_context_23(ctx, each_value_2, i));
   }
   let each_value_1 = {
-    length: parseInt(ctx[11].data.data.rank)
+    length: parseInt(ctx[11].system.rank)
   };
   let each_blocks = [];
   for (let i = 0; i < each_value_1.length; i += 1) {
@@ -3462,7 +2944,7 @@ function create_each_block3(ctx) {
       attr(label, "class", "header svelte-iuqufg");
       attr(input, "name", input_name_value = ctx[11].id);
       attr(input, "type", "number");
-      input.value = input_value_value = ctx[11].data.data.rank;
+      input.value = input_value_value = ctx[11].system.rank;
       attr(input, "class", "svelte-iuqufg");
       attr(pass, "class", "svelte-iuqufg");
       attr(fail, "class", "svelte-iuqufg");
@@ -3515,12 +2997,12 @@ function create_each_block3(ctx) {
       if (dirty & 1 && input_name_value !== (input_name_value = ctx[11].id)) {
         attr(input, "name", input_name_value);
       }
-      if (dirty & 1 && input_value_value !== (input_value_value = ctx[11].data.data.rank)) {
+      if (dirty & 1 && input_value_value !== (input_value_value = ctx[11].system.rank)) {
         input.value = input_value_value;
       }
       if (dirty & 5) {
         each_value_2 = {
-          length: parseInt(ctx[11].data.data.rank) + 1
+          length: parseInt(ctx[11].system.rank) + 1
         };
         let i;
         for (i = 0; i < each_value_2.length; i += 1) {
@@ -3540,7 +3022,7 @@ function create_each_block3(ctx) {
       }
       if (dirty & 5) {
         each_value_1 = {
-          length: parseInt(ctx[11].data.data.rank)
+          length: parseInt(ctx[11].system.rank)
         };
         let i;
         for (i = 0; i < each_value_1.length; i += 1) {
@@ -3680,12 +3162,12 @@ function instance7($$self, $$props, $$invalidate) {
   component_subscribe($$self, sheetData, (value) => $$invalidate(3, $sheetData = value));
   let { sheet } = $sheetData;
   let data;
-  const click_handler = (wise, e) => setMouseDice(sheet, wise.data.data.rank);
+  const click_handler = (wise, e) => setMouseDice(sheet, wise.system.rank);
   const change_handler = (e) => updateRating(sheet, e.target.name, "rank", parseInt(e.target.value));
-  const click_handler_1 = (wise, e) => updateRating(sheet, wise.id, "pass", parseInt(wise.data.data.pass) - 1);
-  const click_handler_2 = (wise, e) => updateRating(sheet, wise.id, "pass", parseInt(wise.data.data.pass) + 1);
-  const click_handler_3 = (wise, e) => updateRating(sheet, wise.id, "fail", parseInt(wise.data.data.fail) - 1);
-  const click_handler_4 = (wise, e) => updateRating(sheet, wise.id, "fail", parseInt(wise.data.data.fail) + 1);
+  const click_handler_1 = (wise, e) => updateRating(sheet, wise.id, "pass", parseInt(wise.system.pass) - 1);
+  const click_handler_2 = (wise, e) => updateRating(sheet, wise.id, "pass", parseInt(wise.system.pass) + 1);
+  const click_handler_3 = (wise, e) => updateRating(sheet, wise.id, "fail", parseInt(wise.system.fail) - 1);
+  const click_handler_4 = (wise, e) => updateRating(sheet, wise.id, "fail", parseInt(wise.system.fail) + 1);
   $$self.$$.update = () => {
     if ($$self.$$.dirty & 8) {
       $:
@@ -3693,7 +3175,7 @@ function instance7($$self, $$props, $$invalidate) {
     }
     if ($$self.$$.dirty & 8) {
       $:
-        $$invalidate(0, wises = $sheetData.data.data.itemTypes.wise);
+        $$invalidate(0, wises = $sheetData.data.system.itemTypes.wise);
     }
   };
   return [
@@ -3799,7 +3281,7 @@ function create_if_block_14(ctx) {
 function create_each_block_24(ctx) {
   let if_block_anchor;
   function select_block_type(ctx2, dirty) {
-    if (ctx2[11].data.data.usedfor > ctx2[16])
+    if (ctx2[11].system.usedfor > ctx2[16])
       return create_if_block_14;
     return create_else_block_14;
   }
@@ -3896,7 +3378,7 @@ function create_if_block5(ctx) {
 function create_each_block_14(ctx) {
   let if_block_anchor;
   function select_block_type_1(ctx2, dirty) {
-    if (ctx2[11].data.data.usedagainst > ctx2[16])
+    if (ctx2[11].system.usedagainst > ctx2[16])
       return create_if_block5;
     return create_else_block4;
   }
@@ -3998,7 +3480,7 @@ function create_each_block4(ctx) {
       attr(label, "class", "header svelte-1072yfn");
       attr(input, "name", input_name_value = ctx[11].id);
       attr(input, "type", "number");
-      input.value = input_value_value = ctx[11].data.data.level;
+      input.value = input_value_value = ctx[11].system.level;
       attr(input, "class", "svelte-1072yfn");
       attr(for_1, "class", "svelte-1072yfn");
       attr(pass, "class", "svelte-1072yfn");
@@ -4052,7 +3534,7 @@ function create_each_block4(ctx) {
       if (dirty & 1 && input_name_value !== (input_name_value = ctx[11].id)) {
         attr(input, "name", input_name_value);
       }
-      if (dirty & 1 && input_value_value !== (input_value_value = ctx[11].data.data.level)) {
+      if (dirty & 1 && input_value_value !== (input_value_value = ctx[11].system.level)) {
         input.value = input_value_value;
       }
       if (dirty & 5) {
@@ -4170,12 +3652,12 @@ function instance8($$self, $$props, $$invalidate) {
   component_subscribe($$self, sheetData, (value) => $$invalidate(3, $sheetData = value));
   let { sheet } = $sheetData;
   let data;
-  const click_handler = (trait, e) => setMouseDice(sheet, trait.data.data.level);
+  const click_handler = (trait, e) => setMouseDice(sheet, trait.system.level);
   const change_handler = (e) => updateRating(sheet, e.target.name, "level", parseInt(e.target.value));
-  const click_handler_1 = (trait, e) => updateRating(sheet, trait.id, "usedfor", parseInt(trait.data.data.usedfor) - 1);
-  const click_handler_2 = (trait, e) => updateRating(sheet, trait.id, "usedfor", parseInt(trait.data.data.usedfor) + 1);
-  const click_handler_3 = (trait, e) => updateRating(sheet, trait.id, "usedagainst", parseInt(trait.data.data.usedagainst) - 1);
-  const click_handler_4 = (trait, e) => updateRating(sheet, trait.id, "usedagainst", parseInt(trait.data.data.usedagainst) + 1);
+  const click_handler_1 = (trait, e) => updateRating(sheet, trait.id, "usedfor", parseInt(trait.system.usedfor) - 1);
+  const click_handler_2 = (trait, e) => updateRating(sheet, trait.id, "usedfor", parseInt(trait.system.usedfor) + 1);
+  const click_handler_3 = (trait, e) => updateRating(sheet, trait.id, "usedagainst", parseInt(trait.system.usedagainst) - 1);
+  const click_handler_4 = (trait, e) => updateRating(sheet, trait.id, "usedagainst", parseInt(trait.system.usedagainst) + 1);
   $$self.$$.update = () => {
     if ($$self.$$.dirty & 8) {
       $:
@@ -4183,7 +3665,7 @@ function instance8($$self, $$props, $$invalidate) {
     }
     if ($$self.$$.dirty & 8) {
       $:
-        $$invalidate(0, traits = $sheetData.data.data.itemTypes.trait);
+        $$invalidate(0, traits = $sheetData.data.system.itemTypes.trait);
     }
   };
   return [
@@ -4350,15 +3832,15 @@ function create_fragment10(ctx) {
       attr(startingBox, "class", "svelte-wzxsvw");
       attr(label1, "class", "header svelte-wzxsvw");
       attr(currentBox, "class", "svelte-wzxsvw");
-      attr(input0, "name", "data.disposition.starting");
+      attr(input0, "name", "system.disposition.starting");
       attr(input0, "type", "number");
-      input0.value = input0_value_value = ctx[0].data.disposition.starting;
+      input0.value = input0_value_value = ctx[0].system.disposition.starting;
       attr(input0, "placeholder", "0");
       attr(input0, "class", "svelte-wzxsvw");
       attr(startingDispo, "class", "svelte-wzxsvw");
-      attr(input1, "name", "data.disposition.current");
+      attr(input1, "name", "system.disposition.current");
       attr(input1, "type", "number");
-      input1.value = input1_value_value = ctx[0].data.disposition.current;
+      input1.value = input1_value_value = ctx[0].system.disposition.current;
       attr(input1, "placeholder", "0");
       attr(input1, "class", "svelte-wzxsvw");
       attr(currentDispo, "class", "svelte-wzxsvw");
@@ -4383,10 +3865,10 @@ function create_fragment10(ctx) {
       append(currentDispo, input1);
     },
     p(ctx2, [dirty]) {
-      if (dirty & 1 && input0_value_value !== (input0_value_value = ctx2[0].data.disposition.starting)) {
+      if (dirty & 1 && input0_value_value !== (input0_value_value = ctx2[0].system.disposition.starting)) {
         input0.value = input0_value_value;
       }
-      if (dirty & 1 && input1_value_value !== (input1_value_value = ctx2[0].data.disposition.current)) {
+      if (dirty & 1 && input1_value_value !== (input1_value_value = ctx2[0].system.disposition.current)) {
         input1.value = input1_value_value;
       }
     },
@@ -4872,7 +4354,6 @@ var MouseGuardActorSheet = class extends ActorSheet {
   }
   getData() {
     const context = super.getData();
-    context.systemData = context.data.data;
     context.sheet = this;
     return context;
   }
@@ -4911,6 +4392,11 @@ var MouseGuardActorSheet = class extends ActorSheet {
       speaker: ChatMessage.getSpeaker({ actor: this.actor }),
       flavor: `<h2>${item2.name}</h2><h3>${button.text()}</h3>`
     });
+  }
+  __onSubmit(event) {
+    event = super._onSubmit(event);
+    console.log(event);
+    return event;
   }
   _getSubmitData(updateData) {
     let formData = super._getSubmitData(updateData);
@@ -5061,6 +4547,7 @@ function instance12($$self, $$props, $$invalidate) {
   component_subscribe($$self, sheetData, (value) => $$invalidate(3, $sheetData = value));
   let { actor, sheet } = $sheetData;
   let data;
+  console.log(data);
   const filePicker = (event) => {
     const attr2 = event.currentTarget.dataset.edit;
     const current = getProperty(data, attr2);
@@ -6407,8 +5894,8 @@ var MouseCombat = class extends Combat {
     return updateKeys.isSubset(allowedKeys);
   }
   async startCombat() {
-    let goal = this.data.flags.mouseguard.goal;
-    let CC = this.data.flags.mouseguard.ConflictCaptain;
+    let goal = this.flags.mouseguard.goal;
+    let CC = this.flags.mouseguard.ConflictCaptain;
     if (!CC) {
       ui.notifications.error(game.i18n.localize("COMBAT.NeedCC"));
       return false;
@@ -6426,10 +5913,10 @@ var MouseCombat = class extends Combat {
   }
   getCCPlayer() {
     let combatant = this.combatants.get(this.getConflictCaptain);
-    let actor = game.actors.get(combatant.data.actorId);
+    let actor = game.actors.get(combatant.actorId);
     let player;
-    Object.keys(actor.data.permission).forEach((key) => {
-      if (actor.data.permission[key] == 3) {
+    Object.keys(actor.ownership).forEach((key) => {
+      if (actor.ownership[key] == 3) {
         let user = game.users.get(key);
         if (!user.isGM)
           player = user;
@@ -6438,13 +5925,13 @@ var MouseCombat = class extends Combat {
     return player;
   }
   async askGoal() {
-    let CC = this.data.flags.mouseguard.ConflictCaptain;
+    let CC = this.flags.mouseguard.ConflictCaptain;
     if (!CC) {
       ui.notifications.error("A Conflict Captain Must be set");
       return false;
     }
     let player = this.getCCPlayer();
-    await game.socket.emit("system.mouseguard", { action: "askGoal", combat: this }, { recipients: [player.data._id] });
+    await game.socket.emit("system.mouseguard", { action: "askGoal", combat: this }, { recipients: [player._id] });
   }
   async setGoal(goal) {
     this.setFlag("mouseguard", "goal", goal).then((content) => {
@@ -6453,7 +5940,7 @@ var MouseCombat = class extends Combat {
     return true;
   }
   async askMove() {
-    let CC = this.data.flags.mouseguard.ConflictCaptain;
+    let CC = this.flags.mouseguard.ConflictCaptain;
     if (!CC) {
       ui.notifications.error(game.i18n.localize("COMBAT.NeedCC"));
       return false;
@@ -6465,20 +5952,20 @@ var MouseCombat = class extends Combat {
     Object.keys(combatants).forEach((key) => {
       actors.push({
         combatant: combatants[key].id,
-        name: combatants[key].token.data.name
+        name: combatants[key].token.name
       });
     });
     data.actors = actors;
     data.action = "askMoves";
     let player = this.getCCPlayer();
     await game.socket.emit("system.mouseguard", data, {
-      recipients: [player.data._id]
+      recipients: [player._id]
     });
     let npccombatants = this.combatants.filter((comb) => comb.actor.type != "character");
     Object.keys(npccombatants).forEach((key) => {
       npc.push({
         combatant: npccombatants[key].id,
-        name: npccombatants[key].token.data.name
+        name: npccombatants[key].token.name
       });
     });
     data.actors = npc;
@@ -6492,7 +5979,7 @@ var MouseCombat = class extends Combat {
     let turn = 0;
     if (this.settings.skipDefeated) {
       turn = this.turns.findIndex((t) => {
-        return !(t.data.defeated || t.actor?.effects.find((e) => e.getFlag("core", "statusId") === CONFIG.Combat.defeatedStatusId));
+        return !(t.defeated || t.actor?.effects.find((e) => e.getFlag("core", "statusId") === CONFIG.Combat.defeatedStatusId));
       });
       if (turn === -1) {
         ui.notifications.warn("COMBAT.NoneRemaining", {
@@ -6525,11 +6012,11 @@ var MouseCombatTracker = class extends CombatTracker {
         icon: '<i class="fas fa-crown"></i>',
         callback: (li) => {
           const combatant = this.viewed.combatants.get(li.data("combatant-id"));
-          if (this.viewed.data.flags.mouseguard.ConflictCaptain == combatant.id) {
+          if (this.viewed.flags.mouseguard.ConflictCaptain == combatant.id) {
             this.viewed.setFlag("mouseguard", "ConflictCaptain", NaN);
             return combatant.setFlag("mouseguard", "ConflictCaptain", false);
           }
-          if (!!this.viewed.data.flags.mouseguard.ConflictCaptain == false) {
+          if (!!this.viewed.flags.mouseguard.ConflictCaptain == false) {
             if (combatant) {
               this.viewed.setFlag("mouseguard", "ConflictCaptain", li.data("combatant-id"));
               return combatant.setFlag("mouseguard", "ConflictCaptain", true);
@@ -6590,7 +6077,7 @@ var MouseCombatTracker = class extends CombatTracker {
   async getData(options) {
     let context = await super.getData(options);
     for (let [i, combatant] of context.combat.turns.entries()) {
-      context.turns[i].flags = combatant.data.flags;
+      context.turns[i].flags = combatant.flags;
       context.turns[i].isFirstOwner = this.isFirstOwner(combatant.actor);
       context.turns[i].hasPlayerOwner = this.hasPlayerOwner(combatant.actor);
     }
@@ -6599,8 +6086,8 @@ var MouseCombatTracker = class extends CombatTracker {
   firstOwner(doc) {
     if (!doc)
       return false;
-    const gmOwners = Object.entries(doc.data.permission).filter(([id, level]) => game.users.get(id)?.isGM && game.users.get(id)?.active && level === 3).map(([id, level]) => id);
-    const otherOwners = Object.entries(doc.data.permission).filter(([id, level]) => !game.users.get(id)?.isGM && game.users.get(id)?.active && level === 3).map(([id, level]) => id);
+    const gmOwners = Object.entries(doc.ownership).filter(([id, level]) => game.users.get(id)?.isGM && game.users.get(id)?.active && level === 3).map(([id, level]) => id);
+    const otherOwners = Object.entries(doc.ownership).filter(([id, level]) => !game.users.get(id)?.isGM && game.users.get(id)?.active && level === 3).map(([id, level]) => id);
     if (otherOwners.length > 0)
       return game.users.get(otherOwners[0]);
     else
@@ -6612,8 +6099,8 @@ var MouseCombatTracker = class extends CombatTracker {
   hasPlayerOwner(doc) {
     if (!doc)
       return false;
-    const gmOwners = Object.entries(doc.data.permission).filter(([id, level]) => game.users.get(id)?.isGM && game.users.get(id)?.active && level === 3).map(([id, level]) => id);
-    const otherOwners = Object.entries(doc.data.permission).filter(([id, level]) => !game.users.get(id)?.isGM && game.users.get(id)?.active && level === 3).map(([id, level]) => id);
+    const gmOwners = Object.entries(doc.ownership).filter(([id, level]) => game.users.get(id)?.isGM && game.users.get(id)?.active && level === 3).map(([id, level]) => id);
+    const otherOwners = Object.entries(doc.ownership).filter(([id, level]) => !game.users.get(id)?.isGM && game.users.get(id)?.active && level === 3).map(([id, level]) => id);
     if (otherOwners.length > 0)
       return true;
     else

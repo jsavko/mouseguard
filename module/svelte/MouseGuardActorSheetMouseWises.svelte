@@ -8,7 +8,7 @@
     let { sheet } = $sheetData;
     let data;
     $: data = $sheetData.data;
-    $: wises = $sheetData.data.data.itemTypes.wise;
+    $: wises = $sheetData.data.system.itemTypes.wise;
 </script>
 
 <largecard>
@@ -17,14 +17,14 @@
         <wise>
             <div name={wise.id}>
                 <label
-                    on:click={(e) => setMouseDice(sheet, wise.data.data.rank)}
+                    on:click={(e) => setMouseDice(sheet, wise.system.rank)}
                     class="header"
                     ><a>{game.i18n.localize(wise.name)}</a>:
                 </label>
                 <input
                     name={wise.id}
                     type="number"
-                    value={wise.data.data.rank}
+                    value={wise.system.rank}
                     on:change={(e) =>
                         updateRating(
                             sheet,
@@ -35,15 +35,15 @@
                 />
                 <pass
                     >P:
-                    {#each { length: parseInt(wise.data.data.rank) + 1 } as _, i}
-                        {#if wise.data.data.pass > i}
+                    {#each { length: parseInt(wise.system.rank) + 1 } as _, i}
+                        {#if wise.system.pass > i}
                             <div
                                 on:click={(e) =>
                                     updateRating(
                                         sheet,
                                         wise.id,
                                         "pass",
-                                        parseInt(wise.data.data.pass) - 1
+                                        parseInt(wise.system.pass) - 1
                                     )}
                                 class="checkmark"
                             />
@@ -54,7 +54,7 @@
                                         sheet,
                                         wise.id,
                                         "pass",
-                                        parseInt(wise.data.data.pass) + 1
+                                        parseInt(wise.system.pass) + 1
                                     )}
                                 class="no-checkmark"
                             />
@@ -63,15 +63,15 @@
                 </pass>
                 <fail
                     >F:
-                    {#each { length: parseInt(wise.data.data.rank) } as _, i}
-                        {#if wise.data.data.fail > i}
+                    {#each { length: parseInt(wise.system.rank) } as _, i}
+                        {#if wise.system.fail > i}
                             <div
                                 on:click={(e) =>
                                     updateRating(
                                         sheet,
                                         wise.id,
                                         "fail",
-                                        parseInt(wise.data.data.fail) - 1
+                                        parseInt(wise.system.fail) - 1
                                     )}
                                 class="checkmark"
                             />
@@ -82,7 +82,7 @@
                                         sheet,
                                         wise.id,
                                         "fail",
-                                        parseInt(wise.data.data.fail) + 1
+                                        parseInt(wise.system.fail) + 1
                                     )}
                                 class="no-checkmark"
                             />
