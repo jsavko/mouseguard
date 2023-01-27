@@ -19,7 +19,7 @@ export default class MouseCombatTracker extends CombatTracker {
             id: "combat",
             template:
                 "systems/mouseguard/templates/sidebar/combat-tracker.html",
-            title: "Combat Tracker",
+            title: "COMBAT.SidebarTitle",
             scrollY: [".directory-list"]
         });
     }
@@ -106,10 +106,6 @@ export default class MouseCombatTracker extends CombatTracker {
         ];
     }
 
-    activateListeners(html) {
-        super.activateListeners(html);
-    }
-
     /**
      * Handle a Combatant control toggle
      * @private
@@ -147,14 +143,18 @@ export default class MouseCombatTracker extends CombatTracker {
 
     async getData(options) {
         let context = await super.getData(options);
-
-        for (let [i, combatant] of context.combat.turns.entries()) {
-            context.turns[i].flags = combatant.flags;
-            context.turns[i].isFirstOwner = this.isFirstOwner(combatant.actor);
-            context.turns[i].hasPlayerOwner = this.hasPlayerOwner(
-                combatant.actor
-            );
+        if (context.combat) {
+            for (let [i, combatant] of context.combat.turns.entries()) {
+                context.turns[i].flags = combatant.flags;
+                context.turns[i].isFirstOwner = this.isFirstOwner(
+                    combatant.actor
+                );
+                context.turns[i].hasPlayerOwner = this.hasPlayerOwner(
+                    combatant.actor
+                );
+            }
         }
+
         //console.log(context);
         return context;
     }

@@ -5877,11 +5877,11 @@ var MouseCombat = class extends Combat {
   }
   async _preCreate(data, options, user) {
     await super._preCreate(data, options, user);
-    this.data.update({
+    this.updateSource({
       flags: {
         mouseguard: {
-          ConflictCaptain: NaN,
-          goal: NaN
+          ConflictCaptain: null,
+          goal: null
         }
       }
     });
@@ -6004,7 +6004,7 @@ var MouseCombatTracker = class extends CombatTracker {
     return foundry.utils.mergeObject(super.defaultOptions, {
       id: "combat",
       template: "systems/mouseguard/templates/sidebar/combat-tracker.html",
-      title: "Combat Tracker",
+      title: "COMBAT.SidebarTitle",
       scrollY: [".directory-list"]
     });
   }
@@ -6056,9 +6056,6 @@ var MouseCombatTracker = class extends CombatTracker {
       }
     ];
   }
-  activateListeners(html) {
-    super.activateListeners(html);
-  }
   async _onCombatantControl(event) {
     event.preventDefault();
     event.stopPropagation();
@@ -6081,10 +6078,12 @@ var MouseCombatTracker = class extends CombatTracker {
   }
   async getData(options) {
     let context = await super.getData(options);
-    for (let [i, combatant] of context.combat.turns.entries()) {
-      context.turns[i].flags = combatant.flags;
-      context.turns[i].isFirstOwner = this.isFirstOwner(combatant.actor);
-      context.turns[i].hasPlayerOwner = this.hasPlayerOwner(combatant.actor);
+    if (context.combat) {
+      for (let [i, combatant] of context.combat.turns.entries()) {
+        context.turns[i].flags = combatant.flags;
+        context.turns[i].isFirstOwner = this.isFirstOwner(combatant.actor);
+        context.turns[i].hasPlayerOwner = this.hasPlayerOwner(combatant.actor);
+      }
     }
     return context;
   }

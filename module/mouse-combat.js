@@ -35,11 +35,11 @@ export default class MouseCombat extends Combat {
 
     async _preCreate(data, options, user) {
         await super._preCreate(data, options, user);
-        this.data.update({
+        this.updateSource({
             flags: {
                 mouseguard: {
-                    ConflictCaptain: NaN,
-                    goal: NaN
+                    ConflictCaptain: null,
+                    goal: null
                 }
             }
         });
