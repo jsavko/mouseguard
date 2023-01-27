@@ -14,7 +14,7 @@ export default class MouseCombatant extends Combatant {
     }
 
     prepareDerivedData() {
-        super.prepareDerivedData;
+        super.prepareDerivedData();
     }
 
     getData() {

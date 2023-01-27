@@ -146,6 +146,10 @@ export default class MouseCombatTracker extends CombatTracker {
 
         for (let [i, combatant] of context.combat.turns.entries()) {
             context.turns[i].flags = combatant.flags;
+            context.turns[i].isFirstOwner = this.isFirstOwner(combatant.actor);
+            context.turns[i].hasPlayerOwner = this.hasPlayerOwner(
+                combatant.actor
+            );
         }
         //console.log(context);
         return context;

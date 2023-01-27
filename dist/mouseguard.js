@@ -5692,7 +5692,7 @@ var MouseCombatant = class extends Combatant {
     super(...args);
   }
   prepareDerivedData() {
-    super.prepareDerivedData;
+    super.prepareDerivedData();
   }
   getData() {
     const context = super.getData();
@@ -6081,6 +6081,8 @@ var MouseCombatTracker = class extends CombatTracker {
     let context = await super.getData(options);
     for (let [i, combatant] of context.combat.turns.entries()) {
       context.turns[i].flags = combatant.flags;
+      context.turns[i].isFirstOwner = this.isFirstOwner(combatant.actor);
+      context.turns[i].hasPlayerOwner = this.hasPlayerOwner(combatant.actor);
     }
     return context;
   }
