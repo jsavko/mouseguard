@@ -145,6 +145,8 @@ Hooks.once("init", async function () {
         if (data.action === "askMoves") MouseSocket.askMoves(data);
         if (data.action === "setMoves") MouseSocket.setMoves(data);
     });
+
+    await registerTours();
 });
 
 Hooks.once("diceSoNiceReady", (dice3d) => {
@@ -236,7 +238,26 @@ Hooks.on("renderSidebarTab", (app, html, data) => {
 Hooks.once("ready", async () => {
     //const cTracker = new ConflictTracker(undefined, {  });
     //cTracker.render(true);
+    // If First time launching the system Start the roll Tour
+    let tourRolls = game.user.getFlag("mouseguard", "tourRolls");
+    if (tourRolls == undefined) {
+        const tour = game.tours.get("mouseguard.welcome");
+        tour.start();
+        game.user.setFlag("mouseguard", "tourRolls", 1);
+    }
 });
+
+async function registerTours() {
+    try {
+        game.tours.register(
+            "mouseguard",
+            "welcome",
+            await SidebarTour.fromJSON("/systems/mouseguard/tours/welcome.json")
+        );
+    } catch (err) {
+        console.error(err);
+    }
+}
 
 function updateDisplay(count) {
     //let $mouse_rolls = html.find('.mouse-dice-roll');

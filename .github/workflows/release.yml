@@ -39,7 +39,7 @@ jobs:
                   manifest: https://raw.githubusercontent.com/${{github.repository}}/main/system.json
                   download: https://github.com/${{github.repository}}/releases/download/${{github.event.release.tag_name}}/system.zip
 
-            - run: zip -r ./system.zip system.json assets/ dist/ licenses/ lang/ styles/ templates/ packs/ template.json attributes.txt
+            - run: zip -r ./system.zip system.json assets/ dist/ licenses/ lang/ styles/ templates/ tours/ packs/ template.json attributes.txt
 
             # Create a release for this specific version
             - name: Update Release with Files

@@ -74,7 +74,7 @@ export class MouseGuardActor extends Actor {
                     type: "ability"
                 });
             }
-            this.data.update({ items: abilities });
+            this.updateSource({ items: abilities });
         }
     }
 }

@@ -157,7 +157,7 @@ var MouseGuardActor = class extends Actor {
           type: "ability"
         });
       }
-      this.data.update({ items: abilities });
+      this.updateSource({ items: abilities });
     }
   }
 };
@@ -6194,6 +6194,7 @@ Hooks.once("init", async function() {
     if (data.action === "setMoves")
       MouseSocket.setMoves(data);
   });
+  await registerTours();
 });
 Hooks.once("diceSoNiceReady", (dice3d) => {
   let dicetheme = "mouseguard";
@@ -6264,7 +6265,20 @@ Hooks.on("renderSidebarTab", (app, html, data) => {
   });
 });
 Hooks.once("ready", async () => {
+  let tourRolls = game.user.getFlag("mouseguard", "tourRolls");
+  if (tourRolls == void 0) {
+    const tour = game.tours.get("mouseguard.welcome");
+    tour.start();
+    game.user.setFlag("mouseguard", "tourRolls", 1);
+  }
 });
+async function registerTours() {
+  try {
+    game.tours.register("mouseguard", "welcome", await SidebarTour.fromJSON("/systems/mouseguard/tours/welcome.json"));
+  } catch (err) {
+    console.error(err);
+  }
+}
 function updateDisplay(count) {
   let diceHTML = '<li class="roll mousedie d6 "><img src="systems/mouseguard/assets/dice/sword.png" height="24" width="24"></li>';
   let theHTML = "";
