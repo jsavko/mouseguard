@@ -8,29 +8,33 @@
 
     const TextEditor = globalThis.TextEditor;
     let editorContent;
-    let width, height;
+    let height;
     let mce;
     let rawContent = getProperty($sheetData?.data, target) ?? "";
-    let content = TextEditor.enrichHTML(rawContent);
-
+    let content = TextEditor.enrichHTML(rawContent, {
+        secrets: $sheetData.isOwner,
+        async: false
+    });
     let editor = {};
 
     onDestroy(async () => {
         if (mce) mce.destroy();
     });
 
-    const createEditor = () => {
+    const createEditor = async () => {
         TextEditor.create({
             target: editorContent,
             invalid_elements: "iframe",
-            save_onsavecallback: (m) => {
-                //const submit = $sheetData.sheet._onSubmit(new Event("mcesave"));
+            save_onsavecallback: async (m) => {
+                //const submit = $sheetData.sheet._onSubmit(new Event("submit"));
                 //mce.remove();
                 mce = m;
                 const isDirty = mce.getContent() !== editor.initial;
                 mce.remove();
                 // Regex remove the iframe
-                if (isDirty) $sheetData.sheet._onSubmit(new Event("mcesave"));
+                if (isDirty) {
+                    await $sheetData.sheet._onSubmit(new Event("submit"));
+                }
                 mce.destroy();
             }
         }).then((m) => {
@@ -45,7 +49,10 @@
 
     $: {
         rawContent = getProperty($sheetData?.data, target);
-        content = TextEditor.enrichHTML(rawContent);
+        content = TextEditor.enrichHTML(rawContent, {
+            secrets: $sheetData.isOwner,
+            async: false
+        });
     }
 </script>
 

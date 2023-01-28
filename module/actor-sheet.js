@@ -25,7 +25,6 @@ export class MouseGuardActorSheet extends ActorSheet {
     /** @inheritdoc */
     getData() {
         const context = super.getData();
-        context.systemData = context.data.data;
         context.sheet = this;
         return context;
     }
@@ -96,6 +95,12 @@ export class MouseGuardActorSheet extends ActorSheet {
     }
 
     /* -------------------------------------------- */
+
+    __onSubmit(event) {
+        event = super._onSubmit(event);
+        console.log(event);
+        return event;
+    }
 
     /** @inheritdoc */
     _getSubmitData(updateData) {

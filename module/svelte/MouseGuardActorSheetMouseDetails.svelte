@@ -21,97 +21,97 @@
         <lineitem>
             <label>{game.i18n.localize("MOUSEGUARD.Age")}: </label>
             <input
-                name="data.details.age"
+                name="system.details.age"
                 type="number"
-                value={data.data.details.age}
+                value={data.system.details.age}
                 placeholder="0"
             />
         </lineitem>
         <lineitem>
             <label>{game.i18n.localize("MOUSEGUARD.Parents")}: </label>
             <input
-                name="data.details.parents"
+                name="system.details.parents"
                 type="text"
-                value={data.data.details.parents}
+                value={data.system.details.parents}
                 placeholder={game.i18n.localize("MOUSEGUARD.Parents")}
             />
         </lineitem>
         <lineitem>
             <label>{game.i18n.localize("MOUSEGUARD.Home")}: </label>
             <input
-                name="data.details.home"
+                name="system.details.home"
                 type="text"
-                value={data.data.details.home}
+                value={data.system.details.home}
                 placeholder={game.i18n.localize("MOUSEGUARD.Home")}
             />
         </lineitem>
         <lineitem>
             <label>{game.i18n.localize("MOUSEGUARD.Senior")}: </label>
             <input
-                name="data.details.senior_artisan"
+                name="system.details.senior_artisan"
                 type="text"
-                value={data.data.details.senior_artisan}
+                value={data.system.details.senior_artisan}
                 placeholder={game.i18n.localize("MOUSEGUARD.Senior")}
             />
         </lineitem>
         <lineitem>
             <label>{game.i18n.localize("MOUSEGUARD.Fur")}: </label>
             <input
-                name="data.details.fur_color"
+                name="system.details.fur_color"
                 type="text"
-                value={data.data.details.fur_color}
+                value={data.system.details.fur_color}
                 placeholder={game.i18n.localize("MOUSEGUARD.Fur")}
             />
         </lineitem>
         <lineitem>
             <label>{game.i18n.localize("MOUSEGUARD.Mentor")}: </label>
             <input
-                name="data.details.mentor"
+                name="system.details.mentor"
                 type="text"
-                value={data.data.details.mentor}
+                value={data.system.details.mentor}
                 placeholder={game.i18n.localize("MOUSEGUARD.Mentor")}
             />
         </lineitem>
         <lineitem>
             <label>{game.i18n.localize("MOUSEGUARD.Cloak")}: </label>
             <input
-                name="data.details.cloak_color"
+                name="system.details.cloak_color"
                 type="text"
-                value={data.data.details.cloak_color}
+                value={data.system.details.cloak_color}
                 placeholder={game.i18n.localize("MOUSEGUARD.Cloak")}
             />
         </lineitem>
         <lineitem>
             <label>{game.i18n.localize("MOUSEGUARD.Friend")}: </label>
             <input
-                name="data.details.friend"
+                name="system.details.friend"
                 type="text"
-                value={data.data.details.friend}
+                value={data.system.details.friend}
                 placeholder={game.i18n.localize("MOUSEGUARD.Friend")}
             />
         </lineitem>
         <lineitem>
             <label>{game.i18n.localize("MOUSEGUARD.GuardRank")}: </label>
             <input
-                name="data.details.guard_rank"
+                name="system.details.guard_rank"
                 type="text"
-                value={data.data.details.guard_rank}
+                value={data.system.details.guard_rank}
                 placeholder={game.i18n.localize("MOUSEGUARD.GuardRank")}
             />
         </lineitem>
         <lineitem>
             <label>{game.i18n.localize("MOUSEGUARD.Enemy")}: </label>
             <input
-                name="data.details.enemy"
+                name="system.details.enemy"
                 type="text"
-                value={data.data.details.enemy}
+                value={data.system.details.enemy}
                 placeholder={game.i18n.localize("MOUSEGUARD.Enemy")}
             />
         </lineitem>
     </ul>
 </largecard>
 <h1>{game.i18n.localize("MOUSEGUARD.Bio")}</h1>
-<MouseGuardEditor target="data.biography" />
+<MouseGuardEditor target="system.biography" />
 
 <style>
     largecard {

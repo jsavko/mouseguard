@@ -260,6 +260,18 @@
     background-color: white;
 }
 
+.dice li {
+    display: inline;
+    margin: 0 2px;
+    height: 24px;
+    width: 24px;
+}
+
+.dice li img {
+    background-color: white;
+    height: 24px;
+    width: 24px;
+}
 .mouse-tray {
     flex: none;
 }

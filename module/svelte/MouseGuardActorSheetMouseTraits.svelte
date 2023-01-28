@@ -7,7 +7,7 @@
     let { sheet } = $sheetData;
     let data;
     $: data = $sheetData.data;
-    $: traits = $sheetData.data.data.itemTypes.trait;
+    $: traits = $sheetData.data.system.itemTypes.trait;
 </script>
 
 <largecard>
@@ -16,14 +16,14 @@
         <trait>
             <div name={trait.id}>
                 <label
-                    on:click={(e) => setMouseDice(sheet, trait.data.data.level)}
+                    on:click={(e) => setMouseDice(sheet, trait.system.level)}
                     class="header"
                     ><a>{game.i18n.localize(trait.name)}</a>:
                 </label>
                 <input
                     name={trait.id}
                     type="number"
-                    value={trait.data.data.level}
+                    value={trait.system.level}
                     on:change={(e) =>
                         updateRating(
                             sheet,
@@ -35,14 +35,14 @@
                 <for
                     >F:
                     {#each { length: 1 } as _, i}
-                        {#if trait.data.data.usedfor > i}
+                        {#if trait.system.usedfor > i}
                             <div
                                 on:click={(e) =>
                                     updateRating(
                                         sheet,
                                         trait.id,
                                         "usedfor",
-                                        parseInt(trait.data.data.usedfor) - 1
+                                        parseInt(trait.system.usedfor) - 1
                                     )}
                                 class="checkmark"
                             />
@@ -53,7 +53,7 @@
                                         sheet,
                                         trait.id,
                                         "usedfor",
-                                        parseInt(trait.data.data.usedfor) + 1
+                                        parseInt(trait.system.usedfor) + 1
                                     )}
                                 class="no-checkmark"
                             />
@@ -63,15 +63,14 @@
                 <pass
                     >A:
                     {#each { length: 6 } as _, i}
-                        {#if trait.data.data.usedagainst > i}
+                        {#if trait.system.usedagainst > i}
                             <div
                                 on:click={(e) =>
                                     updateRating(
                                         sheet,
                                         trait.id,
                                         "usedagainst",
-                                        parseInt(trait.data.data.usedagainst) -
-                                            1
+                                        parseInt(trait.system.usedagainst) - 1
                                     )}
                                 class="checkmark"
                             />
@@ -82,8 +81,7 @@
                                         sheet,
                                         trait.id,
                                         "usedagainst",
-                                        parseInt(trait.data.data.usedagainst) +
-                                            1
+                                        parseInt(trait.system.usedagainst) + 1
                                     )}
                                 class="no-checkmark"
                             />

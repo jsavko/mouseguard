@@ -10,12 +10,16 @@
 //import { compute_rest_props } from "svelte/internal";
 
 export default class MouseCombatTracker extends CombatTracker {
+    constructor(options) {
+        super(options);
+    }
+
     static get defaultOptions() {
         return foundry.utils.mergeObject(super.defaultOptions, {
             id: "combat",
             template:
                 "systems/mouseguard/templates/sidebar/combat-tracker.html",
-            title: "Combat Tracker",
+            title: "COMBAT.SidebarTitle",
             scrollY: [".directory-list"]
         });
     }
@@ -31,7 +35,7 @@ export default class MouseCombatTracker extends CombatTracker {
                     );
 
                     if (
-                        this.viewed.data.flags.mouseguard.ConflictCaptain ==
+                        this.viewed.flags.mouseguard.ConflictCaptain ==
                         combatant.id
                     ) {
                         //Unset if self
@@ -47,8 +51,7 @@ export default class MouseCombatTracker extends CombatTracker {
                         );
                     }
                     if (
-                        !!this.viewed.data.flags.mouseguard.ConflictCaptain ==
-                        false
+                        !!this.viewed.flags.mouseguard.ConflictCaptain == false
                     ) {
                         // New Captain Never had an old one
                         if (combatant) {
@@ -103,10 +106,6 @@ export default class MouseCombatTracker extends CombatTracker {
         ];
     }
 
-    activateListeners(html) {
-        super.activateListeners(html);
-    }
-
     /**
      * Handle a Combatant control toggle
      * @private
@@ -135,115 +134,27 @@ export default class MouseCombatTracker extends CombatTracker {
             // Roll combatant initiative
             case "rollInitiative":
                 return combat.rollInitiative([c.id]);
+
+            // Actively ping the Combatant
+            case "pingCombatant":
+                return this._onPingCombatant(c);
         }
     }
 
-    /*
-      async getData(options) {
-
-        // Get the combat encounters possible for the viewed Scene
-        const combat = this.viewed;
-        const hasCombat = combat !== null;
-        const combats = this.combats;
-        const currentIdx = combats.findIndex(c => c === combat);
-        const previousId = currentIdx > 0 ? combats[currentIdx-1].id : null;
-        const nextId = currentIdx < combats.length - 1 ? combats[currentIdx+1].id : null;
-        const settings = game.settings.get("core", Combat.CONFIG_SETTING);
-    
-        // Prepare rendering data
-        const data = {
-          user: game.user,
-          combats: combats,
-          currentIndex: currentIdx + 1,
-          combatCount: combats.length,
-          hasCombat: hasCombat,
-          combat,
-          turns: [],
-          previousId,
-          nextId,
-          started: this.started,
-          control: false,
-          settings
-        };
-        if ( !hasCombat ) return data;
-    
-        // Format information about each combatant in the encounter
-        let hasDecimals = false;
-        const turns = [];
-        for ( let [i, combatant] of combat.turns.entries() ) {
-          if ( !combatant.visible ) continue;
-    
-          // Prepare turn data
-          const resource = combatant.permission >= CONST.ENTITY_PERMISSIONS.OBSERVER ? combatant.resource : null
-          const turn = {
-            id: combatant.id,
-            name: combatant.name,
-            img: combatant.img,
-            active: i === combat.turn,
-            owner: combatant.isOwner,
-            defeated: combatant.data.defeated,
-            flags: combatant.data.flags,
-            hidden: combatant.hidden,
-            isFirstOwner: this.isFirstOwner(combatant.actor),
-            hasPlayerOwner: this.hasPlayerOwner(combatant.actor),
-            initiative: combatant.initiative,
-            hasRolled: combatant.initiative !== null,
-            hasResource: resource !== null,
-            resource: resource
-          };
-          if ( Number.isFinite(turn.initiative) && !Number.isInteger(turn.initiative) ) hasDecimals = true;
-          turn.css = [
-            turn.active ? "active" : "",
-            turn.hidden ? "hidden" : "",
-            turn.defeated ? "defeated" : ""
-          ].join(" ").trim();
-    
-          // Cached thumbnail image for video tokens
-          if ( VideoHelper.hasVideoExtension(turn.img) ) {
-            if ( combatant._thumb ) turn.img = combatant._thumb;
-            else turn.img = combatant._thumb = await game.video.createThumbnail(combatant.img, {width: 100, height: 100});
-          }
-    
-          // Actor and Token status effects
-          turn.effects = new Set();
-          if ( combatant.token ) {
-            combatant.token.data.effects.forEach(e => turn.effects.add(e));
-            if ( combatant.token.data.overlayEffect ) turn.effects.add(combatant.token.data.overlayEffect);
-          }
-          if ( combatant.actor ) combatant.actor.temporaryEffects.forEach(e => {
-            if ( e.getFlag("core", "statusId") === CONFIG.Combat.defeatedStatusId ) turn.defeated = true;
-            else if ( e.data.icon ) turn.effects.add(e.data.icon);
-          });
-          turns.push(turn);
-        }
-    
-        // Format initiative numeric precision
-        const precision = CONFIG.Combat.initiative.decimals;
-        turns.forEach(t => {
-          if ( t.initiative !== null ) t.initiative = t.initiative.toFixed(hasDecimals ? precision : 0);
-        });
-    
-        // Merge update data for rendering
-        return foundry.utils.mergeObject(data, {
-          round: combat.data.round,
-          turn: combat.data.turn,
-          turns: turns,
-          control: combat.combatant?.players?.includes(game.user)
-        });
-      }
-
-      */
-
     async getData(options) {
         let context = await super.getData(options);
-
-        for (let [i, combatant] of context.combat.turns.entries()) {
-            context.turns[i].flags = combatant.data.flags;
-            context.turns[i].isFirstOwner = this.isFirstOwner(combatant.actor);
-            context.turns[i].hasPlayerOwner = this.hasPlayerOwner(
-                combatant.actor
-            );
+        if (context.combat) {
+            for (let [i, combatant] of context.combat.turns.entries()) {
+                context.turns[i].flags = combatant.flags;
+                context.turns[i].isFirstOwner = this.isFirstOwner(
+                    combatant.actor
+                );
+                context.turns[i].hasPlayerOwner = this.hasPlayerOwner(
+                    combatant.actor
+                );
+            }
         }
+
         //console.log(context);
         return context;
     }
@@ -252,7 +163,7 @@ export default class MouseCombatTracker extends CombatTracker {
         /* null docs could mean an empty lookup, null docs are not owned by anyone */
         if (!doc) return false;
 
-        const gmOwners = Object.entries(doc.data.permission)
+        const gmOwners = Object.entries(doc.ownership)
             .filter(
                 ([id, level]) =>
                     game.users.get(id)?.isGM &&
@@ -260,7 +171,7 @@ export default class MouseCombatTracker extends CombatTracker {
                     level === 3
             )
             .map(([id, level]) => id);
-        const otherOwners = Object.entries(doc.data.permission)
+        const otherOwners = Object.entries(doc.ownership)
             .filter(
                 ([id, level]) =>
                     !game.users.get(id)?.isGM &&
@@ -281,7 +192,7 @@ export default class MouseCombatTracker extends CombatTracker {
     hasPlayerOwner(doc) {
         if (!doc) return false;
 
-        const gmOwners = Object.entries(doc.data.permission)
+        const gmOwners = Object.entries(doc.ownership)
             .filter(
                 ([id, level]) =>
                     game.users.get(id)?.isGM &&
@@ -289,7 +200,7 @@ export default class MouseCombatTracker extends CombatTracker {
                     level === 3
             )
             .map(([id, level]) => id);
-        const otherOwners = Object.entries(doc.data.permission)
+        const otherOwners = Object.entries(doc.ownership)
             .filter(
                 ([id, level]) =>
                     !game.users.get(id)?.isGM &&

@@ -8,10 +8,10 @@
     let data;
     let abilities;
     $: data = $sheetData.data;
-    $: abilities = $sheetData.data.data.itemTypes.ability;
-    $: skills = $sheetData.data.data.itemTypes.skill;
-    $: wises = $sheetData.data.data.itemTypes.wise;
-    $: traits = $sheetData.data.data.itemTypes.trait;
+    $: abilities = $sheetData.data.system.itemTypes.ability;
+    $: skills = $sheetData.data.system.itemTypes.skill;
+    $: wises = $sheetData.data.system.itemTypes.wise;
+    $: traits = $sheetData.data.system.itemTypes.trait;
 </script>
 
 <div class="box">
@@ -22,14 +22,14 @@
                 <div name={ability.id}>
                     <label
                         on:click={(e) =>
-                            setMouseDice(sheet, ability.data.data.rating)}
+                            setMouseDice(sheet, ability.system.rating)}
                         class="header"
                         ><a>{game.i18n.localize(ability.name)}</a>:
                     </label>
                     <input
                         name={ability.id}
                         type="number"
-                        value={ability.data.data.rating}
+                        value={ability.system.rating}
                         on:change={(e) =>
                             updateRating(
                                 sheet,
@@ -53,14 +53,14 @@
                     <div name={skill.id}>
                         <label
                             on:click={(e) =>
-                                setMouseDice(sheet, skill.data.data.rank)}
+                                setMouseDice(sheet, skill.system.rank)}
                             class="header"
                             ><a>{game.i18n.localize(skill.name)}</a>:
                         </label>
                         <input
                             name={skill.id}
                             type="number"
-                            value={skill.data.data.rank}
+                            value={skill.system.rank}
                             on:change={(e) =>
                                 updateRating(
                                     sheet,
@@ -92,14 +92,14 @@
                     <div name={trait.id}>
                         <label
                             on:click={(e) =>
-                                setMouseDice(sheet, trait.data.data.level)}
+                                setMouseDice(sheet, trait.system.level)}
                             class="header"
                             ><a>{game.i18n.localize(trait.name)}</a>:
                         </label>
                         <input
                             name={trait.id}
                             type="number"
-                            value={trait.data.data.level}
+                            value={trait.system.level}
                             on:change={(e) =>
                                 updateRating(
                                     sheet,
@@ -128,14 +128,14 @@
         <wise>
             <div name={wise.id}>
                 <label
-                    on:click={(e) => setMouseDice(sheet, wise.data.data.rank)}
+                    on:click={(e) => setMouseDice(sheet, wise.system.rank)}
                     class="header"
                     ><a>{game.i18n.localize(wise.name)}</a>:
                 </label>
                 <input
                     name={wise.id}
                     type="number"
-                    value={wise.data.data.rank}
+                    value={wise.system.rank}
                     on:change={(e) =>
                         updateRating(
                             sheet,

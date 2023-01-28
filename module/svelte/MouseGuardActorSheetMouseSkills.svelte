@@ -7,7 +7,7 @@
     let { sheet } = $sheetData;
     let data;
     $: data = $sheetData.data;
-    $: skills = $sheetData.data.data.itemTypes.skill;
+    $: skills = $sheetData.data.system.itemTypes.skill;
 </script>
 
 <largecard>
@@ -16,14 +16,14 @@
         <skill>
             <div name={skill.id}>
                 <label
-                    on:click={(e) => setMouseDice(sheet, skill.data.data.rank)}
+                    on:click={(e) => setMouseDice(sheet, skill.system.rank)}
                     class="header"
                     ><a>{game.i18n.localize(skill.name)}</a>:
                 </label>
                 <input
                     name={skill.id}
                     type="number"
-                    value={skill.data.data.rank}
+                    value={skill.system.rank}
                     on:change={(e) =>
                         updateRating(
                             sheet,
@@ -34,15 +34,15 @@
                 />
                 <pass
                     >P:
-                    {#each { length: parseInt(skill.data.data.rank) + 1 } as _, i}
-                        {#if skill.data.data.pass > i}
+                    {#each { length: parseInt(skill.system.rank) + 1 } as _, i}
+                        {#if skill.system.pass > i}
                             <div
                                 on:click={(e) =>
                                     updateRating(
                                         sheet,
                                         skill.id,
                                         "pass",
-                                        parseInt(skill.data.data.pass) - 1
+                                        parseInt(skill.system.pass) - 1
                                     )}
                                 class="checkmark"
                             />
@@ -53,7 +53,7 @@
                                         sheet,
                                         skill.id,
                                         "pass",
-                                        parseInt(skill.data.data.pass) + 1
+                                        parseInt(skill.system.pass) + 1
                                     )}
                                 class="no-checkmark"
                             />
@@ -62,15 +62,15 @@
                 </pass>
                 <fail
                     >F:
-                    {#each { length: parseInt(skill.data.data.rank) } as _, i}
-                        {#if skill.data.data.fail > i}
+                    {#each { length: parseInt(skill.system.rank) } as _, i}
+                        {#if skill.system.fail > i}
                             <div
                                 on:click={(e) =>
                                     updateRating(
                                         sheet,
                                         skill.id,
                                         "fail",
-                                        parseInt(skill.data.data.fail) - 1
+                                        parseInt(skill.system.fail) - 1
                                     )}
                                 class="checkmark"
                             />
@@ -81,7 +81,7 @@
                                         sheet,
                                         skill.id,
                                         "fail",
-                                        parseInt(skill.data.data.fail) + 1
+                                        parseInt(skill.system.fail) + 1
                                     )}
                                 class="no-checkmark"
                             />

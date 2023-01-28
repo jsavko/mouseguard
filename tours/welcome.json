@@ -1,0 +1,45 @@
+{
+    "title": "MOUSETOUR.Title",
+    "description": "MOUSETOUR.Description",
+    "canBeResumed": true,
+    "display": true,
+    "steps": [
+        {
+            "id": "MOUSETOUR",
+            "selector": "",
+            "title": "MOUSETOUR.WelcomeTitle",
+            "content": "MOUSETOUR.WelcomeContent"
+        },
+        {
+            "id": "roller",
+            "selector": "#mouse-pool",
+            "title": "MOUSETOUR.TrayTitle",
+            "content": "MOUSETOUR.TrayContent",
+            "sidebarTab": "chat"
+        },
+        {
+            "id": "roller2",
+            "selector": ".mouse_dice_button",
+            "title": "MOUSETOUR.TrayTitle",
+            "content": "MOUSETOUR.TrayAddDice",
+            "sidebarTab": "chat"
+        },
+        {
+            "id": "roller2",
+            "selector": ".mouse_roll_button",
+            "title": "MOUSETOUR.TrayTitle",
+            "content": "MOUSETOUR.TrayRollDice",
+            "sidebarTab": "chat"
+        }
+    ],
+    "localization": {
+        "MOUSETOUR.Title": "Welcome to Mouseguard",
+        "MOUSETOUR.Description": "Welcome to Mouseguard! This Tour will give you a brief overview of the roll mechanics.",
+        "MOUSETOUR.WelcomeTitle": "Mouse Guard",
+        "MOUSETOUR.WelcomeContent": "This tour will explain the basic functionality of the mouseguard roll system.",
+        "MOUSETOUR.TrayTitle": "Dice Pool",
+        "MOUSETOUR.TrayContent": "The roll tray will show you how many dice are currently in your dicepool.",
+        "MOUSETOUR.TrayAddDice": "To add dice to the pool left click the Modifiy dice pool button, to remove dice right click the button",
+        "MOUSETOUR.TrayRollDice": "Clicking Roll dice will roll the dice.  If you're using the Dice So Nice, 3d dice with custom faces will roll."
+    }
+}
