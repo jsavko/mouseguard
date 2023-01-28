@@ -7,8 +7,8 @@
         {
             "id": "MOUSETOUR",
             "selector": "",
-            "title": "MOUSETOUR.MOUSETOURTitle",
-            "content": "MOUSETOUR.MOUSETOURContent"
+            "title": "MOUSETOUR.WelcomeTitle",
+            "content": "MOUSETOUR.WelcomeContent"
         },
         {
             "id": "roller",
@@ -33,10 +33,10 @@
         }
     ],
     "localization": {
-        "MOUSETOUR.Title": "MOUSETOUR to Mouseguard",
+        "MOUSETOUR.Title": "Welcome to Mouseguard",
         "MOUSETOUR.Description": "Welcome to Mouseguard! This Tour will give you a brief overview of the roll mechanics.",
-        "MOUSETOUR.MOUSETOURTitle": "Mouse Guard",
-        "MOUSETOUR.MOUSETOURContent": "This tour will explain the basic functionality of the mouse guard system",
+        "MOUSETOUR.WelcomeTitle": "Mouse Guard",
+        "MOUSETOUR.WelcomeContent": "This tour will explain the basic functionality of the mouseguard roll system.",
         "MOUSETOUR.TrayTitle": "Dice Pool",
         "MOUSETOUR.TrayContent": "The roll tray will show you how many dice are currently in your dicepool.",
         "MOUSETOUR.TrayAddDice": "To add dice to the pool left click the Modifiy dice pool button, to remove dice right click the button",

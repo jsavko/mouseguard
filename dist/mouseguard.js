@@ -5713,7 +5713,7 @@ var MouseCombatant = class extends Combatant {
     let actor = game.actors.get(data.actorId);
     if (actor.type == "character")
       init2 = 1;
-    this.data.update({
+    this.updateSource({
       initiative: init2,
       flags: {
         mouseguard: {

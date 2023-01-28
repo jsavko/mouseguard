@@ -42,7 +42,7 @@ export default class MouseCombatant extends Combatant {
         let init = 0;
         let actor = game.actors.get(data.actorId);
         if (actor.type == "character") init = 1;
-        this.data.update({
+        this.updateSource({
             initiative: init,
             flags: {
                 mouseguard: {
