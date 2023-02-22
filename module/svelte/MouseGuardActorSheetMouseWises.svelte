@@ -39,7 +39,7 @@
                         )}
                 />
                 <pass
-                    >P:
+                    >{game.i18n.localize("MOUSEGUARD.P")}:
                     {#each { length: parseInt(wise.system.rank) + 1 } as _, i}
                         {#if wise.system.pass > i}
                             <div
@@ -67,7 +67,7 @@
                     {/each}
                 </pass>
                 <fail
-                    >F:
+                    >{game.i18n.localize("MOUSEGUARD.F")}:
                     {#each { length: parseInt(wise.system.rank) } as _, i}
                         {#if wise.system.fail > i}
                             <div
@@ -113,7 +113,9 @@
                     on:click={sheet?._onItemCreate.bind(sheet)}
                     class="item-control item-create"
                     title="Create item"
-                    data-type="wise"><i class="fas fa-plus" /> Add item</a
+                    data-type="wise"
+                    ><i class="fas fa-plus" />
+                    {game.i18n.localize("MOUSEGUARD.AddItem")}</a
                 >
             </div>
         </li>

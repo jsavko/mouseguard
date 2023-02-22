@@ -1771,12 +1771,16 @@ function create_each_block(ctx) {
   let t3;
   let t4;
   let pass;
+  let t5_value = game.i18n.localize("MOUSEGUARD.P") + "";
   let t5;
   let t6;
-  let fail;
   let t7;
-  let div_name_value;
+  let fail;
+  let t8_value = game.i18n.localize("MOUSEGUARD.F") + "";
   let t8;
+  let t9;
+  let div_name_value;
+  let t10;
   let mounted;
   let dispose;
   function click_handler(...args) {
@@ -1812,17 +1816,19 @@ function create_each_block(ctx) {
         if_block.c();
       t4 = space();
       pass = element("pass");
-      t5 = text("P:\r\n                    ");
+      t5 = text(t5_value);
+      t6 = text(":\r\n                    ");
       for (let i = 0; i < each_blocks_1.length; i += 1) {
         each_blocks_1[i].c();
       }
-      t6 = space();
+      t7 = space();
       fail = element("fail");
-      t7 = text("F:\r\n                    ");
+      t8 = text(t8_value);
+      t9 = text(":\r\n                    ");
       for (let i = 0; i < each_blocks.length; i += 1) {
         each_blocks[i].c();
       }
-      t8 = space();
+      t10 = space();
       attr(label, "class", "header svelte-3lzvcr");
       attr(input, "name", input_name_value = ctx[12].id);
       attr(input, "type", "number");
@@ -1848,16 +1854,18 @@ function create_each_block(ctx) {
       append(div, t4);
       append(div, pass);
       append(pass, t5);
+      append(pass, t6);
       for (let i = 0; i < each_blocks_1.length; i += 1) {
         each_blocks_1[i].m(pass, null);
       }
-      append(div, t6);
+      append(div, t7);
       append(div, fail);
-      append(fail, t7);
+      append(fail, t8);
+      append(fail, t9);
       for (let i = 0; i < each_blocks.length; i += 1) {
         each_blocks[i].m(fail, null);
       }
-      append(ability, t8);
+      append(ability, t10);
       if (!mounted) {
         dispose = [
           listen(label, "click", click_handler),
@@ -2275,15 +2283,19 @@ function create_each_block2(ctx) {
   let input_value_value;
   let t3;
   let pass;
+  let t4_value = game.i18n.localize("MOUSEGUARD.P") + "";
   let t4;
   let t5;
-  let fail;
   let t6;
-  let div0_name_value;
+  let fail;
+  let t7_value = game.i18n.localize("MOUSEGUARD.F") + "";
   let t7;
+  let t8;
+  let div0_name_value;
+  let t9;
   let div1;
   let a1;
-  let t8;
+  let t10;
   let mounted;
   let dispose;
   function click_handler(...args) {
@@ -2315,21 +2327,23 @@ function create_each_block2(ctx) {
       input = element("input");
       t3 = space();
       pass = element("pass");
-      t4 = text("P:\r\n                    ");
+      t4 = text(t4_value);
+      t5 = text(":\r\n                    ");
       for (let i = 0; i < each_blocks_1.length; i += 1) {
         each_blocks_1[i].c();
       }
-      t5 = space();
+      t6 = space();
       fail = element("fail");
-      t6 = text("F:\r\n                    ");
+      t7 = text(t7_value);
+      t8 = text(":\r\n                    ");
       for (let i = 0; i < each_blocks.length; i += 1) {
         each_blocks[i].c();
       }
-      t7 = space();
+      t9 = space();
       div1 = element("div");
       a1 = element("a");
       a1.innerHTML = `<i class="fas fa-trash"></i>`;
-      t8 = space();
+      t10 = space();
       attr(label, "class", "header svelte-13qswj2");
       attr(input, "name", input_name_value = ctx[11].id);
       attr(input, "type", "number");
@@ -2355,19 +2369,21 @@ function create_each_block2(ctx) {
       append(div0, t3);
       append(div0, pass);
       append(pass, t4);
+      append(pass, t5);
       for (let i = 0; i < each_blocks_1.length; i += 1) {
         each_blocks_1[i].m(pass, null);
       }
-      append(div0, t5);
+      append(div0, t6);
       append(div0, fail);
-      append(fail, t6);
+      append(fail, t7);
+      append(fail, t8);
       for (let i = 0; i < each_blocks.length; i += 1) {
         each_blocks[i].m(fail, null);
       }
-      append(skill, t7);
+      append(skill, t9);
       append(skill, div1);
       append(div1, a1);
-      append(skill, t8);
+      append(skill, t10);
       if (!mounted) {
         dispose = [
           listen(label, "click", click_handler),
@@ -2773,12 +2789,16 @@ function create_each_block3(ctx) {
   let input_value_value;
   let t3;
   let pass;
+  let t4_value = game.i18n.localize("MOUSEGUARD.P") + "";
   let t4;
   let t5;
-  let fail;
   let t6;
-  let div0_name_value;
+  let fail;
+  let t7_value = game.i18n.localize("MOUSEGUARD.F") + "";
   let t7;
+  let t8;
+  let div0_name_value;
+  let t9;
   let div1;
   let a1;
   let mounted;
@@ -2812,17 +2832,19 @@ function create_each_block3(ctx) {
       input = element("input");
       t3 = space();
       pass = element("pass");
-      t4 = text("P:\r\n                    ");
+      t4 = text(t4_value);
+      t5 = text(":\r\n                    ");
       for (let i = 0; i < each_blocks_1.length; i += 1) {
         each_blocks_1[i].c();
       }
-      t5 = space();
+      t6 = space();
       fail = element("fail");
-      t6 = text("F:\r\n                    ");
+      t7 = text(t7_value);
+      t8 = text(":\r\n                    ");
       for (let i = 0; i < each_blocks.length; i += 1) {
         each_blocks[i].c();
       }
-      t7 = space();
+      t9 = space();
       div1 = element("div");
       a1 = element("a");
       a1.innerHTML = `<i class="fas fa-trash"></i>`;
@@ -2851,16 +2873,18 @@ function create_each_block3(ctx) {
       append(div0, t3);
       append(div0, pass);
       append(pass, t4);
+      append(pass, t5);
       for (let i = 0; i < each_blocks_1.length; i += 1) {
         each_blocks_1[i].m(pass, null);
       }
-      append(div0, t5);
+      append(div0, t6);
       append(div0, fail);
-      append(fail, t6);
+      append(fail, t7);
+      append(fail, t8);
       for (let i = 0; i < each_blocks.length; i += 1) {
         each_blocks[i].m(fail, null);
       }
-      append(wise, t7);
+      append(wise, t9);
       append(wise, div1);
       append(div1, a1);
       if (!mounted) {
@@ -2952,12 +2976,16 @@ function create_fragment6(ctx) {
   let t4;
   let div2;
   let a;
+  let i;
+  let t5;
+  let t6_value = game.i18n.localize("MOUSEGUARD.AddItem") + "";
+  let t6;
   let mounted;
   let dispose;
   let each_value = ctx[0];
   let each_blocks = [];
-  for (let i = 0; i < each_value.length; i += 1) {
-    each_blocks[i] = create_each_block3(get_each_context3(ctx, each_value, i));
+  for (let i2 = 0; i2 < each_value.length; i2 += 1) {
+    each_blocks[i2] = create_each_block3(get_each_context3(ctx, each_value, i2));
   }
   return {
     c() {
@@ -2965,8 +2993,8 @@ function create_fragment6(ctx) {
       h1 = element("h1");
       h1.textContent = `${game.i18n.localize("MOUSEGUARD.Wises")}`;
       t1 = space();
-      for (let i = 0; i < each_blocks.length; i += 1) {
-        each_blocks[i].c();
+      for (let i2 = 0; i2 < each_blocks.length; i2 += 1) {
+        each_blocks[i2].c();
       }
       t2 = space();
       ol = element("ol");
@@ -2977,10 +3005,13 @@ function create_fragment6(ctx) {
       t4 = space();
       div2 = element("div");
       a = element("a");
-      a.innerHTML = `<i class="fas fa-plus"></i> Add item`;
+      i = element("i");
+      t5 = space();
+      t6 = text(t6_value);
       attr(h1, "class", "svelte-iuqufg");
       attr(div0, "class", "item-image");
       attr(div1, "class", "item-name");
+      attr(i, "class", "fas fa-plus");
       attr(a, "class", "item-control item-create");
       attr(a, "title", "Create item");
       attr(a, "data-type", "wise");
@@ -2992,8 +3023,8 @@ function create_fragment6(ctx) {
       insert(target, largecard, anchor);
       append(largecard, h1);
       append(largecard, t1);
-      for (let i = 0; i < each_blocks.length; i += 1) {
-        each_blocks[i].m(largecard, null);
+      for (let i2 = 0; i2 < each_blocks.length; i2 += 1) {
+        each_blocks[i2].m(largecard, null);
       }
       append(largecard, t2);
       append(largecard, ol);
@@ -3004,6 +3035,9 @@ function create_fragment6(ctx) {
       append(li, t4);
       append(li, div2);
       append(div2, a);
+      append(a, i);
+      append(a, t5);
+      append(a, t6);
       if (!mounted) {
         dispose = listen(a, "click", ctx[2]?._onItemCreate.bind(ctx[2]));
         mounted = true;
@@ -3012,19 +3046,19 @@ function create_fragment6(ctx) {
     p(ctx2, [dirty]) {
       if (dirty & 5) {
         each_value = ctx2[0];
-        let i;
-        for (i = 0; i < each_value.length; i += 1) {
-          const child_ctx = get_each_context3(ctx2, each_value, i);
-          if (each_blocks[i]) {
-            each_blocks[i].p(child_ctx, dirty);
+        let i2;
+        for (i2 = 0; i2 < each_value.length; i2 += 1) {
+          const child_ctx = get_each_context3(ctx2, each_value, i2);
+          if (each_blocks[i2]) {
+            each_blocks[i2].p(child_ctx, dirty);
           } else {
-            each_blocks[i] = create_each_block3(child_ctx);
-            each_blocks[i].c();
-            each_blocks[i].m(largecard, t2);
+            each_blocks[i2] = create_each_block3(child_ctx);
+            each_blocks[i2].c();
+            each_blocks[i2].m(largecard, t2);
           }
         }
-        for (; i < each_blocks.length; i += 1) {
-          each_blocks[i].d(1);
+        for (; i2 < each_blocks.length; i2 += 1) {
+          each_blocks[i2].d(1);
         }
         each_blocks.length = each_value.length;
       }
@@ -3311,15 +3345,19 @@ function create_each_block4(ctx) {
   let input_value_value;
   let t3;
   let for_1;
+  let t4_value = game.i18n.localize("MOUSEGUARD.F") + "";
   let t4;
   let t5;
-  let pass;
   let t6;
-  let div0_name_value;
+  let pass;
+  let t7_value = game.i18n.localize("MOUSEGUARD.A") + "";
   let t7;
+  let t8;
+  let div0_name_value;
+  let t9;
   let div1;
   let a1;
-  let t8;
+  let t10;
   let mounted;
   let dispose;
   function click_handler(...args) {
@@ -3347,21 +3385,23 @@ function create_each_block4(ctx) {
       input = element("input");
       t3 = space();
       for_1 = element("for");
-      t4 = text("F:\r\n                    ");
+      t4 = text(t4_value);
+      t5 = text(":\r\n                    ");
       for (let i = 0; i < each_blocks_1.length; i += 1) {
         each_blocks_1[i].c();
       }
-      t5 = space();
+      t6 = space();
       pass = element("pass");
-      t6 = text("A:\r\n                    ");
+      t7 = text(t7_value);
+      t8 = text(":\r\n                    ");
       for (let i = 0; i < each_blocks.length; i += 1) {
         each_blocks[i].c();
       }
-      t7 = space();
+      t9 = space();
       div1 = element("div");
       a1 = element("a");
       a1.innerHTML = `<i class="fas fa-trash"></i>`;
-      t8 = space();
+      t10 = space();
       attr(label, "class", "header svelte-1072yfn");
       attr(input, "name", input_name_value = ctx[11].id);
       attr(input, "type", "number");
@@ -3387,19 +3427,21 @@ function create_each_block4(ctx) {
       append(div0, t3);
       append(div0, for_1);
       append(for_1, t4);
+      append(for_1, t5);
       for (let i = 0; i < each_blocks_1.length; i += 1) {
         each_blocks_1[i].m(for_1, null);
       }
-      append(div0, t5);
+      append(div0, t6);
       append(div0, pass);
-      append(pass, t6);
+      append(pass, t7);
+      append(pass, t8);
       for (let i = 0; i < each_blocks.length; i += 1) {
         each_blocks[i].m(pass, null);
       }
-      append(trait, t7);
+      append(trait, t9);
       append(trait, div1);
       append(div1, a1);
-      append(trait, t8);
+      append(trait, t10);
       if (!mounted) {
         dispose = [
           listen(label, "click", click_handler),
@@ -3681,13 +3723,13 @@ function create_fragment9(ctx) {
   let dispoBox;
   let startingBox;
   let label0;
-  let t4;
+  let t5;
   let input0;
   let input0_value_value;
-  let t5;
+  let t6;
   let currentBox;
   let label1;
-  let t8;
+  let t10;
   let input1;
   let input1_value_value;
   return {
@@ -3699,14 +3741,16 @@ function create_fragment9(ctx) {
       dispoBox = element("dispoBox");
       startingBox = element("startingBox");
       label0 = element("label");
-      label0.textContent = `Starting ${game.i18n.localize("MOUSEGUARD.Disposition")}`;
-      t4 = space();
-      input0 = element("input");
+      label0.textContent = `${game.i18n.localize("MOUSEGUARD.Starting")} 
+                ${game.i18n.localize("MOUSEGUARD.Disposition")}`;
       t5 = space();
+      input0 = element("input");
+      t6 = space();
       currentBox = element("currentBox");
       label1 = element("label");
-      label1.textContent = `Current ${game.i18n.localize("MOUSEGUARD.Disposition")}`;
-      t8 = space();
+      label1.textContent = `${game.i18n.localize("MOUSEGUARD.Current")} 
+                ${game.i18n.localize("MOUSEGUARD.Disposition")}`;
+      t10 = space();
       input1 = element("input");
       attr(h1, "class", "svelte-ujgmh3");
       attr(label0, "class", "header svelte-ujgmh3");
@@ -3733,12 +3777,12 @@ function create_fragment9(ctx) {
       append(largecard, dispoBox);
       append(dispoBox, startingBox);
       append(startingBox, label0);
-      append(startingBox, t4);
+      append(startingBox, t5);
       append(startingBox, input0);
-      append(dispoBox, t5);
+      append(dispoBox, t6);
       append(dispoBox, currentBox);
       append(currentBox, label1);
-      append(currentBox, t8);
+      append(currentBox, t10);
       append(currentBox, input1);
     },
     p(ctx2, [dirty]) {

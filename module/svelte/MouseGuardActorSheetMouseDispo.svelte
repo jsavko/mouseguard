@@ -1,5 +1,5 @@
 <script>
-    import {getContext} from "svelte";
+    import { getContext } from "svelte";
 
     //getContext("sheetStore", dataStore);
     let sheetData = getContext("sheetStore");
@@ -13,26 +13,28 @@
     <dispoBox>
         <startingBox>
             <label class="header"
-            >Starting {game.i18n.localize("MOUSEGUARD.Disposition")}</label
+                >{game.i18n.localize("MOUSEGUARD.Starting")}
+                {game.i18n.localize("MOUSEGUARD.Disposition")}</label
             >
             <input
-                    class="disposition-value"
-                    name="system.disposition.starting"
-                    type="number"
-                    value={data.system.disposition.starting}
-                    placeholder="0"
+                class="disposition-value"
+                name="system.disposition.starting"
+                type="number"
+                value={data.system.disposition.starting}
+                placeholder="0"
             />
         </startingBox>
         <currentBox>
             <label class="header"
-            >Current {game.i18n.localize("MOUSEGUARD.Disposition")}</label
+                >{game.i18n.localize("MOUSEGUARD.Current")}
+                {game.i18n.localize("MOUSEGUARD.Disposition")}</label
             >
             <input
-                    class="disposition-value"
-                    name="system.disposition.current"
-                    type="number"
-                    value={data.system.disposition.current}
-                    placeholder="0"
+                class="disposition-value"
+                name="system.disposition.current"
+                type="number"
+                value={data.system.disposition.current}
+                placeholder="0"
             />
         </currentBox>
     </dispoBox>

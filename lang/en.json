@@ -116,6 +116,14 @@
     "MOUSEGUARD.DicePoolTT": "Left Click +1 Die, Right Click -1 Die",
     "MOUSEGUARD.Success": "Success",
 
+    "MOUSEGUARD.Current": "Current",
+    "MOUSEGUARD.Starting": "Starting",
+
+    "MOUSEGUARD.P": "P",
+    "MOUSEGUARD.F": "F",
+    "MOUSEGUARD.A": "A",
+    "MOUSEGUARD.AddItem": "Add Item",
+
     "COMBAT.ConflictCaptain": "Toggle Conflict Captain",
     "COMBAT.askGoal": "Ask Conflict Captain for the Goal",
     "COMBAT.attack": "Attack",

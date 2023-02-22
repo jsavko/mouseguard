@@ -38,7 +38,7 @@
                         )}
                 />
                 <pass
-                    >P:
+                    >{game.i18n.localize("MOUSEGUARD.P")}:
                     {#each { length: parseInt(skill.system.rank) + 1 } as _, i}
                         {#if skill.system.pass > i}
                             <div
@@ -66,7 +66,7 @@
                     {/each}
                 </pass>
                 <fail
-                    >F:
+                    >{game.i18n.localize("MOUSEGUARD.F")}:
                     {#each { length: parseInt(skill.system.rank) } as _, i}
                         {#if skill.system.fail > i}
                             <div
