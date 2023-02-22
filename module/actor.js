@@ -74,7 +74,10 @@ export class MouseGuardActor extends Actor {
                     type: "ability"
                 });
             }
-            this.updateSource({ items: abilities });
+            this.updateSource({
+                items: abilities,
+                img: "systems/mouseguard/assets/icons/seated-mouse.svg"
+            });
         }
     }
 }

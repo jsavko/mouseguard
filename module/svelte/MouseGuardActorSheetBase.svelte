@@ -7,18 +7,16 @@
     import MouseGuardActorSheetMouseRewards from "./MouseGuardActorSheetMouseRewards.svelte";
     import MouseGuardActorSheetMouseSkillAbilityTab from "./MouseGuardActorSheetMouseSkillAbilityTab.svelte";
     import MouseGuardActorSheetMouseDispo from "./MouseGuardActorSheetMouseDispo.svelte";
-    import Tabs from "./Tabs.svelte";
+    import MouseGuardActorSheetPortrait from "./MouseGuardActorSheetMousePortrait.svelte";
+    import MouseGuardActorSheetMouseName from "./MouseGuardActorSheetMouseName.svelte";
 
     //Exports
     export let dataStore;
     setContext("sheetStore", dataStore);
-    //let sheetData = getContext("sheetStore");
-    //let { actor, data, sheet } = $dataStore;
 
     let items = [
         {
             label: game.i18n.localize("MOUSEGUARD.About"),
-            value: 1,
             component: MouseGuardActorSheetMouseDetails
         },
         {
@@ -28,24 +26,57 @@
         },
         {
             label: game.i18n.localize("MOUSEGUARD.Rewards"),
-            value: 3,
             component: MouseGuardActorSheetMouseRewards
         },
         {
             label: game.i18n.localize("MOUSEGUARD.Disposition"),
-            value: 4,
             component: MouseGuardActorSheetMouseDispo
         }
     ];
+
+    export let activeTabValue = items[0].component;
+    const handleClick = tabValue => () => (activeTabValue = tabValue);
 </script>
 
 <content>
-    <Tabs {items} />
+    <div class="flex-container">
+        <div class="flex-item">
+            <MouseGuardActorSheetMouseName />
+            <nav class="sheet-navigation tabs">
+                {#each items as item}
+                    <a class="item {activeTabValue === item.component ? 'active' : ''}" on:click={handleClick(item.component)}>
+                        {item.label}
+                    </a>
+                {/each}
+            </nav>
+        </div>
+        <MouseGuardActorSheetPortrait />
+    </div>
+    <div class="box">
+        {#if activeTabValue}
+            <svelte:component this={activeTabValue}/>
+        {/if}
+    </div>
 </content>
 
 <style>
     content {
         overflow-y: scroll;
+    }
+
+    .box {
+        margin-bottom: 10px;
+        padding-top: 20px;
+        border-radius: 0 0 .5rem .5rem;
+        border-top: 0;
+    }
+
+    .flex-container {
+        display: flex;
+    }
+
+    .flex-item {
+        flex-grow: 1;
     }
 
     @import url("https://fonts.googleapis.com/css2?family=Germania+One&family=Khula&display=swap");
