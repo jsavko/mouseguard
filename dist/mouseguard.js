@@ -8,107 +8,107 @@ var __publicField = (obj, key, value) => {
   return value;
 };
 
-// fakecss:/home/anton/.local/share/FoundryVTT/Data/systems/mouseguard/module/svelte/MouseGuardEditor.esbuild-svelte-fake-css
+// fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardEditor.esbuild-svelte-fake-css
 var require_ = __commonJS({
-  "fakecss:/home/anton/.local/share/FoundryVTT/Data/systems/mouseguard/module/svelte/MouseGuardEditor.esbuild-svelte-fake-css"(exports, module) {
+  "fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardEditor.esbuild-svelte-fake-css"(exports, module) {
     module.exports = {};
   }
 });
 
-// fakecss:/home/anton/.local/share/FoundryVTT/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseDetails.esbuild-svelte-fake-css
+// fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseDetails.esbuild-svelte-fake-css
 var require_2 = __commonJS({
-  "fakecss:/home/anton/.local/share/FoundryVTT/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseDetails.esbuild-svelte-fake-css"(exports, module) {
+  "fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseDetails.esbuild-svelte-fake-css"(exports, module) {
     module.exports = {};
   }
 });
 
-// fakecss:/home/anton/.local/share/FoundryVTT/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseRewards.esbuild-svelte-fake-css
+// fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseRewards.esbuild-svelte-fake-css
 var require_3 = __commonJS({
-  "fakecss:/home/anton/.local/share/FoundryVTT/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseRewards.esbuild-svelte-fake-css"(exports, module) {
+  "fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseRewards.esbuild-svelte-fake-css"(exports, module) {
     module.exports = {};
   }
 });
 
-// fakecss:/home/anton/.local/share/FoundryVTT/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseAbilities.esbuild-svelte-fake-css
+// fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseAbilities.esbuild-svelte-fake-css
 var require_4 = __commonJS({
-  "fakecss:/home/anton/.local/share/FoundryVTT/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseAbilities.esbuild-svelte-fake-css"(exports, module) {
+  "fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseAbilities.esbuild-svelte-fake-css"(exports, module) {
     module.exports = {};
   }
 });
 
-// fakecss:/home/anton/.local/share/FoundryVTT/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseSkills.esbuild-svelte-fake-css
+// fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseSkills.esbuild-svelte-fake-css
 var require_5 = __commonJS({
-  "fakecss:/home/anton/.local/share/FoundryVTT/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseSkills.esbuild-svelte-fake-css"(exports, module) {
+  "fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseSkills.esbuild-svelte-fake-css"(exports, module) {
     module.exports = {};
   }
 });
 
-// fakecss:/home/anton/.local/share/FoundryVTT/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseWises.esbuild-svelte-fake-css
+// fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseWises.esbuild-svelte-fake-css
 var require_6 = __commonJS({
-  "fakecss:/home/anton/.local/share/FoundryVTT/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseWises.esbuild-svelte-fake-css"(exports, module) {
+  "fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseWises.esbuild-svelte-fake-css"(exports, module) {
     module.exports = {};
   }
 });
 
-// fakecss:/home/anton/.local/share/FoundryVTT/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseTraits.esbuild-svelte-fake-css
+// fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseTraits.esbuild-svelte-fake-css
 var require_7 = __commonJS({
-  "fakecss:/home/anton/.local/share/FoundryVTT/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseTraits.esbuild-svelte-fake-css"(exports, module) {
+  "fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseTraits.esbuild-svelte-fake-css"(exports, module) {
     module.exports = {};
   }
 });
 
-// fakecss:/home/anton/.local/share/FoundryVTT/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseSkillAbilityTab.esbuild-svelte-fake-css
+// fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseSkillAbilityTab.esbuild-svelte-fake-css
 var require_8 = __commonJS({
-  "fakecss:/home/anton/.local/share/FoundryVTT/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseSkillAbilityTab.esbuild-svelte-fake-css"(exports, module) {
+  "fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseSkillAbilityTab.esbuild-svelte-fake-css"(exports, module) {
     module.exports = {};
   }
 });
 
-// fakecss:/home/anton/.local/share/FoundryVTT/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseDispo.esbuild-svelte-fake-css
+// fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseDispo.esbuild-svelte-fake-css
 var require_9 = __commonJS({
-  "fakecss:/home/anton/.local/share/FoundryVTT/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseDispo.esbuild-svelte-fake-css"(exports, module) {
+  "fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseDispo.esbuild-svelte-fake-css"(exports, module) {
     module.exports = {};
   }
 });
 
-// fakecss:/home/anton/.local/share/FoundryVTT/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMousePortrait.esbuild-svelte-fake-css
+// fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMousePortrait.esbuild-svelte-fake-css
 var require_10 = __commonJS({
-  "fakecss:/home/anton/.local/share/FoundryVTT/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMousePortrait.esbuild-svelte-fake-css"(exports, module) {
+  "fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMousePortrait.esbuild-svelte-fake-css"(exports, module) {
     module.exports = {};
   }
 });
 
-// fakecss:/home/anton/.local/share/FoundryVTT/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseName.esbuild-svelte-fake-css
+// fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseName.esbuild-svelte-fake-css
 var require_11 = __commonJS({
-  "fakecss:/home/anton/.local/share/FoundryVTT/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseName.esbuild-svelte-fake-css"(exports, module) {
+  "fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetMouseName.esbuild-svelte-fake-css"(exports, module) {
     module.exports = {};
   }
 });
 
-// fakecss:/home/anton/.local/share/FoundryVTT/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetBase.esbuild-svelte-fake-css
+// fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetBase.esbuild-svelte-fake-css
 var require_12 = __commonJS({
-  "fakecss:/home/anton/.local/share/FoundryVTT/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetBase.esbuild-svelte-fake-css"(exports, module) {
+  "fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetBase.esbuild-svelte-fake-css"(exports, module) {
     module.exports = {};
   }
 });
 
-// fakecss:/home/anton/.local/share/FoundryVTT/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetHeader.esbuild-svelte-fake-css
+// fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetHeader.esbuild-svelte-fake-css
 var require_13 = __commonJS({
-  "fakecss:/home/anton/.local/share/FoundryVTT/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetHeader.esbuild-svelte-fake-css"(exports, module) {
+  "fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardActorSheetHeader.esbuild-svelte-fake-css"(exports, module) {
     module.exports = {};
   }
 });
 
-// fakecss:/home/anton/.local/share/FoundryVTT/Data/systems/mouseguard/module/svelte/MouseGuardNPCActorSheetBody.esbuild-svelte-fake-css
+// fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardNPCActorSheetBody.esbuild-svelte-fake-css
 var require_14 = __commonJS({
-  "fakecss:/home/anton/.local/share/FoundryVTT/Data/systems/mouseguard/module/svelte/MouseGuardNPCActorSheetBody.esbuild-svelte-fake-css"(exports, module) {
+  "fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardNPCActorSheetBody.esbuild-svelte-fake-css"(exports, module) {
     module.exports = {};
   }
 });
 
-// fakecss:/home/anton/.local/share/FoundryVTT/Data/systems/mouseguard/module/svelte/MouseGuardNPCActorSheetBase.esbuild-svelte-fake-css
+// fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardNPCActorSheetBase.esbuild-svelte-fake-css
 var require_15 = __commonJS({
-  "fakecss:/home/anton/.local/share/FoundryVTT/Data/systems/mouseguard/module/svelte/MouseGuardNPCActorSheetBase.esbuild-svelte-fake-css"(exports, module) {
+  "fakecss:D:/FoundryData/Data/systems/mouseguard/module/svelte/MouseGuardNPCActorSheetBase.esbuild-svelte-fake-css"(exports, module) {
     module.exports = {};
   }
 });
@@ -224,14 +224,6 @@ function is_function(thing) {
 function safe_not_equal(a, b) {
   return a != a ? b == b : a !== b || (a && typeof a === "object" || typeof a === "function");
 }
-var src_url_equal_anchor;
-function src_url_equal(element_src, url) {
-  if (!src_url_equal_anchor) {
-    src_url_equal_anchor = document.createElement("a");
-  }
-  src_url_equal_anchor.href = url;
-  return element_src === src_url_equal_anchor.href;
-}
 function is_empty(obj) {
   return Object.keys(obj).length === 0;
 }
@@ -253,11 +245,78 @@ function start_hydrating() {
 function end_hydrating() {
   is_hydrating = false;
 }
+function upper_bound(low, high, key, value) {
+  while (low < high) {
+    const mid = low + (high - low >> 1);
+    if (key(mid) <= value) {
+      low = mid + 1;
+    } else {
+      high = mid;
+    }
+  }
+  return low;
+}
+function init_hydrate(target) {
+  if (target.hydrate_init)
+    return;
+  target.hydrate_init = true;
+  const children2 = target.childNodes;
+  const m = new Int32Array(children2.length + 1);
+  const p = new Int32Array(children2.length);
+  m[0] = -1;
+  let longest = 0;
+  for (let i = 0; i < children2.length; i++) {
+    const current = children2[i].claim_order;
+    const seqLen = upper_bound(1, longest + 1, (idx) => children2[m[idx]].claim_order, current) - 1;
+    p[i] = m[seqLen] + 1;
+    const newLen = seqLen + 1;
+    m[newLen] = i;
+    longest = Math.max(newLen, longest);
+  }
+  const lis = [];
+  const toMove = [];
+  let last = children2.length - 1;
+  for (let cur = m[longest] + 1; cur != 0; cur = p[cur - 1]) {
+    lis.push(children2[cur - 1]);
+    for (; last >= cur; last--) {
+      toMove.push(children2[last]);
+    }
+    last--;
+  }
+  for (; last >= 0; last--) {
+    toMove.push(children2[last]);
+  }
+  lis.reverse();
+  toMove.sort((a, b) => a.claim_order - b.claim_order);
+  for (let i = 0, j = 0; i < toMove.length; i++) {
+    while (j < lis.length && toMove[i].claim_order >= lis[j].claim_order) {
+      j++;
+    }
+    const anchor = j < lis.length ? lis[j] : null;
+    target.insertBefore(toMove[i], anchor);
+  }
+}
 function append(target, node) {
-  target.appendChild(node);
+  if (is_hydrating) {
+    init_hydrate(target);
+    if (target.actual_end_child === void 0 || target.actual_end_child !== null && target.actual_end_child.parentElement !== target) {
+      target.actual_end_child = target.firstChild;
+    }
+    if (node !== target.actual_end_child) {
+      target.insertBefore(node, target.actual_end_child);
+    } else {
+      target.actual_end_child = node.nextSibling;
+    }
+  } else if (node.parentNode !== target) {
+    target.appendChild(node);
+  }
 }
 function insert(target, node, anchor) {
-  target.insertBefore(node, anchor || null);
+  if (is_hydrating && !anchor) {
+    append(target, node);
+  } else if (node.parentNode !== target || anchor && node.nextSibling !== anchor) {
+    target.insertBefore(node, anchor || null);
+  }
 }
 function detach(node) {
   if (node.parentNode) {
@@ -353,10 +412,7 @@ function add_resize_listener(node, fn) {
     detach(iframe);
   };
 }
-function construct_svelte_component(component, props) {
-  return new component(props);
-}
-var managed_styles = new Map();
+var active_docs = new Set();
 var current_component;
 function set_current_component(component) {
   current_component = component;
@@ -371,7 +427,6 @@ function onDestroy(fn) {
 }
 function setContext(key, context) {
   get_current_component().$$.context.set(key, context);
-  return context;
 }
 function getContext(key) {
   return get_current_component().$$.context.get(key);
@@ -391,29 +446,20 @@ function schedule_update() {
 function add_render_callback(fn) {
   render_callbacks.push(fn);
 }
+var flushing = false;
 var seen_callbacks = new Set();
-var flushidx = 0;
 function flush() {
-  if (flushidx !== 0) {
+  if (flushing)
     return;
-  }
-  const saved_component = current_component;
+  flushing = true;
   do {
-    try {
-      while (flushidx < dirty_components.length) {
-        const component = dirty_components[flushidx];
-        flushidx++;
-        set_current_component(component);
-        update(component.$$);
-      }
-    } catch (e) {
-      dirty_components.length = 0;
-      flushidx = 0;
-      throw e;
+    for (let i = 0; i < dirty_components.length; i += 1) {
+      const component = dirty_components[i];
+      set_current_component(component);
+      update(component.$$);
     }
     set_current_component(null);
     dirty_components.length = 0;
-    flushidx = 0;
     while (binding_callbacks.length)
       binding_callbacks.pop()();
     for (let i = 0; i < render_callbacks.length; i += 1) {
@@ -429,8 +475,8 @@ function flush() {
     flush_callbacks.pop()();
   }
   update_scheduled = false;
+  flushing = false;
   seen_callbacks.clear();
-  set_current_component(saved_component);
 }
 function update($$) {
   if ($$.fragment !== null) {
@@ -477,8 +523,6 @@ function transition_out(block, local, detach2, callback) {
       }
     });
     block.o(local);
-  } else if (callback) {
-    callback();
   }
 }
 var globals = typeof window !== "undefined" ? window : typeof globalThis !== "undefined" ? globalThis : global;
@@ -495,9 +539,7 @@ var boolean_attributes = new Set([
   "disabled",
   "formnovalidate",
   "hidden",
-  "inert",
   "ismap",
-  "itemscope",
   "loop",
   "multiple",
   "muted",
@@ -514,13 +556,13 @@ function create_component(block) {
   block && block.c();
 }
 function mount_component(component, target, anchor, customElement) {
-  const { fragment, after_update } = component.$$;
+  const { fragment, on_mount, on_destroy, after_update } = component.$$;
   fragment && fragment.m(target, anchor);
   if (!customElement) {
     add_render_callback(() => {
-      const new_on_destroy = component.$$.on_mount.map(run).filter(is_function);
-      if (component.$$.on_destroy) {
-        component.$$.on_destroy.push(...new_on_destroy);
+      const new_on_destroy = on_mount.map(run).filter(is_function);
+      if (on_destroy) {
+        on_destroy.push(...new_on_destroy);
       } else {
         run_all(new_on_destroy);
       }
@@ -546,12 +588,12 @@ function make_dirty(component, i) {
   }
   component.$$.dirty[i / 31 | 0] |= 1 << i % 31;
 }
-function init(component, options, instance15, create_fragment16, not_equal, props, append_styles, dirty = [-1]) {
+function init(component, options, instance15, create_fragment16, not_equal, props, dirty = [-1]) {
   const parent_component = current_component;
   set_current_component(component);
   const $$ = component.$$ = {
     fragment: null,
-    ctx: [],
+    ctx: null,
     props,
     update: noop,
     not_equal,
@@ -561,13 +603,11 @@ function init(component, options, instance15, create_fragment16, not_equal, prop
     on_disconnect: [],
     before_update: [],
     after_update: [],
-    context: new Map(options.context || (parent_component ? parent_component.$$.context : [])),
+    context: new Map(parent_component ? parent_component.$$.context : options.context || []),
     callbacks: blank_object(),
     dirty,
-    skip_bound: false,
-    root: options.target || parent_component.$$.root
+    skip_bound: false
   };
-  append_styles && append_styles($$.root);
   let ready = false;
   $$.ctx = instance15 ? instance15(component, options.props || {}, (i, ret, ...rest) => {
     const value = rest.length ? rest[0] : ret;
@@ -625,9 +665,6 @@ if (typeof HTMLElement === "function") {
       this.$destroy = noop;
     }
     $on(type, callback) {
-      if (!is_function(callback)) {
-        return noop;
-      }
       const callbacks = this.$$.callbacks[type] || (this.$$.callbacks[type] = []);
       callbacks.push(callback);
       return () => {
@@ -651,9 +688,6 @@ var SvelteComponent = class {
     this.$destroy = noop;
   }
   $on(type, callback) {
-    if (!is_function(callback)) {
-      return noop;
-    }
     const callbacks = this.$$.callbacks[type] || (this.$$.callbacks[type] = []);
     callbacks.push(callback);
     return () => {
@@ -1143,7 +1177,7 @@ function create_fragment2(ctx) {
       current = true;
     },
     p(ctx2, [dirty]) {
-      if (!current || dirty & 1 && input0_value_value !== (input0_value_value = ctx2[0].system.details.age) && input0.value !== input0_value_value) {
+      if (!current || dirty & 1 && input0_value_value !== (input0_value_value = ctx2[0].system.details.age)) {
         input0.value = input0_value_value;
       }
       if (!current || dirty & 1 && input1_value_value !== (input1_value_value = ctx2[0].system.details.parents) && input1.value !== input1_value_value) {
@@ -1409,13 +1443,13 @@ function create_fragment3(ctx) {
       append(rewardbox2, textarea2);
     },
     p(ctx2, [dirty]) {
-      if (dirty & 1 && input0_value_value !== (input0_value_value = ctx2[0].system.rewards.fate) && input0.value !== input0_value_value) {
+      if (dirty & 1 && input0_value_value !== (input0_value_value = ctx2[0].system.rewards.fate)) {
         input0.value = input0_value_value;
       }
-      if (dirty & 1 && input1_value_value !== (input1_value_value = ctx2[0].system.rewards.persona) && input1.value !== input1_value_value) {
+      if (dirty & 1 && input1_value_value !== (input1_value_value = ctx2[0].system.rewards.persona)) {
         input1.value = input1_value_value;
       }
-      if (dirty & 1 && input2_value_value !== (input2_value_value = ctx2[0].system.rewards.check) && input2.value !== input2_value_value) {
+      if (dirty & 1 && input2_value_value !== (input2_value_value = ctx2[0].system.rewards.check)) {
         input2.value = input2_value_value;
       }
       if (dirty & 1 && textarea0_value_value !== (textarea0_value_value = ctx2[0].system.rewards.belief)) {
@@ -1516,7 +1550,7 @@ function create_if_block_2(ctx) {
       if (dirty & 1 && input_name_value !== (input_name_value = ctx2[12].id)) {
         attr(input, "name", input_name_value);
       }
-      if (dirty & 1 && input_value_value !== (input_value_value = ctx2[12].system.tax) && input.value !== input_value_value) {
+      if (dirty & 1 && input_value_value !== (input_value_value = ctx2[12].system.tax)) {
         input.value = input_value_value;
       }
     },
@@ -1778,13 +1812,13 @@ function create_each_block(ctx) {
         if_block.c();
       t4 = space();
       pass = element("pass");
-      t5 = text("P:\n                    ");
+      t5 = text("P:\r\n                    ");
       for (let i = 0; i < each_blocks_1.length; i += 1) {
         each_blocks_1[i].c();
       }
       t6 = space();
       fail = element("fail");
-      t7 = text("F:\n                    ");
+      t7 = text("F:\r\n                    ");
       for (let i = 0; i < each_blocks.length; i += 1) {
         each_blocks[i].c();
       }
@@ -1839,7 +1873,7 @@ function create_each_block(ctx) {
       if (dirty & 1 && input_name_value !== (input_name_value = ctx[12].id)) {
         attr(input, "name", input_name_value);
       }
-      if (dirty & 1 && input_value_value !== (input_value_value = ctx[12].system.rating) && input.value !== input_value_value) {
+      if (dirty & 1 && input_value_value !== (input_value_value = ctx[12].system.rating)) {
         input.value = input_value_value;
       }
       if (ctx[12].name === "MOUSEGUARD.MNature") {
@@ -2281,13 +2315,13 @@ function create_each_block2(ctx) {
       input = element("input");
       t3 = space();
       pass = element("pass");
-      t4 = text("P:\n                    ");
+      t4 = text("P:\r\n                    ");
       for (let i = 0; i < each_blocks_1.length; i += 1) {
         each_blocks_1[i].c();
       }
       t5 = space();
       fail = element("fail");
-      t6 = text("F:\n                    ");
+      t6 = text("F:\r\n                    ");
       for (let i = 0; i < each_blocks.length; i += 1) {
         each_blocks[i].c();
       }
@@ -2353,7 +2387,7 @@ function create_each_block2(ctx) {
       if (dirty & 1 && input_name_value !== (input_name_value = ctx[11].id)) {
         attr(input, "name", input_name_value);
       }
-      if (dirty & 1 && input_value_value !== (input_value_value = ctx[11].system.rank) && input.value !== input_value_value) {
+      if (dirty & 1 && input_value_value !== (input_value_value = ctx[11].system.rank)) {
         input.value = input_value_value;
       }
       if (dirty & 5) {
@@ -2778,13 +2812,13 @@ function create_each_block3(ctx) {
       input = element("input");
       t3 = space();
       pass = element("pass");
-      t4 = text("P:\n                    ");
+      t4 = text("P:\r\n                    ");
       for (let i = 0; i < each_blocks_1.length; i += 1) {
         each_blocks_1[i].c();
       }
       t5 = space();
       fail = element("fail");
-      t6 = text("F:\n                    ");
+      t6 = text("F:\r\n                    ");
       for (let i = 0; i < each_blocks.length; i += 1) {
         each_blocks[i].c();
       }
@@ -2848,7 +2882,7 @@ function create_each_block3(ctx) {
       if (dirty & 1 && input_name_value !== (input_name_value = ctx[11].id)) {
         attr(input, "name", input_name_value);
       }
-      if (dirty & 1 && input_value_value !== (input_value_value = ctx[11].system.rank) && input.value !== input_value_value) {
+      if (dirty & 1 && input_value_value !== (input_value_value = ctx[11].system.rank)) {
         input.value = input_value_value;
       }
       if (dirty & 5) {
@@ -3313,13 +3347,13 @@ function create_each_block4(ctx) {
       input = element("input");
       t3 = space();
       for_1 = element("for");
-      t4 = text("F:\n                    ");
+      t4 = text("F:\r\n                    ");
       for (let i = 0; i < each_blocks_1.length; i += 1) {
         each_blocks_1[i].c();
       }
       t5 = space();
       pass = element("pass");
-      t6 = text("A:\n                    ");
+      t6 = text("A:\r\n                    ");
       for (let i = 0; i < each_blocks.length; i += 1) {
         each_blocks[i].c();
       }
@@ -3385,7 +3419,7 @@ function create_each_block4(ctx) {
       if (dirty & 1 && input_name_value !== (input_name_value = ctx[11].id)) {
         attr(input, "name", input_name_value);
       }
-      if (dirty & 1 && input_value_value !== (input_value_value = ctx[11].system.level) && input.value !== input_value_value) {
+      if (dirty & 1 && input_value_value !== (input_value_value = ctx[11].system.level)) {
         input.value = input_value_value;
       }
       if (dirty & 5) {
@@ -3708,10 +3742,10 @@ function create_fragment9(ctx) {
       append(currentBox, input1);
     },
     p(ctx2, [dirty]) {
-      if (dirty & 1 && input0_value_value !== (input0_value_value = ctx2[0].system.disposition.starting) && input0.value !== input0_value_value) {
+      if (dirty & 1 && input0_value_value !== (input0_value_value = ctx2[0].system.disposition.starting)) {
         input0.value = input0_value_value;
       }
-      if (dirty & 1 && input1_value_value !== (input1_value_value = ctx2[0].system.disposition.current) && input1.value !== input1_value_value) {
+      if (dirty & 1 && input1_value_value !== (input1_value_value = ctx2[0].system.disposition.current)) {
         input1.value = input1_value_value;
       }
     },
@@ -3758,7 +3792,7 @@ function create_fragment10(ctx) {
       portrait = element("portrait");
       img = element("img");
       attr(img, "class", "profile-img svelte-1qaezql");
-      if (!src_url_equal(img.src, img_src_value = ctx[0].img))
+      if (img.src !== (img_src_value = ctx[0].img))
         attr(img, "src", img_src_value);
       attr(img, "data-edit", "img");
       attr(img, "title", img_title_value = ctx[0].name);
@@ -3774,7 +3808,7 @@ function create_fragment10(ctx) {
       }
     },
     p(ctx2, [dirty]) {
-      if (dirty & 1 && !src_url_equal(img.src, img_src_value = ctx2[0].img)) {
+      if (dirty & 1 && img.src !== (img_src_value = ctx2[0].img)) {
         attr(img, "src", img_src_value);
       }
       if (dirty & 1 && img_title_value !== (img_title_value = ctx2[0].name)) {
@@ -3945,7 +3979,7 @@ function create_if_block6(ctx) {
     return {};
   }
   if (switch_value) {
-    switch_instance = construct_svelte_component(switch_value, switch_props(ctx));
+    switch_instance = new switch_value(switch_props(ctx));
   }
   return {
     c() {
@@ -3954,8 +3988,9 @@ function create_if_block6(ctx) {
       switch_instance_anchor = empty();
     },
     m(target, anchor) {
-      if (switch_instance)
+      if (switch_instance) {
         mount_component(switch_instance, target, anchor);
+      }
       insert(target, switch_instance_anchor, anchor);
       current = true;
     },
@@ -3970,7 +4005,7 @@ function create_if_block6(ctx) {
           check_outros();
         }
         if (switch_value) {
-          switch_instance = construct_svelte_component(switch_value, switch_props(ctx2));
+          switch_instance = new switch_value(switch_props(ctx2));
           create_component(switch_instance.$$.fragment);
           transition_in(switch_instance.$$.fragment, 1);
           mount_component(switch_instance, switch_instance_anchor.parentNode, switch_instance_anchor);
@@ -4170,15 +4205,16 @@ require_12();
 var subscriber_queue = [];
 function writable(value, start = noop) {
   let stop;
-  const subscribers = new Set();
+  const subscribers = [];
   function set(new_value) {
     if (safe_not_equal(value, new_value)) {
       value = new_value;
       if (stop) {
         const run_queue = !subscriber_queue.length;
-        for (const subscriber of subscribers) {
-          subscriber[1]();
-          subscriber_queue.push(subscriber, value);
+        for (let i = 0; i < subscribers.length; i += 1) {
+          const s = subscribers[i];
+          s[1]();
+          subscriber_queue.push(s, value);
         }
         if (run_queue) {
           for (let i = 0; i < subscriber_queue.length; i += 2) {
@@ -4194,14 +4230,17 @@ function writable(value, start = noop) {
   }
   function subscribe2(run2, invalidate = noop) {
     const subscriber = [run2, invalidate];
-    subscribers.add(subscriber);
-    if (subscribers.size === 1) {
+    subscribers.push(subscriber);
+    if (subscribers.length === 1) {
       stop = start(set) || noop;
     }
     run2(value);
     return () => {
-      subscribers.delete(subscriber);
-      if (subscribers.size === 0) {
+      const index = subscribers.indexOf(subscriber);
+      if (index !== -1) {
+        subscribers.splice(index, 1);
+      }
+      if (subscribers.length === 0) {
         stop();
         stop = null;
       }
@@ -4520,7 +4559,7 @@ function create_each_block_3(ctx) {
       if (dirty & 1 && input_name_value !== (input_name_value = ctx[25].id)) {
         attr(input, "name", input_name_value);
       }
-      if (dirty & 1 && input_value_value !== (input_value_value = ctx[25].system.rating) && input.value !== input_value_value) {
+      if (dirty & 1 && input_value_value !== (input_value_value = ctx[25].system.rating)) {
         input.value = input_value_value;
       }
       if (dirty & 1 && div_name_value !== (div_name_value = ctx[25].id)) {
@@ -4540,7 +4579,7 @@ function create_if_block_22(ctx) {
   let largecard;
   let h1;
   let t1;
-  let each_value_2 = ctx[3];
+  let each_value_2 = ctx[1];
   let each_blocks = [];
   for (let i = 0; i < each_value_2.length; i += 1) {
     each_blocks[i] = create_each_block_25(get_each_context_25(ctx, each_value_2, i));
@@ -4569,8 +4608,8 @@ function create_if_block_22(ctx) {
       }
     },
     p(ctx2, dirty) {
-      if (dirty & 40) {
-        each_value_2 = ctx2[3];
+      if (dirty & 34) {
+        each_value_2 = ctx2[1];
         let i;
         for (i = 0; i < each_value_2.length; i += 1) {
           const child_ctx = get_each_context_25(ctx2, each_value_2, i);
@@ -4670,15 +4709,15 @@ function create_each_block_25(ctx) {
     },
     p(new_ctx, dirty) {
       ctx = new_ctx;
-      if (dirty & 8 && t0_value !== (t0_value = game.i18n.localize(ctx[22].name) + ""))
+      if (dirty & 2 && t0_value !== (t0_value = game.i18n.localize(ctx[22].name) + ""))
         set_data(t0, t0_value);
-      if (dirty & 8 && input_name_value !== (input_name_value = ctx[22].id)) {
+      if (dirty & 2 && input_name_value !== (input_name_value = ctx[22].id)) {
         attr(input, "name", input_name_value);
       }
-      if (dirty & 8 && input_value_value !== (input_value_value = ctx[22].system.rank) && input.value !== input_value_value) {
+      if (dirty & 2 && input_value_value !== (input_value_value = ctx[22].system.rank)) {
         input.value = input_value_value;
       }
-      if (dirty & 8 && div0_name_value !== (div0_name_value = ctx[22].id)) {
+      if (dirty & 2 && div0_name_value !== (div0_name_value = ctx[22].id)) {
         attr(div0, "name", div0_name_value);
       }
     },
@@ -4695,7 +4734,7 @@ function create_if_block_15(ctx) {
   let largecard;
   let h1;
   let t1;
-  let each_value_1 = ctx[1];
+  let each_value_1 = ctx[3];
   let each_blocks = [];
   for (let i = 0; i < each_value_1.length; i += 1) {
     each_blocks[i] = create_each_block_15(get_each_context_15(ctx, each_value_1, i));
@@ -4724,8 +4763,8 @@ function create_if_block_15(ctx) {
       }
     },
     p(ctx2, dirty) {
-      if (dirty & 34) {
-        each_value_1 = ctx2[1];
+      if (dirty & 40) {
+        each_value_1 = ctx2[3];
         let i;
         for (i = 0; i < each_value_1.length; i += 1) {
           const child_ctx = get_each_context_15(ctx2, each_value_1, i);
@@ -4825,15 +4864,15 @@ function create_each_block_15(ctx) {
     },
     p(new_ctx, dirty) {
       ctx = new_ctx;
-      if (dirty & 2 && t0_value !== (t0_value = game.i18n.localize(ctx[19].name) + ""))
+      if (dirty & 8 && t0_value !== (t0_value = game.i18n.localize(ctx[19].name) + ""))
         set_data(t0, t0_value);
-      if (dirty & 2 && input_name_value !== (input_name_value = ctx[19].id)) {
+      if (dirty & 8 && input_name_value !== (input_name_value = ctx[19].id)) {
         attr(input, "name", input_name_value);
       }
-      if (dirty & 2 && input_value_value !== (input_value_value = ctx[19].system.level) && input.value !== input_value_value) {
+      if (dirty & 8 && input_value_value !== (input_value_value = ctx[19].system.level)) {
         input.value = input_value_value;
       }
-      if (dirty & 2 && div0_name_value !== (div0_name_value = ctx[19].id)) {
+      if (dirty & 8 && div0_name_value !== (div0_name_value = ctx[19].id)) {
         attr(div0, "name", div0_name_value);
       }
     },
@@ -4984,7 +5023,7 @@ function create_each_block6(ctx) {
       if (dirty & 4 && input_name_value !== (input_name_value = ctx[16].id)) {
         attr(input, "name", input_name_value);
       }
-      if (dirty & 4 && input_value_value !== (input_value_value = ctx[16].system.rank) && input.value !== input_value_value) {
+      if (dirty & 4 && input_value_value !== (input_value_value = ctx[16].system.rank)) {
         input.value = input_value_value;
       }
       if (dirty & 4 && div0_name_value !== (div0_name_value = ctx[16].id)) {
@@ -5006,9 +5045,9 @@ function create_fragment14(ctx) {
   let t1;
   let div0;
   let t2;
-  let show_if_2 = Object(ctx[3]).length > 0;
+  let show_if_2 = Object(ctx[1]).length > 0;
   let t3;
-  let show_if_1 = Object(ctx[1]).length > 0;
+  let show_if_1 = Object(ctx[3]).length > 0;
   let t4;
   let show_if = Object(ctx[2]).length > 0;
   let if_block2_anchor;
@@ -5085,8 +5124,8 @@ function create_fragment14(ctx) {
         }
         each_blocks.length = each_value_3.length;
       }
-      if (dirty & 8)
-        show_if_2 = Object(ctx2[3]).length > 0;
+      if (dirty & 2)
+        show_if_2 = Object(ctx2[1]).length > 0;
       if (show_if_2) {
         if (if_block0) {
           if_block0.p(ctx2, dirty);
@@ -5099,8 +5138,8 @@ function create_fragment14(ctx) {
         if_block0.d(1);
         if_block0 = null;
       }
-      if (dirty & 2)
-        show_if_1 = Object(ctx2[1]).length > 0;
+      if (dirty & 8)
+        show_if_1 = Object(ctx2[3]).length > 0;
       if (show_if_1) {
         if (if_block1) {
           if_block1.p(ctx2, dirty);
@@ -5180,7 +5219,7 @@ function instance13($$self, $$props, $$invalidate) {
     }
     if ($$self.$$.dirty & 64) {
       $:
-        $$invalidate(3, skills = $sheetData.data.system.itemTypes.skill);
+        $$invalidate(1, skills = $sheetData.data.system.itemTypes.skill);
     }
     if ($$self.$$.dirty & 64) {
       $:
@@ -5188,14 +5227,14 @@ function instance13($$self, $$props, $$invalidate) {
     }
     if ($$self.$$.dirty & 64) {
       $:
-        $$invalidate(1, traits = $sheetData.data.system.itemTypes.trait);
+        $$invalidate(3, traits = $sheetData.data.system.itemTypes.trait);
     }
   };
   return [
     abilities,
-    traits,
-    wises,
     skills,
+    wises,
+    traits,
     sheetData,
     sheet,
     $sheetData,
