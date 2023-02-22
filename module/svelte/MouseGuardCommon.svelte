@@ -12,7 +12,7 @@
         sheet?._updateEmbededItem(item, ob);
     }
 
-    export function setMouseDice(sheet, count) {
-        sheet?._setMouseDice(count);
+    export function setMouseDice(sheet, count, message = "") {
+        sheet?._setMouseDice(count, message);
     }
 </script>

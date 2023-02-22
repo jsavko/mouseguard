@@ -116,6 +116,19 @@
     "MOUSEGUARD.DicePoolTT": "Left Click +1 Die, Right Click -1 Die",
     "MOUSEGUARD.Success": "Success",
 
+    "MOUSEGUARD.Current": "Current",
+    "MOUSEGUARD.Starting": "Starting",
+
+    "MOUSEGUARD.P": "P",
+    "MOUSEGUARD.F": "F",
+    "MOUSEGUARD.A": "A",
+    "MOUSEGUARD.AddItem": "Add Item",
+
+    "MOUSEGUARD.character": "character",
+    "MOUSEGUARD.mouse": "mouse",
+    "MOUSEGUARD.weasel": "weasel",
+    "MOUSEGUARD.animal": "animal",
+
     "COMBAT.ConflictCaptain": "Toggle Conflict Captain",
     "COMBAT.askGoal": "Ask Conflict Captain for the Goal",
     "COMBAT.attack": "Attack",
@@ -130,5 +143,10 @@
     "COMBAT.CCSet": "A Conflict Captain Has Already Been Set.",
     "COMBAT.NeedCC": "A Conflict Captain Must Be Set.",
     "COMBAT.NeedGoal": "A Goal must be defined to start a combat. Sending Goal Request to Conflict Captain.",
-    "COMBAT.NoGoal": "Goal: Not Set"
+    "COMBAT.NoGoal": "Goal: Not Set",
+
+    "ACTOR.TypeCharacter": "Character",
+    "ACTOR.TypeMouse": "Mouse",
+    "ACTOR.TypeWeasel": "Weasel",
+    "ACTOR.TypeAnimal": "Animal"
 }

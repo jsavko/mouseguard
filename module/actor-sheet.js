@@ -108,8 +108,9 @@ export class MouseGuardActorSheet extends ActorSheet {
         return formData;
     }
 
-    _setMouseDice(count) {
+    _setMouseDice(count, message = "") {
         game.mouseguard.RollCount = count;
+        game.mouseguard.RollMessage = message;
         game.mouseguard.updateDisplay(count);
     }
 

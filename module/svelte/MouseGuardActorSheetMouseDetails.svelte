@@ -1,8 +1,6 @@
 <script>
     import { getContext } from "svelte";
 
-    import MouseGuardActorSheetPortrait from "./MouseGuardActorSheetMousePortrait.svelte";
-
     import MouseGuardEditor from "./MouseGuardEditor.svelte";
 
     //getContext("sheetStore", dataStore);
@@ -11,12 +9,8 @@
     $: data = $sheetData.data;
 </script>
 
-<MouseGuardActorSheetPortrait />
 <largecard>
-    <div class="namebox">
-        <h1>{game.i18n.localize("MOUSEGUARD.Name")}</h1>
-        <input name="name" type="text" value={data.name} placeholder="Name" />
-    </div>
+    <h1>{game.i18n.localize("MOUSEGUARD.About")}</h1>
     <ul>
         <lineitem>
             <label>{game.i18n.localize("MOUSEGUARD.Age")}: </label>
@@ -117,7 +111,6 @@
     largecard {
         margin: 0 auto;
         display: inline-block;
-        height: 250px;
         width: 100%;
         font-family: "Khula", sans-serif;
     }
@@ -129,6 +122,7 @@
         padding: 5px;
         height: 100%;
     }
+
     label {
         width: 180px;
         text-align: right;
@@ -137,32 +131,9 @@
         font-weight: bold;
         font-family: "Khula", sans-serif;
     }
+
     input {
         border: none;
-    }
-    .namebox {
-        position: relative;
-        font-family: "Germania One", cursive;
-        height: 60px;
-        pointer-events: none;
-    }
-    .namebox input {
-        background: rgba(0, 0, 0, 0);
-        background-image: url("../assets/actor/NameBanner.svg");
-        background-repeat: no-repeat;
-        height: 60px;
-        width: 300px;
-        font-size: 24px;
-        padding-left: 20px;
-        padding-bottom: 14px;
-        position: relative;
-        top: -40px;
-        left: 100px;
-        pointer-events: auto;
-    }
-
-    .namebox h1 {
-        padding-left: 30px;
     }
 
     lineitem input {

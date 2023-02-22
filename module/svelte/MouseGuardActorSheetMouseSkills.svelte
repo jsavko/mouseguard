@@ -16,7 +16,12 @@
         <skill>
             <div name={skill.id}>
                 <label
-                    on:click={(e) => setMouseDice(sheet, skill.system.rank)}
+                    on:click={(e) =>
+                        setMouseDice(
+                            sheet,
+                            skill.system.rank,
+                            game.i18n.localize(skill.name)
+                        )}
                     class="header"
                     ><a>{game.i18n.localize(skill.name)}</a>:
                 </label>
@@ -33,7 +38,7 @@
                         )}
                 />
                 <pass
-                    >P:
+                    >{game.i18n.localize("MOUSEGUARD.P")}:
                     {#each { length: parseInt(skill.system.rank) + 1 } as _, i}
                         {#if skill.system.pass > i}
                             <div
@@ -61,7 +66,7 @@
                     {/each}
                 </pass>
                 <fail
-                    >F:
+                    >{game.i18n.localize("MOUSEGUARD.F")}:
                     {#each { length: parseInt(skill.system.rank) } as _, i}
                         {#if skill.system.fail > i}
                             <div

@@ -9,34 +9,34 @@
 
 <largecard>
     <h1>{game.i18n.localize("MOUSEGUARD.Disposition")}</h1>
-    <startingBox>
-        <label class="header"
-            >Starting {game.i18n.localize("MOUSEGUARD.Disposition")}</label
-        >
-    </startingBox>
-    <currentBox>
-        <label class="header"
-            >Current {game.i18n.localize("MOUSEGUARD.Disposition")}</label
-        >
-    </currentBox>
+
     <dispoBox>
-        <startingDispo>
+        <startingBox>
+            <label class="header"
+                >{game.i18n.localize("MOUSEGUARD.Starting")}
+                {game.i18n.localize("MOUSEGUARD.Disposition")}</label
+            >
             <input
+                class="disposition-value"
                 name="system.disposition.starting"
                 type="number"
                 value={data.system.disposition.starting}
                 placeholder="0"
             />
-        </startingDispo>
-
-        <currentDispo>
+        </startingBox>
+        <currentBox>
+            <label class="header"
+                >{game.i18n.localize("MOUSEGUARD.Current")}
+                {game.i18n.localize("MOUSEGUARD.Disposition")}</label
+            >
             <input
+                class="disposition-value"
                 name="system.disposition.current"
                 type="number"
                 value={data.system.disposition.current}
                 placeholder="0"
             />
-        </currentDispo>
+        </currentBox>
     </dispoBox>
 </largecard>
 
@@ -49,63 +49,45 @@
         flex-wrap: wrap;
     }
 
+    dispoBox {
+        margin: auto;
+        width: 250px;
+        height: 300px;
+        display: block;
+        font-family: "Germania One", cursive;
+        background-image: url("../assets/actor/DispositionBanner.svg");
+        background-repeat: no-repeat;
+        background-position-y: 24px;
+    }
+
     startingBox {
-        position: relative;
-        left: 110px;
-        top: 85px;
-        width: 70px;
+        margin-top: 66px;
+        display: grid;
+        grid-template-columns: 125px auto;
         font-family: "Germania One", cursive;
-    }
-
-    startingDispo {
-        position: absolute;
-        left: 140px;
-        top: 60px;
-        width: 70px;
-        font-family: "Germania One", cursive;
-    }
-
-    startingDispo input {
-        position: relative;
-        top: 10px;
-        /* left: 7px; */
-        height: 50px;
-        width: 50px;
-        text-align: center;
-        font-size: 40px;
-        background: rgba(0, 0, 0, 0);
     }
 
     currentBox {
-        position: relative;
-        left: 40px;
-        top: 170px;
+        margin-top: 52px;
+        display: grid;
+        grid-template-columns: 125px auto;
         font-family: "Germania One", cursive;
-        width: 0px;
     }
 
-    currentDispo {
-        position: absolute;
-        left: 140px;
-        top: 170px;
-        font-family: "Germania One", cursive;
-        width: 70px;
-    }
-
-    currentDispo input {
-        position: relative;
+    input.disposition-value {
+        margin: auto auto auto 12px;
         height: 50px;
         width: 50px;
         text-align: center;
         font-size: 40px;
         background: rgba(0, 0, 0, 0);
+        border: none;
     }
 
     label {
         margin-top: 3px;
-    }
-    input {
-        border: none;
+        width: 100%;
+        display: block;
     }
 
     h1 {
@@ -119,24 +101,6 @@
         font-size: large;
         width: 100%;
         text-align: center;
-        display: block;
-    }
-
-    dispoBox {
-        position: relative;
-        top: 11px;
-        left: 11px;
-        width: 250px;
-        height: 300px;
-        display: block;
-        font-family: "Germania One", cursive;
-        background-image: url("../assets/actor/DispositionBanner.svg");
-        background-repeat: no-repeat;
-        background-position-y: 24px;
-    }
-
-    label {
-        width: 100%;
         display: block;
     }
 </style>

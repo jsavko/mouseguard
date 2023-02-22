@@ -16,7 +16,12 @@
         <trait>
             <div name={trait.id}>
                 <label
-                    on:click={(e) => setMouseDice(sheet, trait.system.level)}
+                    on:click={(e) =>
+                        setMouseDice(
+                            sheet,
+                            trait.system.level,
+                            game.i18n.localize(trait.name)
+                        )}
                     class="header"
                     ><a>{game.i18n.localize(trait.name)}</a>:
                 </label>
@@ -33,7 +38,7 @@
                         )}
                 />
                 <for
-                    >F:
+                    >{game.i18n.localize("MOUSEGUARD.F")}:
                     {#each { length: 1 } as _, i}
                         {#if trait.system.usedfor > i}
                             <div
@@ -61,7 +66,7 @@
                     {/each}
                 </for>
                 <pass
-                    >A:
+                    >{game.i18n.localize("MOUSEGUARD.A")}:
                     {#each { length: 6 } as _, i}
                         {#if trait.system.usedagainst > i}
                             <div

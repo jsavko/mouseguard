@@ -1,6 +1,9 @@
 <script>
     import { getContext } from "svelte";
 
+    import MouseGuardActorSheetPortrait from "./MouseGuardActorSheetMousePortrait.svelte";
+    import MouseGuardActorSheetMouseName from "./MouseGuardActorSheetMouseName.svelte";
+
     //getContext("sheetStore", dataStore);
     let sheetData = getContext("sheetStore");
     let { actor, sheet } = $sheetData;
@@ -28,51 +31,20 @@
 </script>
 
 <actorhead>
-    <img
-        on:click={filePicker}
-        class="profile-img"
-        src={data.img}
-        data-edit="img"
-        title={data.name}
-        height="125"
-        width="125"
-    />
-    <div class="namebox">
-        <input name="name" type="text" value={data.name} placeholder="Name" />
+    <div class="flex-container">
+        <div class="flex-item">
+            <MouseGuardActorSheetMouseName />
+        </div>
+        <MouseGuardActorSheetPortrait />
     </div>
 </actorhead>
 
 <style>
-    actorhead {
-        margin: 0 auto;
-        padding: 1em;
-        display: grid;
-        grid-template-columns: 125px auto auto auto auto auto;
-        grid-template-rows: 45px 80px auto;
-        text-align: center;
-        vertical-align: bottom;
-        height: 100%;
+    .flex-container {
+        display: flex;
     }
 
-    actorhead input {
-        border: none;
-        height: 45px;
-        font-size: 20px;
-    }
-    .profile-img {
-        grid-column-start: 1;
-        grid-column-end: 1;
-        grid-row-start: 1;
-        grid-row-end: 2;
-        margin-top: 0px;
-    }
-    .namebox {
-        grid-column-start: 2;
-        grid-column-end: 7;
-        grid-row-start: 1;
-        grid-row-end: 1;
-        text-align: left;
-        vertical-align: bottom;
-        margin-left: 2px;
+    .flex-item {
+        flex-grow: 1;
     }
 </style>

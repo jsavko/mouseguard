@@ -17,30 +17,32 @@
 <div class="box">
     <largecard>
         <h1>{game.i18n.localize("MOUSEGUARD.Abilities")}</h1>
-        {#each abilities as ability}
-            <ability>
-                <div name={ability.id}>
-                    <label
-                        on:click={(e) =>
-                            setMouseDice(sheet, ability.system.rating)}
-                        class="header"
-                        ><a>{game.i18n.localize(ability.name)}</a>:
-                    </label>
-                    <input
-                        name={ability.id}
-                        type="number"
-                        value={ability.system.rating}
-                        on:change={(e) =>
-                            updateRating(
-                                sheet,
-                                e.target.name,
-                                "rating",
-                                parseInt(e.target.value)
-                            )}
-                    />
-                </div>
-            </ability>
-        {/each}
+        <div class="flex-container">
+            {#each abilities as ability}
+                <ability>
+                    <div name={ability.id}>
+                        <label
+                            on:click={(e) =>
+                                setMouseDice(sheet, ability.system.rating)}
+                            class="header"
+                            ><a>{game.i18n.localize(ability.name)}</a>:
+                        </label>
+                        <input
+                            name={ability.id}
+                            type="number"
+                            value={ability.system.rating}
+                            on:change={(e) =>
+                                updateRating(
+                                    sheet,
+                                    e.target.name,
+                                    "rating",
+                                    parseInt(e.target.value)
+                                )}
+                        />
+                    </div>
+                </ability>
+            {/each}
+        </div>
     </largecard>
 </div>
 
@@ -53,7 +55,11 @@
                     <div name={skill.id}>
                         <label
                             on:click={(e) =>
-                                setMouseDice(sheet, skill.system.rank)}
+                                setMouseDice(
+                                    sheet,
+                                    skill.system.rank,
+                                    game.i18n.localize(skill.name)
+                                )}
                             class="header"
                             ><a>{game.i18n.localize(skill.name)}</a>:
                         </label>
@@ -92,7 +98,11 @@
                     <div name={trait.id}>
                         <label
                             on:click={(e) =>
-                                setMouseDice(sheet, trait.system.level)}
+                                setMouseDice(
+                                    sheet,
+                                    trait.system.level,
+                                    game.i18n.localize(trait.name)
+                                )}
                             class="header"
                             ><a>{game.i18n.localize(trait.name)}</a>:
                         </label>
@@ -128,7 +138,12 @@
         <wise>
             <div name={wise.id}>
                 <label
-                    on:click={(e) => setMouseDice(sheet, wise.system.rank)}
+                    on:click={(e) =>
+                        setMouseDice(
+                            sheet,
+                            wise.system.rank,
+                            game.i18n.localize(wise.name)
+                        )}
                     class="header"
                     ><a>{game.i18n.localize(wise.name)}</a>:
                 </label>
@@ -175,10 +190,10 @@
     }
 
     ability {
-        display: flex;
+        display: inline-block;
+        align-self: flex-end;
+        width: 20%;
         padding-left: 20px;
-        float: left;
-        height: 80px;
     }
 
     skill {
@@ -236,5 +251,9 @@
         font-size: large;
         width: 100%;
         display: block;
+    }
+
+    .flex-container {
+        display: flex;
     }
 </style>
