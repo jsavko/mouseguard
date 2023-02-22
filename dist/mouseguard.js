@@ -1503,8 +1503,8 @@ function updateRating(sheet, item2, type, value) {
   }
   sheet?._updateEmbededItem(item2, ob);
 }
-function setMouseDice(sheet, count) {
-  sheet?._setMouseDice(count);
+function setMouseDice(sheet, count, message = "") {
+  sheet?._setMouseDice(count, message);
 }
 
 // module/svelte/MouseGuardActorSheetMouseAbilities.svelte
@@ -2009,7 +2009,7 @@ function instance4($$self, $$props, $$invalidate) {
   let { sheet } = $sheetData;
   let data;
   let abilities;
-  const click_handler = (ability, e) => setMouseDice(sheet, ability.system.rating);
+  const click_handler = (ability, e) => setMouseDice(sheet, ability.system.rating, game.i18n.localize(ability.name));
   const change_handler = (e) => updateRating(sheet, e.target.name, "rating", parseInt(e.target.value));
   const change_handler_1 = (e) => updateRating(sheet, e.target.name, "tax", parseInt(e.target.value));
   const click_handler_1 = (ability, e) => updateRating(sheet, ability.id, "pass", parseInt(ability.system.pass) - 1);
@@ -2509,7 +2509,7 @@ function instance5($$self, $$props, $$invalidate) {
   component_subscribe($$self, sheetData, (value) => $$invalidate(3, $sheetData = value));
   let { sheet } = $sheetData;
   let data;
-  const click_handler = (skill, e) => setMouseDice(sheet, skill.system.rank);
+  const click_handler = (skill, e) => setMouseDice(sheet, skill.system.rank, game.i18n.localize(skill.name));
   const change_handler = (e) => updateRating(sheet, e.target.name, "rank", parseInt(e.target.value));
   const click_handler_1 = (skill, e) => updateRating(sheet, skill.id, "pass", parseInt(skill.system.pass) - 1);
   const click_handler_2 = (skill, e) => updateRating(sheet, skill.id, "pass", parseInt(skill.system.pass) + 1);
@@ -3047,7 +3047,7 @@ function instance6($$self, $$props, $$invalidate) {
   component_subscribe($$self, sheetData, (value) => $$invalidate(3, $sheetData = value));
   let { sheet } = $sheetData;
   let data;
-  const click_handler = (wise, e) => setMouseDice(sheet, wise.system.rank);
+  const click_handler = (wise, e) => setMouseDice(sheet, wise.system.rank, game.i18n.localize(wise.name));
   const change_handler = (e) => updateRating(sheet, e.target.name, "rank", parseInt(e.target.value));
   const click_handler_1 = (wise, e) => updateRating(sheet, wise.id, "pass", parseInt(wise.system.pass) - 1);
   const click_handler_2 = (wise, e) => updateRating(sheet, wise.id, "pass", parseInt(wise.system.pass) + 1);
@@ -3537,7 +3537,7 @@ function instance7($$self, $$props, $$invalidate) {
   component_subscribe($$self, sheetData, (value) => $$invalidate(3, $sheetData = value));
   let { sheet } = $sheetData;
   let data;
-  const click_handler = (trait, e) => setMouseDice(sheet, trait.system.level);
+  const click_handler = (trait, e) => setMouseDice(sheet, trait.system.level, game.i18n.localize(trait.name));
   const change_handler = (e) => updateRating(sheet, e.target.name, "level", parseInt(e.target.value));
   const click_handler_1 = (trait, e) => updateRating(sheet, trait.id, "usedfor", parseInt(trait.system.usedfor) - 1);
   const click_handler_2 = (trait, e) => updateRating(sheet, trait.id, "usedfor", parseInt(trait.system.usedfor) + 1);
@@ -4312,8 +4312,9 @@ var MouseGuardActorSheet = class extends ActorSheet {
     let formData = super._getSubmitData(updateData);
     return formData;
   }
-  _setMouseDice(count) {
+  _setMouseDice(count, message = "") {
     game.mouseguard.RollCount = count;
+    game.mouseguard.RollMessage = message;
     game.mouseguard.updateDisplay(count);
   }
   async _updateActorAbility(id, type, value) {
@@ -5202,11 +5203,11 @@ function instance13($$self, $$props, $$invalidate) {
   let abilities;
   const click_handler = (ability, e) => setMouseDice(sheet, ability.system.rating);
   const change_handler = (e) => updateRating(sheet, e.target.name, "rating", parseInt(e.target.value));
-  const click_handler_1 = (skill, e) => setMouseDice(sheet, skill.system.rank);
+  const click_handler_1 = (skill, e) => setMouseDice(sheet, skill.system.rank, game.i18n.localize(skill.name));
   const change_handler_1 = (e) => updateRating(sheet, e.target.name, "rank", parseInt(e.target.value));
-  const click_handler_2 = (trait, e) => setMouseDice(sheet, trait.system.level);
+  const click_handler_2 = (trait, e) => setMouseDice(sheet, trait.system.level, game.i18n.localize(trait.name));
   const change_handler_2 = (e) => updateRating(sheet, e.target.name, "level", parseInt(e.target.value));
-  const click_handler_3 = (wise, e) => setMouseDice(sheet, wise.system.rank);
+  const click_handler_3 = (wise, e) => setMouseDice(sheet, wise.system.rank, game.i18n.localize(wise.name));
   const change_handler_3 = (e) => updateRating(sheet, e.target.name, "rank", parseInt(e.target.value));
   $$self.$$.update = () => {
     if ($$self.$$.dirty & 64) {
@@ -6016,10 +6017,12 @@ var MouseCombatTracker = class extends CombatTracker {
 Hooks.once("init", async function() {
   console.log(`Initializing MouseGuard MouseGuard System`);
   let RollCount = 0;
+  let RollMessage = "";
   game.mouseguard = {
     MouseGuardActor,
     createMouseGuardMacro,
     RollCount,
+    RollMessage,
     updateDisplay,
     MouseDie,
     MouseRoll
@@ -6155,9 +6158,11 @@ Hooks.on("renderSidebarTab", (app, html, data) => {
         roll.evaluate({ async: true });
         roll.toMessage({
           user: game.user.id,
+          flavor: game.mouseguard.RollMessage,
           speaker: ChatMessage.getSpeaker({ actor })
         });
         game.mouseguard.RollCount = 0;
+        game.mouseguard.RollMessage = "";
         updateDisplay(0);
       }
     });

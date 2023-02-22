@@ -16,7 +16,12 @@
         <trait>
             <div name={trait.id}>
                 <label
-                    on:click={(e) => setMouseDice(sheet, trait.system.level)}
+                    on:click={(e) =>
+                        setMouseDice(
+                            sheet,
+                            trait.system.level,
+                            game.i18n.localize(trait.name)
+                        )}
                     class="header"
                     ><a>{game.i18n.localize(trait.name)}</a>:
                 </label>

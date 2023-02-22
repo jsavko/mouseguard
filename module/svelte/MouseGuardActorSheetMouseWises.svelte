@@ -17,7 +17,12 @@
         <wise>
             <div name={wise.id}>
                 <label
-                    on:click={(e) => setMouseDice(sheet, wise.system.rank)}
+                    on:click={(e) =>
+                        setMouseDice(
+                            sheet,
+                            wise.system.rank,
+                            game.i18n.localize(wise.name)
+                        )}
                     class="header"
                     ><a>{game.i18n.localize(wise.name)}</a>:
                 </label>

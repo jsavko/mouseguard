@@ -55,7 +55,11 @@
                     <div name={skill.id}>
                         <label
                             on:click={(e) =>
-                                setMouseDice(sheet, skill.system.rank)}
+                                setMouseDice(
+                                    sheet,
+                                    skill.system.rank,
+                                    game.i18n.localize(skill.name)
+                                )}
                             class="header"
                             ><a>{game.i18n.localize(skill.name)}</a>:
                         </label>
@@ -94,7 +98,11 @@
                     <div name={trait.id}>
                         <label
                             on:click={(e) =>
-                                setMouseDice(sheet, trait.system.level)}
+                                setMouseDice(
+                                    sheet,
+                                    trait.system.level,
+                                    game.i18n.localize(trait.name)
+                                )}
                             class="header"
                             ><a>{game.i18n.localize(trait.name)}</a>:
                         </label>
@@ -130,7 +138,12 @@
         <wise>
             <div name={wise.id}>
                 <label
-                    on:click={(e) => setMouseDice(sheet, wise.system.rank)}
+                    on:click={(e) =>
+                        setMouseDice(
+                            sheet,
+                            wise.system.rank,
+                            game.i18n.localize(wise.name)
+                        )}
                     class="header"
                     ><a>{game.i18n.localize(wise.name)}</a>:
                 </label>

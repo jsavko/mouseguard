@@ -17,7 +17,12 @@
         <ability>
             <div name={ability.id}>
                 <label
-                    on:click={(e) => setMouseDice(sheet, ability.system.rating)}
+                    on:click={(e) =>
+                        setMouseDice(
+                            sheet,
+                            ability.system.rating,
+                            game.i18n.localize(ability.name)
+                        )}
                     class="header"
                     ><a>{game.i18n.localize(ability.name)}</a>:
                 </label>

@@ -35,11 +35,13 @@ Hooks.once("init", async function () {
      */
 
     let RollCount = 0;
+    let RollMessage = "";
 
     game.mouseguard = {
         MouseGuardActor,
         createMouseGuardMacro,
         RollCount,
+        RollMessage,
         updateDisplay,
         MouseDie,
         MouseRoll
@@ -223,10 +225,12 @@ Hooks.on("renderSidebarTab", (app, html, data) => {
                 roll.evaluate({ async: true });
                 roll.toMessage({
                     user: game.user.id,
+                    flavor: game.mouseguard.RollMessage,
                     speaker: ChatMessage.getSpeaker({ actor: actor })
                 });
 
                 game.mouseguard.RollCount = 0;
+                game.mouseguard.RollMessage = "";
                 updateDisplay(0);
             }
         });

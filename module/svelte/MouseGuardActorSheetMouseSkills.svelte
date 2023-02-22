@@ -16,7 +16,12 @@
         <skill>
             <div name={skill.id}>
                 <label
-                    on:click={(e) => setMouseDice(sheet, skill.system.rank)}
+                    on:click={(e) =>
+                        setMouseDice(
+                            sheet,
+                            skill.system.rank,
+                            game.i18n.localize(skill.name)
+                        )}
                     class="header"
                     ><a>{game.i18n.localize(skill.name)}</a>:
                 </label>
