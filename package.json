@@ -19,7 +19,7 @@
     "esbuild-svelte": "^0.5.1",
     "gulp": "^4.0.2",
     "gulp-less": "^4.0.1",
-    "svelte": "^3.38.2"
+    "svelte": "^3.55.1"
   },
   "devDependencies": {
     "eslint": "^8.8.0",

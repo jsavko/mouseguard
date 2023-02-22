@@ -105,88 +105,49 @@
     }
 
     fatebox {
-        position: relative;
-        top: 60;
-        left: 11px;
-        width: 85px;
-        height: 110px;
         display: block;
         font-family: "Germania One", cursive;
-        background-image: url("../assets/actor/Fate.svg");
-        background-repeat: no-repeat;
-        background-position-y: 25px;
     }
 
     fatebox input {
-        width: 50px;
-        position: relative;
-        top: 30px;
-        left: 25px;
-        height: 30px;
-        width: 35px;
+        width: 100px;
+        height: 100px;
         text-align: center;
         font-size: large;
-        background: rgba(0, 0, 0, 0);
+        background: rgba(0, 0, 0, 0) url("../assets/actor/Fate.svg") center no-repeat;
     }
 
     personabox {
-        position: relative;
-        top: 11px;
-        left: 11px;
-        width: 85px;
-        height: 125px;
         display: block;
         font-family: "Germania One", cursive;
-        background-image: url("../assets/actor/Persona.svg");
-        background-repeat: no-repeat;
-        background-position-y: 24px;
     }
 
     personabox input {
-        width: 50px;
-        position: relative;
-        top: 22px;
-        left: 25px;
-        height: 50px;
-        width: 35px;
+        width: 100px;
+        height: 100px;
         text-align: center;
         font-size: large;
-        background: rgba(0, 0, 0, 0);
+        background: rgba(0, 0, 0, 0) url("../assets/actor/Persona.svg") center no-repeat;
+    }
+
+    checksbox {
+        display: block;
+        font-family: "Germania One", cursive;
+    }
+
+    checksbox input {
+        width: 100px;
+        height: 100px;
+        text-align: center;
+        font-size: large;
+        background: rgba(0, 0, 0, 0) url("../assets/actor/Checks.svg") center no-repeat;
     }
 
     rewardbox {
-        position: relative;
-        left: 10px;
-        width: 95%;
         margin-bottom: 10px;
         display: block;
         font-family: "Germania One", cursive;
         font-size: large;
-    }
-
-    checksbox {
-        position: relative;
-        top: 11px;
-        left: 11px;
-        width: 85px;
-        height: 125px;
-        display: block;
-        font-family: "Germania One", cursive;
-        background-image: url("../assets/actor/Checks.svg");
-        background-repeat: no-repeat;
-        background-position-y: 24px;
-    }
-
-    checksbox input {
-        width: 50px;
-        position: relative;
-        top: 18px;
-        left: 25px;
-        height: 50px;
-        width: 35px;
-        text-align: center;
-        font-size: large;
-        background: rgba(0, 0, 0, 0);
     }
 
     label {
@@ -214,5 +175,6 @@
     .right {
         width: 85%;
         display: block;
+        padding-left: 10px;
     }
 </style>

@@ -39,10 +39,7 @@
 </portrait>
 
 <style>
-    portrait {
-        position: absolute;
-        left: 740px;
-        top: 30px;
-        background: white;
+    img {
+        border: none;
     }
 </style>
