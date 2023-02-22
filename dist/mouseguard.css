@@ -581,14 +581,14 @@ content.svelte-1i8sr00 {
 }
 
 /* fakecss:/home/anton/.local/share/FoundryVTT/Data/systems/mouseguard/module/svelte/MouseGuardNPCActorSheetBody.esbuild-svelte-fake-css */
-.box.svelte-191iqry {
+.box.svelte-1f8afzj {
   border-radius: 0 0 0.5rem 0.5rem;
   border-top: 0;
   clear: both;
   height: 100%;
   display: flex;
 }
-largecard.svelte-191iqry {
+largecard.svelte-1f8afzj {
   margin: 0 auto;
   height: 100%;
   width: 100%;
@@ -596,31 +596,31 @@ largecard.svelte-191iqry {
   flex-wrap: wrap;
   display: block;
 }
-ability.svelte-191iqry {
+ability.svelte-1f8afzj {
+  display: inline-block;
+  align-self: flex-end;
+  width: 20%;
+  padding-left: 20px;
+}
+skill.svelte-1f8afzj {
   display: flex;
   padding-left: 20px;
   float: left;
   height: 80px;
 }
-skill.svelte-191iqry {
+wise.svelte-1f8afzj {
   display: flex;
   padding-left: 20px;
   float: left;
   height: 80px;
 }
-wise.svelte-191iqry {
+trait.svelte-1f8afzj {
   display: flex;
   padding-left: 20px;
   float: left;
   height: 80px;
 }
-trait.svelte-191iqry {
-  display: flex;
-  padding-left: 20px;
-  float: left;
-  height: 80px;
-}
-input.svelte-191iqry {
+input.svelte-1f8afzj {
   border: none;
   width: 40px;
   float: left;
@@ -632,22 +632,25 @@ input.svelte-191iqry {
   font-family: "Germania One", cursive;
   font-size: large;
 }
-h1.svelte-191iqry {
+h1.svelte-1f8afzj {
   font-family: "Germania One", cursive;
   padding-left: 30px;
   width: 100%;
 }
-label.svelte-191iqry {
+label.svelte-1f8afzj {
   margin-top: 3px;
   width: 100%;
   display: block;
   cursor: pointer;
 }
-.header.svelte-191iqry {
+.header.svelte-1f8afzj {
   font-family: "Germania One", cursive;
   font-size: large;
   width: 100%;
   display: block;
+}
+.flex-container.svelte-1f8afzj {
+  display: flex;
 }
 
 /* fakecss:/home/anton/.local/share/FoundryVTT/Data/systems/mouseguard/module/svelte/MouseGuardNPCActorSheetBase.esbuild-svelte-fake-css */

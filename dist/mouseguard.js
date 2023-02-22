@@ -4487,13 +4487,13 @@ function create_each_block_3(ctx) {
       t2 = space();
       input = element("input");
       t3 = space();
-      attr(label, "class", "header svelte-191iqry");
+      attr(label, "class", "header svelte-1f8afzj");
       attr(input, "name", input_name_value = ctx[25].id);
       attr(input, "type", "number");
       input.value = input_value_value = ctx[25].system.rating;
-      attr(input, "class", "svelte-191iqry");
+      attr(input, "class", "svelte-1f8afzj");
       attr(div, "name", div_name_value = ctx[25].id);
-      attr(ability, "class", "svelte-191iqry");
+      attr(ability, "class", "svelte-1f8afzj");
     },
     m(target, anchor) {
       insert(target, ability, anchor);
@@ -4555,9 +4555,9 @@ function create_if_block_22(ctx) {
       for (let i = 0; i < each_blocks.length; i += 1) {
         each_blocks[i].c();
       }
-      attr(h1, "class", "svelte-191iqry");
-      attr(largecard, "class", "svelte-191iqry");
-      attr(div, "class", "box svelte-191iqry");
+      attr(h1, "class", "svelte-1f8afzj");
+      attr(largecard, "class", "svelte-1f8afzj");
+      attr(div, "class", "box svelte-1f8afzj");
     },
     m(target, anchor) {
       insert(target, div, anchor);
@@ -4632,16 +4632,16 @@ function create_each_block_25(ctx) {
       a1 = element("a");
       a1.innerHTML = `<i class="fas fa-trash"></i>`;
       t4 = space();
-      attr(label, "class", "header svelte-191iqry");
+      attr(label, "class", "header svelte-1f8afzj");
       attr(input, "name", input_name_value = ctx[22].id);
       attr(input, "type", "number");
       input.value = input_value_value = ctx[22].system.rank;
-      attr(input, "class", "svelte-191iqry");
+      attr(input, "class", "svelte-1f8afzj");
       attr(div0, "name", div0_name_value = ctx[22].id);
       attr(a1, "class", "item-control item-delete");
       attr(a1, "title", "Delete Item");
       attr(div1, "class", "item-controls");
-      attr(skill, "class", "svelte-191iqry");
+      attr(skill, "class", "svelte-1f8afzj");
     },
     m(target, anchor) {
       insert(target, skill, anchor);
@@ -4710,9 +4710,9 @@ function create_if_block_15(ctx) {
       for (let i = 0; i < each_blocks.length; i += 1) {
         each_blocks[i].c();
       }
-      attr(h1, "class", "svelte-191iqry");
-      attr(largecard, "class", "svelte-191iqry");
-      attr(div, "class", "box svelte-191iqry");
+      attr(h1, "class", "svelte-1f8afzj");
+      attr(largecard, "class", "svelte-1f8afzj");
+      attr(div, "class", "box svelte-1f8afzj");
     },
     m(target, anchor) {
       insert(target, div, anchor);
@@ -4787,16 +4787,16 @@ function create_each_block_15(ctx) {
       a1 = element("a");
       a1.innerHTML = `<i class="fas fa-trash"></i>`;
       t4 = space();
-      attr(label, "class", "header svelte-191iqry");
+      attr(label, "class", "header svelte-1f8afzj");
       attr(input, "name", input_name_value = ctx[19].id);
       attr(input, "type", "number");
       input.value = input_value_value = ctx[19].system.level;
-      attr(input, "class", "svelte-191iqry");
+      attr(input, "class", "svelte-1f8afzj");
       attr(div0, "name", div0_name_value = ctx[19].id);
       attr(a1, "class", "item-control item-delete");
       attr(a1, "title", "Delete Item");
       attr(div1, "class", "item-controls");
-      attr(trait, "class", "svelte-191iqry");
+      attr(trait, "class", "svelte-1f8afzj");
     },
     m(target, anchor) {
       insert(target, trait, anchor);
@@ -4863,7 +4863,7 @@ function create_if_block7(ctx) {
         each_blocks[i].c();
       }
       each_1_anchor = empty();
-      attr(h1, "class", "svelte-191iqry");
+      attr(h1, "class", "svelte-1f8afzj");
     },
     m(target, anchor) {
       insert(target, h1, anchor);
@@ -4941,16 +4941,16 @@ function create_each_block6(ctx) {
       a1 = element("a");
       a1.innerHTML = `<i class="fas fa-trash"></i>`;
       t4 = space();
-      attr(label, "class", "header svelte-191iqry");
+      attr(label, "class", "header svelte-1f8afzj");
       attr(input, "name", input_name_value = ctx[16].id);
       attr(input, "type", "number");
       input.value = input_value_value = ctx[16].system.rank;
-      attr(input, "class", "svelte-191iqry");
+      attr(input, "class", "svelte-1f8afzj");
       attr(div0, "name", div0_name_value = ctx[16].id);
       attr(a1, "class", "item-control item-delete");
       attr(a1, "title", "Delete Item");
       attr(div1, "class", "item-controls");
-      attr(wise, "class", "svelte-191iqry");
+      attr(wise, "class", "svelte-1f8afzj");
     },
     m(target, anchor) {
       insert(target, wise, anchor);
@@ -5000,10 +5000,11 @@ function create_each_block6(ctx) {
   };
 }
 function create_fragment14(ctx) {
-  let div;
+  let div1;
   let largecard;
   let h1;
   let t1;
+  let div0;
   let t2;
   let show_if_2 = Object(ctx[3]).length > 0;
   let t3;
@@ -5021,11 +5022,12 @@ function create_fragment14(ctx) {
   let if_block2 = show_if && create_if_block7(ctx);
   return {
     c() {
-      div = element("div");
+      div1 = element("div");
       largecard = element("largecard");
       h1 = element("h1");
       h1.textContent = `${game.i18n.localize("MOUSEGUARD.Abilities")}`;
       t1 = space();
+      div0 = element("div");
       for (let i = 0; i < each_blocks.length; i += 1) {
         each_blocks[i].c();
       }
@@ -5039,17 +5041,19 @@ function create_fragment14(ctx) {
       if (if_block2)
         if_block2.c();
       if_block2_anchor = empty();
-      attr(h1, "class", "svelte-191iqry");
-      attr(largecard, "class", "svelte-191iqry");
-      attr(div, "class", "box svelte-191iqry");
+      attr(h1, "class", "svelte-1f8afzj");
+      attr(div0, "class", "flex-container svelte-1f8afzj");
+      attr(largecard, "class", "svelte-1f8afzj");
+      attr(div1, "class", "box svelte-1f8afzj");
     },
     m(target, anchor) {
-      insert(target, div, anchor);
-      append(div, largecard);
+      insert(target, div1, anchor);
+      append(div1, largecard);
       append(largecard, h1);
       append(largecard, t1);
+      append(largecard, div0);
       for (let i = 0; i < each_blocks.length; i += 1) {
-        each_blocks[i].m(largecard, null);
+        each_blocks[i].m(div0, null);
       }
       insert(target, t2, anchor);
       if (if_block0)
@@ -5073,7 +5077,7 @@ function create_fragment14(ctx) {
           } else {
             each_blocks[i] = create_each_block_3(child_ctx);
             each_blocks[i].c();
-            each_blocks[i].m(largecard, null);
+            each_blocks[i].m(div0, null);
           }
         }
         for (; i < each_blocks.length; i += 1) {
@@ -5128,7 +5132,7 @@ function create_fragment14(ctx) {
     o: noop,
     d(detaching) {
       if (detaching)
-        detach(div);
+        detach(div1);
       destroy_each(each_blocks, detaching);
       if (detaching)
         detach(t2);
