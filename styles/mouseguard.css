@@ -247,7 +247,6 @@
 
 .mouse-dice-roll {
     list-style: none;
-    height: 56px;
 }
 
 .mouse-dice-roll li {
@@ -311,4 +310,11 @@
     border-radius: 3px;
     box-shadow: 0 0 2px #fff inset;
     word-break: break-all;
+}
+
+.mouse_dice_button {
+    flex: 1 1 0;
+}
+.mouse_roll_button {
+    flex: 2 1 0;
 }
