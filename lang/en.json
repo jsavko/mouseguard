@@ -111,9 +111,9 @@
     "MOUSEGUARD.TraitBenefits": "Trait Benefits",
     "MOUSEGUARD.TraitBenefitsSub": "Level 1: +1D per session; Level 2: +1D twice per session; Level 3: Reroll failed dice once per session.",
     "MOUSEGUARD.Send": "Send",
+    "MOUSEGUARD.AddDice": "+1 Dice",
+    "MOUSEGUARD.SubtractDice": "-1 Dice",
     "MOUSEGUARD.RollDice": "Roll Dice",
-    "MOUSEGUARD.DicePool": "Modify Dice Pool",
-    "MOUSEGUARD.DicePoolTT": "Left Click +1 Die, Right Click -1 Die",
     "MOUSEGUARD.Success": "Success",
 
     "MOUSEGUARD.Current": "Current",
