@@ -6238,15 +6238,17 @@ Hooks.on("renderSidebarTab", (app, html, data) => {
   renderTemplate(template).then((c) => {
     let $content = $(c);
     $chat_form.after($content);
-    $content.find(".mouse_dice_button").on("mousedown", (event) => {
+    $content.find(".mouse_dice_button").on("click", (event) => {
       event.preventDefault();
-      switch (event.which) {
-        case 1:
           game.mouseguard.RollCount++;
           break;
         case 3:
           game.mouseguard.RollCount--;
           break;
+      if (event.currentTarget.classList.contains("add")) {
+        game.mouseguard.RollCount++;
+      } else {
+        game.mouseguard.RollCount--;
       }
       if (game.mouseguard.RollCount < 1)
         game.mouseguard.RollCount = 0;
@@ -6289,12 +6291,14 @@ async function registerTours() {
   }
 }
 function updateDisplay(count) {
-  let diceHTML = '<li class="roll mousedie d6 "><img src="systems/mouseguard/assets/dice/sword.png" height="24" width="24"></li>';
+  let diceHTML = '<li class="roll mousedie d6"><img src="systems/mouseguard/assets/dice/sword.png" height="24" width="24"></li>';
   let theHTML = "";
   for (let i = 0; i < count; i++) {
     theHTML += diceHTML;
   }
   $(".mouse-dice-roll").html(theHTML);
+  $(".mouse_dice_button.subtract").prop("disabled", !count);
+  $(".mouse_roll_button").prop("disabled", !count);
 }
 Handlebars.registerHelper("times", function(n, block) {
   var accum = "";

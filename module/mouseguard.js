@@ -261,23 +261,19 @@ async function registerTours() {
 
 function updateDisplay(count) {
     //let $mouse_rolls = html.find('.mouse-dice-roll');
-    if (!count) {
-        $("#mouse-pool").hide();
-    } else {
-        let diceHTML =
-            '<li class="roll mousedie d6"><img src="systems/mouseguard/assets/dice/sword.png" height="24" width="24"></li>';
-        let theHTML = "";
 
-        for (let i = 0; i < count; i++) {
-            theHTML += diceHTML;
-        }
+    let diceHTML =
+        '<li class="roll mousedie d6"><img src="systems/mouseguard/assets/dice/sword.png" height="24" width="24"></li>';
+    let theHTML = "";
 
-        $(".mouse-dice-roll").html(theHTML);
-        $("#mouse-pool").show();
+    for (let i = 0; i < count; i++) {
+        theHTML += diceHTML;
     }
 
-    $(".mouse_dice_button.subtract").prop('disabled', !count);
-    $(".mouse_roll_button").prop('disabled', !count);
+    $(".mouse-dice-roll").html(theHTML);
+
+    $(".mouse_dice_button.subtract").prop("disabled", !count);
+    $(".mouse_roll_button").prop("disabled", !count);
 }
 
 Handlebars.registerHelper("times", function (n, block) {

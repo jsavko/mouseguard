@@ -275,6 +275,10 @@
     flex: none;
 }
 
+.dice {
+    min-height: 40px;
+}
+
 .dice-total {
 }
 
