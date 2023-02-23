@@ -30,6 +30,7 @@
                         <input
                             name={ability.id}
                             type="number"
+                            min="0"
                             value={ability.system.rating}
                             on:change={(e) =>
                                 updateRating(
