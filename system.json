@@ -33,6 +33,14 @@
             "entity": "Item",
             "type": "Item",
             "system": "mouseguard"
+        },
+        {
+            "name": "maps",
+            "label": "Maps",
+            "path": "packs/maps.db",
+            "entity": "Scene",
+            "type": "Scene",
+            "system": "mouseguard"
         }
     ],
     "languages": [
