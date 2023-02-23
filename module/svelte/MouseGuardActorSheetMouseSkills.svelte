@@ -8,9 +8,21 @@
     let data;
     $: data = $sheetData.data;
     $: skills = $sheetData.data.system.itemTypes.skill;
+
+    const openCompendium = () => () => game.packs.get("mouseguard.skills").render(true);
 </script>
 
 <largecard>
+    <div class="item-controls item-create">
+        <a
+                on:click={openCompendium()}
+                class="item-control"
+                title="{game.i18n.localize('MOUSEGUARD.AddItem')}"
+                data-type="wise"
+        ><i class="fas fa-plus" />
+            {game.i18n.localize("MOUSEGUARD.AddItem")}</a
+        >
+    </div>
     <h1>{game.i18n.localize("MOUSEGUARD.Skills")}</h1>
     {#each skills as skill}
         <skill>
@@ -28,6 +40,7 @@
                 <input
                     name={skill.id}
                     type="number"
+                    min="0"
                     value={skill.system.rank}
                     on:change={(e) =>
                         updateRating(
@@ -131,6 +144,14 @@
     fail {
         display: flex;
         font-family: "Germania One", cursive;
+    }
+
+    .item-controls {
+        float: right;
+    }
+
+    .item-create {
+        padding-top: 8px;
     }
 
     input {
