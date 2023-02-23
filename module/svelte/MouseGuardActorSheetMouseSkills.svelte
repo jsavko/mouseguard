@@ -9,18 +9,19 @@
     $: data = $sheetData.data;
     $: skills = $sheetData.data.system.itemTypes.skill;
 
-    const openCompendium = () => () => game.packs.get("mouseguard.skills").render(true);
+    const openSkillsCompendium = () => () =>
+        game.packs.get("mouseguard.skills").render(true);
 </script>
 
 <largecard>
     <div class="item-controls item-create">
         <a
-                on:click={openCompendium()}
-                class="item-control"
-                title="{game.i18n.localize('MOUSEGUARD.AddItem')}"
-                data-type="wise"
-        ><i class="fas fa-plus" />
-            {game.i18n.localize("MOUSEGUARD.AddItem")}</a
+            on:click={openSkillsCompendium()}
+            class="item-control"
+            title={game.i18n.localize("MOUSEGUARD.AddSkill")}
+            data-type="wise"
+            ><i class="fas fa-plus" />
+            {game.i18n.localize("MOUSEGUARD.AddSkill")}</a
         >
     </div>
     <h1>{game.i18n.localize("MOUSEGUARD.Skills")}</h1>

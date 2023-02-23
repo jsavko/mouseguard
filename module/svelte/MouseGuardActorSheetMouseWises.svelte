@@ -14,12 +14,12 @@
 <largecard>
     <div class="item-controls item-create">
         <a
-                on:click={sheet?._onItemCreate.bind(sheet)}
-                class="item-control"
-                title="{game.i18n.localize('MOUSEGUARD.AddItem')}"
-                data-type="wise"
-        ><i class="fas fa-plus" />
-            {game.i18n.localize("MOUSEGUARD.AddItem")}</a
+            on:click={sheet?._onItemCreate.bind(sheet)}
+            class="item-control"
+            title={game.i18n.localize("MOUSEGUARD.AddWise")}
+            data-type="wise"
+            ><i class="fas fa-plus" />
+            {game.i18n.localize("MOUSEGUARD.AddWise")}</a
         >
     </div>
     <h1>{game.i18n.localize("MOUSEGUARD.Wises")}</h1>
