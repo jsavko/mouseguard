@@ -12,6 +12,16 @@
 </script>
 
 <largecard>
+    <div class="item-controls item-create">
+        <a
+            on:click={sheet?._onItemCreate.bind(sheet)}
+            class="item-control"
+            title={game.i18n.localize("MOUSEGUARD.AddWise")}
+            data-type="wise"
+            ><i class="fas fa-plus" />
+            {game.i18n.localize("MOUSEGUARD.AddWise")}</a
+        >
+    </div>
     <h1>{game.i18n.localize("MOUSEGUARD.Wises")}</h1>
     {#each wises as wise}
         <wise>
@@ -29,6 +39,7 @@
                 <input
                     name={wise.id}
                     type="number"
+                    min="0"
                     value={wise.system.rank}
                     on:change={(e) =>
                         updateRating(
@@ -104,22 +115,6 @@
             </div>
         </wise>
     {/each}
-    <ol>
-        <li class="item flexrow item-header">
-            <div class="item-image" />
-            <div class="item-name" />
-            <div class="item-controls">
-                <a
-                    on:click={sheet?._onItemCreate.bind(sheet)}
-                    class="item-control item-create"
-                    title="Create item"
-                    data-type="wise"
-                    ><i class="fas fa-plus" />
-                    {game.i18n.localize("MOUSEGUARD.AddItem")}</a
-                >
-            </div>
-        </li>
-    </ol>
 </largecard>
 
 <style>
@@ -152,6 +147,10 @@
 
     .item-controls {
         float: right;
+    }
+
+    .item-create {
+        padding-top: 8px;
     }
 
     input {
