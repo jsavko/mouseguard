@@ -6294,6 +6294,8 @@ function updateDisplay(count) {
   $(".mouse-dice-roll").html(theHTML);
   $(".mouse_dice_button.subtract").prop("disabled", !count);
   $(".mouse_roll_button").prop("disabled", !count);
+  if (!count)
+    game.mouseguard.RollMessage = "";
 }
 Handlebars.registerHelper("times", function(n, block) {
   var accum = "";
