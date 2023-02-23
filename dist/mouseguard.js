@@ -6240,11 +6240,6 @@ Hooks.on("renderSidebarTab", (app, html, data) => {
     $chat_form.after($content);
     $content.find(".mouse_dice_button").on("click", (event) => {
       event.preventDefault();
-          game.mouseguard.RollCount++;
-          break;
-        case 3:
-          game.mouseguard.RollCount--;
-          break;
       if (event.currentTarget.classList.contains("add")) {
         game.mouseguard.RollCount++;
       } else {
