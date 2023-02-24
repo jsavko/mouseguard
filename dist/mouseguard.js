@@ -5586,7 +5586,8 @@ var MouseGuardNPCActorSheet = class extends ActorSheet {
 var preloadHandlebarsTemplates = async function() {
   const templatePaths = [
     "systems/mouseguard/templates/parts/sheet-attributes.html",
-    "systems/mouseguard/templates/parts/sheet-groups.html"
+    "systems/mouseguard/templates/parts/sheet-groups.html",
+    "systems/mouseguard/templates/sidebar/combatant.html"
   ];
   return loadTemplates(templatePaths);
 };
@@ -5706,11 +5707,17 @@ var MouseCombatant = class extends Combatant {
   get ConflictCaptain() {
     return this.getFlag("mouseguard", "ConflictCaptain");
   }
+  get team() {
+    return this.getFlag("mouseguard", "Team");
+  }
   async setConflictCaptain(value) {
     return this.setFlag("mouseguard", "ConflictCaptain", value);
   }
   async SetMove(move) {
     this.setFlag("mouseguard", "Moves", move);
+  }
+  async setTeam(value) {
+    return this.setFlag("mouseguard", "Team", value);
   }
   async _preCreate(data, options, user) {
     await super._preCreate(data, options, user);
@@ -5723,7 +5730,8 @@ var MouseCombatant = class extends Combatant {
       flags: {
         mouseguard: {
           ConflictCaptain: false,
-          Moves: []
+          Moves: [],
+          Team: 0
         }
       }
     });
@@ -5872,7 +5880,7 @@ var MouseCombat = class extends Combat {
     return context;
   }
   get getGoal() {
-    return this.getFlag("mouseguard", "ConflictCaptain");
+    return this.getFlag("mouseguard", "goal");
   }
   get getConflictCaptain() {
     return this.getFlag("mouseguard", "ConflictCaptain");
@@ -5886,7 +5894,9 @@ var MouseCombat = class extends Combat {
       flags: {
         mouseguard: {
           ConflictCaptain: null,
-          goal: null
+          goal: null,
+          side1Combatants: [],
+          side2Combatants: []
         }
       }
     });
@@ -6010,8 +6020,42 @@ var MouseCombatTracker = class extends CombatTracker {
       id: "combat",
       template: "systems/mouseguard/templates/sidebar/combat-tracker.html",
       title: "COMBAT.SidebarTitle",
-      scrollY: [".directory-list"]
+      scrollY: [".directory-list"],
+      dragDrop: [
+        {
+          dragSelector: "li.combatant.actor.directory-item.flexrow",
+          dropSelector: "li[data-team]"
+        }
+      ]
     });
+  }
+  _canDragStart(ev) {
+    console.log(ev);
+    if (game.user.isGM)
+      return true;
+    return false;
+  }
+  _canDragDrop(ev) {
+    console.log(ev);
+    if (game.user.isGM)
+      return true;
+    return false;
+  }
+  _onDragDrop(ev) {
+    super._onDrop(ev);
+    console.log(ev);
+  }
+  async _onDrop(ev) {
+    super._onDrop(ev);
+    let dropped_id = JSON.parse(ev.dataTransfer?.getData("text/plain")).id;
+    let target = ev.target.closest("li").dataset.team;
+    console.log(target);
+    await this.viewed.combatants.get(dropped_id).setTeam(target);
+  }
+  _onDragStart(ev) {
+    console.log(ev);
+    ev.dataTransfer.setData("text/plain", JSON.stringify({ id: ev.target.dataset.combatantId }));
+    console.log(ev);
   }
   _getEntryContextOptions() {
     return [
@@ -6311,5 +6355,8 @@ Handlebars.registerHelper("concat", function() {
     }
   }
   return outStr;
+});
+Handlebars.registerHelper("ifEquals", function(arg1, arg2, options) {
+  return arg1 == arg2 ? options.fn(this) : options.inverse(this);
 });
 //# sourceMappingURL=mouseguard.js.map

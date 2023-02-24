@@ -20,8 +20,49 @@ export default class MouseCombatTracker extends CombatTracker {
             template:
                 "systems/mouseguard/templates/sidebar/combat-tracker.html",
             title: "COMBAT.SidebarTitle",
-            scrollY: [".directory-list"]
+            scrollY: [".directory-list"],
+            dragDrop: [
+                {
+                    dragSelector: "li.combatant.actor.directory-item.flexrow",
+                    dropSelector: "li[data-team]"
+                }
+            ]
         });
+    }
+
+    _canDragStart(ev) {
+        console.log(ev);
+        if (game.user.isGM) return true;
+        return false;
+    }
+
+    _canDragDrop(ev) {
+        console.log(ev);
+        if (game.user.isGM) return true;
+        return false;
+    }
+
+    _onDragDrop(ev) {
+        super._onDrop(ev);
+        console.log(ev);
+    }
+
+    async _onDrop(ev) {
+        super._onDrop(ev);
+        let dropped_id = JSON.parse(ev.dataTransfer?.getData("text/plain")).id;
+        let target = ev.target.closest("li").dataset.team;
+        console.log(target);
+        await this.viewed.combatants.get(dropped_id).setTeam(target);
+    }
+
+    _onDragStart(ev) {
+        //super._onDragStart(ev);
+        console.log(ev);
+        ev.dataTransfer.setData(
+            "text/plain",
+            JSON.stringify({ id: ev.target.dataset.combatantId })
+        );
+        console.log(ev);
     }
 
     _getEntryContextOptions() {

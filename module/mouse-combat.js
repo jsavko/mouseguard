@@ -17,12 +17,13 @@ export default class MouseCombat extends Combat {
     /** @override */
     getData() {
         const context = super.getData();
-
+        //context.side1Combatants = this.getSide1Combatants();
+        //context.side2Combatants = this.getSide2Combatants();
         return context;
     }
 
     get getGoal() {
-        return this.getFlag("mouseguard", "ConflictCaptain");
+        return this.getFlag("mouseguard", "goal");
     }
 
     get getConflictCaptain() {
@@ -39,7 +40,9 @@ export default class MouseCombat extends Combat {
             flags: {
                 mouseguard: {
                     ConflictCaptain: null,
-                    goal: null
+                    goal: null,
+                    side1Combatants: [],
+                    side2Combatants: []
                 }
             }
         });
