@@ -5949,7 +5949,7 @@ var MouseCombat = class extends Combat {
     await game.socket.emit("system.mouseguard", { action: "askGoal", combat: this }, { recipients: [player._id] });
   }
   async setGoal(goal) {
-    this.setFlag("mouseguard", "goal", goal).then((content) => {
+    this.setFlag("mouseguard", "goal1", goal).then((content) => {
       this.startCombat();
     });
     return true;
@@ -5961,29 +5961,29 @@ var MouseCombat = class extends Combat {
       return false;
     }
     let data = { combat: this };
-    let actors = [];
-    let npc = [];
-    let combatants = this.combatants.filter((comb) => comb.actor.type == "character");
+    let team1 = [];
+    let team2 = [];
+    let combatants = this.combatants.filter((comb) => comb.team == "1");
     Object.keys(combatants).forEach((key) => {
-      actors.push({
+      team1.push({
         combatant: combatants[key].id,
         name: combatants[key].token.name
       });
     });
-    data.actors = actors;
+    data.actors = team1;
     data.action = "askMoves";
     let player = this.getCCPlayer();
     await game.socket.emit("system.mouseguard", data, {
       recipients: [player._id]
     });
-    let npccombatants = this.combatants.filter((comb) => comb.actor.type != "character");
-    Object.keys(npccombatants).forEach((key) => {
-      npc.push({
-        combatant: npccombatants[key].id,
-        name: npccombatants[key].token.name
+    let team2combatants = this.combatants.filter((comb) => comb.team == "2");
+    Object.keys(team2combatants).forEach((key) => {
+      team2.push({
+        combatant: team2combatants[key].id,
+        name: team2combatants[key].token.name
       });
     });
-    data.actors = npc;
+    data.actors = team2;
     data.npc = true;
     await MouseSocket.askMoves(data);
   }
@@ -6043,13 +6043,11 @@ var MouseCombatTracker = class extends CombatTracker {
   }
   _onDragDrop(ev) {
     super._onDrop(ev);
-    console.log(ev);
   }
   async _onDrop(ev) {
     super._onDrop(ev);
     let dropped_id = JSON.parse(ev.dataTransfer?.getData("text/plain")).id;
     let target = ev.target.closest("li").dataset.team;
-    console.log(target);
     await this.viewed.combatants.get(dropped_id).setTeam(target);
   }
   _onDragStart(ev) {

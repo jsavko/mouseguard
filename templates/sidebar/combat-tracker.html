@@ -64,26 +64,28 @@
 
 
     <ol id="combat-tracker" class="directory-list">
-        <li data-team="1"><h3 class="noborder">Side 1</h3></li>
+        <li data-team="1" style="text-align: center;"><h3 class="noborder">Team 1</h3></li>
         {{#if combat.flags.mouseguard.goal1}}
-        <li data-team="1"><h3>{{combat.flags.mouseguard.goal1}}</h3></li>
+        <li data-team="1" style="text-align: center;"><h3>{{combat.flags.mouseguard.goal1}}</h3></li>
         {{else}} 
-        <li data-team="1"><h3>{{localize 'COMBAT.NoGoal'}}</h3></li>
+        <li data-team="1" style="text-align: center;"><h3>{{localize 'COMBAT.NoGoal'}}</h3></li>
         {{/if}}
         {{#each turns}}
         {{> "systems/mouseguard/templates/sidebar/combatant.html" team=1}}
-        {{/each}}        <li data-team="1">&nbsp;</li>
+        {{/each}}
         <li data-team="1">&nbsp;</li>
-        <li data-team="2"><h3 class="noborder">Side 2</h3></li>
+        <li data-team="1">&nbsp;</li>
+        <li data-team="2" style="text-align: center;"><h3 class="noborder">Team 2</h3></li>
         {{#if combat.flags.mouseguard.goal2}}
-        <li data-team="2"><h3>{{combat.flags.mouseguard.goal2}}</h3></li></li>
+        <li data-team="2" style="text-align: center;"><h3>{{combat.flags.mouseguard.goal2}}</h3></li></li>
         {{else}} 
-        <li data-team="2"><h3>{{localize 'COMBAT.NoGoal'}}</h3></li></li>
+        <li data-team="2" style="text-align: center;"><h3>{{localize 'COMBAT.NoGoal'}}</h3></li></li>
         {{/if}}
         {{#each turns}}
         {{> "systems/mouseguard/templates/sidebar/combatant.html" team=2}}
-        {{/each}}        <li data-team="2"></li>&nbsp;</li>
-        <li data-team="2"></li>&nbsp;</li>
+        {{/each}}
+        <li data-team="2">&nbsp;</li>
+        <li data-team="2">&nbsp;</li>
         <li data-team="0"></li><h3>Unassigned Combatantants</h3></li>
         {{#each turns}}
         {{> "systems/mouseguard/templates/sidebar/combatant.html" team=0}}

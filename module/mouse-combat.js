@@ -110,13 +110,16 @@ export default class MouseCombat extends Combat {
     }
 
     async setGoal(goal) {
-        this.setFlag("mouseguard", "goal", goal).then((content) => {
+        this.setFlag("mouseguard", "goal1", goal).then((content) => {
             this.startCombat();
         });
 
         return true;
     }
 
+    // Create a list of combatants for each team then send the conflict captains the modal for moves
+    // Filter by combatant.team
+    // Need to refactor to include Captains for both teams
     async askMove() {
         let CC = this.flags.mouseguard.ConflictCaptain;
 
@@ -126,20 +129,19 @@ export default class MouseCombat extends Combat {
         }
 
         let data = { combat: this };
-        let actors = [];
-        let npc = [];
-        //combat.combatants.filter( comb => comb.actor.type == "type" )
-        let combatants = this.combatants.filter(
-            (comb) => comb.actor.type == "character"
-        );
+        let team1 = [];
+        let team2 = [];
+
+        //Team 1
+        let combatants = this.combatants.filter((comb) => comb.team == "1");
         Object.keys(combatants).forEach((key) => {
-            actors.push({
+            team1.push({
                 combatant: combatants[key].id,
                 name: combatants[key].token.name
             });
         });
 
-        data.actors = actors;
+        data.actors = team1;
         data.action = "askMoves";
 
         let player = this.getCCPlayer();
@@ -148,18 +150,19 @@ export default class MouseCombat extends Combat {
             recipients: [player._id]
         });
 
-        let npccombatants = this.combatants.filter(
-            (comb) => comb.actor.type != "character"
+        //Team 2
+        let team2combatants = this.combatants.filter(
+            (comb) => comb.team == "2"
         );
 
-        Object.keys(npccombatants).forEach((key) => {
-            npc.push({
-                combatant: npccombatants[key].id,
-                name: npccombatants[key].token.name
+        Object.keys(team2combatants).forEach((key) => {
+            team2.push({
+                combatant: team2combatants[key].id,
+                name: team2combatants[key].token.name
             });
         });
 
-        data.actors = npc;
+        data.actors = team2;
         data.npc = true;
 
         await MouseSocket.askMoves(data);

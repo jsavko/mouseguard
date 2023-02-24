@@ -44,14 +44,14 @@ export default class MouseCombatTracker extends CombatTracker {
 
     _onDragDrop(ev) {
         super._onDrop(ev);
-        console.log(ev);
+        // console.log(ev);
     }
 
     async _onDrop(ev) {
         super._onDrop(ev);
         let dropped_id = JSON.parse(ev.dataTransfer?.getData("text/plain")).id;
         let target = ev.target.closest("li").dataset.team;
-        console.log(target);
+        // console.log(target);
         await this.viewed.combatants.get(dropped_id).setTeam(target);
     }
 
