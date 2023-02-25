@@ -75,14 +75,22 @@ export default class MouseCombatTracker extends CombatTracker {
                         li.data("combatant-id")
                     );
 
+                    // Each team needs a Captain
+                    //combatant.team
+                    // This entire function should be refactored to be a single statement
+                    let Team = "";
+                    if (combatant.team == 2) Team = "2";
+                    if (combatant.team == 0) return;
+
                     if (
-                        this.viewed.flags.mouseguard.ConflictCaptain ==
-                        combatant.id
+                        this.viewed.flags.mouseguard[
+                            "ConflictCaptain" + Team
+                        ] == combatant.id
                     ) {
                         //Unset if self
                         this.viewed.setFlag(
                             "mouseguard",
-                            "ConflictCaptain",
+                            "ConflictCaptain" + Team,
                             NaN
                         );
                         return combatant.setFlag(
@@ -91,15 +99,18 @@ export default class MouseCombatTracker extends CombatTracker {
                             false
                         );
                     }
+
                     if (
-                        !!this.viewed.flags.mouseguard.ConflictCaptain == false
+                        !!this.viewed.flags.mouseguard[
+                            "ConflictCaptain" + Team
+                        ] == false
                     ) {
                         // New Captain Never had an old one
                         if (combatant) {
                             //Set Flag on New Captain
                             this.viewed.setFlag(
                                 "mouseguard",
-                                "ConflictCaptain",
+                                "ConflictCaptain" + Team,
                                 li.data("combatant-id")
                             );
                             return combatant.setFlag(

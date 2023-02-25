@@ -17,21 +17,31 @@ export default class MouseCombat extends Combat {
     /** @override */
     getData() {
         const context = super.getData();
-        //context.side1Combatants = this.getSide1Combatants();
-        //context.side2Combatants = this.getSide2Combatants();
         return context;
     }
 
-    get getGoal() {
-        return this.getFlag("mouseguard", "goal");
+    get getGoal1() {
+        return this.getFlag("mouseguard", "goal1");
+    }
+
+    get getGoal2() {
+        return this.getFlag("mouseguard", "goal2");
     }
 
     get getConflictCaptain() {
         return this.getFlag("mouseguard", "ConflictCaptain");
     }
 
+    get getConflictCaptainTeam2() {
+        return this.getFlag("mouseguard", "ConflictCaptain2");
+    }
+
     async setConflictCaptain(value) {
         return this.setFlag("mouseguard", "ConflictCaptain", value);
+    }
+
+    async setConflictCaptainTeam2(value) {
+        return this.setFlag("mouseguard", "ConflictCaptain2", value);
     }
 
     async _preCreate(data, options, user) {
@@ -40,9 +50,9 @@ export default class MouseCombat extends Combat {
             flags: {
                 mouseguard: {
                     ConflictCaptain: null,
-                    goal: null,
-                    side1Combatants: [],
-                    side2Combatants: []
+                    ConflictCaptain2: null,
+                    goal1: null,
+                    goal2: null
                 }
             }
         });

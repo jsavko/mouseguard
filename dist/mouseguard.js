@@ -5879,14 +5879,23 @@ var MouseCombat = class extends Combat {
     const context = super.getData();
     return context;
   }
-  get getGoal() {
-    return this.getFlag("mouseguard", "goal");
+  get getGoal1() {
+    return this.getFlag("mouseguard", "goal1");
+  }
+  get getGoal2() {
+    return this.getFlag("mouseguard", "goal2");
   }
   get getConflictCaptain() {
     return this.getFlag("mouseguard", "ConflictCaptain");
   }
+  get getConflictCaptainTeam2() {
+    return this.getFlag("mouseguard", "ConflictCaptain2");
+  }
   async setConflictCaptain(value) {
     return this.setFlag("mouseguard", "ConflictCaptain", value);
+  }
+  async setConflictCaptainTeam2(value) {
+    return this.setFlag("mouseguard", "ConflictCaptain2", value);
   }
   async _preCreate(data, options, user) {
     await super._preCreate(data, options, user);
@@ -5894,9 +5903,9 @@ var MouseCombat = class extends Combat {
       flags: {
         mouseguard: {
           ConflictCaptain: null,
-          goal: null,
-          side1Combatants: [],
-          side2Combatants: []
+          ConflictCaptain2: null,
+          goal1: null,
+          goal2: null
         }
       }
     });
@@ -6062,13 +6071,18 @@ var MouseCombatTracker = class extends CombatTracker {
         icon: '<i class="fas fa-crown"></i>',
         callback: (li) => {
           const combatant = this.viewed.combatants.get(li.data("combatant-id"));
-          if (this.viewed.flags.mouseguard.ConflictCaptain == combatant.id) {
-            this.viewed.setFlag("mouseguard", "ConflictCaptain", NaN);
+          let Team = "";
+          if (combatant.team == 2)
+            Team = "2";
+          if (combatant.team == 0)
+            return;
+          if (this.viewed.flags.mouseguard["ConflictCaptain" + Team] == combatant.id) {
+            this.viewed.setFlag("mouseguard", "ConflictCaptain" + Team, NaN);
             return combatant.setFlag("mouseguard", "ConflictCaptain", false);
           }
-          if (!!this.viewed.flags.mouseguard.ConflictCaptain == false) {
+          if (!!this.viewed.flags.mouseguard["ConflictCaptain" + Team] == false) {
             if (combatant) {
-              this.viewed.setFlag("mouseguard", "ConflictCaptain", li.data("combatant-id"));
+              this.viewed.setFlag("mouseguard", "ConflictCaptain" + Team, li.data("combatant-id"));
               return combatant.setFlag("mouseguard", "ConflictCaptain", true);
             }
           } else {
