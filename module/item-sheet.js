@@ -43,10 +43,4 @@ export class MouseGuardItemSheet extends ItemSheet {
     }
 
     /* -------------------------------------------- */
-
-    /** @override */
-    async _getSubmitData(updateData) {
-        let formData = super._getSubmitData(updateData);
-        return formData;
-    }
 }
