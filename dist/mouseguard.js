@@ -200,10 +200,6 @@ var MouseGuardItemSheet = class extends ItemSheet {
   async activateListeners(html) {
     super.activateListeners(html);
   }
-  async _getSubmitData(updateData) {
-    let formData = super._getSubmitData(updateData);
-    return formData;
-  }
 };
 
 // node_modules/svelte/internal/index.mjs
