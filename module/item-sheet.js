@@ -31,7 +31,7 @@ export class MouseGuardItemSheet extends ItemSheet {
         const context = super.getData();
         //EntitySheetHelper.getAttributeData(context.data);
         context.systemData = context.item.system;
-        //console.log(context);
+        console.log(context);
         return context;
     }
 
@@ -43,10 +43,4 @@ export class MouseGuardItemSheet extends ItemSheet {
     }
 
     /* -------------------------------------------- */
-
-    /** @override */
-    async _getSubmitData(updateData) {
-        let formData = super._getSubmitData(updateData);
-        return formData;
-    }
 }

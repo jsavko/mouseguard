@@ -195,14 +195,11 @@ var MouseGuardItemSheet = class extends ItemSheet {
   getData() {
     const context = super.getData();
     context.systemData = context.item.system;
+    console.log(context);
     return context;
   }
   async activateListeners(html) {
     super.activateListeners(html);
-  }
-  async _getSubmitData(updateData) {
-    let formData = super._getSubmitData(updateData);
-    return formData;
   }
 };
 
