@@ -31,7 +31,7 @@ export class MouseGuardItemSheet extends ItemSheet {
         const context = super.getData();
         //EntitySheetHelper.getAttributeData(context.data);
         context.systemData = context.item.system;
-        console.log(context);
+        //console.log(context);
         return context;
     }
 

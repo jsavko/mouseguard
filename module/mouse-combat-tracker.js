@@ -31,13 +31,13 @@ export default class MouseCombatTracker extends CombatTracker {
     }
 
     _canDragStart(ev) {
-        console.log(ev);
+        //console.log(ev);
         if (game.user.isGM) return true;
         return false;
     }
 
     _canDragDrop(ev) {
-        console.log(ev);
+        //console.log(ev);
         if (game.user.isGM) return true;
         return false;
     }
@@ -57,12 +57,12 @@ export default class MouseCombatTracker extends CombatTracker {
 
     _onDragStart(ev) {
         //super._onDragStart(ev);
-        console.log(ev);
+        //console.log(ev);
         ev.dataTransfer.setData(
             "text/plain",
             JSON.stringify({ id: ev.target.dataset.combatantId })
         );
-        console.log(ev);
+        //console.log(ev);
     }
 
     _getEntryContextOptions() {

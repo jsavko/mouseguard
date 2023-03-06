@@ -195,7 +195,6 @@ var MouseGuardItemSheet = class extends ItemSheet {
   getData() {
     const context = super.getData();
     context.systemData = context.item.system;
-    console.log(context);
     return context;
   }
   async activateListeners(html) {
@@ -6036,13 +6035,11 @@ var MouseCombatTracker = class extends CombatTracker {
     });
   }
   _canDragStart(ev) {
-    console.log(ev);
     if (game.user.isGM)
       return true;
     return false;
   }
   _canDragDrop(ev) {
-    console.log(ev);
     if (game.user.isGM)
       return true;
     return false;
@@ -6057,9 +6054,7 @@ var MouseCombatTracker = class extends CombatTracker {
     await this.viewed.combatants.get(dropped_id).setTeam(target);
   }
   _onDragStart(ev) {
-    console.log(ev);
     ev.dataTransfer.setData("text/plain", JSON.stringify({ id: ev.target.dataset.combatantId }));
-    console.log(ev);
   }
   _getEntryContextOptions() {
     return [
