@@ -64,13 +64,6 @@
         overflow-y: scroll;
     }
 
-    .box {
-        margin-bottom: 10px;
-        padding-top: 20px;
-        border-radius: 0 0 .5rem .5rem;
-        border-top: 0;
-    }
-
     .flex-container {
         display: flex;
     }

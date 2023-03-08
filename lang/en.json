@@ -122,10 +122,9 @@
     "MOUSEGUARD.P": "P",
     "MOUSEGUARD.F": "F",
     "MOUSEGUARD.A": "A",
-    "MOUSEGUARD.AddItem": "Add Item",
-    "MOUSEGUARD.AddSkill": "Add Skill",
-    "MOUSEGUARD.AddWise": "Add Wise",
-    "MOUSEGUARD.AddTrait": "Add Trait",
+    "MOUSEGUARD.AddItem": "Add",
+    "MOUSEGUARD.Rank": "Rank",
+    "MOUSEGUARD.Level": "Level",
 
     "MOUSEGUARD.character": "character",
     "MOUSEGUARD.mouse": "mouse",

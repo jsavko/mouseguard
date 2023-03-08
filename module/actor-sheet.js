@@ -120,11 +120,10 @@ export class MouseGuardActorSheet extends ActorSheet {
         ]);
     }
 
-    async _updateEmbededItem(id, _data) {
+    async _updateEmbededItem(id, _system) {
         await this.actor.updateEmbeddedDocuments("Item", [
-            { _id: id, data: _data }
+            { _id: id, system: _system }
         ]);
-        //console.log(this.actor)
     }
 
     async _onItemDelete(itemId) {
@@ -132,6 +131,11 @@ export class MouseGuardActorSheet extends ActorSheet {
         const item = this.actor.items.get(itemId);
         item.delete();
         this.render();
+    }
+
+    async _onItemUpdate(itemId) {
+        const item = this.actor.items.get(itemId);
+        item.sheet.render(true);
     }
 
     async _onItemCreate(event) {
@@ -151,7 +155,7 @@ export class MouseGuardActorSheet extends ActorSheet {
         };
         itemData.data = { rank: 1 };
         // Remove the type from the dataset since it's in the itemData.type prop.
-        delete itemData.data["type"];
+        delete itePremData.data["type"];
         // Finally, create the item!
         //console.log(itemData);
         return await Item.create(itemData, { parent: this.actor }).then(

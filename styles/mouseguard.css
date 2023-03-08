@@ -82,13 +82,6 @@
     padding: 0;
     overflow-y: auto;
 }
-.mouseguard .item-list .item {
-    min-height: 30px;
-    line-height: 24px;
-    padding: 3px 0;
-    border-bottom: 1px solid #bbb;
-    align-items: stretch;
-}
 .mouseguard .item-list .item img {
     flex: 0 0 24px;
     margin-right: 5px;

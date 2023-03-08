@@ -1,42 +1,21 @@
 <script>
-		import MouseGuardActorSheetMouseAbilities from "./MouseGuardActorSheetMouseAbilities.svelte";
-		import MouseGuardActorSheetMouseSkills from "./MouseGuardActorSheetMouseSkills.svelte";
-		import MouseGuardActorSheetMouseWises from "./MouseGuardActorSheetMouseWises.svelte";
-		import MouseGuardActorSheetMouseTraits from "./MouseGuardActorSheetMouseTraits.svelte";
-
+    import MouseGuardActorSheetRollableItemBase from "./MouseGuardActorSheetRollableItemBase.svelte";
 </script>
 
-<abilities >
-<MouseGuardActorSheetMouseAbilities />
-</abilities>
-<wise>
-	<MouseGuardActorSheetMouseWises />
-</wise>
-<skill> 
-<MouseGuardActorSheetMouseSkills />
-</skill>
-<trait>
-	<MouseGuardActorSheetMouseTraits />
-</trait>
+<ol class="items-list">
+    <MouseGuardActorSheetRollableItemBase itemType="ability"/>
+    <MouseGuardActorSheetRollableItemBase itemType="wise"/>
+    <MouseGuardActorSheetRollableItemBase itemType="skill"/>
+    <MouseGuardActorSheetRollableItemBase itemType="trait"/>
+</ol>
 
 <style>
-	abilities { 
-		clear: both;
-		height: 100%;
-    display: flex
-	}
-	skill { 
-		clear: both;
-		display:block;
-	}
-	wise { 
-		clear: both;
-		height: 100%;
-    display: flex
-	}
-	trait { 
-		clear: both;
-		display:block;
-	}
-
+    .items-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        overflow-y: auto;
+        scrollbar-width: thin;
+        color: #7a7971;
+    }
 </style>
