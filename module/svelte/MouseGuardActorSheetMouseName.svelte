@@ -1,6 +1,8 @@
 <script>
     import { getContext } from "svelte";
 
+    export let limited;
+
     let sheetData = getContext("sheetStore");
     let data;
     $: data = $sheetData.data;
@@ -8,7 +10,7 @@
 
 <div class="namebox">
   <label>{game.i18n.localize("MOUSEGUARD.Name")}</label>
-  <input name="name" type="text" value={data.name} placeholder="{game.i18n.localize('MOUSEGUARD.Name')}" />
+  <input name="name" disabled={limited} type="text" value={data.name} placeholder="{game.i18n.localize('MOUSEGUARD.Name')}" />
 </div>
 
 <style>

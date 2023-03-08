@@ -1,5 +1,5 @@
 <script>
-    import { setContext } from "svelte";
+    import {setContext} from "svelte";
 
     // Component imports
     //TODO: IMPORTS
@@ -9,12 +9,14 @@
     import MouseGuardActorSheetMouseDispo from "./MouseGuardActorSheetMouseDispo.svelte";
     import MouseGuardActorSheetPortrait from "./MouseGuardActorSheetMousePortrait.svelte";
     import MouseGuardActorSheetMouseName from "./MouseGuardActorSheetMouseName.svelte";
+    import {isLimitedView} from "./MouseGuardCommon.svelte";
 
     //Exports
     export let dataStore;
     setContext("sheetStore", dataStore);
 
-    let items = [
+    let limitedView = isLimitedView($dataStore);
+    let tabs = [
         {
             label: game.i18n.localize("MOUSEGUARD.About"),
             component: MouseGuardActorSheetMouseDetails
@@ -34,27 +36,34 @@
         }
     ];
 
-    export let activeTabValue = items[0].component;
+    export let activeTabValue = tabs[0].component;
     const handleClick = tabValue => () => (activeTabValue = tabValue);
 </script>
 
 <content>
     <div class="flex-container">
         <div class="flex-item">
-            <MouseGuardActorSheetMouseName />
-            <nav class="sheet-navigation tabs">
-                {#each items as item}
-                    <a class="item {activeTabValue === item.component ? 'active' : ''}" on:click={handleClick(item.component)}>
-                        {item.label}
-                    </a>
-                {/each}
-            </nav>
+            <MouseGuardActorSheetMouseName limited={limitedView}/>
+            {#if !limitedView}
+                <nav class="sheet-navigation tabs">
+                    {#each tabs as tab}
+                        <a class="item {activeTabValue === tab.component ? 'active' : ''}"
+                           on:click={handleClick(tab.component)}>
+                            {tab.label}
+                        </a>
+                    {/each}
+                </nav>
+            {/if}
         </div>
-        <MouseGuardActorSheetPortrait />
+        <MouseGuardActorSheetPortrait limited={limitedView}/>
     </div>
     <div class="box">
-        {#if activeTabValue}
-            <svelte:component this={activeTabValue}/>
+        {#if limitedView}
+            <MouseGuardActorSheetMouseDetails limited={limitedView}/>
+        {:else}
+            {#if activeTabValue}
+                <svelte:component this={activeTabValue}/>
+            {/if}
         {/if}
     </div>
 </content>
@@ -62,13 +71,6 @@
 <style>
     content {
         overflow-y: scroll;
-    }
-
-    .box {
-        margin-bottom: 10px;
-        padding-top: 20px;
-        border-radius: 0 0 .5rem .5rem;
-        border-top: 0;
     }
 
     .flex-container {

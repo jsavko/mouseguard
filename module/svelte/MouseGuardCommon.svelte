@@ -15,4 +15,8 @@
     export function setMouseDice(sheet, count, message = "") {
         sheet?._setMouseDice(count, message);
     }
+
+    export function isLimitedView(sheet) {
+        return !game.user.isGM && sheet.actor.limited;
+    }
 </script>

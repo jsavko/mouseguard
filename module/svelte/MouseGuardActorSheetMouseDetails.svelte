@@ -3,6 +3,8 @@
 
     import MouseGuardEditor from "./MouseGuardEditor.svelte";
 
+    export let limited;
+
     //getContext("sheetStore", dataStore);
     let sheetData = getContext("sheetStore");
     let data;
@@ -15,6 +17,7 @@
         <lineitem>
             <label>{game.i18n.localize("MOUSEGUARD.Age")}: </label>
             <input
+                disabled={limited}
                 name="system.details.age"
                 type="number"
                 value={data.system.details.age}
@@ -24,6 +27,7 @@
         <lineitem>
             <label>{game.i18n.localize("MOUSEGUARD.Parents")}: </label>
             <input
+                disabled={limited}
                 name="system.details.parents"
                 type="text"
                 value={data.system.details.parents}
@@ -33,6 +37,7 @@
         <lineitem>
             <label>{game.i18n.localize("MOUSEGUARD.Home")}: </label>
             <input
+                disabled={limited}
                 name="system.details.home"
                 type="text"
                 value={data.system.details.home}
@@ -42,6 +47,7 @@
         <lineitem>
             <label>{game.i18n.localize("MOUSEGUARD.Senior")}: </label>
             <input
+                disabled={limited}
                 name="system.details.senior_artisan"
                 type="text"
                 value={data.system.details.senior_artisan}
@@ -51,6 +57,7 @@
         <lineitem>
             <label>{game.i18n.localize("MOUSEGUARD.Fur")}: </label>
             <input
+                disabled={limited}
                 name="system.details.fur_color"
                 type="text"
                 value={data.system.details.fur_color}
@@ -60,6 +67,7 @@
         <lineitem>
             <label>{game.i18n.localize("MOUSEGUARD.Mentor")}: </label>
             <input
+                disabled={limited}
                 name="system.details.mentor"
                 type="text"
                 value={data.system.details.mentor}
@@ -69,6 +77,7 @@
         <lineitem>
             <label>{game.i18n.localize("MOUSEGUARD.Cloak")}: </label>
             <input
+                disabled={limited}
                 name="system.details.cloak_color"
                 type="text"
                 value={data.system.details.cloak_color}
@@ -78,6 +87,7 @@
         <lineitem>
             <label>{game.i18n.localize("MOUSEGUARD.Friend")}: </label>
             <input
+                disabled={limited}
                 name="system.details.friend"
                 type="text"
                 value={data.system.details.friend}
@@ -87,6 +97,7 @@
         <lineitem>
             <label>{game.i18n.localize("MOUSEGUARD.GuardRank")}: </label>
             <input
+                disabled={limited}
                 name="system.details.guard_rank"
                 type="text"
                 value={data.system.details.guard_rank}
@@ -96,6 +107,7 @@
         <lineitem>
             <label>{game.i18n.localize("MOUSEGUARD.Enemy")}: </label>
             <input
+                disabled={limited}
                 name="system.details.enemy"
                 type="text"
                 value={data.system.details.enemy}
@@ -105,7 +117,11 @@
     </ul>
 </largecard>
 <h1>{game.i18n.localize("MOUSEGUARD.Bio")}</h1>
-<MouseGuardEditor target="system.biography" />
+{#if limited}
+    {@html data.system.biography}
+{:else}
+    <MouseGuardEditor target="system.biography" />
+{/if}
 
 <style>
     largecard {

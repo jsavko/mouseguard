@@ -1,7 +1,8 @@
 <script>
     import { getContext } from "svelte";
 
-    //getContext("sheetStore", dataStore);
+    export let limited;
+
     let sheetData = getContext("sheetStore");
     let { actor, sheet } = $sheetData;
     let data;
@@ -11,6 +12,9 @@
      * Opens a File Picker and updates the actor accordingly.
      */
     const filePicker = (event) => {
+        if (limited) {
+            return;
+        }
         const attr = event.currentTarget.dataset.edit;
         const current = getProperty(data, attr);
         const fp = new FilePicker({
