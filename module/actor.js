@@ -67,6 +67,13 @@ export class MouseGuardActor extends Actor {
             ];
         }
 
+        let prototypeToken = {};
+        if (data.type === "character") {
+            Object.assign(prototypeToken, {
+                sight: { enabled: true }, actorLink: true, disposition: 1
+            });
+        }
+
         if (Object(create_ability).length > 0) {
             for (let i of create_ability) {
                 abilities.push({
@@ -75,6 +82,7 @@ export class MouseGuardActor extends Actor {
                 });
             }
             this.updateSource({
+                prototypeToken,
                 items: abilities,
                 img: "systems/mouseguard/assets/icons/seated-mouse.svg"
             });
