@@ -55,7 +55,7 @@
             >{{localize (concat 'COMBAT.' this.move)}}</a
         >
         {{/unless}} {{#if @root.user.isGM}} {{#if ../this.hasPlayerOwner}}
-        [Move] {{else}}
+        <img src="systems/mouseguard/assets/card.svg" /> {{else}}
         <a
             class="combatant-control"
             title="{{localize (concat 'COMBAT.' this.move)}}"
@@ -63,7 +63,8 @@
             data-control="doMove"
             >{{localize (concat 'COMBAT.' this.move)}}</a
         >
-        {{/if}} {{/if}} {{else}} [Move] {{/if}}
+        {{/if}} {{/if}} {{else}}
+        <img src="systems/mouseguard/assets/card.svg" /> {{/if}}
     </div>
     {{/each}} {{/if}} {{#if this.hasResource}}
     <div class="token-resource">

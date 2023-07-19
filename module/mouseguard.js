@@ -151,6 +151,14 @@ Hooks.once("init", async function () {
     await registerTours();
 });
 
+//                labels: [
+//    "systems/mouseguard/assets/dice/snake.png",
+//    "systems/mouseguard/assets/dice/snake.png",
+//    "systems/mouseguard/assets/dice/snake.png",
+//    "systems/mouseguard/assets/dice/sword.png",
+//    "systems/mouseguard/assets/dice/sword.png",
+//    "systems/mouseguard/assets/dice/axe.png"
+//],
 Hooks.once("diceSoNiceReady", (dice3d) => {
     let dicetheme = "mouseguard";
     if (!dicetheme || dicetheme == "mouseguard") {

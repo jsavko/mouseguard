@@ -64,7 +64,7 @@
 
 
     <ol id="combat-tracker" class="directory-list">
-        <li data-team="1" style="text-align: center;"><h3 class="noborder">Team 1</h3></li>
+        <li data-team="1" style="text-align: center;"><h3 data-team="1" class="noborder">{{localize 'COMBAT.Team1'}}</h3></li>
         {{#if combat.flags.mouseguard.goal1}}
         <li data-team="1" style="text-align: center;"><h3>{{combat.flags.mouseguard.goal1}}</h3></li>
         {{else}} 
@@ -75,7 +75,7 @@
         {{/each}}
         <li data-team="1">&nbsp;</li>
         <li data-team="1">&nbsp;</li>
-        <li data-team="2" style="text-align: center;"><h3 class="noborder">Team 2</h3></li>
+        <li data-team="2" style="text-align: center;"><h3 data-team="2" class="noborder">{{localize 'COMBAT.Team2'}}</h3></li>
         {{#if combat.flags.mouseguard.goal2}}
         <li data-team="2" style="text-align: center;"><h3>{{combat.flags.mouseguard.goal2}}</h3></li></li>
         {{else}} 
@@ -86,7 +86,7 @@
         {{/each}}
         <li data-team="2">&nbsp;</li>
         <li data-team="2">&nbsp;</li>
-        <li data-team="0"></li><h3>Unassigned Combatantants</h3></li>
+        <li data-team="0" style="text-align: center;"><h3 data-team="0" >{{localize 'COMBAT.Team0'}}</h3></li>
         {{#each turns}}
         {{> "systems/mouseguard/templates/sidebar/combatant.html" team=0}}
         {{/each}}

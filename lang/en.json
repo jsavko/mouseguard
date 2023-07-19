@@ -147,9 +147,13 @@
     "COMBAT.NeedCC": "A Conflict Captain Must Be Set.",
     "COMBAT.NeedGoal": "A Goal must be defined to start a combat. Sending Goal Request to Conflict Captain.",
     "COMBAT.NoGoal": "Goal: Not Set",
+    "COMBAT.CCERROR": "A Conflict Captain may not switch teams.",
+    "COMBAT.Team1": "Team 1",
+    "COMBAT.Team2": "Team 2",
+    "COMBAT.Team0": "Unassigned Combatantants",
 
-    "ACTOR.TypeCharacter": "Character",
-    "ACTOR.TypeMouse": "Mouse",
-    "ACTOR.TypeWeasel": "Weasel",
-    "ACTOR.TypeAnimal": "Animal"
+    "TYPES.Actor.character": "Character",
+    "TYPES.Actor.mouse": "Mouse",
+    "TYPES.Actor.weasel": "Weasel",
+    "TYPES.Actor.animal": "Animal"
 }

@@ -5996,22 +5996,8 @@ var MouseCombat = class extends Combat {
     MouseSocket.askMoves(data);
   }
   async nextRound() {
-    let turn = 0;
-    if (this.settings.skipDefeated) {
-      turn = this.turns.findIndex((t) => {
-        return !(t.defeated || t.actor?.effects.find((e) => e.getFlag("core", "statusId") === CONFIG.Combat.defeatedStatusId));
-      });
-      if (turn === -1) {
-        ui.notifications.warn("COMBAT.NoneRemaining", {
-          localize: true
-        });
-        turn = 0;
-      }
-    }
-    let advanceTime = Math.max(this.turns.length - this.data.turn, 1) * CONFIG.time.turnTime;
-    advanceTime += CONFIG.time.roundTime;
     this.askMove();
-    return this.update({ round: this.round + 1, turn }, { advanceTime });
+    super.nextRound();
   }
 };
 
@@ -6049,12 +6035,24 @@ var MouseCombatTracker = class extends CombatTracker {
   }
   async _onDrop(ev) {
     super._onDrop(ev);
+    if (JSON.parse(ev.dataTransfer?.getData("text/plain")).id == "0") {
+      return false;
+    }
     let dropped_id = JSON.parse(ev.dataTransfer?.getData("text/plain")).id;
     let target = ev.target.closest("li").dataset.team;
     await this.viewed.combatants.get(dropped_id).setTeam(target);
   }
   _onDragStart(ev) {
-    ev.dataTransfer.setData("text/plain", JSON.stringify({ id: ev.target.dataset.combatantId }));
+    let valid = this.viewed.combatants.get(ev.target.dataset.combatantId);
+    if (valid.flags.mouseguard.ConflictCaptain) {
+      ui.notifications.error(game.i18n.localize("COMBAT.CCERROR"));
+      ev.dataTransfer.setData("text/plain", JSON.stringify({
+        id: "0"
+      }));
+      return false;
+    } else {
+      ev.dataTransfer.setData("text/plain", JSON.stringify({ id: ev.target.dataset.combatantId }));
+    }
   }
   _getEntryContextOptions() {
     return [

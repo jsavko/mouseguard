@@ -184,33 +184,7 @@ export default class MouseCombat extends Combat {
     }
 
     async nextRound() {
-        let turn = 0;
-        if (this.settings.skipDefeated) {
-            turn = this.turns.findIndex((t) => {
-                return !(
-                    t.defeated ||
-                    t.actor?.effects.find(
-                        (e) =>
-                            e.getFlag("core", "statusId") ===
-                            CONFIG.Combat.defeatedStatusId
-                    )
-                );
-            });
-            if (turn === -1) {
-                ui.notifications.warn("COMBAT.NoneRemaining", {
-                    localize: true
-                });
-                turn = 0;
-            }
-        }
-        let advanceTime =
-            Math.max(this.turns.length - this.data.turn, 1) *
-            CONFIG.time.turnTime;
-        advanceTime += CONFIG.time.roundTime;
         this.askMove();
-        return this.update(
-            { round: this.round + 1, turn: turn },
-            { advanceTime }
-        );
+        super.nextRound();
     }
 }

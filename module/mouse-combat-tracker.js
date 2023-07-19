@@ -49,6 +49,9 @@ export default class MouseCombatTracker extends CombatTracker {
 
     async _onDrop(ev) {
         super._onDrop(ev);
+        if (JSON.parse(ev.dataTransfer?.getData("text/plain")).id == "0") {
+            return false;
+        }
         let dropped_id = JSON.parse(ev.dataTransfer?.getData("text/plain")).id;
         let target = ev.target.closest("li").dataset.team;
         // console.log(target);
@@ -58,10 +61,22 @@ export default class MouseCombatTracker extends CombatTracker {
     _onDragStart(ev) {
         //super._onDragStart(ev);
         //console.log(ev);
-        ev.dataTransfer.setData(
-            "text/plain",
-            JSON.stringify({ id: ev.target.dataset.combatantId })
-        );
+        let valid = this.viewed.combatants.get(ev.target.dataset.combatantId);
+        if (valid.flags.mouseguard.ConflictCaptain) {
+            ui.notifications.error(game.i18n.localize("COMBAT.CCERROR"));
+            ev.dataTransfer.setData(
+                "text/plain",
+                JSON.stringify({
+                    id: "0"
+                })
+            );
+            return false;
+        } else {
+            ev.dataTransfer.setData(
+                "text/plain",
+                JSON.stringify({ id: ev.target.dataset.combatantId })
+            );
+        }
         //console.log(ev);
     }
 
