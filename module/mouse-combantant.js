@@ -74,8 +74,9 @@ export default class MouseCombatant extends Combatant {
         var content = await renderTemplate(template, data);
 
         let chatData = {
-            user: game.user._id,
-            speaker: ChatMessage.getSpeaker({ actor: data.actor })
+            user: game.user.id,
+            speaker: ChatMessage.getSpeaker({ actor: data.actor }),
+            flags: { "mouseguard.unflipped": true }
         };
         chatData.content = content;
         ChatMessage.create(chatData);

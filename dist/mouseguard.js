@@ -5739,8 +5739,9 @@ var MouseCombatant = class extends Combatant {
     let data = { actor: [this.actor][0], move: theMove[0].move };
     var content = await renderTemplate(template, data);
     let chatData = {
-      user: game.user._id,
-      speaker: ChatMessage.getSpeaker({ actor: data.actor })
+      user: game.user.id,
+      speaker: ChatMessage.getSpeaker({ actor: data.actor }),
+      flags: { "mouseguard.unflipped": true }
     };
     chatData.content = content;
     ChatMessage.create(chatData);
@@ -5907,7 +5908,9 @@ var MouseCombat = class extends Combat {
           ConflictCaptain: null,
           ConflictCaptain2: null,
           goal1: null,
-          goal2: null
+          goal2: null,
+          team1Move: null,
+          team2Move: null
         }
       }
     });
@@ -6341,6 +6344,19 @@ Hooks.once("ready", async () => {
     const tour = game.tours.get("mouseguard.welcome");
     tour.start();
     game.user.setFlag("mouseguard", "tourRolls", 1);
+  }
+});
+Hooks.on("renderChatMessage", (chatMessage, [html], messageData) => {
+  console.log(html);
+  if (messageData.message.flags?.mouseguard?.unflipped) {
+    html.querySelector("img").src = "systems/mouseguard/assets/deck/CardBack.webp";
+    if (game.user.isGM) {
+      html.querySelector(".action-move").insertAdjacentHTML("beforeend", ' <button id="reveal-button" type="button">Reveal Card</button> ');
+      html.querySelector("#reveal-button").addEventListener("click", (event) => {
+        let message = game.messages.get(event.target.closest("li").dataset.messageId);
+        message.setFlag("mouseguard", "unflipped", false);
+      });
+    }
   }
 });
 async function registerTours() {

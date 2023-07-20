@@ -255,6 +255,31 @@ Hooks.once("ready", async () => {
     }
 });
 
+Hooks.on("renderChatMessage", (chatMessage, [html], messageData) => {
+    console.log(html);
+    if (messageData.message.flags?.mouseguard?.unflipped) {
+        html.querySelector("img").src =
+            "systems/mouseguard/assets/deck/CardBack.webp";
+
+        if (game.user.isGM) {
+            html.querySelector(".action-move").insertAdjacentHTML(
+                "beforeend",
+                ' <button id="reveal-button" type="button">Reveal Card</button> '
+            );
+
+            html.querySelector("#reveal-button").addEventListener(
+                "click",
+                (event) => {
+                    let message = game.messages.get(
+                        event.target.closest("li").dataset.messageId
+                    );
+                    message.setFlag("mouseguard", "unflipped", false);
+                }
+            );
+        }
+    }
+});
+
 async function registerTours() {
     try {
         game.tours.register(

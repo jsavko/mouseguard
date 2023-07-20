@@ -52,7 +52,9 @@ export default class MouseCombat extends Combat {
                     ConflictCaptain: null,
                     ConflictCaptain2: null,
                     goal1: null,
-                    goal2: null
+                    goal2: null,
+                    team1Move: null,
+                    team2Move: null
                 }
             }
         });
