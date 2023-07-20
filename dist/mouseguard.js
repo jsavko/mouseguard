@@ -5583,7 +5583,9 @@ var preloadHandlebarsTemplates = async function() {
   const templatePaths = [
     "systems/mouseguard/templates/parts/sheet-attributes.html",
     "systems/mouseguard/templates/parts/sheet-groups.html",
-    "systems/mouseguard/templates/sidebar/combatant.html"
+    "systems/mouseguard/templates/sidebar/combatant.html",
+    "systems/mouseguard/templates/effects/effects-panel.hbs",
+    "systems/mouseguard/templates/effects/effect.hbs"
   ];
   return loadTemplates(templatePaths);
 };
@@ -6185,6 +6187,132 @@ var MouseCombatTracker = class extends CombatTracker {
   }
 };
 
+// module/mouse-effects.js
+var EffectsPanel = class extends Application {
+  constructor(...args) {
+    super(...args);
+  }
+  refresh = foundry.utils.debounce(this.render, 100);
+  static get defaultOptions() {
+    return mergeObject(super.defaultOptions, {
+      ...super.defaultOptions,
+      id: "mouseguard-effects-panel",
+      popOut: false,
+      classes: ["mouseguard"],
+      template: "systems/mouseguard/templates/effects/effects-panel.hbs"
+    });
+  }
+  get token() {
+    return canvas.tokens.controlled.at(0)?.document ?? null;
+  }
+  get actor() {
+    return this.token?.actor ?? game.user?.character ?? null;
+  }
+  async getData() {
+    let currentStatus = [];
+    const { actor } = this;
+    if (actor == null)
+      return;
+    const { token } = this;
+    currentStatus = Array.from(actor.statuses);
+    console.log(currentStatus);
+    return { currentStatus };
+  }
+  async refresh(force) {
+    return foundry.utils.debounce(this.render.bind(this, force), 100)();
+  }
+};
+
+// module/svelte/MouseGuardConflictManager.svelte
+var MouseGuardConflictManager = class extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, null, null, safe_not_equal, {});
+  }
+};
+var MouseGuardConflictManager_default = MouseGuardConflictManager;
+
+// module/mouse-conflict-manager.js
+var MouseConflictManager = class extends Application {
+  constructor(...args) {
+    super(...args);
+  }
+  app = null;
+  dataStore = null;
+  refresh = foundry.utils.debounce(this.render, 100);
+  static get defaultOptions() {
+    return mergeObject(super.defaultOptions, {
+      ...super.defaultOptions,
+      id: "mouseguard-conflict-panel",
+      classes: ["mouseguard"],
+      template: "systems/mouseguard/templates/actor-sheetv2.html",
+      width: 850,
+      height: 600
+    });
+  }
+  render(force = false, options = {}) {
+    let sheetData = this.getData();
+    if (this.app !== null) {
+      let states = Application.RENDER_STATES;
+      if (this._state == states.RENDERING || this._state == states.RENDERED) {
+        this.dataStore?.set(sheetData);
+        return;
+      }
+    }
+    this._render(force, options).catch((err) => {
+      err.message = `An error occurred while rendering ${this.constructor.name} ${this.appId}: ${err.message}`;
+      console.error(err);
+      this._state = Application.RENDER_STATES.ERROR;
+    }).then((rendered) => {
+      this.dataStore = writable(sheetData);
+      this.app = new MouseGuardConflictManager_default({
+        target: this.element.find("form").get(0),
+        props: {
+          dataStore: this.dataStore
+        }
+      });
+    });
+    return this;
+  }
+  close(options = {}) {
+    if (this.app != null) {
+      this.app.$destroy();
+      this.app = null;
+      this.dataStore = null;
+    }
+    return super.close(options);
+  }
+};
+
+// module/status-effects.js
+var statusEffects = [
+  {
+    id: "sick",
+    label: "MOUSEGUARD.sick",
+    icon: "systems/mouseguard/assets/icons/sick.svg"
+  },
+  {
+    id: "tired",
+    label: "MOUSEGUARD.tired",
+    icon: "systems/mouseguard/assets/icons/tired.svg"
+  },
+  {
+    id: "hungthurst",
+    label: "MOUSEGUARD.hungthurst",
+    icon: "systems/mouseguard/assets/icons/hungthurst.svg"
+  },
+  {
+    id: "injured",
+    label: "MOUSEGUARD.injured",
+    icon: "systems/mouseguard/assets/icons/injured.svg"
+  },
+  {
+    id: "angry",
+    label: "MOUSEGUARD.angry",
+    icon: "systems/mouseguard/assets/icons/angry.svg"
+  }
+];
+
 // module/mouseguard.js
 Hooks.once("init", async function() {
   console.log(`Initializing MouseGuard MouseGuard System`);
@@ -6197,7 +6325,8 @@ Hooks.once("init", async function() {
     RollMessage,
     updateDisplay,
     MouseDie,
-    MouseRoll
+    MouseRoll,
+    effectPanel: new EffectsPanel()
   };
   CONFIG.Actor.documentClass = MouseGuardActor;
   CONFIG.Item.documentClass = MouseGuardItem;
@@ -6345,6 +6474,17 @@ Hooks.once("ready", async () => {
     tour.start();
     game.user.setFlag("mouseguard", "tourRolls", 1);
   }
+  Hooks.on("controlToken", game.mouseguard.effectPanel.refresh.bind(game.mouseguard.effectPanel, true));
+  for (const hook of [
+    "createActiveEffect",
+    "updateActiveEffect",
+    "deleteActiveEffect"
+  ]) {
+    Hooks.on(hook, function(effect) {
+      if (effect.parent === game.mouseguard.effectPanel.actor)
+        game.mouseguard.effectPanel.refresh(true);
+    });
+  }
 });
 Hooks.on("renderChatMessage", (chatMessage, [html], messageData) => {
   console.log(html);
@@ -6358,6 +6498,12 @@ Hooks.on("renderChatMessage", (chatMessage, [html], messageData) => {
       });
     }
   }
+});
+Hooks.on("canvasReady", () => {
+  game.mouseguard.effectPanel.render(true);
+});
+Hooks.once("setup", () => {
+  CONFIG.statusEffects = statusEffects;
 });
 async function registerTours() {
   try {

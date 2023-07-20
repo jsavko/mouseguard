@@ -327,3 +327,39 @@
     text-align: left;
     padding-left: 15px;
 }
+
+section.mouseguard-effects {
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    filter: drop-shadow(2px 4px 6px black);
+    right: 310px;
+}
+
+section.mouseguard-effects .effect-item {
+    display: flex;
+    justify-content: flex-end;
+    height: var(--visual-active-effects-icon-size);
+    margin-bottom: calc(var(--visual-active-effects-icon-size) / 5);
+}
+
+/* THE ICON */
+section.mouseguard-effects .effect-item .effect-icon {
+    background-size: contain;
+    box-shadow: 0 0 0 1px silver, 0 0 0 2px gray,
+        inset 0 0 4px rgba(0, 0, 0, 0.5);
+    height: 40px;
+    width: 40px;
+    min-width: 40px;
+    position: relative;
+    transition: transform 0.15s;
+}
+
+section.mouseguard-effects .effect-item:hover .effect-icon {
+    transform: scale(1.2);
+    z-index: 100;
+}
+
+section.mouseguard-effects .effect-item .effect-icon.disabled {
+    filter: brightness(0.25) grayscale(1);
+}
