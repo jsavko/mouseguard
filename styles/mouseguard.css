@@ -322,3 +322,8 @@
 .mouse_roll_button {
     flex: 2 1 0;
 }
+
+.mg-cm-head {
+    text-align: left;
+    padding-left: 15px;
+}
