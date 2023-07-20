@@ -5786,7 +5786,6 @@ var MouseSocket = class {
     }
   }
   static async askMoves(data) {
-    ui.combat.renderPopout(true);
     let dlg = await renderTemplate("systems/mouseguard/templates/parts/conflict-move-manager.hbs", data);
     new Dialog({
       title: `Conflict Manager`,
@@ -5931,18 +5930,10 @@ var MouseCombat = class extends Combat {
     }
     return false;
   }
-  getCCPlayer() {
-    let combatant = this.combatants.get(this.getConflictCaptain);
+  getCCPlayerByID(conflictCaptainID) {
+    let combatant = this.combatants.get(conflictCaptainID);
     let actor = game.actors.get(combatant.actorId);
-    let player;
-    Object.keys(actor.ownership).forEach((key) => {
-      if (actor.ownership[key] == 3) {
-        let user = game.users.get(key);
-        if (!user.isGM)
-          player = user;
-      }
-    });
-    return player;
+    return game.users.filter((u) => !u.isGM && actor.testUserPermission(u, "OWNER"))?.[0] ?? game.users.activeGM;
   }
   async askGoal() {
     let CC = this.flags.mouseguard.ConflictCaptain;
@@ -5961,6 +5952,8 @@ var MouseCombat = class extends Combat {
   }
   async askMove() {
     let CC = this.flags.mouseguard.ConflictCaptain;
+    let CC2 = this.flags.mouseguard.ConflictCaptain2;
+    console.log(CC2);
     if (!CC) {
       ui.notifications.error(game.i18n.localize("COMBAT.NeedCC"));
       return false;
@@ -5977,10 +5970,14 @@ var MouseCombat = class extends Combat {
     });
     data.actors = team1;
     data.action = "askMoves";
-    let player = this.getCCPlayer();
+    let player = this.getCCPlayerByID(this.getConflictCaptain);
     await game.socket.emit("system.mouseguard", data, {
       recipients: [player._id]
     });
+    let player2 = this.getCCPlayerByID(this.getConflictCaptainTeam2);
+    if (player2 == "undefined") {
+      data.npc = true;
+    }
     let team2combatants = this.combatants.filter((comb) => comb.team == "2");
     Object.keys(team2combatants).forEach((key) => {
       team2.push({
@@ -5989,8 +5986,9 @@ var MouseCombat = class extends Combat {
       });
     });
     data.actors = team2;
-    data.npc = true;
-    await MouseSocket.askMoves(data);
+    await game.socket.emit("system.mouseguard", data, {
+      recipients: [player2._id]
+    });
   }
   async askNPCMove(data) {
     MouseSocket.askMoves(data);
@@ -6066,6 +6064,7 @@ var MouseCombatTracker = class extends CombatTracker {
             Team = "2";
           if (combatant.team == 0)
             return;
+          console.log(Team);
           if (this.viewed.flags.mouseguard["ConflictCaptain" + Team] == combatant.id) {
             this.viewed.setFlag("mouseguard", "ConflictCaptain" + Team, NaN);
             return combatant.setFlag("mouseguard", "ConflictCaptain", false);

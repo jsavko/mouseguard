@@ -96,7 +96,7 @@ export default class MouseCombatTracker extends CombatTracker {
                     let Team = "";
                     if (combatant.team == 2) Team = "2";
                     if (combatant.team == 0) return;
-
+                    console.log(Team);
                     if (
                         this.viewed.flags.mouseguard[
                             "ConflictCaptain" + Team

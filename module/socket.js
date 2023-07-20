@@ -42,7 +42,7 @@ export default class MouseSocket {
     }
 
     static async askMoves(data) {
-        ui.combat.renderPopout(true);
+        //ui.combat.renderPopout(true);
         let dlg = await renderTemplate(
             "systems/mouseguard/templates/parts/conflict-move-manager.hbs",
             data

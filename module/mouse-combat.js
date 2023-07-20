@@ -87,20 +87,15 @@ export default class MouseCombat extends Combat {
         return false;
     }
 
-    getCCPlayer() {
-        let combatant = this.combatants.get(this.getConflictCaptain);
+    getCCPlayerByID(conflictCaptainID) {
+        let combatant = this.combatants.get(conflictCaptainID);
         let actor = game.actors.get(combatant.actorId);
-        let player;
 
-        // Loop through permisisons looking for not GM
-        Object.keys(actor.ownership).forEach((key) => {
-            if (actor.ownership[key] == 3) {
-                //Check if GM if not it's owner
-                let user = game.users.get(key);
-                if (!user.isGM) player = user;
-            }
-        });
-        return player;
+        return (
+            game.users.filter(
+                (u) => !u.isGM && actor.testUserPermission(u, "OWNER")
+            )?.[0] ?? game.users.activeGM
+        );
     }
 
     async askGoal() {
@@ -132,6 +127,8 @@ export default class MouseCombat extends Combat {
     // Need to refactor to include Captains for both teams
     async askMove() {
         let CC = this.flags.mouseguard.ConflictCaptain;
+        let CC2 = this.flags.mouseguard.ConflictCaptain2;
+        console.log(CC2);
 
         if (!CC) {
             ui.notifications.error(game.i18n.localize("COMBAT.NeedCC"));
@@ -154,12 +151,16 @@ export default class MouseCombat extends Combat {
         data.actors = team1;
         data.action = "askMoves";
 
-        let player = this.getCCPlayer();
+        let player = this.getCCPlayerByID(this.getConflictCaptain);
 
         await game.socket.emit("system.mouseguard", data, {
             recipients: [player._id]
         });
 
+        let player2 = this.getCCPlayerByID(this.getConflictCaptainTeam2);
+        if (player2 == "undefined") {
+            data.npc = true;
+        }
         //Team 2
         let team2combatants = this.combatants.filter(
             (comb) => comb.team == "2"
@@ -173,9 +174,12 @@ export default class MouseCombat extends Combat {
         });
 
         data.actors = team2;
-        data.npc = true;
+        //data.npc = true;
+        await game.socket.emit("system.mouseguard", data, {
+            recipients: [player2._id]
+        });
 
-        await MouseSocket.askMoves(data);
+        //await MouseSocket.askMoves(data);
     }
 
     async askNPCMove(data) {
