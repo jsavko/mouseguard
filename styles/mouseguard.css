@@ -340,7 +340,7 @@ section.mouseguard-effects .effect-item {
     display: flex;
     justify-content: flex-end;
     height: var(--visual-active-effects-icon-size);
-    margin-bottom: calc(var(--visual-active-effects-icon-size) / 5);
+    margin-bottom: 8px;
 }
 
 /* THE ICON */
