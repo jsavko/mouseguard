@@ -5974,7 +5974,6 @@ var MouseCombat = class extends Combat {
   async askMove() {
     let CC = this.flags.mouseguard.ConflictCaptain;
     let CC2 = this.flags.mouseguard.ConflictCaptain2;
-    console.log(CC2);
     if (!CC) {
       ui.notifications.error(game.i18n.localize("COMBAT.NeedCC"));
       return false;
@@ -5996,7 +5995,6 @@ var MouseCombat = class extends Combat {
       recipients: [player._id]
     });
     let player2 = this.getCCPlayerByID(CC2);
-    console.log(player2);
     if (player2 == "undefined") {
       data.npc = true;
     }
