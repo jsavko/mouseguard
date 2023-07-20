@@ -66,8 +66,10 @@ export default class MouseCombat extends Combat {
     }
 
     async startCombat() {
-        let goal = this.flags.mouseguard.goal;
+        let goal = this.flags.mouseguard.goal1;
+        let goal2 = this.flags.mouseguard.goal2;
         let CC = this.flags.mouseguard.ConflictCaptain;
+        let CC2 = this.flags.mouseguard.ConflictCaptain2;
 
         if (!CC) {
             ui.notifications.error(game.i18n.localize("COMBAT.NeedCC"));
@@ -79,7 +81,13 @@ export default class MouseCombat extends Combat {
             return false;
         }
 
-        if (!!goal != false && CC) {
+        if (goal2 == null) {
+            ui.notifications.error(game.i18n.localize("COMBAT.NeedGoal"));
+            this.askGoal();
+            return false;
+        }
+
+        if (!!goal != false && !!goal2 != false && CC && CC2) {
             this.askMove();
             //ui.combat.renderPopout(true)
             return this.update({ round: 1, turn: 0 });
@@ -100,22 +108,35 @@ export default class MouseCombat extends Combat {
 
     async askGoal() {
         let CC = this.flags.mouseguard.ConflictCaptain;
+        let CC2 = this.flags.mouseguard.ConflictCaptain2;
 
         if (!CC) {
-            ui.notifications.error("A Conflict Captain Must be set");
+            ui.notifications.error("A Conflict Captain Must be set for team 1");
             return false;
         }
 
-        let player = this.getCCPlayer();
+        if (!CC2) {
+            ui.notifications.error("A Conflict Captain Must be set for team 2");
+            return false;
+        }
+
+        let player = this.getCCPlayerByID(CC);
         await game.socket.emit(
             "system.mouseguard",
-            { action: "askGoal", combat: this },
+            { action: "askGoal", combat: this, team: "1" },
             { recipients: [player._id] }
+        );
+
+        let player2 = this.getCCPlayerByID(CC2);
+        await game.socket.emit(
+            "system.mouseguard",
+            { action: "askGoal", combat: this, team: "2" },
+            { recipients: [player2._id] }
         );
     }
 
-    async setGoal(goal) {
-        this.setFlag("mouseguard", "goal1", goal).then((content) => {
+    async setGoal(goal, team) {
+        this.setFlag("mouseguard", "goal" + team, goal).then((content) => {
             this.startCombat();
         });
 
@@ -151,13 +172,14 @@ export default class MouseCombat extends Combat {
         data.actors = team1;
         data.action = "askMoves";
 
-        let player = this.getCCPlayerByID(this.getConflictCaptain);
+        let player = this.getCCPlayerByID(CC);
 
         await game.socket.emit("system.mouseguard", data, {
             recipients: [player._id]
         });
 
-        let player2 = this.getCCPlayerByID(this.getConflictCaptainTeam2);
+        let player2 = this.getCCPlayerByID(CC2);
+        console.log(player2);
         if (player2 == "undefined") {
             data.npc = true;
         }

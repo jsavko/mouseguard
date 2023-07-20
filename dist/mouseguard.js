@@ -5767,22 +5767,28 @@ var MouseSocket = class {
         cancel: {
           label: "Cancel"
         }
-      }
+      },
+      default: "ok"
     }).render(true);
   }
   static async goalManager(html, data) {
     let conflictGoal = html.find("#conflict_goal")[0].value;
-    await game.socket.emit("system.mouseguard", {
+    let goalData = {
       action: "setGoal",
       combat: data.combat._id,
-      goal: conflictGoal
-    });
+      goal: conflictGoal,
+      team: data.team
+    };
+    if (game.user.isGM) {
+      this.setGoal(goalData);
+    } else {
+      await game.socket.emit("system.mouseguard", goalData);
+    }
   }
   static async setGoal(data) {
     if (game.user.isGM) {
       let combat = await game.combats.get(data.combat);
-      combat.setGoal(data.goal);
-      combat.setFlag("mouseguard", "goal", data.goal);
+      combat.setGoal(data.goal, data.team);
     }
   }
   static async askMoves(data) {
@@ -5837,7 +5843,7 @@ var MouseSocket = class {
               combat: data.combat,
               data: CombatantData
             };
-            if (data.npc == true) {
+            if (game.user.isGM) {
               moveData.combat = data.combat;
               this.setMoves(moveData);
             } else {
@@ -5848,7 +5854,8 @@ var MouseSocket = class {
         cancel: {
           label: "Cancel"
         }
-      }
+      },
+      default: "ok"
     }).render(true);
   }
   static async moveManger(html, data) {
@@ -5913,8 +5920,10 @@ var MouseCombat = class extends Combat {
     return updateKeys.isSubset(allowedKeys);
   }
   async startCombat() {
-    let goal = this.flags.mouseguard.goal;
+    let goal = this.flags.mouseguard.goal1;
+    let goal2 = this.flags.mouseguard.goal2;
     let CC = this.flags.mouseguard.ConflictCaptain;
+    let CC2 = this.flags.mouseguard.ConflictCaptain2;
     if (!CC) {
       ui.notifications.error(game.i18n.localize("COMBAT.NeedCC"));
       return false;
@@ -5924,7 +5933,12 @@ var MouseCombat = class extends Combat {
       this.askGoal();
       return false;
     }
-    if (!!goal != false && CC) {
+    if (goal2 == null) {
+      ui.notifications.error(game.i18n.localize("COMBAT.NeedGoal"));
+      this.askGoal();
+      return false;
+    }
+    if (!!goal != false && !!goal2 != false && CC && CC2) {
       this.askMove();
       return this.update({ round: 1, turn: 0 });
     }
@@ -5937,15 +5951,22 @@ var MouseCombat = class extends Combat {
   }
   async askGoal() {
     let CC = this.flags.mouseguard.ConflictCaptain;
+    let CC2 = this.flags.mouseguard.ConflictCaptain2;
     if (!CC) {
-      ui.notifications.error("A Conflict Captain Must be set");
+      ui.notifications.error("A Conflict Captain Must be set for team 1");
       return false;
     }
-    let player = this.getCCPlayer();
-    await game.socket.emit("system.mouseguard", { action: "askGoal", combat: this }, { recipients: [player._id] });
+    if (!CC2) {
+      ui.notifications.error("A Conflict Captain Must be set for team 2");
+      return false;
+    }
+    let player = this.getCCPlayerByID(CC);
+    await game.socket.emit("system.mouseguard", { action: "askGoal", combat: this, team: "1" }, { recipients: [player._id] });
+    let player2 = this.getCCPlayerByID(CC2);
+    await game.socket.emit("system.mouseguard", { action: "askGoal", combat: this, team: "2" }, { recipients: [player2._id] });
   }
-  async setGoal(goal) {
-    this.setFlag("mouseguard", "goal1", goal).then((content) => {
+  async setGoal(goal, team) {
+    this.setFlag("mouseguard", "goal" + team, goal).then((content) => {
       this.startCombat();
     });
     return true;
@@ -5970,11 +5991,12 @@ var MouseCombat = class extends Combat {
     });
     data.actors = team1;
     data.action = "askMoves";
-    let player = this.getCCPlayerByID(this.getConflictCaptain);
+    let player = this.getCCPlayerByID(CC);
     await game.socket.emit("system.mouseguard", data, {
       recipients: [player._id]
     });
-    let player2 = this.getCCPlayerByID(this.getConflictCaptainTeam2);
+    let player2 = this.getCCPlayerByID(CC2);
+    console.log(player2);
     if (player2 == "undefined") {
       data.npc = true;
     }

@@ -19,25 +19,33 @@ export default class MouseSocket {
                 cancel: {
                     label: "Cancel"
                 }
-            }
+            },
+            default: "ok"
         }).render(true);
     }
 
     static async goalManager(html, data) {
         let conflictGoal = html.find("#conflict_goal")[0].value;
 
-        await game.socket.emit("system.mouseguard", {
+        let goalData = {
             action: "setGoal",
             combat: data.combat._id,
-            goal: conflictGoal
-        });
+            goal: conflictGoal,
+            team: data.team
+        };
+
+        if (game.user.isGM) {
+            this.setGoal(goalData);
+        } else {
+            await game.socket.emit("system.mouseguard", goalData);
+        }
     }
 
     static async setGoal(data) {
         if (game.user.isGM) {
             let combat = await game.combats.get(data.combat);
-            combat.setGoal(data.goal);
-            combat.setFlag("mouseguard", "goal", data.goal);
+            combat.setGoal(data.goal, data.team);
+            //combat.setFlag("mouseguard", "goal", data.goal);
         }
     }
 
@@ -101,7 +109,7 @@ export default class MouseSocket {
                             data: CombatantData
                         };
 
-                        if (data.npc == true) {
+                        if (game.user.isGM) {
                             moveData.combat = data.combat;
                             this.setMoves(moveData);
                         } else {
@@ -115,7 +123,8 @@ export default class MouseSocket {
                 cancel: {
                     label: "Cancel"
                 }
-            }
+            },
+            default: "ok"
         }).render(true);
     }
 
