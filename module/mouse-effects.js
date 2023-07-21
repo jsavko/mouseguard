@@ -1,7 +1,7 @@
 export class EffectsPanel extends Application {
     constructor(...args) {
         super(...args);
-        
+
         //this.ConflictCaptain = false;
         //this._initialSidebarWidth = ui.sidebar.element.outerWidth();
     }
@@ -37,7 +37,6 @@ export class EffectsPanel extends Application {
         const { token } = this;
         //const { effects } = actor.itemTypes.effect;
         currentStatus = Array.from(actor.statuses);
-        console.log(currentStatus);
         return { currentStatus };
     }
 

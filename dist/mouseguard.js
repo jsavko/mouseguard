@@ -6215,7 +6215,6 @@ var EffectsPanel = class extends Application {
       return;
     const { token } = this;
     currentStatus = Array.from(actor.statuses);
-    console.log(currentStatus);
     return { currentStatus };
   }
   async refresh(force) {
@@ -6487,7 +6486,6 @@ Hooks.once("ready", async () => {
   }
 });
 Hooks.on("renderChatMessage", (chatMessage, [html], messageData) => {
-  console.log(html);
   if (messageData.message.flags?.mouseguard?.unflipped) {
     html.querySelector("img").src = "systems/mouseguard/assets/deck/CardBack.webp";
     if (game.user.isGM) {

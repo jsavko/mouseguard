@@ -279,7 +279,6 @@ Hooks.once("ready", async () => {
 });
 
 Hooks.on("renderChatMessage", (chatMessage, [html], messageData) => {
-    console.log(html);
     if (messageData.message.flags?.mouseguard?.unflipped) {
         html.querySelector("img").src =
             "systems/mouseguard/assets/deck/CardBack.webp";
