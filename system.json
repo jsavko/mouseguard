@@ -4,8 +4,8 @@
     "description": "A system for playing the Mouse Guard RPG in Foundry VTT.",
     "version": "0.2.4",
     "compatibility": {
-        "minimum": 10,
-        "verified": 10,
+        "minimum": 11,
+        "verified": 11,
         "maximum": 11
     },
     "authors": [
