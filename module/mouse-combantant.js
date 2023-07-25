@@ -28,12 +28,20 @@ export default class MouseCombatant extends Combatant {
         return this.getFlag("mouseguard", "ConflictCaptain");
     }
 
+    get team() {
+        return this.getFlag("mouseguard", "Team");
+    }
+
     async setConflictCaptain(value) {
         return this.setFlag("mouseguard", "ConflictCaptain", value);
     }
 
     async SetMove(move) {
         this.setFlag("mouseguard", "Moves", move);
+    }
+
+    async setTeam(value) {
+        return this.setFlag("mouseguard", "Team", value);
     }
 
     async _preCreate(data, options, user) {
@@ -47,7 +55,8 @@ export default class MouseCombatant extends Combatant {
             flags: {
                 mouseguard: {
                     ConflictCaptain: false,
-                    Moves: []
+                    Moves: [],
+                    Team: 0
                 }
             }
         });
@@ -65,8 +74,9 @@ export default class MouseCombatant extends Combatant {
         var content = await renderTemplate(template, data);
 
         let chatData = {
-            user: game.user._id,
-            speaker: ChatMessage.getSpeaker({ actor: data.actor })
+            user: game.user.id,
+            speaker: ChatMessage.getSpeaker({ actor: data.actor }),
+            flags: { "mouseguard.unflipped": true }
         };
         chatData.content = content;
         ChatMessage.create(chatData);

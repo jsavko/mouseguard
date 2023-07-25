@@ -81,16 +81,29 @@
     "MOUSEGUARD.Nature": "Nature",
 
     "MOUSEGUARD.Conditions": "Conditions",
-    "MOUSEGUARD.HungThurst": "Hungry, Thursty",
-    "MOUSEGUARD.HungThurstSub": "-1 to disposition to any conflict.",
-    "MOUSEGUARD.Angry": "Angry (Ob 2 will)",
-    "MOUSEGUARD.AngrySub": "-1 to disposition to any conflict that uses Will as its base.",
-    "MOUSEGUARD.Tired": "Tired (Ob 3 Health)",
-    "MOUSEGUARD.TiredSub": "-1 to disposition to any conflict",
-    "MOUSEGUARD.Injured": "Injured (Ob 4 Health)",
-    "MOUSEGUARD.InjuredSub": "-1D to skills, Nature, WIll and Health (but not recovery)",
-    "MOUSEGUARD.Sick": "Sick (Ob 4 Will)",
-    "MOUSEGUARD.SickSub": "-1D to skills, Nature, WIll and Health (but not recovery)",
+    "MOUSEGUARD.hungthurst": "Hungry, Thursty",
+    "MOUSEGUARD.hungthurstSub": "-1 to disposition to any conflict.",
+    "MOUSEGUARD.hungthurstToolTip": "Hungry, Thursty: -1 to disposition to any conflict.",
+
+    "MOUSEGUARD.angry": "Angry",
+    "MOUSEGUARD.angryCheck": "(Ob 2 will)",
+    "MOUSEGUARD.angrySub": "-1 to disposition to any conflict that uses Will as its base.",
+    "MOUSEGUARD.angryToolTip": "Angry: (Ob 2 will) -1 to disposition to any conflict that uses Will as its base.",
+
+    "MOUSEGUARD.tired": "Tired",
+    "MOUSEGUARD.tiredCheck": "(Ob 3 Health)",
+    "MOUSEGUARD.tiredSub": "-1 to disposition to any conflict",
+    "MOUSEGUARD.tiredToolTip": "Tired: (Ob 3 Health) -1 to disposition to any conflict",
+
+    "MOUSEGUARD.injured": "Injured",
+    "MOUSEGUARD.injuredCheck": "(Ob 4 Health)",
+    "MOUSEGUARD.injuredSub": "-1D to skills, Nature, Will and Health (but not recovery)",
+    "MOUSEGUARD.injuredToolTip": "Injured: (Ob 4 Health) -1D to skills, Nature, Will and Health (but not recovery)",
+
+    "MOUSEGUARD.sick": "Sick",
+    "MOUSEGUARD.sickCheck": "(Ob 4 Will)",
+    "MOUSEGUARD.sickSub": "-1D to skills, Nature, WIll and Health (but not recovery)",
+    "MOUSEGUARD.sickToolTip": "Sick: (Ob 4 Will) -1D to skills, Nature, WIll and Health (but not recovery)",
 
     "MOUSEGUARD.Bio": "Biography",
     "MOUSEGUARD.Wises": "Wises",
@@ -147,9 +160,13 @@
     "COMBAT.NeedCC": "A Conflict Captain Must Be Set.",
     "COMBAT.NeedGoal": "A Goal must be defined to start a combat. Sending Goal Request to Conflict Captain.",
     "COMBAT.NoGoal": "Goal: Not Set",
+    "COMBAT.CCERROR": "A Conflict Captain may not switch teams.",
+    "COMBAT.Team1": "Team 1",
+    "COMBAT.Team2": "Team 2",
+    "COMBAT.Team0": "Unassigned Combatantants",
 
-    "ACTOR.TypeCharacter": "Character",
-    "ACTOR.TypeMouse": "Mouse",
-    "ACTOR.TypeWeasel": "Weasel",
-    "ACTOR.TypeAnimal": "Animal"
+    "TYPES.Actor.character": "Character",
+    "TYPES.Actor.mouse": "Mouse",
+    "TYPES.Actor.weasel": "Weasel",
+    "TYPES.Actor.animal": "Animal"
 }

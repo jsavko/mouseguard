@@ -18,6 +18,9 @@ import MouseCombat from "./mouse-combat.js";
 import MouseCombatTracker from "./mouse-combat-tracker.js";
 import MouseSocket from "./socket.js";
 //import MouseCombatModal from "./mouse-combat-modal.js";
+import { EffectsPanel } from "./mouse-effects.js";
+import { MouseConflictManager } from "./mouse-conflict-manager.js";
+import { statusEffects } from "./status-effects.js";
 
 /* -------------------------------------------- */
 /*  Foundry VTT Initialization                  */
@@ -44,7 +47,8 @@ Hooks.once("init", async function () {
         RollMessage,
         updateDisplay,
         MouseDie,
-        MouseRoll
+        MouseRoll,
+        effectPanel: new EffectsPanel()
     };
 
     // Define custom Entity classes
@@ -151,6 +155,14 @@ Hooks.once("init", async function () {
     await registerTours();
 });
 
+//                labels: [
+//    "systems/mouseguard/assets/dice/snake.png",
+//    "systems/mouseguard/assets/dice/snake.png",
+//    "systems/mouseguard/assets/dice/snake.png",
+//    "systems/mouseguard/assets/dice/sword.png",
+//    "systems/mouseguard/assets/dice/sword.png",
+//    "systems/mouseguard/assets/dice/axe.png"
+//],
 Hooks.once("diceSoNiceReady", (dice3d) => {
     let dicetheme = "mouseguard";
     if (!dicetheme || dicetheme == "mouseguard") {
@@ -245,6 +257,58 @@ Hooks.once("ready", async () => {
         tour.start();
         game.user.setFlag("mouseguard", "tourRolls", 1);
     }
+
+    Hooks.on(
+        "controlToken",
+        game.mouseguard.effectPanel.refresh.bind(
+            game.mouseguard.effectPanel,
+            true
+        )
+    );
+
+    for (const hook of [
+        "createActiveEffect",
+        "updateActiveEffect",
+        "deleteActiveEffect"
+    ]) {
+        Hooks.on(hook, function (effect) {
+            if (effect.parent === game.mouseguard.effectPanel.actor)
+                game.mouseguard.effectPanel.refresh(true);
+        });
+    }
+});
+
+Hooks.on("renderChatMessage", (chatMessage, [html], messageData) => {
+    if (messageData.message.flags?.mouseguard?.unflipped) {
+        html.querySelector("img").src =
+            "systems/mouseguard/assets/deck/CardBack.webp";
+
+        if (game.user.isGM) {
+            html.querySelector(".action-move").insertAdjacentHTML(
+                "beforeend",
+                ' <button id="reveal-button" type="button">Reveal Card</button> '
+            );
+
+            html.querySelector("#reveal-button").addEventListener(
+                "click",
+                (event) => {
+                    let message = game.messages.get(
+                        event.target.closest("li").dataset.messageId
+                    );
+                    message.setFlag("mouseguard", "unflipped", false);
+                }
+            );
+        }
+    }
+});
+
+Hooks.on("canvasReady", () => {
+    // Effect Panel singleton application
+    game.mouseguard.effectPanel.render(true);
+});
+
+Hooks.once("setup", () => {
+    CONFIG.statusEffects = statusEffects;
 });
 
 async function registerTours() {
@@ -274,6 +338,7 @@ function updateDisplay(count) {
 
     $(".mouse_dice_button.subtract").prop("disabled", !count);
     $(".mouse_roll_button").prop("disabled", !count);
+    if (!count) game.mouseguard.RollMessage = "";
 }
 
 Handlebars.registerHelper("times", function (n, block) {
@@ -290,4 +355,8 @@ Handlebars.registerHelper("concat", function () {
         }
     }
     return outStr;
+});
+
+Handlebars.registerHelper("ifEquals", function (arg1, arg2, options) {
+    return arg1 == arg2 ? options.fn(this) : options.inverse(this);
 });

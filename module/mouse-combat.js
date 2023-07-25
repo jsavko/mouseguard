@@ -17,20 +17,31 @@ export default class MouseCombat extends Combat {
     /** @override */
     getData() {
         const context = super.getData();
-
         return context;
     }
 
-    get getGoal() {
-        return this.getFlag("mouseguard", "ConflictCaptain");
+    get getGoal1() {
+        return this.getFlag("mouseguard", "goal1");
+    }
+
+    get getGoal2() {
+        return this.getFlag("mouseguard", "goal2");
     }
 
     get getConflictCaptain() {
         return this.getFlag("mouseguard", "ConflictCaptain");
     }
 
+    get getConflictCaptainTeam2() {
+        return this.getFlag("mouseguard", "ConflictCaptain2");
+    }
+
     async setConflictCaptain(value) {
         return this.setFlag("mouseguard", "ConflictCaptain", value);
+    }
+
+    async setConflictCaptainTeam2(value) {
+        return this.setFlag("mouseguard", "ConflictCaptain2", value);
     }
 
     async _preCreate(data, options, user) {
@@ -39,7 +50,11 @@ export default class MouseCombat extends Combat {
             flags: {
                 mouseguard: {
                     ConflictCaptain: null,
-                    goal: null
+                    ConflictCaptain2: null,
+                    goal1: null,
+                    goal2: null,
+                    team1Move: null,
+                    team2Move: null
                 }
             }
         });
@@ -53,8 +68,10 @@ export default class MouseCombat extends Combat {
     }
 
     async startCombat() {
-        let goal = this.flags.mouseguard.goal;
+        let goal = this.flags.mouseguard.goal1;
+        let goal2 = this.flags.mouseguard.goal2;
         let CC = this.flags.mouseguard.ConflictCaptain;
+        let CC2 = this.flags.mouseguard.ConflictCaptain2;
 
         if (!CC) {
             ui.notifications.error(game.i18n.localize("COMBAT.NeedCC"));
@@ -66,7 +83,13 @@ export default class MouseCombat extends Combat {
             return false;
         }
 
-        if (!!goal != false && CC) {
+        if (goal2 == null) {
+            ui.notifications.error(game.i18n.localize("COMBAT.NeedGoal"));
+            this.askGoal();
+            return false;
+        }
+
+        if (!!goal != false && !!goal2 != false && CC && CC2) {
             this.askMove();
             //ui.combat.renderPopout(true)
             return this.update({ round: 1, turn: 0 });
@@ -74,48 +97,62 @@ export default class MouseCombat extends Combat {
         return false;
     }
 
-    getCCPlayer() {
-        let combatant = this.combatants.get(this.getConflictCaptain);
+    getCCPlayerByID(conflictCaptainID) {
+        let combatant = this.combatants.get(conflictCaptainID);
         let actor = game.actors.get(combatant.actorId);
-        let player;
 
-        // Loop through permisisons looking for not GM
-        Object.keys(actor.ownership).forEach((key) => {
-            if (actor.ownership[key] == 3) {
-                //Check if GM if not it's owner
-                let user = game.users.get(key);
-                if (!user.isGM) player = user;
-            }
-        });
-        return player;
+        return (
+            game.users.filter(
+                (u) => !u.isGM && actor.testUserPermission(u, "OWNER")
+            )?.[0] ?? game.users.activeGM
+        );
     }
 
     async askGoal() {
         let CC = this.flags.mouseguard.ConflictCaptain;
+        let CC2 = this.flags.mouseguard.ConflictCaptain2;
 
         if (!CC) {
-            ui.notifications.error("A Conflict Captain Must be set");
+            ui.notifications.error("A Conflict Captain Must be set for team 1");
             return false;
         }
 
-        let player = this.getCCPlayer();
+        if (!CC2) {
+            ui.notifications.error("A Conflict Captain Must be set for team 2");
+            return false;
+        }
+
+        let player = this.getCCPlayerByID(CC);
         await game.socket.emit(
             "system.mouseguard",
-            { action: "askGoal", combat: this },
+            { action: "askGoal", combat: this, team: "1" },
             { recipients: [player._id] }
+        );
+
+        let player2 = this.getCCPlayerByID(CC2);
+        await game.socket.emit(
+            "system.mouseguard",
+            { action: "askGoal", combat: this, team: "2" },
+            { recipients: [player2._id] }
         );
     }
 
-    async setGoal(goal) {
-        this.setFlag("mouseguard", "goal", goal).then((content) => {
+    async setGoal(goal, team) {
+        this.setFlag("mouseguard", "goal" + team, goal).then((content) => {
             this.startCombat();
         });
 
         return true;
     }
 
+    // Create a list of combatants for each team then send the conflict captains the modal for moves
+    // Filter by combatant.team
+    // Need to refactor to include Captains for both teams
     async askMove() {
         let CC = this.flags.mouseguard.ConflictCaptain;
+        let CC2 = this.flags.mouseguard.ConflictCaptain2;
+
+        //console.log(CC2);
 
         if (!CC) {
             ui.notifications.error(game.i18n.localize("COMBAT.NeedCC"));
@@ -123,43 +160,50 @@ export default class MouseCombat extends Combat {
         }
 
         let data = { combat: this };
-        let actors = [];
-        let npc = [];
-        //combat.combatants.filter( comb => comb.actor.type == "type" )
-        let combatants = this.combatants.filter(
-            (comb) => comb.actor.type == "character"
-        );
+        let team1 = [];
+        let team2 = [];
+
+        //Team 1
+        let combatants = this.combatants.filter((comb) => comb.team == "1");
         Object.keys(combatants).forEach((key) => {
-            actors.push({
+            team1.push({
                 combatant: combatants[key].id,
                 name: combatants[key].token.name
             });
         });
 
-        data.actors = actors;
+        data.actors = team1;
         data.action = "askMoves";
 
-        let player = this.getCCPlayer();
+        let player = this.getCCPlayerByID(CC);
 
         await game.socket.emit("system.mouseguard", data, {
             recipients: [player._id]
         });
 
-        let npccombatants = this.combatants.filter(
-            (comb) => comb.actor.type != "character"
+        let player2 = this.getCCPlayerByID(CC2);
+        if (player2 == "undefined") {
+            data.npc = true;
+        }
+        //Team 2
+        let team2combatants = this.combatants.filter(
+            (comb) => comb.team == "2"
         );
 
-        Object.keys(npccombatants).forEach((key) => {
-            npc.push({
-                combatant: npccombatants[key].id,
-                name: npccombatants[key].token.name
+        Object.keys(team2combatants).forEach((key) => {
+            team2.push({
+                combatant: team2combatants[key].id,
+                name: team2combatants[key].token.name
             });
         });
 
-        data.actors = npc;
-        data.npc = true;
+        data.actors = team2;
+        //data.npc = true;
+        await game.socket.emit("system.mouseguard", data, {
+            recipients: [player2._id]
+        });
 
-        await MouseSocket.askMoves(data);
+        //await MouseSocket.askMoves(data);
     }
 
     async askNPCMove(data) {
@@ -168,33 +212,7 @@ export default class MouseCombat extends Combat {
     }
 
     async nextRound() {
-        let turn = 0;
-        if (this.settings.skipDefeated) {
-            turn = this.turns.findIndex((t) => {
-                return !(
-                    t.defeated ||
-                    t.actor?.effects.find(
-                        (e) =>
-                            e.getFlag("core", "statusId") ===
-                            CONFIG.Combat.defeatedStatusId
-                    )
-                );
-            });
-            if (turn === -1) {
-                ui.notifications.warn("COMBAT.NoneRemaining", {
-                    localize: true
-                });
-                turn = 0;
-            }
-        }
-        let advanceTime =
-            Math.max(this.turns.length - this.data.turn, 1) *
-            CONFIG.time.turnTime;
-        advanceTime += CONFIG.time.roundTime;
         this.askMove();
-        return this.update(
-            { round: this.round + 1, turn: turn },
-            { advanceTime }
-        );
+        super.nextRound();
     }
 }

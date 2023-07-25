@@ -5582,7 +5582,10 @@ var MouseGuardNPCActorSheet = class extends ActorSheet {
 var preloadHandlebarsTemplates = async function() {
   const templatePaths = [
     "systems/mouseguard/templates/parts/sheet-attributes.html",
-    "systems/mouseguard/templates/parts/sheet-groups.html"
+    "systems/mouseguard/templates/parts/sheet-groups.html",
+    "systems/mouseguard/templates/sidebar/combatant.html",
+    "systems/mouseguard/templates/effects/effects-panel.hbs",
+    "systems/mouseguard/templates/effects/effect.hbs"
   ];
   return loadTemplates(templatePaths);
 };
@@ -5702,11 +5705,17 @@ var MouseCombatant = class extends Combatant {
   get ConflictCaptain() {
     return this.getFlag("mouseguard", "ConflictCaptain");
   }
+  get team() {
+    return this.getFlag("mouseguard", "Team");
+  }
   async setConflictCaptain(value) {
     return this.setFlag("mouseguard", "ConflictCaptain", value);
   }
   async SetMove(move) {
     this.setFlag("mouseguard", "Moves", move);
+  }
+  async setTeam(value) {
+    return this.setFlag("mouseguard", "Team", value);
   }
   async _preCreate(data, options, user) {
     await super._preCreate(data, options, user);
@@ -5719,7 +5728,8 @@ var MouseCombatant = class extends Combatant {
       flags: {
         mouseguard: {
           ConflictCaptain: false,
-          Moves: []
+          Moves: [],
+          Team: 0
         }
       }
     });
@@ -5731,8 +5741,9 @@ var MouseCombatant = class extends Combatant {
     let data = { actor: [this.actor][0], move: theMove[0].move };
     var content = await renderTemplate(template, data);
     let chatData = {
-      user: game.user._id,
-      speaker: ChatMessage.getSpeaker({ actor: data.actor })
+      user: game.user.id,
+      speaker: ChatMessage.getSpeaker({ actor: data.actor }),
+      flags: { "mouseguard.unflipped": true }
     };
     chatData.content = content;
     ChatMessage.create(chatData);
@@ -5759,26 +5770,31 @@ var MouseSocket = class {
         cancel: {
           label: "Cancel"
         }
-      }
+      },
+      default: "ok"
     }).render(true);
   }
   static async goalManager(html, data) {
     let conflictGoal = html.find("#conflict_goal")[0].value;
-    await game.socket.emit("system.mouseguard", {
+    let goalData = {
       action: "setGoal",
       combat: data.combat._id,
-      goal: conflictGoal
-    });
+      goal: conflictGoal,
+      team: data.team
+    };
+    if (game.user.isGM) {
+      this.setGoal(goalData);
+    } else {
+      await game.socket.emit("system.mouseguard", goalData);
+    }
   }
   static async setGoal(data) {
     if (game.user.isGM) {
       let combat = await game.combats.get(data.combat);
-      combat.setGoal(data.goal);
-      combat.setFlag("mouseguard", "goal", data.goal);
+      combat.setGoal(data.goal, data.team);
     }
   }
   static async askMoves(data) {
-    ui.combat.renderPopout(true);
     let dlg = await renderTemplate("systems/mouseguard/templates/parts/conflict-move-manager.hbs", data);
     new Dialog({
       title: `Conflict Manager`,
@@ -5830,7 +5846,7 @@ var MouseSocket = class {
               combat: data.combat,
               data: CombatantData
             };
-            if (data.npc == true) {
+            if (game.user.isGM) {
               moveData.combat = data.combat;
               this.setMoves(moveData);
             } else {
@@ -5841,7 +5857,8 @@ var MouseSocket = class {
         cancel: {
           label: "Cancel"
         }
-      }
+      },
+      default: "ok"
     }).render(true);
   }
   static async moveManger(html, data) {
@@ -5867,14 +5884,23 @@ var MouseCombat = class extends Combat {
     const context = super.getData();
     return context;
   }
-  get getGoal() {
-    return this.getFlag("mouseguard", "ConflictCaptain");
+  get getGoal1() {
+    return this.getFlag("mouseguard", "goal1");
+  }
+  get getGoal2() {
+    return this.getFlag("mouseguard", "goal2");
   }
   get getConflictCaptain() {
     return this.getFlag("mouseguard", "ConflictCaptain");
   }
+  get getConflictCaptainTeam2() {
+    return this.getFlag("mouseguard", "ConflictCaptain2");
+  }
   async setConflictCaptain(value) {
     return this.setFlag("mouseguard", "ConflictCaptain", value);
+  }
+  async setConflictCaptainTeam2(value) {
+    return this.setFlag("mouseguard", "ConflictCaptain2", value);
   }
   async _preCreate(data, options, user) {
     await super._preCreate(data, options, user);
@@ -5882,7 +5908,11 @@ var MouseCombat = class extends Combat {
       flags: {
         mouseguard: {
           ConflictCaptain: null,
-          goal: null
+          ConflictCaptain2: null,
+          goal1: null,
+          goal2: null,
+          team1Move: null,
+          team2Move: null
         }
       }
     });
@@ -5895,8 +5925,10 @@ var MouseCombat = class extends Combat {
     return updateKeys.isSubset(allowedKeys);
   }
   async startCombat() {
-    let goal = this.flags.mouseguard.goal;
+    let goal = this.flags.mouseguard.goal1;
+    let goal2 = this.flags.mouseguard.goal2;
     let CC = this.flags.mouseguard.ConflictCaptain;
+    let CC2 = this.flags.mouseguard.ConflictCaptain2;
     if (!CC) {
       ui.notifications.error(game.i18n.localize("COMBAT.NeedCC"));
       return false;
@@ -5906,93 +5938,89 @@ var MouseCombat = class extends Combat {
       this.askGoal();
       return false;
     }
-    if (!!goal != false && CC) {
+    if (goal2 == null) {
+      ui.notifications.error(game.i18n.localize("COMBAT.NeedGoal"));
+      this.askGoal();
+      return false;
+    }
+    if (!!goal != false && !!goal2 != false && CC && CC2) {
       this.askMove();
       return this.update({ round: 1, turn: 0 });
     }
     return false;
   }
-  getCCPlayer() {
-    let combatant = this.combatants.get(this.getConflictCaptain);
+  getCCPlayerByID(conflictCaptainID) {
+    let combatant = this.combatants.get(conflictCaptainID);
     let actor = game.actors.get(combatant.actorId);
-    let player;
-    Object.keys(actor.ownership).forEach((key) => {
-      if (actor.ownership[key] == 3) {
-        let user = game.users.get(key);
-        if (!user.isGM)
-          player = user;
-      }
-    });
-    return player;
+    return game.users.filter((u) => !u.isGM && actor.testUserPermission(u, "OWNER"))?.[0] ?? game.users.activeGM;
   }
   async askGoal() {
     let CC = this.flags.mouseguard.ConflictCaptain;
+    let CC2 = this.flags.mouseguard.ConflictCaptain2;
     if (!CC) {
-      ui.notifications.error("A Conflict Captain Must be set");
+      ui.notifications.error("A Conflict Captain Must be set for team 1");
       return false;
     }
-    let player = this.getCCPlayer();
-    await game.socket.emit("system.mouseguard", { action: "askGoal", combat: this }, { recipients: [player._id] });
+    if (!CC2) {
+      ui.notifications.error("A Conflict Captain Must be set for team 2");
+      return false;
+    }
+    let player = this.getCCPlayerByID(CC);
+    await game.socket.emit("system.mouseguard", { action: "askGoal", combat: this, team: "1" }, { recipients: [player._id] });
+    let player2 = this.getCCPlayerByID(CC2);
+    await game.socket.emit("system.mouseguard", { action: "askGoal", combat: this, team: "2" }, { recipients: [player2._id] });
   }
-  async setGoal(goal) {
-    this.setFlag("mouseguard", "goal", goal).then((content) => {
+  async setGoal(goal, team) {
+    this.setFlag("mouseguard", "goal" + team, goal).then((content) => {
       this.startCombat();
     });
     return true;
   }
   async askMove() {
     let CC = this.flags.mouseguard.ConflictCaptain;
+    let CC2 = this.flags.mouseguard.ConflictCaptain2;
     if (!CC) {
       ui.notifications.error(game.i18n.localize("COMBAT.NeedCC"));
       return false;
     }
     let data = { combat: this };
-    let actors = [];
-    let npc = [];
-    let combatants = this.combatants.filter((comb) => comb.actor.type == "character");
+    let team1 = [];
+    let team2 = [];
+    let combatants = this.combatants.filter((comb) => comb.team == "1");
     Object.keys(combatants).forEach((key) => {
-      actors.push({
+      team1.push({
         combatant: combatants[key].id,
         name: combatants[key].token.name
       });
     });
-    data.actors = actors;
+    data.actors = team1;
     data.action = "askMoves";
-    let player = this.getCCPlayer();
+    let player = this.getCCPlayerByID(CC);
     await game.socket.emit("system.mouseguard", data, {
       recipients: [player._id]
     });
-    let npccombatants = this.combatants.filter((comb) => comb.actor.type != "character");
-    Object.keys(npccombatants).forEach((key) => {
-      npc.push({
-        combatant: npccombatants[key].id,
-        name: npccombatants[key].token.name
+    let player2 = this.getCCPlayerByID(CC2);
+    if (player2 == "undefined") {
+      data.npc = true;
+    }
+    let team2combatants = this.combatants.filter((comb) => comb.team == "2");
+    Object.keys(team2combatants).forEach((key) => {
+      team2.push({
+        combatant: team2combatants[key].id,
+        name: team2combatants[key].token.name
       });
     });
-    data.actors = npc;
-    data.npc = true;
-    await MouseSocket.askMoves(data);
+    data.actors = team2;
+    await game.socket.emit("system.mouseguard", data, {
+      recipients: [player2._id]
+    });
   }
   async askNPCMove(data) {
     MouseSocket.askMoves(data);
   }
   async nextRound() {
-    let turn = 0;
-    if (this.settings.skipDefeated) {
-      turn = this.turns.findIndex((t) => {
-        return !(t.defeated || t.actor?.effects.find((e) => e.getFlag("core", "statusId") === CONFIG.Combat.defeatedStatusId));
-      });
-      if (turn === -1) {
-        ui.notifications.warn("COMBAT.NoneRemaining", {
-          localize: true
-        });
-        turn = 0;
-      }
-    }
-    let advanceTime = Math.max(this.turns.length - this.data.turn, 1) * CONFIG.time.turnTime;
-    advanceTime += CONFIG.time.roundTime;
     this.askMove();
-    return this.update({ round: this.round + 1, turn }, { advanceTime });
+    super.nextRound();
   }
 };
 
@@ -6006,8 +6034,48 @@ var MouseCombatTracker = class extends CombatTracker {
       id: "combat",
       template: "systems/mouseguard/templates/sidebar/combat-tracker.html",
       title: "COMBAT.SidebarTitle",
-      scrollY: [".directory-list"]
+      scrollY: [".directory-list"],
+      dragDrop: [
+        {
+          dragSelector: "li.combatant.actor.directory-item.flexrow",
+          dropSelector: "li[data-team]"
+        }
+      ]
     });
+  }
+  _canDragStart(ev) {
+    if (game.user.isGM)
+      return true;
+    return false;
+  }
+  _canDragDrop(ev) {
+    if (game.user.isGM)
+      return true;
+    return false;
+  }
+  _onDragDrop(ev) {
+    super._onDrop(ev);
+  }
+  async _onDrop(ev) {
+    super._onDrop(ev);
+    if (JSON.parse(ev.dataTransfer?.getData("text/plain")).id == "0") {
+      return false;
+    }
+    let dropped_id = JSON.parse(ev.dataTransfer?.getData("text/plain")).id;
+    let target = ev.target.closest("li").dataset.team;
+    await this.viewed.combatants.get(dropped_id).setTeam(target);
+  }
+  _onDragStart(ev) {
+    let valid = this.viewed.combatants.get(ev.target.dataset.combatantId);
+    if (valid.flags.mouseguard.ConflictCaptain) {
+      ui.notifications.error(game.i18n.localize("COMBAT.CCERROR"));
+      ev.dataTransfer.setData("text/plain", JSON.stringify({
+        id: "0"
+      }));
+      return false;
+    } else {
+      ev.dataTransfer.setData("text/plain", JSON.stringify({ id: ev.target.dataset.combatantId }));
+    }
   }
   _getEntryContextOptions() {
     return [
@@ -6016,13 +6084,19 @@ var MouseCombatTracker = class extends CombatTracker {
         icon: '<i class="fas fa-crown"></i>',
         callback: (li) => {
           const combatant = this.viewed.combatants.get(li.data("combatant-id"));
-          if (this.viewed.flags.mouseguard.ConflictCaptain == combatant.id) {
-            this.viewed.setFlag("mouseguard", "ConflictCaptain", NaN);
+          let Team = "";
+          if (combatant.team == 2)
+            Team = "2";
+          if (combatant.team == 0)
+            return;
+          console.log(Team);
+          if (this.viewed.flags.mouseguard["ConflictCaptain" + Team] == combatant.id) {
+            this.viewed.setFlag("mouseguard", "ConflictCaptain" + Team, NaN);
             return combatant.setFlag("mouseguard", "ConflictCaptain", false);
           }
-          if (!!this.viewed.flags.mouseguard.ConflictCaptain == false) {
+          if (!!this.viewed.flags.mouseguard["ConflictCaptain" + Team] == false) {
             if (combatant) {
-              this.viewed.setFlag("mouseguard", "ConflictCaptain", li.data("combatant-id"));
+              this.viewed.setFlag("mouseguard", "ConflictCaptain" + Team, li.data("combatant-id"));
               return combatant.setFlag("mouseguard", "ConflictCaptain", true);
             }
           } else {
@@ -6113,6 +6187,131 @@ var MouseCombatTracker = class extends CombatTracker {
   }
 };
 
+// module/mouse-effects.js
+var EffectsPanel = class extends Application {
+  constructor(...args) {
+    super(...args);
+  }
+  refresh = foundry.utils.debounce(this.render, 100);
+  static get defaultOptions() {
+    return mergeObject(super.defaultOptions, {
+      ...super.defaultOptions,
+      id: "mouseguard-effects-panel",
+      popOut: false,
+      classes: ["mouseguard"],
+      template: "systems/mouseguard/templates/effects/effects-panel.hbs"
+    });
+  }
+  get token() {
+    return canvas.tokens.controlled.at(0)?.document ?? null;
+  }
+  get actor() {
+    return this.token?.actor ?? game.user?.character ?? null;
+  }
+  async getData() {
+    let currentStatus = [];
+    const { actor } = this;
+    if (actor == null)
+      return;
+    const { token } = this;
+    currentStatus = Array.from(actor.statuses);
+    return { currentStatus };
+  }
+  async refresh(force) {
+    return foundry.utils.debounce(this.render.bind(this, force), 100)();
+  }
+};
+
+// module/svelte/MouseGuardConflictManager.svelte
+var MouseGuardConflictManager = class extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, null, null, safe_not_equal, {});
+  }
+};
+var MouseGuardConflictManager_default = MouseGuardConflictManager;
+
+// module/mouse-conflict-manager.js
+var MouseConflictManager = class extends Application {
+  constructor(...args) {
+    super(...args);
+  }
+  app = null;
+  dataStore = null;
+  refresh = foundry.utils.debounce(this.render, 100);
+  static get defaultOptions() {
+    return mergeObject(super.defaultOptions, {
+      ...super.defaultOptions,
+      id: "mouseguard-conflict-panel",
+      classes: ["mouseguard"],
+      template: "systems/mouseguard/templates/actor-sheetv2.html",
+      width: 850,
+      height: 600
+    });
+  }
+  render(force = false, options = {}) {
+    let sheetData = this.getData();
+    if (this.app !== null) {
+      let states = Application.RENDER_STATES;
+      if (this._state == states.RENDERING || this._state == states.RENDERED) {
+        this.dataStore?.set(sheetData);
+        return;
+      }
+    }
+    this._render(force, options).catch((err) => {
+      err.message = `An error occurred while rendering ${this.constructor.name} ${this.appId}: ${err.message}`;
+      console.error(err);
+      this._state = Application.RENDER_STATES.ERROR;
+    }).then((rendered) => {
+      this.dataStore = writable(sheetData);
+      this.app = new MouseGuardConflictManager_default({
+        target: this.element.find("form").get(0),
+        props: {
+          dataStore: this.dataStore
+        }
+      });
+    });
+    return this;
+  }
+  close(options = {}) {
+    if (this.app != null) {
+      this.app.$destroy();
+      this.app = null;
+      this.dataStore = null;
+    }
+    return super.close(options);
+  }
+};
+
+// module/status-effects.js
+var statusEffects = [
+  {
+    id: "sick",
+    label: "MOUSEGUARD.sick",
+    icon: "systems/mouseguard/assets/icons/sick.svg"
+  },
+  {
+    id: "tired",
+    label: "MOUSEGUARD.tired",
+    icon: "systems/mouseguard/assets/icons/tired.svg"
+  },
+  {
+    id: "hungthurst",
+    label: "MOUSEGUARD.hungthurst",
+    icon: "systems/mouseguard/assets/icons/hungthurst.svg"
+  },
+  {
+    id: "injured",
+    label: "MOUSEGUARD.injured",
+    icon: "systems/mouseguard/assets/icons/injured.svg"
+  },
+  {
+    id: "angry",
+    label: "MOUSEGUARD.angry",
+    icon: "systems/mouseguard/assets/icons/angry.svg"
+  }
+];
+
 // module/mouseguard.js
 Hooks.once("init", async function() {
   console.log(`Initializing MouseGuard MouseGuard System`);
@@ -6125,7 +6324,8 @@ Hooks.once("init", async function() {
     RollMessage,
     updateDisplay,
     MouseDie,
-    MouseRoll
+    MouseRoll,
+    effectPanel: new EffectsPanel()
   };
   CONFIG.Actor.documentClass = MouseGuardActor;
   CONFIG.Item.documentClass = MouseGuardItem;
@@ -6273,6 +6473,35 @@ Hooks.once("ready", async () => {
     tour.start();
     game.user.setFlag("mouseguard", "tourRolls", 1);
   }
+  Hooks.on("controlToken", game.mouseguard.effectPanel.refresh.bind(game.mouseguard.effectPanel, true));
+  for (const hook of [
+    "createActiveEffect",
+    "updateActiveEffect",
+    "deleteActiveEffect"
+  ]) {
+    Hooks.on(hook, function(effect) {
+      if (effect.parent === game.mouseguard.effectPanel.actor)
+        game.mouseguard.effectPanel.refresh(true);
+    });
+  }
+});
+Hooks.on("renderChatMessage", (chatMessage, [html], messageData) => {
+  if (messageData.message.flags?.mouseguard?.unflipped) {
+    html.querySelector("img").src = "systems/mouseguard/assets/deck/CardBack.webp";
+    if (game.user.isGM) {
+      html.querySelector(".action-move").insertAdjacentHTML("beforeend", ' <button id="reveal-button" type="button">Reveal Card</button> ');
+      html.querySelector("#reveal-button").addEventListener("click", (event) => {
+        let message = game.messages.get(event.target.closest("li").dataset.messageId);
+        message.setFlag("mouseguard", "unflipped", false);
+      });
+    }
+  }
+});
+Hooks.on("canvasReady", () => {
+  game.mouseguard.effectPanel.render(true);
+});
+Hooks.once("setup", () => {
+  CONFIG.statusEffects = statusEffects;
 });
 async function registerTours() {
   try {
@@ -6290,6 +6519,8 @@ function updateDisplay(count) {
   $(".mouse-dice-roll").html(theHTML);
   $(".mouse_dice_button.subtract").prop("disabled", !count);
   $(".mouse_roll_button").prop("disabled", !count);
+  if (!count)
+    game.mouseguard.RollMessage = "";
 }
 Handlebars.registerHelper("times", function(n, block) {
   var accum = "";
@@ -6305,5 +6536,8 @@ Handlebars.registerHelper("concat", function() {
     }
   }
   return outStr;
+});
+Handlebars.registerHelper("ifEquals", function(arg1, arg2, options) {
+  return arg1 == arg2 ? options.fn(this) : options.inverse(this);
 });
 //# sourceMappingURL=mouseguard.js.map

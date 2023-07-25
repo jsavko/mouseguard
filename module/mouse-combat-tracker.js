@@ -20,8 +20,64 @@ export default class MouseCombatTracker extends CombatTracker {
             template:
                 "systems/mouseguard/templates/sidebar/combat-tracker.html",
             title: "COMBAT.SidebarTitle",
-            scrollY: [".directory-list"]
+            scrollY: [".directory-list"],
+            dragDrop: [
+                {
+                    dragSelector: "li.combatant.actor.directory-item.flexrow",
+                    dropSelector: "li[data-team]"
+                }
+            ]
         });
+    }
+
+    _canDragStart(ev) {
+        //console.log(ev);
+        if (game.user.isGM) return true;
+        return false;
+    }
+
+    _canDragDrop(ev) {
+        //console.log(ev);
+        if (game.user.isGM) return true;
+        return false;
+    }
+
+    _onDragDrop(ev) {
+        super._onDrop(ev);
+        // console.log(ev);
+    }
+
+    async _onDrop(ev) {
+        super._onDrop(ev);
+        if (JSON.parse(ev.dataTransfer?.getData("text/plain")).id == "0") {
+            return false;
+        }
+        let dropped_id = JSON.parse(ev.dataTransfer?.getData("text/plain")).id;
+        let target = ev.target.closest("li").dataset.team;
+        // console.log(target);
+        await this.viewed.combatants.get(dropped_id).setTeam(target);
+    }
+
+    _onDragStart(ev) {
+        //super._onDragStart(ev);
+        //console.log(ev);
+        let valid = this.viewed.combatants.get(ev.target.dataset.combatantId);
+        if (valid.flags.mouseguard.ConflictCaptain) {
+            ui.notifications.error(game.i18n.localize("COMBAT.CCERROR"));
+            ev.dataTransfer.setData(
+                "text/plain",
+                JSON.stringify({
+                    id: "0"
+                })
+            );
+            return false;
+        } else {
+            ev.dataTransfer.setData(
+                "text/plain",
+                JSON.stringify({ id: ev.target.dataset.combatantId })
+            );
+        }
+        //console.log(ev);
     }
 
     _getEntryContextOptions() {
@@ -34,14 +90,22 @@ export default class MouseCombatTracker extends CombatTracker {
                         li.data("combatant-id")
                     );
 
+                    // Each team needs a Captain
+                    //combatant.team
+                    // This entire function should be refactored to be a single statement
+                    let Team = "";
+                    if (combatant.team == 2) Team = "2";
+                    if (combatant.team == 0) return;
+                    console.log(Team);
                     if (
-                        this.viewed.flags.mouseguard.ConflictCaptain ==
-                        combatant.id
+                        this.viewed.flags.mouseguard[
+                            "ConflictCaptain" + Team
+                        ] == combatant.id
                     ) {
                         //Unset if self
                         this.viewed.setFlag(
                             "mouseguard",
-                            "ConflictCaptain",
+                            "ConflictCaptain" + Team,
                             NaN
                         );
                         return combatant.setFlag(
@@ -50,15 +114,18 @@ export default class MouseCombatTracker extends CombatTracker {
                             false
                         );
                     }
+
                     if (
-                        !!this.viewed.flags.mouseguard.ConflictCaptain == false
+                        !!this.viewed.flags.mouseguard[
+                            "ConflictCaptain" + Team
+                        ] == false
                     ) {
                         // New Captain Never had an old one
                         if (combatant) {
                             //Set Flag on New Captain
                             this.viewed.setFlag(
                                 "mouseguard",
-                                "ConflictCaptain",
+                                "ConflictCaptain" + Team,
                                 li.data("combatant-id")
                             );
                             return combatant.setFlag(
